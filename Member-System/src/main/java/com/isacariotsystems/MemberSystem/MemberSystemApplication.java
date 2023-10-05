@@ -1,13 +1,13 @@
-package com.isacariotsystems.IsacariotMemberSystem;
+package com.isacariotsystems.MemberSystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IsacariotMemberSystemApplication {
+public class MemberSystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(IsacariotMemberSystemApplication.class, args);
+		SpringApplication.run(MemberSystemApplication.class, args);
 	}
 
 }

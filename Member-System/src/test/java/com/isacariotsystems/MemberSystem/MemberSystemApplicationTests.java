@@ -1,10 +1,10 @@
-package com.isacariotsystems.IsacariotMemberSystem;
+package com.isacariotsystems.MemberSystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IsacariotMemberSystemApplicationTests {
+class MemberSystemApplicationTests {
 
 	@Test
 	void contextLoads() {
