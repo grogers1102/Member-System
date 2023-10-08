@@ -5,13 +5,17 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-// Entity tells us theres an associated SQL Table
-@Entity
+@Entity // Indicates that this class is mapped to a database table
+@Data // Lombok generates getters and setters for all fields
+@AllArgsConstructor // Generates a constructor with all fields
+@NoArgsConstructor // Generates a default constructor
 public class Member {
-    // ID indicates primary key
-    // GeneratedValue denotes how our primary key is derived, currently by SQL increment
-    @Id  
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberId;
+    
+    @Id // Indicates that this field is the primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Specifies how the primary key is generated
+    private Long memberId; // Unique identifier for the member
 }
