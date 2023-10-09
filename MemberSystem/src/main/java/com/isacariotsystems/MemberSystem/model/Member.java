@@ -1,10 +1,12 @@
 package com.isacariotsystems.MemberSystem.model;
 
+// Database Imports
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
+// Lombok Imports
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

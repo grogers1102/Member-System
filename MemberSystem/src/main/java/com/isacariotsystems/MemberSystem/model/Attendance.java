@@ -1,13 +1,14 @@
-/* 
 package com.isacariotsystems.MemberSystem.model;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.ManyToOne;
+// Database Imports
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.ManyToOne;
 
-import java.util.Date;
+// Java Imports
+import java.time.LocalDate;
 
 
 @Entity
@@ -16,12 +17,14 @@ public class Attendance {
     @EmbeddedId
     private AttendanceID attendanceID;
 
+    // Specify ManyToOne relationship and Map Foreign Key
     @ManyToOne
     @JoinColumn(name = "member_id", referencedColumnName = "member_id", insertable = false, updatable = false)
     private Member member;
 
+    // Denotes a Column in our Database Table
     @Column(name = "attendance_date")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "isAbsent")
     private boolean isAbsent;
@@ -30,4 +33,4 @@ public class Attendance {
     private boolean isConfirmed;
 
 }
-*/
+

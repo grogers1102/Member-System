@@ -1,10 +1,12 @@
-/* 
 package com.isacariotsystems.MemberSystem.model;
 
+// Database Imports
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+
+// Java Imports
 import java.io.Serializable;
 import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 
 
 // Embeddable allows our class to be an attribute of another
@@ -17,4 +19,3 @@ public class AttendanceID implements Serializable {
     @Column(name = "attendance_date")
     private LocalDate date;
 }
-*/
