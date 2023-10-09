@@ -1,3 +1,4 @@
+/* 
 package com.isacariotsystems.MemberSystem.model;
 
 import java.io.Serializable;
@@ -16,3 +17,4 @@ public class AttendanceID implements Serializable {
     @Column(name = "attendance_date")
     private LocalDate date;
 }
+*/

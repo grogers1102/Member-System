@@ -1,3 +1,4 @@
+/* 
 package com.isacariotsystems.MemberSystem.model;
 
 import javax.persistence.Entity;
@@ -29,3 +30,4 @@ public class Attendance {
     private boolean isConfirmed;
 
 }
+*/
