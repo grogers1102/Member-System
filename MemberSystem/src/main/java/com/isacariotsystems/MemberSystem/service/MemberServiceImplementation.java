@@ -1,9 +1,11 @@
 package com.isacariotsystems.MemberSystem.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.isacariotsystems.MemberSystem.model.Member;
+import com.isacariotsystems.MemberSystem.entity.Member;
 import com.isacariotsystems.MemberSystem.repository.MemberRepository;
 
 
@@ -18,6 +20,9 @@ public class MemberServiceImplementation implements MemberService {
         return memberRepository.save(member);
     }
 
-
-    
+    @Override
+    public List<Member> allMembers(){
+        return memberRepository.findAll();
+    }
+ 
 }
