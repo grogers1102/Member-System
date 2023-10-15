@@ -21,7 +21,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 public class AttendanceID implements Serializable {
 
-    @Column(name = "member_id")
+    @Column(name = "memberId")
     private Long member_id;
 
     @Column(name = "attendance_date")

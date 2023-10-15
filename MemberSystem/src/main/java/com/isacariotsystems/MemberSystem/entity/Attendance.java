@@ -6,7 +6,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 // Lombok Imports
 import lombok.AllArgsConstructor;
@@ -18,7 +17,6 @@ import java.time.LocalDate;
 
 
 @Entity
-@Table(name="ATTENDANCE")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,7 +27,7 @@ public class Attendance {
 
     // Specify ManyToOne relationship and Map Foreign Key
     @ManyToOne
-    @JoinColumn(name = "member_id", referencedColumnName = "member_id", insertable = false, updatable = false)
+    @JoinColumn(name = "memberId", referencedColumnName = "memberId", insertable = false, updatable = false)
     private Member member;
 
     private LocalDate date;
