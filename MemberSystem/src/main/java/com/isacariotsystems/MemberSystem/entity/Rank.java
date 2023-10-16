@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Rank {
     @Id
-    private Long rankId;
+    private Integer rankId;
 
     private String description;
 

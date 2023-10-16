@@ -7,11 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.isacariotsystems.MemberSystem.entity.Branch;
+
 import com.isacariotsystems.MemberSystem.entity.Member;
-import com.isacariotsystems.MemberSystem.repository.BranchRepository;
 import com.isacariotsystems.MemberSystem.repository.MemberRepository;
-import com.isacariotsystems.MemberSystem.repository.RankRepository;
 
 
 @Service
@@ -19,10 +17,6 @@ public class MemberServiceImplementation implements MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
-    @Autowired
-    private BranchRepository branchRepository;
-    @Autowired
-    private RankRepository rankRepository;
 
     @Override
     public Member saveMember(Member member){
@@ -55,5 +49,17 @@ public class MemberServiceImplementation implements MemberService {
         {
             throw new NoSuchElementException("Member " + memberId + " not found");
         }
+    }
+
+    @Override
+    public Optional<List<Member>> findMembersByBranch(Long branchId){
+        List<Member> members = memberRepository.findByBranchId(branchId);
+        return Optional.ofNullable(members);
+    }
+
+    @Override
+    public Optional<List<Member>> findMembersByRank(Integer rankId){
+        List<Member> members = memberRepository.findByRankId(rankId);
+        return Optional.ofNullable(members);
     }
 }

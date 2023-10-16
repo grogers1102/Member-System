@@ -13,5 +13,9 @@ public interface BranchService {
     public List<Branch> allBranches();
 
     public Optional<Branch> findBranchById(Long branchId);
+
+    public void deleteBranchById(Long branchId);
+
+    public Branch updateBranch(Long brnachId, Branch rank);
     
 }
