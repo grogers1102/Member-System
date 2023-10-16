@@ -27,7 +27,7 @@ public class Member {
     private Long memberId; // Unique identifier for the member
 
     @ManyToOne
-    @JoinColumn(name = "localBranchId", referencedColumnName = "branchId")
+    @JoinColumn(name = "branchId", referencedColumnName = "branchId")
     private Branch localBranch;
 
     @ManyToOne

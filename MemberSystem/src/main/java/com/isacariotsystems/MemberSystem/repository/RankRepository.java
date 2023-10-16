@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.isacariotsystems.MemberSystem.entity.Rank;
 
 @Repository
-public interface RankRepository extends JpaRepository<Rank,Integer>{
+public interface RankRepository extends JpaRepository<Rank,Long>{
     
 }

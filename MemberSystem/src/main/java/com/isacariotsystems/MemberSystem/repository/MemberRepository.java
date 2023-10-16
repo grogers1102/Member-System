@@ -11,8 +11,9 @@ import com.isacariotsystems.MemberSystem.entity.Member;
 @Repository
 public interface MemberRepository extends JpaRepository<Member,Long>{
 
+    /* 
     List<Member> findByBranchId(Long branchId);
 
-    List<Member> findByRankId(Integer rankId);
-    
+    List<Member> findByRankId(Long rankId);
+    */
 }

@@ -28,17 +28,17 @@ public class RankServiceImplementation implements RankService {
     }
 
     @Override
-    public Optional<Rank> findRankById(Integer rankId){
+    public Optional<Rank> findRankById(Long rankId){
         return rankRepository.findById(rankId);
     }
 
     @Override
-    public void deleteRankById(Integer rankId){
+    public void deleteRankById(Long rankId){
         rankRepository.deleteById(rankId);
     }
 
     @Override
-    public Rank updateRank(Integer rankId, Rank rank){
+    public Rank updateRank(Long rankId, Rank rank){
         if(rankRepository.existsById(rankId))
         {
             rank.setRankId(rankId); 

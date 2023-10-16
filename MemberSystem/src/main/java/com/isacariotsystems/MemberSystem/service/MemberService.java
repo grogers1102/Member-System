@@ -16,7 +16,8 @@ public interface MemberService {
 
     public Member updateMember(Long memberId, Member member);
 
-    public Optional<List<Member>> findMembersByBranch(Long branchId);
+    //public Optional<List<Member>> findMembersByBranch(Long branchId);
 
-    public Optional<List<Member>> findMembersByRank(Integer rankId);
+    //public Optional<List<Member>> findMembersByRank(Long rankId);
+    
 }

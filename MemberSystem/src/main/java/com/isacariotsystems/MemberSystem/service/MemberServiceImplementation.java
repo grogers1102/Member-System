@@ -51,6 +51,7 @@ public class MemberServiceImplementation implements MemberService {
         }
     }
 
+    /* 
     @Override
     public Optional<List<Member>> findMembersByBranch(Long branchId){
         List<Member> members = memberRepository.findByBranchId(branchId);
@@ -58,8 +59,11 @@ public class MemberServiceImplementation implements MemberService {
     }
 
     @Override
-    public Optional<List<Member>> findMembersByRank(Integer rankId){
+    public Optional<List<Member>> findMembersByRank(Long rankId){
         List<Member> members = memberRepository.findByRankId(rankId);
         return Optional.ofNullable(members);
     }
+    */
+    
+    
 }
