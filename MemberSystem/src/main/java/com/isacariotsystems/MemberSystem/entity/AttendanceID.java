@@ -20,10 +20,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class AttendanceID implements Serializable {
-
-    @Column(name = "memberId")
-    private Long member_id;
-
-    @Column(name = "attendance_date")
+    @Column(name="memberId")
+    private Long memberId;
+    @Column(name="date")
     private LocalDate date;
 }

@@ -12,10 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-// Java Imports
-import java.time.LocalDate;
-
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -29,8 +25,6 @@ public class Attendance {
     @ManyToOne
     @JoinColumn(name = "memberId", referencedColumnName = "memberId", insertable = false, updatable = false)
     private Member member;
-
-    private LocalDate date;
 
     @Column(name = "isAbsent")
     private boolean isAbsent;

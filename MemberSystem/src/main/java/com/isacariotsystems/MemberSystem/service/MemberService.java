@@ -1,5 +1,6 @@
 package com.isacariotsystems.MemberSystem.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,4 +21,5 @@ public interface MemberService {
 
     public Optional<List<Member>> findMembersByRank(Long rankId);
     
+    public Optional<List<Member>> findMembersByDate(LocalDate date);
 }

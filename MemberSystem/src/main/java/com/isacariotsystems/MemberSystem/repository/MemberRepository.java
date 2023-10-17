@@ -14,5 +14,4 @@ public interface MemberRepository extends JpaRepository<Member,Long>{
     List<Member> findByLocalBranchBranchId(Long branchId);
 
     List<Member> findByRankRankId(Long rankId);
-    
 }

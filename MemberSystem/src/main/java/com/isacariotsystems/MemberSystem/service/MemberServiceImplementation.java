@@ -1,5 +1,6 @@
 package com.isacariotsystems.MemberSystem.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -7,8 +8,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.isacariotsystems.MemberSystem.entity.Member;
+import com.isacariotsystems.MemberSystem.repository.AttendanceRepository;
 import com.isacariotsystems.MemberSystem.repository.MemberRepository;
 
 
@@ -17,6 +18,8 @@ public class MemberServiceImplementation implements MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
+
+    private AttendanceRepository attendanceRepository;
 
     @Override
     public Member saveMember(Member member){
@@ -62,6 +65,13 @@ public class MemberServiceImplementation implements MemberService {
     public Optional<List<Member>> findMembersByRank(Long rankId){
         List<Member> members = memberRepository.findByRankRankId(rankId);
         return Optional.ofNullable(members);
+    }
+
+    @Override
+    public Optional<List<Member>> findMembersByDate(LocalDate date) {
+        List<Member> members = attendanceRepository.findMembersByAttendanceID_Date(date);
+        return Optional.ofNullable(members);
+        
     }
     
     
