@@ -167,10 +167,98 @@ h2{
 }
 
 .loginLogo{
-    height: 200px;
+    height: 185px;
     position: absolute;
     top: -10px;
     left: 200px;
+}
+
+.email{
+
+    color: white;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: 8px;
+    position: absolute;
+    top: 161px;
+    left: 214px;
+}
+
+.emailBox{
+
+    color: black;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: 7px;
+    position: absolute;
+    top: 160px;
+    left: 239px;
+    width: 100px;
+    height: 7px;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+
+}
+
+.emailBox:focus{
+    outline: none;
+}
+
+.password{
+    color: white;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: 8px;
+    position: absolute;
+    top: 181px;
+    left: 200px;
+}
+
+.passwordBox{
+
+    color: black;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: 7px;
+    position: absolute;
+    top: 180px;
+    left: 239px;
+    width: 100px;
+    height: 7px;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+    
+}
+
+.passwordBox:focus{
+    outline: none;
+
+}
+
+.loginBox{
+
+    color: black;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: 8px;
+    position: absolute;
+    top: 200px;
+    left: 267px;
+    width: 50px;
+    height: 18px;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+
+    transition: transform 0.3s;
+}
+
+.loginBox:hover{
+    transform: translate3d(-1px,-1px,0);
+}
+
+.signup-link{
+
+    color: white;
+    position: relative;
+    
 }
 
 
