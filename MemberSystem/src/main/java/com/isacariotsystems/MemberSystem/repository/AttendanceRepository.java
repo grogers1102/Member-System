@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import com.isacariotsystems.MemberSystem.entity.Attendance;
 import com.isacariotsystems.MemberSystem.entity.AttendanceID;
-import com.isacariotsystems.MemberSystem.entity.Member;
+import com.isacariotsystems.MemberSystem.entity.User;
 
 
 @Repository
 public interface AttendanceRepository extends JpaRepository<Attendance,AttendanceID> {
-     List<Member> findMembersByAttendanceID_Date(LocalDate date);
+     List<User> findMembersByAttendanceID_Date(LocalDate date);
 
      List<Attendance> findAttendanceByAttendanceID_MemberId(Long memberId);
 }

@@ -24,7 +24,7 @@ public class Attendance {
     // Specify ManyToOne relationship and Map Foreign Key
     @ManyToOne
     @JoinColumn(name = "memberId", referencedColumnName = "memberId", insertable = false, updatable = false)
-    private Member member;
+    private User member;
 
     @Column(name = "isAbsent")
     private boolean isAbsent;

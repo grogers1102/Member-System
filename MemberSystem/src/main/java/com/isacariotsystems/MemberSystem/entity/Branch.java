@@ -1,6 +1,5 @@
 package com.isacariotsystems.MemberSystem.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +21,7 @@ public class Branch {
 
     @ManyToOne
     @JoinColumn(name = "managerId", referencedColumnName = "memberId")
-    private Member manager;
+    private User manager;
     
     private String address;
     
