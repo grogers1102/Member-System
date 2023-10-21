@@ -8,31 +8,31 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.isacariotsystems.MemberSystem.entity.Member;
+import com.isacariotsystems.MemberSystem.entity.User;
 import com.isacariotsystems.MemberSystem.repository.AttendanceRepository;
-import com.isacariotsystems.MemberSystem.repository.MemberRepository;
+import com.isacariotsystems.MemberSystem.repository.UserRepository;
 
 
 @Service
-public class MemberServiceImplementation implements MemberService {
+public class UserServiceImplementation implements UserService {
 
     @Autowired
-    private MemberRepository memberRepository;
+    private UserRepository memberRepository;
 
     private AttendanceRepository attendanceRepository;
 
     @Override
-    public Member saveMember(Member member){
+    public User saveMember(User member){
         return memberRepository.save(member);
     }
 
     @Override
-    public List<Member> allMembers(){
+    public List<User> allMembers(){
         return memberRepository.findAll();
     }
     
     @Override
-    public Optional<Member> findMemberById(Long memberId){
+    public Optional<User> findMemberById(Long memberId){
         return memberRepository.findById(memberId);
     }
 
@@ -42,10 +42,10 @@ public class MemberServiceImplementation implements MemberService {
     }
 
     @Override
-    public Member updateMember(Long memberId, Member member){
+    public User updateMember(Long memberId, User member){
         if(memberRepository.existsById(memberId))
         {
-            member.setMemberId(memberId); 
+            member.setUserId(memberId); 
             return memberRepository.save(member);
         }
         else
@@ -55,21 +55,21 @@ public class MemberServiceImplementation implements MemberService {
     }
 
     @Override
-    public Optional<List<Member>> findMembersByBranch(Long branchId){
-        List<Member> members = memberRepository.findByLocalBranchBranchId(branchId);
+    public Optional<List<User>> findMembersByBranch(Long branchId){
+        List<User> members = memberRepository.findByLocalBranchBranchId(branchId);
         return Optional.ofNullable(members);
     }
     
     
     @Override
-    public Optional<List<Member>> findMembersByRank(Long rankId){
-        List<Member> members = memberRepository.findByRankRankId(rankId);
+    public Optional<List<User>> findMembersByRank(Long rankId){
+        List<User> members = memberRepository.findByRankRankId(rankId);
         return Optional.ofNullable(members);
     }
 
     @Override
-    public Optional<List<Member>> findMembersByDate(LocalDate date) {
-        List<Member> members = attendanceRepository.findMembersByAttendanceID_Date(date);
+    public Optional<List<User>> findMembersByDate(LocalDate date) {
+        List<User> members = attendanceRepository.findMembersByAttendanceID_Date(date);
         return Optional.ofNullable(members);
         
     }

@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.isacariotsystems.MemberSystem.entity.Member;
-import com.isacariotsystems.MemberSystem.service.MemberService;
+import com.isacariotsystems.MemberSystem.entity.User;
+import com.isacariotsystems.MemberSystem.service.UserService;
 
 @RestController
-@RequestMapping("/member")
-public class MemberController {
+@RequestMapping("/user")
+public class UserController {
     
     @Autowired
-    private MemberService memberService;
+    private UserService userService;
 
     @PostMapping("/add")
-    public String add(@RequestBody Member member){
-        memberService.saveMember(member);
+    public String add(@RequestBody User user){
+        userService.saveMember(user);
 
         return "Sucessfully Added Member";
     }
     
     @GetMapping
-    public ResponseEntity<List<Member>> getAllMembers(){
-        return new ResponseEntity<List<Member>>(memberService.allMembers(),HttpStatus.OK);
+    public ResponseEntity<List<User>> getAllMembers(){
+        return new ResponseEntity<List<User>>(userService.allMembers(),HttpStatus.OK);
     }
 
 }
