@@ -1,5 +1,6 @@
 package com.isacariotsystems.MemberSystem.controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,12 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<User>> getAllMembers(){
         return new ResponseEntity<List<User>>(userService.allMembers(),HttpStatus.OK);
+    }
+    
+
+    @GetMapping
+    public ResponseEntity<String> sayHello(){
+        return ResponseEntity.ok("Hi User");
     }
 
 }

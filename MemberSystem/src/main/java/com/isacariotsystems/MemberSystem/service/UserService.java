@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import com.isacariotsystems.MemberSystem.entity.User;
 
 public interface UserService {
@@ -22,4 +24,6 @@ public interface UserService {
     public Optional<List<User>> findMembersByRank(Long rankId);
     
     public Optional<List<User>> findMembersByDate(LocalDate date);
+
+    UserDetailsService userDetailsService();
 }
