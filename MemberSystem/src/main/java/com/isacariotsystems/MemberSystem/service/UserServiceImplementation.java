@@ -20,36 +20,36 @@ import com.isacariotsystems.MemberSystem.repository.UserRepository;
 public class UserServiceImplementation implements UserService {
 
     @Autowired
-    private UserRepository memberRepository;
+    private UserRepository userRepository;
 
     private AttendanceRepository attendanceRepository;
 
     @Override
     public User saveMember(User member){
-        return memberRepository.save(member);
+        return userRepository.save(member);
     }
 
     @Override
     public List<User> allMembers(){
-        return memberRepository.findAll();
+        return userRepository.findAll();
     }
     
     @Override
     public Optional<User> findMemberById(Long memberId){
-        return memberRepository.findById(memberId);
+        return userRepository.findById(memberId);
     }
 
     @Override
     public void deleteMemberById(Long memberId){
-        memberRepository.deleteById(memberId);
+        userRepository.deleteById(memberId);
     }
 
     @Override
     public User updateMember(Long memberId, User member){
-        if(memberRepository.existsById(memberId))
+        if(userRepository.existsById(memberId))
         {
-            member.setMemberId(memberId); 
-            return memberRepository.save(member);
+            member.setUserId(memberId); 
+            return userRepository.save(member);
         }
         else
         {
@@ -59,14 +59,14 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public Optional<List<User>> findMembersByBranch(Long branchId){
-        List<User> members = memberRepository.findByLocalBranchBranchId(branchId);
+        List<User> members = userRepository.findByLocalBranchBranchId(branchId);
         return Optional.ofNullable(members);
     }
     
     
     @Override
     public Optional<List<User>> findMembersByRank(Long rankId){
-        List<User> members = memberRepository.findByRankRankId(rankId);
+        List<User> members = userRepository.findByRankRankId(rankId);
         return Optional.ofNullable(members);
     }
 
@@ -76,12 +76,13 @@ public class UserServiceImplementation implements UserService {
         return Optional.ofNullable(members);
         
     }
+
     @Override
     public UserDetailsService userDetailsService(){
         return new UserDetailsService(){
             @Override
             public UserDetails loadUserByUsername(String username){
-                return memberRepository.findByEmail(username)
+                return userRepository.findByEmail(username)
                     .orElseThrow(()-> new UsernameNotFoundException("Username not found"));
             }
         };

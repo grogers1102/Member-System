@@ -25,16 +25,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity // Indicates that this class is mapped to a database table
-@Data // Lombok generates getters and setters for all fields
-@AllArgsConstructor // Generates a constructor with all fields
-@NoArgsConstructor // Generates a default constructor
+/*
+    @Entity maps this entity to DB table
+    @Data generates getters and setters
+    @AllArgsConstructor generate all arg constructors 
+    @NoArgsConstructor generate no arg constructors
+ */
+@Entity 
+@Data 
+@AllArgsConstructor 
+@NoArgsConstructor 
 public class User implements UserDetails {
-    
+    /*
+    @Id denotes primary key
+    @GeneratedValue defines how we generate Id
+     */
     @Id // Indicates that this field is the primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Specifies how the primary key is generated
-    private Long memberId; // Unique identifier for the member
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    private Long userId; 
+    /*
+    @ManyToOne defines relationship between Member to Branch
+    @JoinColumn specifies what attribute is the foreign key
+     */
     @ManyToOne
     @JoinColumn(name = "branchId", referencedColumnName = "branchId")
     private Branch localBranch;
@@ -49,11 +61,11 @@ public class User implements UserDetails {
 
     private LocalDate invitationDate;
     
-    private String email; // Potential Class
+    private String email; 
 
-    private String phoneNumber; // Potential Class
+    private String phoneNumber; 
 
-    private float socialScore; // Potential Class
+    private float socialScore; 
 
     private String firstName;
 

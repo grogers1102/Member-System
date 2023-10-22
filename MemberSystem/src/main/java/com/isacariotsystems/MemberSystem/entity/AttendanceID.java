@@ -13,15 +13,25 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 
-// Embeddable allows our class to be an attribute of another
+/*
+    @Embeddable indicates this is entity can be embedded in another entity 
+    @Data generates getters and setters
+    @AllArgsConstructor generate all arg constructors 
+    @NoArgsConstructor generate no arg constructors
+    @EqualsAndHashCode generates equal and hashCode methods
+ */
 @Embeddable
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 public class AttendanceID implements Serializable {
-    @Column(name="memberId")
-    private Long memberId;
+
+    //@Column specifies column name  in DB
+    
+    @Column(name="userId")
+    private Long userId;
+
     @Column(name="date")
     private LocalDate date;
 }

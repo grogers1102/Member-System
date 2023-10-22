@@ -1,7 +1,10 @@
 package com.isacariotsystems.MemberSystem.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,26 +16,24 @@ import com.isacariotsystems.MemberSystem.entity.User;
 import com.isacariotsystems.MemberSystem.service.UserService;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/user")
 public class UserController {
     
     @Autowired
-    private UserService memberService;
-
-    
+    private UserService userService;
 
     @PostMapping("/add")
-    public String add(@RequestBody User member){
-        memberService.saveMember(member);
+    public String add(@RequestBody User user){
+        userService.saveMember(user);
 
         return "Sucessfully Added Member";
     }
     
-    /*@GetMapping
+    @GetMapping
     public ResponseEntity<List<User>> getAllMembers(){
-        return new ResponseEntity<List<User>>(memberService.allMembers(),HttpStatus.OK);
+        return new ResponseEntity<List<User>>(userService.allMembers(),HttpStatus.OK);
     }
-    */
+    
 
     @GetMapping
     public ResponseEntity<String> sayHello(){
