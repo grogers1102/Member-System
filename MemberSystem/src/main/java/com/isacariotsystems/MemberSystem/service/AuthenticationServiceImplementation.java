@@ -40,7 +40,6 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
 
         return userRepository.save(member); 
     }
-
     public JwtAuthenticationResponse signin(SigninRequest signinRequest){
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signinRequest.getEmail(), signinRequest.getPassword()));
 
