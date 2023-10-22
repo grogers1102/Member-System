@@ -9,21 +9,21 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import com.isacariotsystems.MemberSystem.entity.User;
 
 public interface UserService {
-    public User saveMember(User member);
+    public User saveUser(User user);
 
-    public List<User> allMembers();
+    public List<User> allUsers();
 
-    public Optional<User> findMemberById(Long memberId);
+    public Optional<User> findUserById(Long userId);
 
-    public void deleteMemberById(Long memberId);
+    public void deleteUserById(Long userId);
 
-    public User updateMember(Long memberId, User member);
+    public User updateUser(Long userId, User user);
 
-    public Optional<List<User>> findMembersByBranch(Long branchId);
+    public Optional<List<User>> findUsersByBranch(Long branchId);
 
-    public Optional<List<User>> findMembersByRank(Long rankId);
+    public Optional<List<User>> findUsersByRank(Long rankId);
     
-    public Optional<List<User>> findMembersByDate(LocalDate date);
+    public Optional<List<User>> findUsersByDate(LocalDate date);
 
     UserDetailsService userDetailsService();
 }

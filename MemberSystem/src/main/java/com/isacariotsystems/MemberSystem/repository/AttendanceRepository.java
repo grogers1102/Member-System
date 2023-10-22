@@ -13,7 +13,7 @@ import com.isacariotsystems.MemberSystem.entity.User;
 
 @Repository
 public interface AttendanceRepository extends JpaRepository<Attendance,AttendanceID> {
-     List<User> findMembersByAttendanceID_Date(LocalDate date);
+     List<User> findUsersByAttendanceID_Date(LocalDate date);
 
-     List<Attendance> findAttendanceByAttendanceID_MemberId(Long memberId);
+     List<Attendance> findAttendanceByAttendanceID_UserId(Long userId);
 }

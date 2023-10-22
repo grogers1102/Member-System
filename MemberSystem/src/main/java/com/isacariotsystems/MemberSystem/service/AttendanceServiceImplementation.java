@@ -49,8 +49,8 @@ public class AttendanceServiceImplementation implements AttendanceService{
     }
 
     @Override
-    public Optional<List<Attendance>> findAttendanceByMemberId(Long memberId) {
-        List<Attendance> attendance = attendanceRepository.findAttendanceByAttendanceID_MemberId(memberId);
+    public Optional<List<Attendance>> findAttendanceByUserId(Long userId) {
+        List<Attendance> attendance = attendanceRepository.findAttendanceByAttendanceID_UserId(userId);
         return Optional.ofNullable(attendance);
         
     }

@@ -22,58 +22,59 @@ public class UserServiceImplementation implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
     private AttendanceRepository attendanceRepository;
 
     @Override
-    public User saveMember(User member){
-        return userRepository.save(member);
+    public User saveUser(User user){
+        return userRepository.save(user);
     }
 
     @Override
-    public List<User> allMembers(){
+    public List<User> allUsers(){
         return userRepository.findAll();
     }
     
     @Override
-    public Optional<User> findMemberById(Long memberId){
-        return userRepository.findById(memberId);
+    public Optional<User> findUserById(Long userId){
+        return userRepository.findById(userId);
     }
 
     @Override
-    public void deleteMemberById(Long memberId){
-        userRepository.deleteById(memberId);
+    public void deleteUserById(Long userId){
+        userRepository.deleteById(userId);
     }
 
     @Override
-    public User updateMember(Long memberId, User member){
-        if(userRepository.existsById(memberId))
+    public User updateUser(Long userId, User user){
+        if(userRepository.existsById(userId))
         {
-            member.setUserId(memberId); 
-            return userRepository.save(member);
+            user.setUserId(userId); 
+            return userRepository.save(user);
         }
         else
         {
-            throw new NoSuchElementException("Member " + memberId + " not found");
+            throw new NoSuchElementException("User " + userId + " not found");
         }
     }
 
     @Override
-    public Optional<List<User>> findMembersByBranch(Long branchId){
-        List<User> members = userRepository.findByLocalBranchBranchId(branchId);
-        return Optional.ofNullable(members);
+    public Optional<List<User>> findUsersByBranch(Long branchId){
+        List<User> users = userRepository.findByLocalBranchBranchId(branchId);
+        return Optional.ofNullable(users);
     }
     
     
     @Override
-    public Optional<List<User>> findMembersByRank(Long rankId){
-        List<User> members = userRepository.findByRankRankId(rankId);
-        return Optional.ofNullable(members);
+    public Optional<List<User>> findUsersByRank(Long rankId){
+        List<User> users = userRepository.findByRankRankId(rankId);
+        return Optional.ofNullable(users);
     }
 
     @Override
-    public Optional<List<User>> findMembersByDate(LocalDate date) {
-        List<User> members = attendanceRepository.findMembersByAttendanceID_Date(date);
-        return Optional.ofNullable(members);
+    public Optional<List<User>> findUsersByDate(LocalDate date){
+        List<User> users = attendanceRepository.findUsersByAttendanceID_Date(date);
+        return Optional.ofNullable(users);
         
     }
 

@@ -30,15 +30,15 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
     private final JWTService jwtService;
 
     public User signup(SignupRequest signupRequest){
-        User member = new User();
+        User user = new User();
 
-        member.setEmail(signupRequest.getEmail());
-        member.setLastName(signupRequest.getLastName());
-        member.setFirstName(signupRequest.getFirstName());
-        member.setRole(Role.USER);
-        member.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
+        user.setEmail(signupRequest.getEmail());
+        user.setLastName(signupRequest.getLastName());
+        user.setFirstName(signupRequest.getFirstName());
+        user.setRole(Role.USER);
+        user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
 
-        return userRepository.save(member); 
+        return userRepository.save(user); 
     }
     public JwtAuthenticationResponse signin(SigninRequest signinRequest){
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signinRequest.getEmail(), signinRequest.getPassword()));

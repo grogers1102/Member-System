@@ -18,5 +18,5 @@ public interface AttendanceService {
 
     public Attendance updateAttendance(AttendanceID attendanceId, Attendance attendance);
 
-    public Optional<List<Attendance>> findAttendanceByMemberId(Long memberId);
+    public Optional<List<Attendance>> findAttendanceByUserId(Long userId);
 }

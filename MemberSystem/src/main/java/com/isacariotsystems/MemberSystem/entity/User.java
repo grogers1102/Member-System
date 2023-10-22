@@ -52,7 +52,7 @@ public class User implements UserDetails {
     private Branch localBranch;
 
     @ManyToOne
-    @JoinColumn(name = "superiorId", referencedColumnName = "memberId")
+    @JoinColumn(name = "superiorId", referencedColumnName = "userId")
     private User superior;
 
     @ManyToOne
