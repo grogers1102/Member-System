@@ -1,15 +1,18 @@
 package com.isacariotsystems.MemberSystem.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.isacariotsystems.MemberSystem.entity.Attendance;
 import com.isacariotsystems.MemberSystem.entity.AttendanceID;
 import com.isacariotsystems.MemberSystem.repository.AttendanceRepository;
 
+@Service
 public class AttendanceServiceImplementation implements AttendanceService{
 
     @Autowired
@@ -54,5 +57,10 @@ public class AttendanceServiceImplementation implements AttendanceService{
         return Optional.ofNullable(attendance);
         
     }
-    
+
+    @Override
+    public Optional<List<Attendance>> findAttendanceByDate(LocalDate date){
+        List<Attendance> attendance = attendanceRepository.findAttendanceByAttendanceID_Date(date);
+        return Optional.ofNullable(attendance);
+    }    
 }

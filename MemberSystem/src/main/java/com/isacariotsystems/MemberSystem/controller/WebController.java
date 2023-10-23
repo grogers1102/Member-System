@@ -20,5 +20,15 @@ public class WebController {
         return "ourTeam.html"; 
     }
 
+    @GetMapping("/portal")
+    public String portal() {
+        return "portal.html"; 
+    }
+
+    @GetMapping("/signup")
+    public String signup() {
+        return "signup.html"; 
+    }
+
 }
 

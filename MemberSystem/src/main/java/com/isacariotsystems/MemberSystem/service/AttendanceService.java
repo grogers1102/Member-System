@@ -1,5 +1,6 @@
 package com.isacariotsystems.MemberSystem.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,4 +20,7 @@ public interface AttendanceService {
     public Attendance updateAttendance(AttendanceID attendanceId, Attendance attendance);
 
     public Optional<List<Attendance>> findAttendanceByUserId(Long userId);
+
+    public Optional<List<Attendance>> findAttendanceByDate(LocalDate date);
+
 }
