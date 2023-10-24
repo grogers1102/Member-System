@@ -18,4 +18,8 @@ public interface AttendanceRepository extends JpaRepository<Attendance,Attendanc
      List<Attendance> findAttendanceByAttendanceID_UserId(Long userId);
 
      List<Attendance> findAttendanceByAttendanceID_Date(LocalDate date); 
+
+     boolean findIsAbsentByAttendanceID(AttendanceID attendanceId);
+
+     boolean findIsConfirmedByAttendanceID(AttendanceID attendanceId);
 }

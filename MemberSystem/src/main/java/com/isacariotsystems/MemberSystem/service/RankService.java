@@ -16,4 +16,10 @@ public interface RankService {
     public void deleteRankById(Long rankId);
 
     public Rank updateRank(Long rankId, Rank rank);
+
+    public String findDescriptionById(Long rankId);
+
+    public String findRequirementsById(Long rankId);
+
+    public String findDaysRequiredById(Long rankId);
 }

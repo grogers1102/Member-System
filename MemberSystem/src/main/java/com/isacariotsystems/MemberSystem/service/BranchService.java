@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.isacariotsystems.MemberSystem.entity.Branch;
+import com.isacariotsystems.MemberSystem.entity.User;
 
 
 public interface BranchService {
@@ -17,5 +18,10 @@ public interface BranchService {
     public void deleteBranchById(Long branchId);
 
     public Branch updateBranch(Long branchId, Branch branch);
-    
+
+    public User findManagerById(Long branchId);
+
+    public String findAddressById(Long branchId);
+
+    public int findPopulationById(Long branchId);
 }

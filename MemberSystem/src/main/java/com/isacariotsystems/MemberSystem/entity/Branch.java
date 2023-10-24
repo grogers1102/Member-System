@@ -38,5 +38,5 @@ public class Branch {
     
     private String address;
     
-    private int branchPopulation;
+    private int population;
 }

@@ -62,5 +62,15 @@ public class AttendanceServiceImplementation implements AttendanceService{
     public Optional<List<Attendance>> findAttendanceByDate(LocalDate date){
         List<Attendance> attendance = attendanceRepository.findAttendanceByAttendanceID_Date(date);
         return Optional.ofNullable(attendance);
-    }    
+    }
+    
+    @Override
+    public boolean findIsAbsentById(AttendanceID attendanceId){
+        return attendanceRepository.findIsAbsentByAttendanceID(attendanceId);
+    }
+
+    @Override
+    public boolean findIsConfirmedById(AttendanceID attendanceId){
+        return attendanceRepository.findIsConfirmedByAttendanceID(attendanceId);
+    }
 }

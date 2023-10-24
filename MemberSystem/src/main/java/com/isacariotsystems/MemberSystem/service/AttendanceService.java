@@ -23,4 +23,8 @@ public interface AttendanceService {
 
     public Optional<List<Attendance>> findAttendanceByDate(LocalDate date);
 
+    public boolean findIsAbsentById(AttendanceID attendanceId);
+
+    public boolean findIsConfirmedById(AttendanceID attendanceId);
+
 }

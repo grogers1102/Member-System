@@ -7,5 +7,11 @@ import com.isacariotsystems.MemberSystem.entity.Rank;
 
 @Repository
 public interface RankRepository extends JpaRepository<Rank,Long>{
+
+    String findDescriptionByRankId(Long rankId);
+    
+    String findRequirementsByRankId(Long rankId);
+
+    String findDaysRequiredById(Long rankId);
     
 }

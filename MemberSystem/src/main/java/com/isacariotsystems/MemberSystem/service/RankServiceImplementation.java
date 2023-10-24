@@ -10,6 +10,12 @@ import org.springframework.stereotype.Service;
 import com.isacariotsystems.MemberSystem.entity.Rank;
 import com.isacariotsystems.MemberSystem.repository.RankRepository;
 
+/*
+ * @Service indicates this is a service class
+ * 
+ * @Autowired automatically wire beans by type
+ */
+
 @Service
 public class RankServiceImplementation implements RankService {
 
@@ -48,6 +54,21 @@ public class RankServiceImplementation implements RankService {
         {
             throw new NoSuchElementException("Rank" + rankId + " not found");
         }
+    }
+
+    @Override
+    public String findDescriptionById(Long rankId){
+        return rankRepository.findDescriptionByRankId(rankId);
+    }
+
+    @Override
+    public String findRequirementsById(Long rankId){
+        return rankRepository.findRequirementsByRankId(rankId);
+    }
+
+    @Override
+    public String findDaysRequiredById(Long rankId){
+        return rankRepository.findDaysRequiredById(rankId);
     }
     
 }
