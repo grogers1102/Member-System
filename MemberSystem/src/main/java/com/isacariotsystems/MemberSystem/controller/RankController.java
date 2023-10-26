@@ -25,7 +25,7 @@ import com.isacariotsystems.MemberSystem.service.RankService;
  */
 
 @RestController
-@RequestMapping("api/v1/rank")
+@RequestMapping("api/v1/ranks")
 public class RankController {
     @Autowired
     private RankService rankService;
@@ -72,12 +72,4 @@ public class RankController {
     public String findRankDaysRequiredById(@PathVariable Long rankId){
         return rankService.findDaysRequiredById(rankId);
     }
-
-    
-
-    
-
-    
-
-
 }

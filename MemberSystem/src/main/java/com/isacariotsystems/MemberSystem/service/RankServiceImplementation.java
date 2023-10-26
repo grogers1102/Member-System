@@ -68,7 +68,7 @@ public class RankServiceImplementation implements RankService {
 
     @Override
     public String findDaysRequiredById(Long rankId){
-        return rankRepository.findDaysRequiredById(rankId);
+        return rankRepository.findDaysRequiredByRankId(rankId);
     }
     
 }

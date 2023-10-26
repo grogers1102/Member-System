@@ -64,12 +64,12 @@ public class BranchController {
         return branchService.findManagerById(branchId);
     }
 
-    @GetMapping("/{branchId}/manager")
+    @GetMapping("/{branchId}/address")
     public String findAddressByBranchId(@PathVariable Long branchId){
         return branchService.findAddressById(branchId);
     }
 
-    @GetMapping("/{branchId}/manager")
+    @GetMapping("/{branchId}/population")
     public int findPopulationByBranchId(@PathVariable Long branchId){
         return branchService.findPopulationById(branchId);
     }

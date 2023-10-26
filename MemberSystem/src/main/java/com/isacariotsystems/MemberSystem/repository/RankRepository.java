@@ -12,6 +12,6 @@ public interface RankRepository extends JpaRepository<Rank,Long>{
     
     String findRequirementsByRankId(Long rankId);
 
-    String findDaysRequiredById(Long rankId);
+    String findDaysRequiredByRankId(Long rankId);
     
 }
