@@ -14,53 +14,55 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    
-    padding: 1px 0;
-    margin-right: 50px;
+    height: 100px
 }
 
 .nav-item {
-    margin: 0 5px;
     text-decoration: none;
     color: white;
-    padding: 5px 20px ;
     position: relative;
-    font-size: 8px;
-    top: 20px;
-    right: 30px;
+    font-size: 30px;
+    top: 18px;
+    right: 100px;
+    padding-left: 100px;
 
     transition: transform 0.3s;
 }
 
 .nav-item:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
 .login {
         
     text-decoration:none;
     color: white;
-    padding: 5px 10px ;
-    font-size: 8px;
-    position: absolute;
+    font-size: 30px;
+    position: relative;
     top: 20px;
-    right: 20px;
+    right: 30px;
+
+    align-items: center;
+    justify-content: center;
+    padding-left: 23px;
+    padding-top: 15px;
 
     border: 1px solid white;
     border-radius: 25px;
+    height: 50px;
+    width: 120px;
 
     transition: transform 0.3s, background-color 0.3s, color 0.3s;
-
 }
-
+ 
 .login:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
     background-color:white;
     color:black;
-}
+} 
 
 .navbar-logo {
-    height: 75px;
+    height: 200px;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -74,16 +76,16 @@ body {
 h1{
     color:white;
     position: relative;
-    top: 50px;
-    left: 65px;
+    top: 125px;
+    left: 150px;
 
-    font-size: 20px;
+    font-size: 45px;
 
     font-family: "garamond-premier-pro", serif;
     font-weight: 400;
     font-style: normal;
 
-    width: 500px;
+    width: 1000px;
 
     letter-spacing: 1px;
 }
@@ -92,39 +94,47 @@ h1{
 h2{
     color: white;
     position: relative;
-    top: 40px;
-    left: 65px;
+    top: 100px;
+    left: 150px;
 
-    font-size: 8px;
+    font-size: 30px;
 
     font-family: "source-sans-pro", sans-serif;
     font-weight: 400;
     font-style: normal;
 
-    width: 400px;
+    width: 1000px;
 
 }
 
 .learn-more-btn {
     position: relative;
-    top: 65px;
-    left: 80px;
+    top: 100px;
+    left: 200px;
     padding: 10px 20px;
     background-color: white;
     color: black;
     text-decoration: none;
     border-radius: 20px;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 37px;
+
+    transition: transform 0.3s;
+
+}
+
+.learn-more-btn:hover{
+
+    transform: scale(1.05);
 }
 
 .aboutHeading{
     color:white;
     position: relative;
-    top: 40px;
-    left: 65px;
+    top: 65px;
+    left: 150px;
 
-    font-size: 20px;
+    font-size: 35px;
 
     font-family: "garamond-premier-pro", serif;
     font-weight: 400;
@@ -139,24 +149,24 @@ h2{
     color: white;
     
     position: relative;
-    top: 30px;
-    left: 75px;
+    top: 60px;
+    left: 150px;
 
-    font-size: 8px;
+    font-size: 28px;
 
     font-family: "source-sans-pro", sans-serif;
     font-weight: 400;
     font-style: normal;
 
-    width: 400px;
+    width: 1500px;
 
 }
 
 .loginLogo{
-    height: 185px;
+    height: 550px;
     position: absolute;
-    top: -10px;
-    left: 200px;
+    top: -65px;
+    left: 613px;
     
 }
 
@@ -166,20 +176,20 @@ h2{
     font-family: "source-sans-pro", sans-serif;
     font-size: 8px;
     position: absolute;
-    top: 161px;
-    left: 214px;
+    top: 400px;
+    left: 613px;
 }
 
 .emailBox{
 
     color: black;
     font-family: "source-sans-pro", sans-serif;
-    font-size: 7px;
+    font-size: 17px;
     position: absolute;
-    top: 160px;
-    left: 239px;
-    width: 100px;
-    height: 7px;
+    top: 425px;
+    left: 763px;
+    width: 250px;
+    height: 20px;
     border-color: black;
     border-width: 1px;
     border-radius: 3px;
@@ -203,12 +213,12 @@ h2{
 
     color: black;
     font-family: "source-sans-pro", sans-serif;
-    font-size: 7px;
+    font-size: 17px;
     position: absolute;
-    top: 180px;
-    left: 239px;
-    width: 100px;
-    height: 7px;
+    top: 475px;
+    left: 763px;
+    width: 250px;
+    height: 20px;
     border-color: black;
     border-width: 1px;
     border-radius: 3px;
@@ -249,10 +259,10 @@ h2{
     position: relative;
     top: 215px;
     left: 255px;
+    width: 100px
     
 }
 .signUp{
-
     color: lightblue;
 }
 
