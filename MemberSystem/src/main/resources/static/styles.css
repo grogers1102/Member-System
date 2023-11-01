@@ -232,7 +232,6 @@ h2{
 }
 .signin-link{
     position: relative;
-    top: -90px;
     font-size: min(max(2vw, 10px), 15px);
     color: rgba(255, 255, 255, 0.658);
 }
@@ -242,26 +241,42 @@ h2{
 }
 
 .createAccountBox{
-
     color: black;
     font-family: "source-sans-pro", sans-serif;
     font-size: min(max(2vw, 20px), 20px);
-    position: relative;
-    top: -70px;
-    
+    Position: relative;
     width: auto;
     height: auto;
     border-color: black;
     border-width: 1px;
-    border-radius: 5px;
+    border-radius: 3px;
 
     transition: transform 0.3s, background-color 0.3s, color 0.3s;
 }
-.createAccountBox:hover{
-    transform: translate3d(-1px,-1px,0);
-    background-color: rgb(11, 167, 234);
-    color: white;
+
+.toWebpage{
+    color: lightblue;
 }
+
+.toWebpage-link{
+    position: relative;
+    font-size: min(max(2vw, 10px), 15px);
+    color: rgba(255, 255, 255, 0.658);
+}
+
+.backButton {
+    height: max(60px, 8vh);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 2vh;
+}
+
+.backButton:hover{
+    transform: translateY(-2px);
+
+}
+
 
 .memberHeading{
     color: white;
@@ -299,6 +314,26 @@ h2{
     position: relative;
     left: 80px;
 }
+.newUserInputs{
+    position: relative;
+    top: 25vh;
+}
+
+.nameBox{
+    color: black;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: min(max(2vw, 17px), 17px);
+    width: 200px;
+    height: min(max(2vw, 20px), 30px);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+    position: relative;
+}
+.nameBox:focus{
+    outline: none;
+}
+/*finish adding all of the new user input boxes*/
 
 .profile-icon {
     width: 70px; /* Set the desired width for your profile picture */
