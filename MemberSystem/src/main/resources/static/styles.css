@@ -164,7 +164,7 @@ h2{
 
 .emailBox{
     position: relative;
-    top: -70px;
+    top: -90px;
     color: black;
     font-family: "source-sans-pro", sans-serif;
     font-size: min(max(2vw, 17px), 17px);
@@ -180,6 +180,24 @@ h2{
     outline: none;
 }
 
+.forgotPassordBox{
+    position: relative;
+    top: -70px;
+    color: black;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: min(max(2vw, 17px), 17px);
+    width: 200px;
+    height: min(max(2vw, 20px), 30px);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+
+}
+
+.forgotPasswordBox:focus{
+    outline: none;
+}
+
 .passwordBox{
 
     color: black;
@@ -191,7 +209,7 @@ h2{
     border-width: 1px;
     border-radius: 3px;
     position: relative;
-    top: -70px;
+    top: -90px;
 }
 
 .passwordBox:focus{
@@ -219,6 +237,13 @@ h2{
     transform: translate3d(-1px,-1px,0);
     background-color: rgb(11, 167, 234);
     color: white;
+}
+
+.loginHeader{
+    position: relative;
+    top: -90px;
+    color: white;
+    font-size: 20px;
 }
 
 .signup-link{
