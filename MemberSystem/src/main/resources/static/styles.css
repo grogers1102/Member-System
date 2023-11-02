@@ -236,9 +236,28 @@ h2{
     color: rgba(255, 255, 255, 0.658);
 }
 .signIn{
-
     color: lightblue;
 }
+
+.forgotPassword-link{
+    position: relative;
+    top: -90px;
+    font-size: min(max(2vw, 10px), 15px);
+    color: rgba(255, 255, 255, 0.658);
+}
+.forgotPassword{
+    color: lightblue;
+}
+
+.login-link{
+    position: relative;
+    top: -90px;
+    color: rgba(255, 255, 255, 0.658);
+}
+.backToLogin{
+    color: lightblue;
+}
+
 
 .createAccountBox{
     color: black;
@@ -274,7 +293,6 @@ h2{
 
 .backButton:hover{
     transform: translateY(-2px);
-
 }
 
 
