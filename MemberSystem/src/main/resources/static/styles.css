@@ -1,20 +1,29 @@
-body {
+.webpage {
     margin: 0; /* Remove default margin */
     height: 100vh; /* Make sure the body covers the full viewport height */
     background-image: url('images/homepageIscariot.jpeg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; 
+    /*background-repeat: no-repeat;*/
 
     font-family: Arial, sans-serif;
+}
 
+.portal{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('images/portalBG.jpeg');
+    
 }
 
 .navbar {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    
     padding: 1px 0;
     margin-right: 50px;
 }
