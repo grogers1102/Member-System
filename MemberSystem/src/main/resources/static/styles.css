@@ -81,7 +81,7 @@
     width: auto;   /* Maintain aspect ratio */
 }
 
-h1{
+.indexHeading1{
     color:white;
     position: relative;
     top: 4vh;
@@ -99,7 +99,7 @@ h1{
 }
 
 
-h2{
+.indexHeading2{
     color: white;
     position: relative;
     top: 4vh;
@@ -388,14 +388,14 @@ h2{
 /*finish adding all of the new user input boxes*/
 
 .profile-icon {
-    width: 70px; /* Set the desired width for your profile picture */
-    height: 70px; /* Set the desired height for your profile picture */
+    width: 80px; /* Set the desired width for your profile picture */
+    height: 80px; /* Set the desired height for your profile picture */
     border-radius: 50%; /* Create a circular profile picture */
     overflow: hidden; /* Hide any overflow beyond the circular shape */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
-    position: relative;
-    left: 1692px;
+    position: absolute;
     top: 30px;
+    right: 40px;
 
     display: flex;
     justify-content: center;
@@ -409,7 +409,39 @@ h2{
 }
 
 .dashboard-header{
-    position: relative;
+    position: absolute;
+    top: 0px;
+    bottom: auto;
+    width: 100vw;
+    height: 150px;
     color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 20px;
+}
+
+.portal-logo{
+    position: absolute;
+    top: 0px;
+    bottom: auto;
+    left: 0px;
+    right: auto;
+    width: 150px; /* Set the desired width for your profile picture */
+    height: 150px; /* Set the desired height for your profile picture */
+}
+
+.portalHeader{
+    position: relative;
+    top: 25px;
+    left: 200px;
+    width: auto;
+}
+
+.portal-nav-bar{
+    position: absolute;
+    top: 150px;
+    width: 100vw;
+    height: 75px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.151); /*change so that instead of backround color but shadow on bottom*/
     font-size: 20px;
 }
