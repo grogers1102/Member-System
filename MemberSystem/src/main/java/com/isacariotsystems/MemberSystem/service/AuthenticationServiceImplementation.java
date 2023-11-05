@@ -12,6 +12,7 @@ import com.isacariotsystems.MemberSystem.DTO.RefreshTokenRequest;
 import com.isacariotsystems.MemberSystem.DTO.SigninRequest;
 import com.isacariotsystems.MemberSystem.DTO.SignupRequest;
 import com.isacariotsystems.MemberSystem.entity.User;
+import com.isacariotsystems.MemberSystem.entity.Rank;
 import com.isacariotsystems.MemberSystem.entity.Role;
 import com.isacariotsystems.MemberSystem.repository.UserRepository;
 
@@ -35,6 +36,9 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
         user.setEmail(signupRequest.getEmail());
         user.setLastName(signupRequest.getLastName());
         user.setFirstName(signupRequest.getFirstName());
+        user.setAddress(signupRequest.getAddress());
+        user.setPhoneNumber(signupRequest.getPhoneNumber());
+        user.setRank(new Rank());
         user.setRole(Role.USER);
         user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
 

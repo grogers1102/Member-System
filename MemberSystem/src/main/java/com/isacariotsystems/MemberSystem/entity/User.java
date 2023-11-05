@@ -65,6 +65,8 @@ public class User implements UserDetails {
 
     private String phoneNumber; 
 
+    private String address;
+
     private float socialScore; 
 
     private String firstName;

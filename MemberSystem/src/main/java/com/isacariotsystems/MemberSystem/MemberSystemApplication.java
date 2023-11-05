@@ -14,22 +14,24 @@ import com.isacariotsystems.MemberSystem.repository.UserRepository;
 public class MemberSystemApplication implements CommandLineRunner{
 
 	@Autowired
-	private UserRepository memberRepository;
+	private UserRepository userRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(MemberSystemApplication.class, args);
 	}
 
 	public void run(String... args){
-		User adminAccount = memberRepository.findByRole(Role.ADMIN);
+		User adminAccount = userRepository.findByRole(Role.ADMIN);
 		if(adminAccount == null){
-			User member = new User();
+			User user = new User();
 
-			member.setEmail("admin@gmail.com");
-			member.setFirstName("admin");
-			member.setLastName("admin");
-			member.setRole(Role.ADMIN);
-			member.setPassword(new BCryptPasswordEncoder().encode("admin"));
-			memberRepository.save(member);
+			user.setEmail("admin@gmail.com");
+			user.setFirstName("admin");
+			user.setLastName("admin");
+			user.setAddress("admin");
+			user.setPhoneNumber("admin");
+			user.setRole(Role.ADMIN);
+			user.setPassword(new BCryptPasswordEncoder().encode("admin"));
+			userRepository.save(user);
 		}
 	}
 
