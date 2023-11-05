@@ -16,15 +16,19 @@ console.log("DOM LOADED!");
         const firstName = document.getElementsByTagName('input').namedItem('firstName');
         const lastName = document.getElementsByTagName('input').namedItem('lastName');
         const email = document.getElementsByTagName('input').namedItem('email');
+        const phoneNumber = document.getElementsByTagName('input').namedItem('phoneNumber');
+        const address = document.getElementsByTagName('input').namedItem('address');
         const password = document.getElementsByTagName('input').namedItem('password');
         const confirmPassword = document.getElementsByTagName('input').namedItem('confirmPassword');
     
         if (
             firstName.value !== "" &&
             lastName.value !== "" &&
-            email.value !== "" &&
             password.value !== "" &&
-            confirmPassword.value !== ""
+            confirmPassword.value !== "" &&
+            email.value !== "" &&
+            phoneNumber.value !== "" &&
+            address.value !== ""
         ) {
             if (password.value !== confirmPassword.value) {
                 alert("Password must match!!!");
@@ -62,7 +66,9 @@ console.log("DOM LOADED!");
                 firstName: firstName.value,
                 lastName: lastName.value,
                 email: email.value,
-                password: password.value,
+                address: address.value,
+                phoneNumber: phoneNumber.value,
+                password: password.value
             };
     
             httpRequest.send(JSON.stringify(params));

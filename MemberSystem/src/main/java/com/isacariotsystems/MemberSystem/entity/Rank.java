@@ -18,6 +18,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Rank {
+
+    public Rank(Long rankId){
+        this.rankId=rankId;
+    }
     /*
     @Id denotes primary key
     @GeneratedValue defines how we generate Id
