@@ -81,7 +81,7 @@
     width: auto;   /* Maintain aspect ratio */
 }
 
-h1{
+.indexHeading1{
     color:white;
     position: relative;
     top: 4vh;
@@ -99,7 +99,7 @@ h1{
 }
 
 
-h2{
+.indexHeading2{
     color: white;
     position: relative;
     top: 4vh;
@@ -385,31 +385,78 @@ h2{
 .nameBox:focus{
     outline: none;
 }
-/*finish adding all of the new user input boxes*/
 
-.profile-icon {
-    width: 70px; /* Set the desired width for your profile picture */
-    height: 70px; /* Set the desired height for your profile picture */
-    border-radius: 50%; /* Create a circular profile picture */
-    overflow: hidden; /* Hide any overflow beyond the circular shape */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+.newEmailBox{
+    color: black;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: min(max(2vw, 17px), 17px);
+    width: 200px;
+    height: min(max(2vw, 20px), 30px);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
     position: relative;
-    left: 1692px;
-    top: 30px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+.newEmailBox:focus{
+    outline: none;
 }
 
-.icon-image {
-    width: 100%; /* Make the image width 100% of the container width */
-    height: 100%; /* Make the image height 100% of the container height */
-    object-fit: cover; /* Maintain the image aspect ratio and cover the entire container */
+.phoneNumBox{
+    color: black;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: min(max(2vw, 17px), 17px);
+    width: 200px;
+    height: min(max(2vw, 20px), 30px);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+    position: relative;
+}
+.phoneNumBox:focus{
+    outline: none;
 }
 
-.dashboard-header{
+.addressBox{
+    color: black;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: min(max(2vw, 17px), 17px);
+    width: 200px;
+    height: min(max(2vw, 20px), 30px);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
     position: relative;
-    color: white;
-    font-size: 20px;
+}
+.addressBox:focus{
+    outline: none;
+}
+
+.newPasswordBox{
+    color: black;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: min(max(2vw, 17px), 17px);
+    width: 200px;
+    height: min(max(2vw, 20px), 30px);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+    position: relative;
+}
+.newPasswordBox:focus{
+    outline: none;
+}
+
+.confirmPasswordBox{
+    color: black;
+    font-family: "source-sans-pro", sans-serif;
+    font-size: min(max(2vw, 17px), 17px);
+    width: 200px;
+    height: min(max(2vw, 20px), 30px);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+    position: relative;
+}
+.confirmPasswordBox:focus{
+    outline: none;
 }
