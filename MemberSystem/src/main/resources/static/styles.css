@@ -206,7 +206,7 @@
     border-width: 1px;
     border-radius: 3px;
     position: relative;
-    top: -90px;
+    top: -80px;
 }
 
 .passwordBox:focus{
@@ -220,7 +220,7 @@
     font-family: "source-sans-pro", sans-serif;
     font-size: min(max(2vw, 20px), 20px);
     Position: relative;
-    top: -70px;
+    top: -40px;
     width: auto;
     height: auto;
     border-color: black;
@@ -238,14 +238,14 @@
 
 .loginHeader{
     position: relative;
-    top: -90px;
+    top: -80px;
     color: white;
     font-size: 20px;
 }
 
 .signup-link{
     position: relative;
-    top: -90px;
+    top: -20px;
     font-size: min(max(2vw, 10px), 15px);
     color: rgba(255, 255, 255, 0.658);
 }
@@ -261,9 +261,16 @@
     color: lightblue;
 }
 
+.forgotPasswordHeader{
+    position: relative;
+    top: -70px;
+    color: white;
+    font-size: 20px;
+}
+
 .forgotPassword-link{
     position: relative;
-    top: -90px;
+    top: -20px;
     font-size: min(max(2vw, 10px), 15px);
     color: rgba(255, 255, 255, 0.658);
 }
@@ -273,7 +280,7 @@
 
 .login-link{
     position: relative;
-    top: -90px;
+    top: -40px;
     color: rgba(255, 255, 255, 0.658);
 }
 .backToLogin{
