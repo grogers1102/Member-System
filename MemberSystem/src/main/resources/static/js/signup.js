@@ -53,6 +53,7 @@ console.log("DOM LOADED!");
                     // 3. else show alert error
                     if (httpRequest.status === 200) {
                         alert(httpRequest.responseText);
+                        window.location.href='/login.html'
                     } else {
                         alert("There was a problem with the request.");
                     }

@@ -37,7 +37,12 @@ console.log("DOM LOADED!");
                     // 2. route to dashboard on success
                     // 3. else show alert error
                     if (httpRequest.status === 200) {
-                        alert(httpRequest.responseText);
+                        const response = JSON.parse(httpRequest.responseText);
+                        const {token, refreshToken} = response;
+                        localStorage.setItem('token',token)
+                        localStorage.setItem('refreshToken',refreshToken);
+
+                        window.location.href='/portalPages/portal.html'
                     } else {
                         alert("There was a problem with the request.");
                     }
