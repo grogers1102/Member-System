@@ -7,6 +7,9 @@
     font-family: "source-sans-pro", sans-serif;
 }
 
+/*-------------------------------*/
+/*Menu section*/
+
 .portal{
     display: flex;
 }
@@ -16,42 +19,43 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: 107px;
+    width: 80px;
     height: 100vh;
-    padding: 0 1.7rem;
+    padding: 0 .8rem;
     color: white;
     overflow: hidden;
-    transition: all 0.5s linear;
-    background: rgba(0, 0, 0, 0.489);
+    transition: all 0.3s linear;
+    background: rgba(0, 0, 0, 0.65);
 }
 
 .sidebar:hover{
     width: 240px;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 .logo{
     height: 80px;
-    padding: 16px;
+    position: relative;
+    left: -15px;
 }
 
 .menu{
     height:88vh;
     position: relative;
     list-style: none;
-    padding: 0;
+    padding-top: 10px;
 }
 
 .menu li{
     padding: .8rem;
     margin: 8px 0;
     border-radius: 8px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-.menu li:hover,
-.active{
+.menu li:hover{
     background: rgba(77, 184, 231, 0.798);
+    
 }
 
 .menu a{
@@ -76,4 +80,91 @@
     bottom: 0px;
     left: 0px;
     width: 100%;
+}
+
+/*-------------------------------*/
+/*Content section*/
+
+.profilePicture{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.main{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    grid-template-areas: 
+    "header"
+    "main";
+}
+
+.header{
+    background:white;
+    color: rgba(0, 0, 0, 0.8);
+    grid-area: header;
+    text-indent: 30px;
+    /*font-style: "garamond-premier-pro", serif;*/
+    font-size: 30px;
+    position: relative;
+    padding-top: 25px;
+    font-family: "garamond-premier-pro", serif;
+}
+.content{
+    background: rgba(0, 0, 0, .05);
+    grid-area: main;
+
+    display: grid;
+    padding: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px;
+
+    grid-template-areas:
+    "i1 i2 i3"
+    "i4 i6 i6"
+    "i5 i6 i6";
+}
+
+.dashboardItem{
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+}
+
+.dashboardItem:nth-child(1){
+    grid-area: i1;
+}
+
+.dashboardItem:nth-child(2){
+    grid-area: i2;
+}
+
+.dashboardItem:nth-child(3){
+    grid-area: i3;
+}
+
+.dashboardItem:nth-child(4){
+    grid-area: i4;
+}
+
+.dashboardItem:nth-child(5){
+    grid-area: i5;
+}
+
+.dashboardItem:nth-child(6){
+    grid-area: i6;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-solid fa-right-to-bracket fa-2xl{
+    
 }
