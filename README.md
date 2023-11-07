@@ -1,6 +1,6 @@
 # Member-System
 
-A member tracking system for our organization.
+Streamline member management with our organization's efficient tracking system.
 
 ## Table of Contents
 
@@ -36,25 +36,39 @@ Iscariot Systems is a comprehensive solution designed to address these challenge
 
 ## Technologies Used
 
-- Back-end Technology (Java with Spring Boot Framework)
-- Front-end technology (Vanilla Javascript)
-- Database technology (MySQL)
+- **Back-end Technology:** Java with the Spring Boot Framework
+- **Front-end Technology:** JavaScript
+- **Database Technology:** MySQL
 
 ## Installation
 
-To install our application clone the repository and run "mvn spring-boot:run" in the class path. You will need to configure the application.properties accordingly.
+To install our application, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Ensure that you have configured the `application.properties` file appropriately before running the application.
+3. Run the command `mvn spring-boot:run` in the project's root directory to start the application.
 
 ## Usage
 
-Our system has these features...
+## Usage
+
+Our system offers the following key features:
+
+1. Member Registration: Users can easily register as members and create personalized profiles.
+2. Attendance Tracking: The system enables tracking and management of member attendance for various events and programs.
+3. Performance Evaluation: Administrators can assess and evaluate member performance based on predefined criteria.
+4. Data Management: Securely manage and update member information, ensuring data privacy and security.
+5. Reporting: Generate comprehensive reports on member activities and engagement for informed decision-making.
+6. Communication: Facilitate seamless communication between members and administrators through integrated messaging functionalities.
 
 ## Contact
 
-Aden Letchworth - adenrletchworth@gmail.com
-Maayan Israel - 
-Ethan Pan - 
-Malik Nasla - 
-Garrett Rogers - 
-José Chávez - 
+- Aden Letchworth: adenrletchworth@gmail.com
+- Maayan Israel: [insert email here]
+- Ethan Pan: [insert email here]
+- Malik Nasla: [insert email here]
+- Garrett Rogers: [insert email here]
+- José Chávez: [insert email here]
+
 
 
