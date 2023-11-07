@@ -50,8 +50,6 @@ To install our application, follow these steps:
 
 ## Usage
 
-## Usage
-
 Our system offers the following key features:
 
 1. Member Registration: Users can easily register as members and create personalized profiles.
