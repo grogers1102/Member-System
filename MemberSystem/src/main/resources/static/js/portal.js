@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const refreshToken = localStorage.getItem('refreshToken');
 
     if (!token || !refreshToken) {
-        window.location.href = '../login.html'; 
+        //window.location.href = '../login.html'; 
     } else {
         // Something else
     }
@@ -23,8 +23,6 @@ document.addEventListener('DOMContentLoaded', function(){
         window.location.href = '../index.html';
     });
 })
-
-
     
     function submitLogoutForm(){
         const token = localStorage.getItem('token');

@@ -86,16 +86,6 @@
 
 /*-------------------------------*/
 /*Content section*/
-
-.profilePicture{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-}
-
 .main{
     height: 100vh;
     width: 100vw;
@@ -199,7 +189,6 @@
     position: relative;
     top: 20%;
 }
-
 
 .signIn{
     position: relative;
