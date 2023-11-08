@@ -10,7 +10,6 @@ import com.isacariotsystems.MemberSystem.DTO.JwtAuthenticationResponse;
 import com.isacariotsystems.MemberSystem.DTO.RefreshTokenRequest;
 import com.isacariotsystems.MemberSystem.DTO.SigninRequest;
 import com.isacariotsystems.MemberSystem.DTO.SignupRequest;
-import com.isacariotsystems.MemberSystem.entity.User;
 import com.isacariotsystems.MemberSystem.service.AuthenticationService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,7 +21,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticastionService;
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@RequestBody SignupRequest signupRequest){
+    public ResponseEntity<JwtAuthenticationResponse> signup(@RequestBody SignupRequest signupRequest){
         return ResponseEntity.ok(authenticastionService.signup(signupRequest));
     }
 
