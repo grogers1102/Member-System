@@ -1,7 +1,6 @@
 console.log("DOM LOADED!");
 
 (function (){
-    const login = null;
     window.addEventListener("DOMContentLoaded", () => {
         const loginButton = document.querySelector(".loginBox");
         loginButton.addEventListener("click", (event) => {
@@ -9,7 +8,6 @@ console.log("DOM LOADED!");
             submitLoginForm();
         });
     });
-    
 
     function submitLoginForm() {
 
