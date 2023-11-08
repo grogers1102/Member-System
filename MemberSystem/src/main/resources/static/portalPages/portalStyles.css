@@ -12,13 +12,15 @@
 
 .portal{
     display: flex;
+    height: auto;
+
 }
 
 .sidebar{
     position: sticky;
     top: 0;
     left: 0;
-    bottom: 0;
+    align-self: flex-start;
     width: 80px;
     height: 100vh;
     padding: 0 .8rem;
@@ -137,42 +139,43 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
 }
 
-.dashboardItem:nth-child(1){
+.dashboardItem:nth-child(1){ /*my account card*/
     grid-area: i1;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.dashboardItem:nth-child(2){
+.dashboardItem:nth-child(2){ /*my attendance card*/
     grid-area: i2;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.dashboardItem:nth-child(3){
+.dashboardItem:nth-child(3){ /*my Rank card*/
     grid-area: i3;
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
-.dashboardItem:nth-child(4){
+.dashboardItem:nth-child(4){ /*my subordinates card*/
     grid-area: i4;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.dashboardItem:nth-child(5){
+.dashboardItem:nth-child(5){ /*my branch card*/
     grid-area: i5;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.dashboardItem:nth-child(6){
+.dashboardItem:nth-child(6){ /*my polls card*/
     grid-area: i6;
     display: flex;
     flex-direction: column;
@@ -194,17 +197,17 @@
     height: 60px;
     width: 60px;
     position: relative;
-    top: 15%;
+    top: 20%;
 }
 
 
 .signIn{
     position: relative;
-    top: 30px;
+    top: 30%;
     font-size: 20px;
 }
 
-@media(max-width: 900px){
+@media(max-width: 1000px){
     .content{
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(3, 300px);
@@ -217,7 +220,7 @@
     }
 }
 
-@media(max-width: 700px){
+@media(max-width: 850px){
     .content{
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 300px);

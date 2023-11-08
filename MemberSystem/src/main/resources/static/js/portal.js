@@ -1,6 +1,6 @@
 
 // Check if authenticated
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem('token');
     const refreshToken = localStorage.getItem('refreshToken');
 
@@ -9,4 +9,4 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         // Something else
     }
-});
+});*/
