@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
             localStorage.removeItem('token')
             localStorage.removeItem('refreshToken')
         }
-        window.location.href = '../index.html';
+        // window.location.href = '../index.html';
     });
 })
     
