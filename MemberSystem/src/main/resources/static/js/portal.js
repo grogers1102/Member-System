@@ -15,10 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         
         userId = localStorage.getItem('userId');
-        if (!userId){
-            alert("No userId found")
-        }
-        userId = localStorage.getItem('userId');
         const urlNeeded = '/api/v1/user/' + userId;
 
         httpRequest.open('GET', urlNeeded, true);
@@ -36,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Not ready yet.
             }
         };
-
+        // HERE
         httpRequest.send(JSON.stringify(userId));
     }
 });
