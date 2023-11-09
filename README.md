@@ -62,7 +62,7 @@ Our system offers the following key features:
 ## Contact
 
 - Aden Letchworth: adenrletchworth@gmail.com
-- Maayan Israel: [insert email here]
+- Maayan Israel: maayan.israel144@gmail.com
 - Ethan Pan: [insert email here]
 - Malik Nasla: [insert email here]
 - Garrett Rogers: [insert email here]
