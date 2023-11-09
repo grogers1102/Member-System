@@ -1,32 +1,34 @@
 console.log("DOM LOADED!");
 
-(function (){
+(function () {
     window.addEventListener("DOMContentLoaded", () => {
         const loginButton = document.querySelector(".loginBox");
         loginButton.addEventListener("click", (event) => {
-            event.preventDefault(); 
+            event.preventDefault();
             submitLoginForm();
         });
     });
 
     function submitLoginForm() {
 
-        const email = document.getElementsByTagName('input').namedItem('email');
-        const password = document.getElementsByTagName('input').namedItem('password');
-    
+        const email = document.querySelector('input[name="email"]');
+        const password = document.querySelector('input[name="password"]');
+
         if (
             email.value !== "" &&
-            password.value !== "" 
+            password.value !== ""
         ) {
             const httpRequest = new XMLHttpRequest();
             if (!httpRequest) {
                 alert("Giving up :( Cannot create an XMLHTTP instance");
                 return false;
             }
-    
+
             const urlNeeded = '/api/v1/auth/login';
             httpRequest.open('POST', urlNeeded, true);
             httpRequest.setRequestHeader("Content-Type", "application/json");
+
+            // Define onreadystatechange before the send method
             httpRequest.onreadystatechange = () => {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
                     // Everything is good, the response was received.
@@ -36,11 +38,12 @@ console.log("DOM LOADED!");
                     // 3. else show alert error
                     if (httpRequest.status === 200) {
                         const response = JSON.parse(httpRequest.responseText);
-                        const {token, refreshToken} = response;
-                        localStorage.setItem('token',token)
-                        localStorage.setItem('refreshToken',refreshToken);
+                        const { token, refreshToken, userId } = response;
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('refreshToken', refreshToken);
+                        localStorage.setItem('userId', userId);
 
-                        window.location.href='/portalPages/portal.html'
+                        window.location.href = '/portalPages/portal.html';
                     } else {
                         alert("There was a problem with the request.");
                     }
@@ -48,21 +51,18 @@ console.log("DOM LOADED!");
                     // Not ready yet.
                 }
             };
-    
+
             // Send the proper header information along with the request
             const params = {
                 email: email.value,
                 password: password.value
             };
-    
+
             httpRequest.send(JSON.stringify(params));
         } else {
             alert("all fields are required!");
         }
     }
-    
+
 })();
-
-
-
 

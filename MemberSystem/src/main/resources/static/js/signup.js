@@ -1,15 +1,12 @@
 console.log("DOM LOADED!");
 
 (function (){
-    const signup = null;
-    window.addEventListener("DOMContentLoaded", ()=>{
-        console.log("DOM LOADED!", signup)
-        const createAccountButton = document.getElementsByClassName("createAccountBox");
-        console.log("createAccountButton", createAccountButton);
-        createAccountButton.item(0).addEventListener("click", ()=>{
-            console.log("CLICKED!", createAccountButton)
+    window.addEventListener("DOMContentLoaded", () => {
+        const signupButton = document.querySelector(".createAccountBox");
+        signupButton.addEventListener("click", (event) => {
+            event.preventDefault(); 
             submitSignupForm();
-        })
+        });
     });
 
     function submitSignupForm() {
@@ -46,14 +43,14 @@ console.log("DOM LOADED!");
             httpRequest.setRequestHeader("Content-Type", "application/json");
             httpRequest.onreadystatechange = () => {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    // Everything is good, the response was received.
-                    // Process the server response here.
-                    // 1. clear all field values
-                    // 2. route to dashboard on success
-                    // 3. else show alert error
                     if (httpRequest.status === 200) {
-                        alert(httpRequest.responseText);
-                        window.location.href='/login.html'
+                        const response = JSON.parse(httpRequest.responseText);
+                        const {token, refreshToken, userId} = response;
+                        localStorage.setItem('token',token)
+                        localStorage.setItem('refreshToken',refreshToken);
+                        localStorage.setItem('userId',userId);
+
+                        window.location.href='/portalPages/portal.html'
                     } else {
                         alert("There was a problem with the request.");
                     }
