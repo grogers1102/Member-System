@@ -13,8 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert("Giving up :( Cannot create an XMLHTTP instance");
                 return false;
             }
+        
+        userId = localStorage.getItem('userId');
+        if (!userId){
+            alert("No userId found")
+        }
+        userId = localStorage.getItem('userId');
+        const urlNeeded = '/api/v1/user/' + userId;
 
-        const urlNeeded = '/{userId}';
         httpRequest.open('GET', urlNeeded, true);
         httpRequest.onreadystatechange = () => {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -31,8 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        const uID = localStorage.getItem('userID');
-        httpRequest.send(JSON.stringify(uID));
+        httpRequest.send(JSON.stringify(userId));
     }
 });
 
