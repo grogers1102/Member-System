@@ -17,6 +17,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PostLoad;
+import jakarta.persistence.PostUpdate;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -111,5 +113,23 @@ public class User implements UserDetails {
     public String getPassword() {
         return password;
     }
+
+    public void calculateSocialScore(){
+        int socialScore = 0;
+
+        
+        // Calculate Score
+
+
+        this.socialScore = socialScore;
+    }
+
+    @PostLoad
+    @PostUpdate
+    public void updateSocialScore(){
+        calculateSocialScore();
+    }
+
+
 }
 

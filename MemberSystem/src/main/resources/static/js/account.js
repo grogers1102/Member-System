@@ -23,8 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (httpRequest.status === 200) {
                     const userOBJ = JSON.parse(httpRequest.responseText);
-                    const statementUpdater = userOBJ.firstName;
-                    document.getElementsByTagName('header')[0].innerHTML = "Welcome, " + statementUpdater;
+                    const { userId, branchId, superiorId, rankId, invitationDate, email, phoneNumber, address, socialScore, firstName, lastName} = userOBJ;
                 } else {
                     alert("There was a problem with the request.");
                 }
@@ -37,28 +36,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function(){
-    const logoutButton = document.querySelector(".log-out a");
-    logoutButton.addEventListener("click", (event) => {
-        const token = localStorage.getItem('token');
-        const refreshToken = localStorage.getItem('refreshToken');
-        if (token || refreshToken){
-            localStorage.removeItem('token')
-            localStorage.removeItem('refreshToken')
-        }
-        // window.location.href = '../index.html';
-    });
-})
-    
-    function submitLogoutForm(){
-        const token = localStorage.getItem('token');
-        const refreshToken = localStorage.getItem('refreshToken');
-
-        if (token || refreshToken){
-            localStorage.removeItem('token');
-            localStorage.removeItem('refreshToken');
-            localStorage.removeItem('userId');
-        }
-
-        window.location.href='index.html'
-    }
