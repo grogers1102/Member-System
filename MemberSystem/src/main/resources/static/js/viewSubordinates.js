@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         tag.href = "viewSingleSubordinate.html";
                         var text = document.createTextNode(user.firstName + '   ' + user.lastName + '   ' + user.userID + '   ' + user.branch);
                         tag.appendChild(text);
+                        tag.style.display="block";
                         var element = document.getElementById('viewSubordinatesDynam');
                         element.appendChild(tag);
                     }
