@@ -59,6 +59,13 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
+    public Optional<List<User>> findUsersBySuperiorId(Long superiorId){
+        User superiorUser = userRepository.findById(superiorId).orElse(null);
+        List<User> users = userRepository.findBySuperior(superiorUser);
+        return Optional.ofNullable(users);
+    }
+
+    @Override
     public Optional<List<User>> findUsersByBranch(Long branchId){
         List<User> users = userRepository.findByLocalBranchBranchId(branchId);
         return Optional.ofNullable(users);
