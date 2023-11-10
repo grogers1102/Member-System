@@ -29,6 +29,14 @@ public class MemberSystemApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+
+        makeRanks();
+
+        makeAdmin();
+
+    }
+
+    public void makeAdmin(){
         User adminAccount = userRepository.findByRole(Role.ADMIN);
         if (adminAccount == null) {
             User user = new User();
@@ -39,40 +47,50 @@ public class MemberSystemApplication implements CommandLineRunner {
             user.setPhoneNumber("admin");
             user.setRole(Role.ADMIN);
             user.setPassword(new BCryptPasswordEncoder().encode("admin"));
+
+            Optional<Rank> optionalRank = rankRepository.findById(1L);
+            Rank rank = optionalRank.orElseThrow(() -> new RuntimeException("Rank not found for the provided ID"));
+            user.setRank(rank);
+            
             userRepository.save(user);
         }
+    }
 
+    public void makeRanks(){
         Optional<Rank> rankCheck = rankRepository.findById(1L);
-        if (!rankCheck.isPresent()) {
-            String[] descriptions = {
-                "Description 1",
-                "Description 2",
-                "Description 3",
-                "Description 4",
-                "Description 5",
-                "Description 6",
-                "Description 7"
-            };
-            String[] requirements = {
-                "Requirements 1",
-                "Requirements 2",
-                "Requirements 3",
-                "Requirements 4",
-                "Requirements 5",
-                "Requirements 6",
-                "Requirements 7"
-            };
-            int[] daysRequired = {1, 2, 3, 4, 5, 6, 7};
-            for (int i = 0; i < descriptions.length; i++) {
-                Rank rank = new Rank();
-                rank.setDescription(descriptions[i]);
-                rank.setRequirements(requirements[i]);
-                rank.setDaysRequired(daysRequired[i]);
-                rankRepository.save(rank);
-            }
+        if (rankCheck.isPresent()) {
+            return;
+        }
+        String[] descriptions = {
+            "Description 1",
+            "Description 2",
+            "Description 3",
+            "Description 4",
+            "Description 5",
+            "Description 6",
+            "Description 7"
+        };
+        String[] requirements = {
+            "Requirements 1",
+            "Requirements 2",
+            "Requirements 3",
+            "Requirements 4",
+            "Requirements 5",
+            "Requirements 6",
+            "Requirements 7"
+        };
+        int[] daysRequired = {1, 2, 3, 4, 5, 6, 7};
+        for (int i = 0; i < descriptions.length; i++) {
+            Rank rank = new Rank();
+            rank.setDescription(descriptions[i]);
+            rank.setRequirements(requirements[i]);
+            rank.setDaysRequired(daysRequired[i]);
+            rankRepository.save(rank);
         }
     }
+
 }
+
 
 
 
