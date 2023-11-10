@@ -20,13 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
         httpRequest.open('GET', urlNeeded, true);
         httpRequest.onreadystatechange = () => {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
-
                 if (httpRequest.status === 200) {
-
                     const subordinatesList = JSON.parse(httpRequest.responseText);
                     subordinatesList.forEach(myFunction);
                     function myFunction(user) {
-                        var tag = document.createElement("p");
+                        var tag = document.createElement("a");
+                        tag.href = "viewSingleSubordinate.html";
                         var text = document.createTextNode(user.firstName + '   ' + user.lastName + '   ' + user.userID + '   ' + user.branch);
                         tag.appendChild(text);
                         var element = document.getElementById('viewSubordinatesDynam');
