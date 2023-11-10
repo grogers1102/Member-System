@@ -75,18 +75,21 @@
     <div class="main-view-subordinates">
       <header class="header-view-subordinate">Subordinates</header>
       <div class="search-subordinate-container">
-        <input
+        <form id="search-subordinate">
+          <input 
           class="search-subordinate-box"
-          type="text"
+          type="search"
+          onkeydown="clickPress(event)" 
           placeholder="Seach Subordinate"
           id="searchSubordinate"
           name="searchSubordinate"
-        />
+          > <!--for the search to work you have to add the function in javascript to search when the user presses enter -->
+          <!--I linked a thread from stackoverflow in the discord with the code and it looked pretty simple-->
+        </form>
       </div>
       <div class="content-subordinate">
         <div class="content-subordinate-container">
-          TestTest
-          <!--put subordinate member info here-->
+          TestTest <br> testtest <br> testtest<!--put subordinate member info here-->
           <!--print out new line to for each member -->
         </div>
       </div>
