@@ -13,7 +13,6 @@
 .portal{
     display: flex;
     height: auto;
-
 }
 
 .sidebar{
@@ -86,20 +85,20 @@
 
 /*-------------------------------*/
 /*Content section*/
-.main{
+.main-portal{
     height: 100vh;
     width: 100vw;
     display: grid;
     grid-template-rows: 80px 1fr;
     grid-template-areas: 
-    "header"
-    "main";
+    "header-portal"
+    "main-portal";
 }
 
-.header{
+.header-portal{
     background:white;
     color: rgba(0, 0, 0, 0.8);
-    grid-area: header;
+    grid-area: header-portal;
     text-indent: 30px;
     /*font-style: "garamond-premier-pro", serif;*/
     font-size: 30px;
@@ -107,9 +106,9 @@
     padding-top: 25px;
     font-family: "garamond-premier-pro", serif;
 }
-.content{
+.content-portal{
     background: rgba(0, 0, 0, .05);
-    grid-area: main;
+    grid-area: main-portal;
 
     display: grid;
     padding: 20px;
@@ -197,7 +196,7 @@
 }
 
 @media(max-width: 1000px){
-    .content{
+    .content-portal{
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(3, 300px);
         gap: 20px;
@@ -210,7 +209,7 @@
 }
 
 @media(max-width: 850px){
-    .content{
+    .content-portal{
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 300px);
         gap: 20px;
@@ -223,4 +222,64 @@
         "i5"
         "i6";
     }
+}
+
+/*view subordinates page*/
+
+.main-view-subordinates{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 80px 60px 1fr;
+    grid-template-areas: 
+    "header-subordinate"
+    "search-subordinate"
+    "main-subordinate";
+}
+
+.header-view-subordinate{
+    background:white;
+    color: rgba(0, 0, 0, 0.8);
+    grid-area: header-subordinate;
+    text-indent: 30px;
+    /*font-style: "garamond-premier-pro", serif;*/
+    font-size: 30px;
+    position: relative;
+    padding-top: 25px;
+    font-family: "garamond-premier-pro", serif;
+}
+
+.search-subordinate-container{
+    background: rgba(0, 0, 0, .05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-subordinate-box{
+    position: relative;
+    padding-left: 10px;
+    grid-area: search-subordinate;
+    color: black;
+    background:rgb(255, 255, 255);
+    font-family: "source-sans-pro", sans-serif;
+    font-size: min(max(2vw, 17px), 17px);
+    width: 200px;
+    height: 30px;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+}
+
+.content-subordinate{
+    background: rgba(0, 0, 0, .05);
+    grid-area: main-subordinate;
+    padding: 20px;
+}
+
+.content-subordinate-container{
+    padding: 5px;
+    background: white;
+    border-radius: 5px;
 }
