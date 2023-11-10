@@ -52,6 +52,9 @@ public class UserController {
     public List<User> allUsers() {
         return userService.allUsers();
     }
+
+
+    
     
     @GetMapping("/{userId}")
     public Optional<User> findUserById(@PathVariable Long userId) {
@@ -67,6 +70,11 @@ public class UserController {
     @PutMapping("/{userId}")
     public User updateUser(@PathVariable Long userId, @RequestBody User user) {
         return userService.updateUser(userId, user);
+    }
+
+    @GetMapping("/all/{managerId}")
+    public Optional<List<User>> findUsersBySuperior(@PathVariable Long superiorId) {
+        return userService.findUsersBySuperiorId(superiorId);
     }
 
     @GetMapping("/branch/{branchId}")

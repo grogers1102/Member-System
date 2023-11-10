@@ -19,6 +19,8 @@ public interface UserService {
 
     public User updateUser(Long userId, User user);
 
+    public Optional<List<User>> findUsersBySuperiorId(Long superiorId);
+
     public Optional<List<User>> findUsersByBranch(Long branchId);
 
     public Optional<List<User>> findUsersByRank(Long rankId);
