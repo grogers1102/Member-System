@@ -37,12 +37,12 @@ import com.isacariotsystems.MemberSystem.service.UserService;
 @RestController
 @RequestMapping("/api/v1/user")
 public class UserController {
-    
+
     @Autowired
     private UserService userService;
 
     @PostMapping("/add")
-    public String add(@RequestBody User user){
+    public String add(@RequestBody User user) {
         userService.saveUser(user);
 
         return "Successfully Added Member";
@@ -53,14 +53,11 @@ public class UserController {
         return userService.allUsers();
     }
 
-
-    
-    
     @GetMapping("/{userId}")
     public Optional<User> findUserById(@PathVariable Long userId) {
         return userService.findUserById(userId);
     }
-    
+
     @DeleteMapping("/{userId}")
     public String deleteUserById(@PathVariable Long userId) {
         userService.deleteUserById(userId);
@@ -72,7 +69,7 @@ public class UserController {
         return userService.updateUser(userId, user);
     }
 
-    @GetMapping("/all/{superiorId}")
+    @GetMapping("/all/{managerId}")
     public Optional<List<User>> findUsersBySuperior(@PathVariable Long superiorId) {
         return userService.findUsersBySuperiorId(superiorId);
     }
@@ -81,15 +78,15 @@ public class UserController {
     public Optional<List<User>> findUsersByBranch(@PathVariable Long branchId) {
         return userService.findUsersByBranch(branchId);
     }
-    
+
     @GetMapping("/rank/{rankId}")
     public Optional<List<User>> findUsersByRank(@PathVariable Long rankId) {
         return userService.findUsersByRank(rankId);
     }
 
     @GetMapping("/date/{date}")
-    public Optional<List<User>> findUsersByDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+    public Optional<List<User>> findUsersByDate(
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return userService.findUsersByDate(date);
     }
 }
-
