@@ -15,9 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         
         userId = localStorage.getItem('userId');
-        const urlNeeded = 'api/v1/user/all/' + userId;
+        const urlNeeded = '/api/v1/user/all/' + userId;
 
         httpRequest.open('GET', urlNeeded, true);
+        httpRequest.setRequestHeader("Content-Type", "application/json");
         httpRequest.onreadystatechange = () => {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
 

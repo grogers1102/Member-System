@@ -72,7 +72,7 @@ public class UserController {
         return userService.updateUser(userId, user);
     }
 
-    @GetMapping("/all/{managerId}")
+    @GetMapping("/all/{superiorId}")
     public Optional<List<User>> findUsersBySuperior(@PathVariable Long superiorId) {
         return userService.findUsersBySuperiorId(superiorId);
     }
