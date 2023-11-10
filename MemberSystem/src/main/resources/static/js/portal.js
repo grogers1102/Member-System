@@ -1,64 +1,63 @@
 
-// Check if authenticated
-document.addEventListener('DOMContentLoaded', function() {
-    const token = localStorage.getItem('token');
-    const refreshToken = localStorage.getItem('refreshToken');
+document.addEventListener('DOMContentLoaded', function () {
+    if (isTokenValid()){
 
-    if (!token || !refreshToken) {
-        //window.location.href = '../login.html'; 
-    } else {
-
-        const httpRequest = new XMLHttpRequest();
-            if (!httpRequest) {
-                alert("Giving up :( Cannot create an XMLHTTP instance");
-                return false;
-            }
-        
-        userId = localStorage.getItem('userId');
-        const urlNeeded = '/api/v1/user/' + userId;
-
-        httpRequest.open('GET', urlNeeded, true);
-        httpRequest.onreadystatechange = () => {
-            if (httpRequest.readyState === XMLHttpRequest.DONE) {
-
-                if (httpRequest.status === 200) {
-                    const userOBJ = JSON.parse(httpRequest.responseText);
-                    const statementUpdater = userOBJ.firstName;
-                    document.getElementsByTagName('header')[0].innerHTML = "Welcome, " + statementUpdater;
-                } else {
-                    alert("There was a problem with the request.");
-                }
-            } else {
-                // Not ready yet.
-            }
-        };
-        // HERE
-        httpRequest.send(JSON.stringify(userId));
+        displayAccount();
+        logoutEventListener();
     }
 });
 
-document.addEventListener('DOMContentLoaded', function(){
+function isTokenValid(){
+
+    const token = localStorage.getItem('token');
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    if (!token || !refreshToken){
+        return true; // CHANGE LATER
+    }
+    else{
+        return true;
+    }
+}
+
+function displayAccount(){
+
+    const userId = localStorage.getItem('userId');
+    const urlNeeded = `/api/v1/user/${userId}`;
+
+    fetch(urlNeeded)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('There was a problem with the request.');
+                }
+            })
+            .then(userOBJ => {
+                const statementUpdater = userOBJ.firstName;
+                document.getElementsByTagName('header')[0].innerHTML = `Welcome, ${statementUpdater}`;
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+}
+
+function logoutEventListener(){
     const logoutButton = document.querySelector(".log-out a");
     logoutButton.addEventListener("click", (event) => {
-        const token = localStorage.getItem('token');
-        const refreshToken = localStorage.getItem('refreshToken');
-        if (token || refreshToken){
-            localStorage.removeItem('token')
-            localStorage.removeItem('refreshToken')
-        }
-        // window.location.href = '../index.html';
+        logout();
     });
-})
-    
-    function submitLogoutForm(){
-        const token = localStorage.getItem('token');
-        const refreshToken = localStorage.getItem('refreshToken');
+}
 
-        if (token || refreshToken){
-            localStorage.removeItem('token');
-            localStorage.removeItem('refreshToken');
-            localStorage.removeItem('userId');
-        }
+function logout() {
+    const token = localStorage.getItem('token');
+    const refreshToken = localStorage.getItem('refreshToken');
 
-        window.location.href='index.html'
+    if (token || refreshToken) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('userId');
     }
+
+    window.location.href = 'index.html';
+}

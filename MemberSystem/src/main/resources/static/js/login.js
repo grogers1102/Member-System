@@ -1,68 +1,56 @@
-console.log("DOM LOADED!");
+document.addEventListener('DOMContentLoaded', function () {
+    addLoginEvenListener();
+});
 
-(function () {
-    window.addEventListener("DOMContentLoaded", () => {
-        const loginButton = document.querySelector(".loginBox");
-        loginButton.addEventListener("click", (event) => {
-            event.preventDefault();
-            submitLoginForm();
-        });
+function addLoginEvenListener() {
+    const loginButton = document.querySelector(".loginBox");
+    loginButton.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent the default behavior
+        login(); 
     });
+}
 
-    function submitLoginForm() {
+function login() {
+    const email = document.querySelector('input[name="email"]');
+    const password = document.querySelector('input[name="password"]');
 
-        const email = document.querySelector('input[name="email"]');
-        const password = document.querySelector('input[name="password"]');
-
-        if (
-            email.value !== "" &&
-            password.value !== ""
-        ) {
-            const httpRequest = new XMLHttpRequest();
-            if (!httpRequest) {
-                alert("Giving up :( Cannot create an XMLHTTP instance");
-                return false;
-            }
-
-            const urlNeeded = '/api/v1/auth/login';
-            httpRequest.open('POST', urlNeeded, true);
-            httpRequest.setRequestHeader("Content-Type", "application/json");
-
-            // Define onreadystatechange before the send method
-            httpRequest.onreadystatechange = () => {
-                if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    // Everything is good, the response was received.
-                    // Process the server response here.
-                    // 1. clear all field values
-                    // 2. route to dashboard on success
-                    // 3. else show alert error
-                    if (httpRequest.status === 200) {
-                        const response = JSON.parse(httpRequest.responseText);
-                        const { token, refreshToken, userId } = response;
-                        localStorage.setItem('token', token);
-                        localStorage.setItem('refreshToken', refreshToken);
-                        localStorage.setItem('userId', userId);
-
-                        window.location.href = '/portalPages/portal.html';
-                    } else {
-                        alert("There was a problem with the request.");
-                    }
-                } else {
-                    // Not ready yet.
-                }
-            };
-
-            // Send the proper header information along with the request
-            const params = {
-                email: email.value,
-                password: password.value
-            };
-
-            httpRequest.send(JSON.stringify(params));
-        } else {
-            alert("all fields are required!");
-        }
+    if (email.value === "" || password.value === "") {
+        alert("Please enter both email and password.");
+        return;
     }
 
-})();
+    const urlNeeded = 'api/v1/auth/login';
 
+    const params = {
+        email: email.value,
+        password: password.value
+    };
+
+    fetch(urlNeeded, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('There was a problem with the request.');
+        }
+    })
+    .then(userObj => {
+
+        const { token, refreshToken, userId } = userObj;
+        
+        localStorage.setItem('token', token);
+        localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('userId', userId);
+
+        window.location.href = '/portalPages/portal.html';
+    })
+    .catch(error => {
+        alert(error.message);
+    });
+}

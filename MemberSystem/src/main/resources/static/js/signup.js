@@ -1,82 +1,78 @@
-console.log("DOM LOADED!");
+document.addEventListener('DOMContentLoaded', function () {
+    addSignupEvenListener();
+});
 
-(function (){
-    window.addEventListener("DOMContentLoaded", () => {
-        const signupButton = document.querySelector(".createAccountBox");
-        signupButton.addEventListener("click", (event) => {
-            event.preventDefault(); 
-            submitSignupForm();
-        });
+function addSignupEvenListener() {
+    const signupButton = document.querySelector(".createAccountBox");
+    signupButton.addEventListener("click", (event) => {
+        signup()
     });
+}
 
-    function submitSignupForm() {
-        const firstName = document.getElementsByTagName('input').namedItem('firstName');
-        const lastName = document.getElementsByTagName('input').namedItem('lastName');
-        const email = document.getElementsByTagName('input').namedItem('email');
-        const phoneNumber = document.getElementsByTagName('input').namedItem('phoneNumber');
-        const address = document.getElementsByTagName('input').namedItem('address');
-        const password = document.getElementsByTagName('input').namedItem('password');
-        const confirmPassword = document.getElementsByTagName('input').namedItem('confirmPassword');
-    
-        if (
-            firstName.value !== "" &&
-            lastName.value !== "" &&
-            password.value !== "" &&
-            confirmPassword.value !== "" &&
-            email.value !== "" &&
-            phoneNumber.value !== "" &&
-            address.value !== ""
-        ) {
-            if (password.value !== confirmPassword.value) {
-                alert("Password must match!!!");
-                return;
-            }
-    
-            const httpRequest = new XMLHttpRequest();
-            if (!httpRequest) {
-                alert("Giving up :( Cannot create an XMLHTTP instance");
-                return false;
-            }
-    
-            const urlNeeded = '/api/v1/auth/signup';
-            httpRequest.open('POST', urlNeeded, true);
-            httpRequest.setRequestHeader("Content-Type", "application/json");
-            httpRequest.onreadystatechange = () => {
-                if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    if (httpRequest.status === 200) {
-                        const response = JSON.parse(httpRequest.responseText);
-                        const {token, refreshToken, userId} = response;
-                        localStorage.setItem('token',token)
-                        localStorage.setItem('refreshToken',refreshToken);
-                        localStorage.setItem('userId',userId);
+function signup() {
 
-                        window.location.href='/portalPages/portal.html'
-                    } else {
-                        alert("There was a problem with the request.");
-                    }
-                } else {
-                    // Not ready yet.
-                }
-            };
-    
-            // Send the proper header information along with the request
-            const params = {
-                firstName: firstName.value,
-                lastName: lastName.value,
-                email: email.value,
-                address: address.value,
-                phoneNumber: phoneNumber.value,
-                password: password.value
-            };
-    
-            httpRequest.send(JSON.stringify(params));
-        } else {
-            alert("all fields are required!");
-        }
+    const urlNeeded = 'api/v1/auth/signup';
+
+    const firstName = document.getElementsByTagName('input').namedItem('firstName');
+    const lastName = document.getElementsByTagName('input').namedItem('lastName');
+    const email = document.getElementsByTagName('input').namedItem('email');
+    const phoneNumber = document.getElementsByTagName('input').namedItem('phoneNumber');
+    const address = document.getElementsByTagName('input').namedItem('address');
+    const password = document.getElementsByTagName('input').namedItem('password');
+    const confirmPassword = document.getElementsByTagName('input').namedItem('confirmPassword');
+
+    if (
+        firstName.value === "" ||
+        lastName.value === "" ||
+        password.value === "" ||
+        confirmPassword.value === "" ||
+        email.value === "" ||
+        phoneNumber.value === "" ||
+        address.value === "" 
+    ){
+        alert("Please Enter all fields");
+        return;
     }
-    
-})();
 
+    if(password.value != confirmPassword.value){
+        alert("Passwords don't match")
+        return;
+    }
 
+    const params = {
+        firstName: firstName.value,
+        lastName: lastName.value,
+        email: email.value,
+        phoneNumber: phoneNumber.value,
+        address: address.value,
+        password: password.value
+    };
 
+    fetch(urlNeeded, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('There was a problem with the request.');
+        }
+    })
+    .then(userObj => {
 
+        const { token, refreshToken, userId } = userObj;
+        
+        localStorage.setItem('token', token);
+        localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('userId', userId);
+
+        window.location.href = '/portalPages/portal.html';
+    })
+    .catch(error => {
+        alert(error.message);
+    });
+}
