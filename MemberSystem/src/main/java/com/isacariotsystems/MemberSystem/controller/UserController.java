@@ -58,6 +58,12 @@ public class UserController {
         return userService.findUserById(userId);
     }
 
+     @GetMapping("/all/{firstName}")
+    public Optional<List<User>> findUsersBySuperior(@PathVariable String firstName) {
+        return userService.findUsersByFirstName(firstName);
+    }
+    
+
     @DeleteMapping("/{userId}")
     public String deleteUserById(@PathVariable Long userId) {
         userService.deleteUserById(userId);

@@ -66,6 +66,12 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
+    public Optional<List<User>> findUsersByFirstName(String firstName){
+        List<User> users = userRepository.findByFirstName(firstName);
+        return Optional.ofNullable(users);
+    }
+
+    @Override
     public Optional<List<User>> findUsersByBranch(Long branchId){
         List<User> users = userRepository.findByLocalBranchBranchId(branchId);
         return Optional.ofNullable(users);

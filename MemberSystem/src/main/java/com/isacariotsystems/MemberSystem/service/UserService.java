@@ -28,4 +28,6 @@ public interface UserService {
     public Optional<List<User>> findUsersByDate(LocalDate date);
 
     UserDetailsService userDetailsService();
+
+    public Optional<List<User>> findUsersByFirstName(String firstName);
 }
