@@ -35,6 +35,8 @@ public class Branch {
     @ManyToOne
     @JoinColumn(name = "managerId", referencedColumnName = "userId")
     private User manager;
+
+    private String name;
     
     private String address;
     

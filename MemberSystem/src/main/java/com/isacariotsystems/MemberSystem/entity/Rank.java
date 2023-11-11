@@ -26,6 +26,8 @@ public class Rank {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rankId;
 
+    private String name;
+
     private String description;
 
     private String requirements;

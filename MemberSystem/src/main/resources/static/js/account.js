@@ -1,38 +1,52 @@
-
-// Check if authenticated
-document.addEventListener('DOMContentLoaded', function() {
-    const token = localStorage.getItem('token');
-    const refreshToken = localStorage.getItem('refreshToken');
-
-    if (!token || !refreshToken) {
-        //window.location.href = '../login.html'; 
-    } else {
-
-        const httpRequest = new XMLHttpRequest();
-            if (!httpRequest) {
-                alert("Giving up :( Cannot create an XMLHTTP instance");
-                return false;
-            }
-        
-        userId = localStorage.getItem('userId');
-        const urlNeeded = '/api/v1/user/' + userId;
-
-        httpRequest.open('GET', urlNeeded, true);
-        httpRequest.onreadystatechange = () => {
-            if (httpRequest.readyState === XMLHttpRequest.DONE) {
-
-                if (httpRequest.status === 200) {
-                    const userOBJ = JSON.parse(httpRequest.responseText);
-                    const { userId, branchId, superiorId, rankId, invitationDate, email, phoneNumber, address, socialScore, firstName, lastName} = userOBJ;
-                } else {
-                    alert("There was a problem with the request.");
-                }
-            } else {
-                // Not ready yet.
-            }
-        };
-        // HERE
-        httpRequest.send(JSON.stringify(userId));
+document.addEventListener('DOMContentLoaded', async function () {
+    try {
+        // await isTokenValid();
+        await displayAccountDetails();
+    } catch (error) {
+        console.error(error);
     }
 });
 
+async function displayAccountDetails() {
+    try {
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+            throw new Error('User ID not found in local storage.');
+        }
+
+        const urlNeeded = '/api/v1/user/' + userId;
+        const response = await fetch(urlNeeded);
+
+        if (!response.ok) {
+            throw new Error('There was a problem with the request.');
+        }
+
+        const userOBJ = await response.json();
+
+        const {
+            branchId,
+            superiorId,
+            rankId,
+            invitationDate,
+            email,
+            phoneNumber,
+            address,
+            socialScore,
+            firstName,
+            lastName
+        } = userOBJ;
+
+        document.querySelector('.user-name').textContent = `${firstName} ${lastName}`;
+        document.querySelector('.user-id').textContent = userId;
+        document.querySelector('.user-branch').textContent = branchId;
+        document.querySelector('.user-phone-number').textContent = phoneNumber;
+        document.querySelector('.user-address').textContent = address;
+        document.querySelector('.user-email').textContent = email;
+        document.querySelector('.user-superior').textContent = `Superior: ${superiorId}`;
+        document.querySelector('.user-amnesty-days').textContent = `Amnesty Days: ${invitationDate}`;
+        document.querySelector('.user-standing').textContent = `Standing: ${rankId}`;
+        document.querySelector('.user-social-score').textContent = `Social Score: ${socialScore}`;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
