@@ -60,7 +60,7 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public Optional<List<User>> findUsersBySuperiorId(Long superiorId){
-        User superiorUser = userRepository.findById(superiorId).orElse(null);
+        User superiorUser = userRepository.findById(superiorId).orElseThrow(() -> new NoSuchElementException("Superior user not found"));
         List<User> users = userRepository.findBySuperior(superiorUser);
         return Optional.ofNullable(users);
     }
