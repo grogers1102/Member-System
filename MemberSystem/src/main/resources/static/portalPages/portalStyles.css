@@ -292,6 +292,14 @@
     font-size: 16px;
 }
 
+.viewSubordinatesDynam {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    padding: 10px; 
+}
+
+
 /*------------profile page-----------*/
 
 .main-view-account{
