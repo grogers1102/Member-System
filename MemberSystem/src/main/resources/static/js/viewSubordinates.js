@@ -29,19 +29,28 @@ async function displaySubordinateDetails() {
 
         subordinates.forEach(addSubordinate);
 
-        function addSubordinate(subordinate) {
-        var element = document.getElementById('viewSubordinatesDynam');
+            function addSubordinate(subordinate) {
+                var element = document.getElementById('viewSubordinatesDynam');
 
-        var text = document.createTextNode(
-            subordinate.firstName + ' ' +
-            subordinate.lastName + ' ' +
-            subordinate.userID + ' ' +
-            subordinate.branch);
+                var flexContainer = document.createElement('div');
+                flexContainer.style.marginBottom = '10px'; 
 
-        element.appendChild(text);
+                var infoParagraph = document.createElement('a');
 
-        element.appendChild(document.createElement('br'));
-    }       
+                var infoText = document.createTextNode(
+                    subordinate.firstName + ' ' +
+                    subordinate.lastName + ' ' +
+                    'UserID: ' + subordinate.userID + ' ' +
+                    'Branch: ' + subordinate.branch
+                );
+
+                infoParagraph.appendChild(infoText);
+
+                flexContainer.appendChild(infoParagraph);
+                element.appendChild(flexContainer);
+            }
+
+        
     } catch (error) {
         console.error(error);
     }
