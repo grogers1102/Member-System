@@ -29,26 +29,25 @@ async function displaySubordinateDetails() {
 
         subordinates.forEach(addSubordinate);
 
-            function addSubordinate(subordinate) {
-                var element = document.getElementById('viewSubordinatesDynam');
-
-                var flexContainer = document.createElement('div');
-                flexContainer.style.marginBottom = '10px'; 
-
-                var infoParagraph = document.createElement('a');
-
-                var infoText = document.createTextNode(
-                    subordinate.firstName + ' ' +
-                    subordinate.lastName + ' ' +
-                    'UserID: ' + subordinate.userID + ' ' +
-                    'Branch: ' + subordinate.branch
-                );
-
-                infoParagraph.appendChild(infoText);
-
-                flexContainer.appendChild(infoParagraph);
-                element.appendChild(flexContainer);
-            }
+        function addSubordinate(subordinate) {
+            var element = document.getElementById('viewSubordinatesDynam');
+        
+            var infoParagraph = document.createElement('p');
+        
+            infoParagraph.style.display = 'flex';
+        
+            var infoText = document.createTextNode(
+                subordinate.firstName + ' ' +
+                subordinate.lastName + ' ' +
+                'UserID: ' + subordinate.userID + ' ' +
+                'Branch: ' + subordinate.branch
+            );
+        
+            infoParagraph.appendChild(infoText);
+        
+            element.appendChild(infoParagraph);
+        }
+        
 
         
     } catch (error) {
