@@ -267,7 +267,8 @@
     font-size: 20px;
     width: 300px;
     height: 40px;
-    border-color: black;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.306);
     border-width: 1px;
     border-radius: 3px;
 }
@@ -284,7 +285,9 @@
     background: white;
     border-radius: 5px;
     height: 100%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.306);
+    border-width: 1px;
 }
 
 /*------------profile page-----------*/
@@ -321,7 +324,7 @@
 
 .user-info-container{
     background:white;
-    width: 50%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -330,13 +333,19 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
 }
 .user-extra-info{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "user-standing edit"
+        "polls polls";
     gap: 20px;
+    width: 100%;
 }
 
 .user-standing-container{
     background:white;
+    grid-area: user-standing;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -347,6 +356,7 @@
 
 .user-poll-container{
     background: white;
+    grid-area: polls;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -368,20 +378,98 @@
     align-items: start;
 }
 
+.user-supervisor-container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.user-amnesty-days-container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.profile-edit{
+    grid-area: edit;
+    display: flex;
+    justify-content: end;
+}
+.profile-edit-button{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-color: white;
+    color: rgb(0, 183, 255);
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    height: 30px;
+    width: 80px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.profile-edit-button:hover{
+    transform: translate3d(-1px,-1px,0);
+    background-color: rgb(0, 183, 255);
+    color: white;
+}
+
 .user-name{
-    color:(0,183,255);
+    font-size: 35px;
+    font-family: "source-sans-pro", sans-serif;    
 }
 .user-id{
+    font-size: 22px;
     color: rgb(0, 183, 255);
 }
 .user-branch{
+    font-size: 22px;
     color: rgb(0, 183, 255);
 }
 
+.user-contact{
+    font-size: 35px;
+    font-family: "source-sans-pro", sans-serif;    
+}
+
 .user-phone-number{
+    font-size: 22px;
     color: rgb(0, 183, 255);
 }
 
 .user-address{
+    font-size: 22px;
     color: rgb(0, 183, 255);
+}
+
+.user-supervisor-header{
+    font-size: 35px;
+    font-family: "source-sans-pro", sans-serif;    
+}
+
+.user-supervisor{
+    font-size: 22px;
+    color: rgb(0, 183, 255);
+}
+
+.user-amnesty-days-header{
+    font-size: 35px;
+    font-family: "source-sans-pro", sans-serif;    
+}
+.user-amnesty-days{
+    font-size: 22px;
+    color: rgb(0, 183, 255);
+}
+
+.user-standing{
+    font-size: 30px;
+    font-family: "source-sans-pro", sans-serif;    
+}
+
+.user-social-score{
+    font-size: 30px;
+    font-family: "source-sans-pro", sans-serif;    
 }
