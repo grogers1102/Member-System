@@ -47,7 +47,7 @@ async function displayAccountDetails() {
     document.querySelector('.user-phone-number').textContent = `Phone Number: ${phoneNumber}`;
     document.querySelector('.user-address').textContent = `Superior: ${address}`;
     document.querySelector('.user-email').textContent = `Email: ${email}`;
-    document.querySelector('.user-superior').textContent = `Superior: ${superiorFirstName} ${superiorLastName}`;
+    document.querySelector('.user-supervisor').textContent = `Supervisor: ${superiorFirstName} ${superiorLastName}`;
     //document.querySelector('.user-amnesty-days').textContent = `Amnesty Days: ${amnestyDays}`;
     document.querySelector('.user-standing').textContent = `Standing: ${rankId}`;
     document.querySelector('.user-social-score').textContent = `Social Score: ${socialScore}`;

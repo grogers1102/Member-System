@@ -30,27 +30,18 @@ async function displaySubordinateDetails() {
         subordinates.forEach(addSubordinate);
 
         function addSubordinate(subordinate) {
-            var tag = document.createElement("a");
-            tag.href = "viewSingleSubordinate.html";
-        
-            var text = document.createTextNode(
-                subordinate.firstName + '   ' +
-                subordinate.lastName + '   ' +
-                subordinate.userID + '   ' +
-                subordinate.branch);
+        var element = document.getElementById('viewSubordinatesDynam');
 
-            tag.style.display = "block";
-        
-            tag.appendChild(text);
+        var text = document.createTextNode(
+            subordinate.firstName + ' ' +
+            subordinate.lastName + ' ' +
+            subordinate.userID + ' ' +
+            subordinate.branch);
 
-            tag.style.display = "block";
-        
-            tag.style.margin = "0";
-            tag.style.marginBottom = "10px"; 
-        
-            var element = document.getElementById('viewSubordinatesDynam');
-            element.appendChild(tag);
-        }        
+        element.appendChild(text);
+
+        element.appendChild(document.createElement('br'));
+    }       
     } catch (error) {
         console.error(error);
     }
