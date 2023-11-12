@@ -36,18 +36,36 @@ async function displayAccountDetails() {
             lastName
         } = userOBJ;
 
+    const superior = getSuperiorDetails(superiorId);
+
+    const superiorFirstName = superior.firstName;
+    const superiorLastName = superior.lastName;
+
     document.querySelector('.user-name').textContent = `${firstName} ${lastName}`;
     document.querySelector('.user-id').textContent = `User ID: ${userId}`;
     document.querySelector('.user-branch').textContent = `Branch ID: ${branchId}`;
     document.querySelector('.user-phone-number').textContent = `Phone Number: ${phoneNumber}`;
     document.querySelector('.user-address').textContent = `Superior: ${address}`;
     document.querySelector('.user-email').textContent = `Email: ${email}`;
-    document.querySelector('.user-superior').textContent = `Superior: ${superiorId}`;
-    document.querySelector('.user-amnesty-days').textContent = `Amnesty Days: ${amnestyDays}`;
+    document.querySelector('.user-superior').textContent = `Superior: ${superiorFirstName} ${superiorLastName}`;
+    //document.querySelector('.user-amnesty-days').textContent = `Amnesty Days: ${amnestyDays}`;
     document.querySelector('.user-standing').textContent = `Standing: ${rankId}`;
     document.querySelector('.user-social-score').textContent = `Social Score: ${socialScore}`;
 
     } catch (error) {
         throw new Error(error.message);
     }
+}
+
+async function getSuperiorDetails(superiorId){
+    const urlNeeded = '/api/v1/user/' + superiorId;
+    const response = await fetch(urlNeeded);
+
+    if (!response.ok) {
+        throw new Error('There was a problem with the request.');
+    }
+
+    const superiorObj = await response.json();
+
+    return superiorObj;
 }

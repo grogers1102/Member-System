@@ -65,6 +65,8 @@ public class User implements UserDetails {
     
     private String email; 
 
+    private int amnestyDays;
+
     private String phoneNumber; 
 
     private String address;

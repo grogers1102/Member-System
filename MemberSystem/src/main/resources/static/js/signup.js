@@ -13,30 +13,22 @@ function signup() {
 
     const urlNeeded = 'api/v1/auth/signup';
 
-    const firstName = document.getElementsByTagName('input').namedItem('firstName');
-    const lastName = document.getElementsByTagName('input').namedItem('lastName');
-    const email = document.getElementsByTagName('input').namedItem('email');
-    const phoneNumber = document.getElementsByTagName('input').namedItem('phoneNumber');
-    const address = document.getElementsByTagName('input').namedItem('address');
-    const password = document.getElementsByTagName('input').namedItem('password');
-    const confirmPassword = document.getElementsByTagName('input').namedItem('confirmPassword');
+    const [firstName, lastName, email, phoneNumber, address, password, confirmPassword] = [
+        'firstName',
+        'lastName',
+        'email',
+        'phoneNumber',
+        'address',
+        'password',
+        'confirmPassword'
+    ].map(getInputValue);
 
-    if (
-        firstName.value === "" ||
-        lastName.value === "" ||
-        password.value === "" ||
-        confirmPassword.value === "" ||
-        email.value === "" ||
-        phoneNumber.value === "" ||
-        address.value === "" 
-    ){
-        alert("Please Enter all fields");
-        return;
-    }
+    const fields = [firstName, lastName, email, phoneNumber, address, password, confirmPassword];
 
-    if(password.value != confirmPassword.value){
-        alert("Passwords don't match")
-        return;
+    if (fields.some(isFieldEmpty)) {
+        alert("Please enter all fields");
+    } else if (password !== confirmPassword) {
+        alert("Passwords don't match");
     }
 
     const params = {
