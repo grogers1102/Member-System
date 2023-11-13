@@ -1,5 +1,3 @@
-
-// Check if authenticated
 document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem('token');
     const refreshToken = localStorage.getItem('refreshToken');
@@ -26,10 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     subordinatesList.forEach(myFunction);
                     function myFunction(user) {
                         var tag = document.createElement("a");
+                        tag.href = "viewSingleSubordinate.html";
+                        
                         var text = document.createTextNode(user.firstName + '   ' + user.lastName + '   ' + user.userID + '   ' + user.branch);
                         tag.appendChild(text);
                         tag.style.display="block";
-                        tag.class = 'littleSubordinate';
                         var element = document.getElementById('viewSubordinatesDynam');
                         element.appendChild(tag);
                     }
@@ -44,14 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // HERE
         httpRequest.send(JSON.stringify(userId));
     }
-});
-
-window.addEventListener("DOMContentLoaded", () => {
-    const subordinateRow = document.getElementsByClassName('littleSubordinate');
-    subordinateRow.addEventListener("click", (event) => {
-        window.location.href = 'viewSingleSubordinate.html';
-
-    });
 });
 
 document.addEventListener('DOMContentLoaded', function(){
