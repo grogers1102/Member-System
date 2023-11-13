@@ -48,6 +48,7 @@ function addSubordinate(subordinate) {
     var infoParagraph = document.createElement('p');
     
     infoParagraph.style.display = 'flex';
+    infoParagraph.style.flex = '1';
 
     var link = document.createElement('a');
     link.href = '../portalPages/viewSingleSubordinate.html';
