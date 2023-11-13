@@ -12,7 +12,7 @@
 
 .portal{
     display: flex;
-    height: auto;
+    justify-content: center;  height: auto;
 }
 
 .sidebar{
@@ -282,6 +282,8 @@
 .content-subordinate-container{
     display: flex;
     justify-content: center; 
+    flex-direction: column;
+    flex-wrap: wrap;
     padding: 10px;
     background: white;
     border-radius: 5px;
@@ -293,6 +295,7 @@
 }
 
 .viewSubordinatesDynam {
+    align-items: center; 
     display: flex;
     flex-direction: column;
     font-size: 16px;
