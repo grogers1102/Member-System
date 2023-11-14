@@ -504,27 +504,6 @@
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-rows: 80px 60px 1fr;
-    grid-template-areas: 
-    "header-rank"
-    "main-rank";
-}
-
-.header-view-rank{
-    background:white;
-    color: rgba(0, 0, 0, 0.8);
-    grid-area: header-rank;
-    text-indent: 30px;
-    /*font-style: "garamond-premier-pro", serif;*/
-    font-size: 30px;
-    font-family: "source-sans-pro", sans-serif;    
-}
-
-/*------------view ranks page-----------*/
-.main-view-rank{
-    height: 100vh;
-    width: 100vw;
-    display: grid;
     grid-template-rows: 80px 1fr;
     grid-template-areas: 
     "header-rank"
@@ -534,7 +513,7 @@
 .header-view-rank{
     background:white;
     color: rgba(0, 0, 0, 0.8);
-    grid-area: header-rank;
+    grid-area: header-subordinate;
     text-indent: 30px;
     /*font-style: "garamond-premier-pro", serif;*/
     font-size: 30px;
