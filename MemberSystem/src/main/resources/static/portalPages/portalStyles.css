@@ -282,7 +282,7 @@
 .content-subordinate-container{
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: space-around; 
     flex-direction: column;
     flex-wrap: wrap;
     padding: 10px;
@@ -440,6 +440,11 @@
     font-size: 22px;
     color: rgb(0, 183, 255);
 }
+
+.user-email{
+    font-size: 22px;
+    color: rgb(0, 183, 255);
+}
 .user-branch{
     font-size: 22px;
     color: rgb(0, 183, 255);
@@ -479,14 +484,19 @@
     color: rgb(0, 183, 255);
 }
 
-.user-standing{
+.user-organization{
     font-size: 30px;
     font-family: "source-sans-pro", sans-serif;    
 }
 
+.user-standing{
+    font-size: 22px;
+    color: rgb(0, 183, 255);
+}
+
 .user-social-score{
-    font-size: 30px;
-    font-family: "source-sans-pro", sans-serif;    
+    font-size: 22px;
+    color: rgb(0, 183, 255);    
 }
 
 /*------------view ranks page-----------*/
@@ -503,7 +513,7 @@
 .header-view-rank{
     background:white;
     color: rgba(0, 0, 0, 0.8);
-    grid-area: header-rank;
+    grid-area: header-subordinate;
     text-indent: 30px;
     /*font-style: "garamond-premier-pro", serif;*/
     font-size: 30px;
@@ -539,4 +549,9 @@
     flex-direction: column;
     font-size: 16px;
     padding: 10px; 
+}
+
+.user-date{
+    font-size: 22px;
+    color: rgb(0, 183, 255);    
 }
