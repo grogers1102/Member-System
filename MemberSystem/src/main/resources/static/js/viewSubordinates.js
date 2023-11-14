@@ -49,14 +49,20 @@ function addSubordinate(subordinate) {
     
     infoParagraph.style.display = 'flex';
     infoParagraph.style.flex = '1';
+    infoParagraph.style.justifyContent='center';
+    infoParagraph.style.borderStyle = 'solid';
+    infoParagraph.style.borderColor = "rgba(0, 0, 0, 0.306)";
+    infoParagraph.style.borderWidth = '1px'
 
     var link = document.createElement('a');
-    link.href = '../portalPages/viewSingleSubordinate.html';
+    link.href = '../portalPages/viewSingleSubordinate.html' +
+    '&userID=' + encodeURIComponent(subordinate.userId) 
+
     
     var infoText = document.createTextNode(
         subordinate.firstName + ' ' +
         subordinate.lastName + ' ' +
-        'UserID: ' + subordinate.userID + ' ' +
+        'UserID: ' + subordinate.userId + ' ' +
         'Branch: ' + subordinate.branch
     );
     
