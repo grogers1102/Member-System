@@ -503,7 +503,7 @@
 .header-view-rank{
     background:white;
     color: rgba(0, 0, 0, 0.8);
-    grid-area: header-subordinate;
+    grid-area: header-rank;
     text-indent: 30px;
     /*font-style: "garamond-premier-pro", serif;*/
     font-size: 30px;
@@ -514,7 +514,7 @@
 
 .content-rank{
     background: rgba(0, 0, 0, .05);
-    grid-area: main-subordinate;
+    grid-area: main-rank;
     padding: 20px;
 }
 
