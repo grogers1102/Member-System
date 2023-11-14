@@ -281,7 +281,7 @@
 
 .content-subordinate-container{
     display: flex;
-    justify-content: center; 
+    justify-content: space-around; 
     flex-direction: column;
     flex-wrap: wrap;
     padding: 10px;
@@ -438,6 +438,11 @@
     font-size: 22px;
     color: rgb(0, 183, 255);
 }
+
+.user-email{
+    font-size: 22px;
+    color: rgb(0, 183, 255);
+}
 .user-branch{
     font-size: 22px;
     color: rgb(0, 183, 255);
@@ -477,12 +482,22 @@
     color: rgb(0, 183, 255);
 }
 
-.user-standing{
+.user-organization{
     font-size: 30px;
     font-family: "source-sans-pro", sans-serif;    
 }
 
+.user-standing{
+    font-size: 22px;
+    color: rgb(0, 183, 255);
+}
+
 .user-social-score{
-    font-size: 30px;
-    font-family: "source-sans-pro", sans-serif;    
+    font-size: 22px;
+    color: rgb(0, 183, 255);    
+}
+
+.user-date{
+    font-size: 22px;
+    color: rgb(0, 183, 255);    
 }
