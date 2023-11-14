@@ -12,7 +12,7 @@
 
 .portal{
     display: flex;
-    justify-content: center;  height: auto;
+    /*justify-content: center;  height: auto;*/
 }
 
 .sidebar{
@@ -281,6 +281,7 @@
 
 .content-subordinate-container{
     display: flex;
+    flex-direction: column;
     justify-content: center; 
     flex-direction: column;
     flex-wrap: wrap;
@@ -298,6 +299,7 @@
     align-items: center; 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     font-size: 16px;
     padding: 10px; 
 }
