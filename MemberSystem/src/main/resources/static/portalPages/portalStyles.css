@@ -12,7 +12,7 @@
 
 .portal{
     display: flex;
-    justify-content: center;  height: auto;
+    /*justify-content: center;  height: auto;*/
 }
 
 .sidebar{
