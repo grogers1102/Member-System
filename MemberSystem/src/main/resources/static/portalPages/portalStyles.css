@@ -304,9 +304,7 @@
     padding: 10px; 
 }
 
-
 /*------------profile page-----------*/
-
 .main-view-account{
     height: 100vh;
     width: 100vw;
@@ -513,7 +511,7 @@
 .header-view-rank{
     background:white;
     color: rgba(0, 0, 0, 0.8);
-    grid-area: header-subordinate;
+    grid-area: header-rank;
     text-indent: 30px;
     /*font-style: "garamond-premier-pro", serif;*/
     font-size: 30px;
@@ -563,14 +561,14 @@
     display: grid;
     grid-template-rows: 80px 1fr;
     grid-template-areas: 
-    "header-rank"
-    "main-rank";
+    "header-branch"
+    "main-branch";
 }
 
 .header-view-branch{
     background:white;
     color: rgba(0, 0, 0, 0.8);
-    grid-area: header-rank;
+    grid-area: header-branch;
     text-indent: 30px;
     /*font-style: "garamond-premier-pro", serif;*/
     font-size: 30px;
@@ -581,7 +579,7 @@
 
 .content-branch{
     background: rgba(0, 0, 0, .05);
-    grid-area: main-rank;
+    grid-area: main-branch;
     padding: 20px;
 }
 
