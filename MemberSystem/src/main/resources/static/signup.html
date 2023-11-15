@@ -1,62 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="HTML, CSS" />
-    <meta
-      name="description"
-      content="Iscariot Systems: Empower Your Organization with Comprehensive Member 
-              Tracking, Values Alignment, and Enhanced Community Building. Transform the 
-              way you manage your community, fostering trust, accountability, and 
-              efficient operations."
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="images/LittleLogoIS.svg" type="image/png" />
-    <title>IscariotSystems</title>
-    <link rel="stylesheet" href="https://use.typekit.net/qvl4pug.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/qvl4pug.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/vzh4fkq.css" />
-  </head>
-  <body class="webpage">
-    <div class="navbar">
-      <a href="index.html" class="backButton">
-        <img src="images/betterBackArrow.png" alt="Back Button" class="backButton" />
-      </a>      
-    </div>
-    <form action="">  
-      <div class="newUserInputs" style="text-align: center;">
-        <div style="text-align: center">
-          <input class="nameBox" type="text" placeholder="First Name" id="firstName" name="firstName" />
-        </div>
-        <div style="text-align: center">
-          <input class="nameBox" type="text" placeholder="Last Name" id="lastName" name="lastName" />
-        </div>
-        <div style="text-align: center">
-          <input class="newEmailBox" type="text" placeholder="Email" id="email" name="userEmail" />
-        </div>
-        <div style="text-align: center">
-          <input class="phoneNumBox" type="text" placeholder="Phone Number" id="phoneNumber" name="phoneNumber" />
-        </div>
-        <div style="text-align: center">
-          <input class="addressBox" type="text" placeholder="Full Address" id="address" name="address" />
-        </div> 
-        <div style="text-align: center">
-          <input class="newPasswordBox" type="password" placeholder="Password" id="password" name="password" />
-        </div>
-        <div style="text-align: center">
-          <input class="confirmPasswordBox" type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" />
-        </div>
-        <div style="text-align: center">
-          <button type="button" class="createAccountBox">Create Account</button>
-        </div>
-      </form>
-      <div style = "text-align: center;">
-        <p class="signin-link">
-          Already have an account? <a class="signIn" href="login.html">Login</a>
-        </p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="HTML, CSS" />
+  <meta name="description" content="Iscariot Systems: Empower Your Organization with Comprehensive Member Tracking, Values Alignment, and Enhanced Community Building. Transform the way you manage your community, fostering trust, accountability, and efficient operations." />
+  <title>IscariotSystems</title>
+  <link rel="stylesheet" href="signup.css" />
+  <link rel="icon" href="images/ISLogo.png" type="image/png" />
+  <link rel="stylesheet" href="https://use.typekit.net/qvl4pug.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/vzh4fkq.css" />
+  <script src="https://kit.fontawesome.com/fc87db4df0.js" crossorigin="anonymous"></script>
+</head>
+<body class="webpage">
+  <div class="navbar">
+    <ul class="menu">
+      <img src="images/ISLogo.png" class="logo-icon" alt="Logo">
+      <li>
+        <a href="index.html">
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="about.html">
+          <i class="fa-solid fa-id-card"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="ourTeam.html">
+          <i class="fa-solid fa-people-group"></i>
+          <span>Our Team</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="signup-container">
+    <!-- <div class="signup-info">
+      <div class="signup-logo">
+
       </div>
-      </div>     
-      <script src="js/signup.js"> </script>
-  </body>
+      <div class="signup-text">
+        
+      </div> -->
+    <form>  
+      <div class="newUserInputs">
+        <div>
+          <label for="firstName">First Name</label><br>
+          <input class="nameBox" type="text" id="firstName" name="firstName" />
+        </div>
+        <div>
+          <label for="lastName">Last Name</label><br>
+          <input class="nameBox" type="text" id="lastName" name="lastName" />
+        </div>
+        <div>
+          <label for="email">Email</label><br>
+          <input class="newEmailBox" type="text" id="email" name="userEmail" />
+        </div>
+        <div>
+          <label for="phoneNumber">Phone Number</label><br>
+          <input class="phoneNumBox" type="text" id="phoneNumber" name="phoneNumber" />
+        </div>
+        <div>
+          <label for="address">Address</label><br>
+          <input class="addressBox" type="text" id="address" name="address" />
+        </div> 
+        <div>
+          <label for="password">Password </label><br>
+          <div class="password-container">
+            <input class="newPasswordBox" type="password" id="password" name="password" />
+            <i class="fa-solid fa-eye-slash" id="togglePassword"></i>
+          </div>
+        </div>
+        <div>
+          <label for="confirmPassword">Confirm Password</label><br>
+          <div class="confirmPassword-container">
+            <input class="confirmPasswordBox" type="password" id="confirmPassword" name="confirmPassword" />
+            <i class="fa-solid fa-eye-slash" id="toggleConfirmPassword"></i>
+        </div>
+        <div class="signin-link">
+          <p>
+            Already have an account? <a class="signIn" href="login.html">Login</a>
+          </p>
+        </div>
+        <div>
+          <button type="button" class="createAccountBox"><i class="fa-solid fa-lock"></i>  Create Account </button>
+        </div>
+      </div>
+    </form>  
+  </div>
+  <script src="js/signup.js"></script>
+</body>
 </html>
