@@ -1,11 +1,29 @@
 document.addEventListener('DOMContentLoaded', function () {
-    addSignupEvenListener();
+    addSignupEventListener();
+    addPasswordIconEventListener();
+    addConfirmPasswordIconEventListener();
 });
 
-function addSignupEvenListener() {
+function addSignupEventListener() {
     const signupButton = document.querySelector(".createAccountBox");
     signupButton.addEventListener("click", (event) => {
         signup()
+    });
+}
+
+function addPasswordIconEventListener(){
+    const toggleIcon = document.getElementById('togglePassword');
+
+    toggleIcon.addEventListener('click', function() {
+        switchPasswordIcon(toggleIcon);
+    });
+}
+
+function addConfirmPasswordIconEventListener(){
+    const toggleIcon = document.getElementById('toggleConfirmPassword');
+
+    toggleIcon.addEventListener('click', function() {
+        switchConfirmPasswordIcon(toggleIcon);
     });
 }
 
@@ -83,6 +101,41 @@ async function makeSignupRequest(userParams) {
     } catch (error) {
         alert(error.message);
     }
+}
+
+
+function switchPasswordIcon(toggleIcon){
+    
+    const passwordInput = document.getElementById('password');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+
+
+}
+
+function switchConfirmPasswordIcon(toggleIcon){
+    
+    const passwordInput = document.getElementById('confirmPassword');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+
+
 }
 
 

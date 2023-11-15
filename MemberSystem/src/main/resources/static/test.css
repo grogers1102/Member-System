@@ -1,0 +1,146 @@
+
+.menu {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    height: 10vh;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    padding: 15px;
+    margin: 3vh;
+    border-radius: 8px;
+    transition: all 0.15s ease-in-out;
+}
+
+.menu li:hover {
+    background: rgba(77, 184, 231, 0.798);
+}
+
+.menu a {
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px; 
+    align-items: center;
+}
+
+.menu a span {
+    overflow: hidden;
+}
+
+.menu a i {
+    font-size: 1.2rem;
+}
+
+.logo-icon {
+    display: flex;
+    align-items: center; 
+    height: 15vh;
+    margin-right: auto; 
+}
+
+
+.signup-container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    background: rgba(0, 0, 0, 0.25);
+    text-align: center; 
+}
+
+.newUserInputs {
+    background: whitesmoke;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    font-size: 12px;
+    gap: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.65); 
+  }
+  
+  .signin-link{
+    text-align: center; 
+  }
+
+  .createAccountBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 20px; 
+    font-size: 16px;
+    color: white;
+    background-color: rgba(77, 184, 231, 0.798);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    text-align: center; 
+}
+
+.createAccountBox i {
+    margin-right: 10px; 
+}
+
+.createAccountBox:hover {
+    background-color: rgba(255, 89, 0, 0.798);
+}
+
+.password-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+.fa-eye-slash {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+.fa-eye{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+.confirmPassword-container{
+    position: relative;
+    display: inline-block;
+}
+
+.namebox {
+    width: 70vw;
+    position: relative;
+  }
+
+
+
+  
+
+  
+
