@@ -504,7 +504,7 @@
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-rows: 80px 60px 1fr;
+    grid-template-rows: 80px 1fr;
     grid-template-areas: 
     "header-rank"
     "main-rank";
@@ -513,28 +513,7 @@
 .header-view-rank{
     background:white;
     color: rgba(0, 0, 0, 0.8);
-    grid-area: header-rank;
-    text-indent: 30px;
-    /*font-style: "garamond-premier-pro", serif;*/
-    font-size: 30px;
-    font-family: "source-sans-pro", sans-serif;    
-}
-
-/*------------view ranks page-----------*/
-.main-view-rank{
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    grid-template-rows: 80px 60px 1fr;
-    grid-template-areas: 
-    "header-rank"
-    "main-rank";
-}
-
-.header-view-rank{
-    background:white;
-    color: rgba(0, 0, 0, 0.8);
-    grid-area: header-rank;
+    grid-area: header-subordinate;
     text-indent: 30px;
     /*font-style: "garamond-premier-pro", serif;*/
     font-size: 30px;
@@ -550,6 +529,63 @@
 }
 
 .content-rank-container{
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    height: 100%;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.306);
+    border-width: 1px;
+    font-size: 16px;
+}
+
+.viewRankDynam {
+    align-items: center; 
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    padding: 10px; 
+}
+
+.user-date{
+    font-size: 22px;
+    color: rgb(0, 183, 255);    
+}
+
+/*------------view Branch Page-----------*/
+.main-view-branch{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    grid-template-areas: 
+    "header-rank"
+    "main-rank";
+}
+
+.header-view-branch{
+    background:white;
+    color: rgba(0, 0, 0, 0.8);
+    grid-area: header-rank;
+    text-indent: 30px;
+    /*font-style: "garamond-premier-pro", serif;*/
+    font-size: 30px;
+    position: relative;
+    padding-top: 25px;
+    font-family: "garamond-premier-pro", serif;
+}
+
+.content-branch{
+    background: rgba(0, 0, 0, .05);
+    grid-area: main-rank;
+    padding: 20px;
+}
+
+.content-branch-container{
     display: flex;
     justify-content: center; 
     flex-direction: column;
