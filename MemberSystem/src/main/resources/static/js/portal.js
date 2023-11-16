@@ -66,29 +66,31 @@ function logout() {
 
 function displayBranchIcon(userOBJ) {
 
-    if (!userOBJ || !userOBJ.rank) {
+    branchExists = document.querySelector('.sidebar .branch-element')
+
+    if (!userOBJ || !userOBJ.rank || branchExists) {
         return;
     }
 
     const rank = userOBJ.rank;
 
-    const sidebar = document.querySelector('.sidebar');
-
-    const element = sidebar.querySelector('.menu');
+    const element = document.querySelector('.sidebar .menu');
 
     const listElement = document.createElement('li');
     const anchorElement = document.createElement('a');
     const iconElement = document.createElement('i');
     const spanElement = document.createElement('span');
 
+    listElement.className='branch-element';
+
     anchorElement.href = 'branchPage.html';
 
-    iconElement.className = 'fa-solid fa-person'; 
+    iconElement.className = 'fa-solid fa-location-dot'; 
 
     spanElement.textContent = 'Branch';
 
     if (rank.rankId > 2) {
-        anchorElement.href = 'exclusiveBranchPage.html';
+        anchorElement.href = 'higherBranchPage.html';
     }
 
     anchorElement.appendChild(iconElement);
