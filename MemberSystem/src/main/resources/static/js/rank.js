@@ -1,4 +1,4 @@
-ocument.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', async function () {
     try {
         // await isTokenValid();
         await displayRankDetails();
@@ -22,15 +22,25 @@ async function displayRankDetails() {
         }
 
         const userOBJ = await response.json();
-        const { rankId } = userOBJ;
+        const rank = userOBJ.rank;
 
-        const { name, description, requirements, daysRequired } = await getRankDetails(rankId);
+        const { description, requirements, daysRequired } = rank;
 
-        document.querySelector('.rank-name').textContent = name;
-        document.querySelector('.rank-id').textContent = rankId;
-        document.querySelector('.rank-description').textContent = description;
-        document.querySelector('.rank-requirements').textContent = requirements
-        document.querySelector('.rank-daysRequired').textContent = daysRequired;
+        element = document.getElementById('viewRankDynam');
+
+        rankInfo = document.createElement('p');
+        rankInfo.style.display='flex';
+        rankInfo.style.justifyContent='center';
+
+        const rankText = document.createTextNode(
+            'Name : ' + description + ' ' +
+            'Requirements : ' + requirements + ' '+
+            'Days Required : ' + daysRequired
+        );
+
+        rankInfo.appendChild(rankText);
+        element.appendChild(rankInfo)
+
     } catch (error) {
         console.error(error);
         // handle the error as needed

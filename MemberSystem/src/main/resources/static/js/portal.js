@@ -36,6 +36,8 @@ function displayAccount(){
             .then(userOBJ => {
                 const statementUpdater = userOBJ.firstName;
                 document.getElementsByTagName('header')[0].innerHTML = `Welcome, ${statementUpdater}`;
+
+                displayBranchIcon(userOBJ);
             })
             .catch(error => {
                 alert(error.message);
@@ -61,3 +63,38 @@ function logout() {
 
     window.location.href = 'index.html';
 }
+
+function displayBranchIcon(userOBJ) {
+
+    if (!userOBJ || !userOBJ.rank) {
+        return;
+    }
+
+    const rank = userOBJ.rank;
+
+    const sidebar = document.querySelector('.sidebar');
+
+    const element = sidebar.querySelector('.menu');
+
+    const listElement = document.createElement('li');
+    const anchorElement = document.createElement('a');
+    const iconElement = document.createElement('i');
+    const spanElement = document.createElement('span');
+
+    anchorElement.href = 'branchPage.html';
+
+    iconElement.className = 'fa-solid fa-person'; 
+
+    spanElement.textContent = 'Branch';
+
+    if (rank.rankId > 2) {
+        anchorElement.href = 'exclusiveBranchPage.html';
+    }
+
+    anchorElement.appendChild(iconElement);
+    anchorElement.appendChild(spanElement);
+
+    listElement.appendChild(anchorElement);
+    element.appendChild(listElement);
+}
+
