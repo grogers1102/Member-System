@@ -38,7 +38,7 @@
         <li>
           <a href="accountPage.html">
             <i class="fa-solid fa-user"></i>
-            <span>Profile</span>
+            <span>Account</span>
           </a>
         </li>
         <li>
@@ -65,7 +65,6 @@
             <span>Branch</span>
           </a>
         </li>
-
         <li>
           <a href="rankPage.html">
             <i class="fa-solid fa-ranking-star"></i>
@@ -80,34 +79,92 @@
         </li>
       </ul>
     </div>
-    <div class="main-view-higher-branch">
-      <header class="header-view-higher-branch">Branch</header>
-      <div class="content-higher-branch">
-        <div class="search-branch-members-container">
-          <form id="search-branch-members">
-            <input
-              class="search-branch-members-box"
-              type="search"
-              onkeydown="clickPress(event)"
-              placeholder="Search Branch Members"
-              id="searchBranchMembers"
-              name="searchBranchMembers"
-            />
-          </form>
-        </div>
-        <div <div class="content-location-branch-container">
-          <h1 class="user-branch-location">UserBranchHere</h1>
-          <div class="content-location-branch-subcontainer">
-            <h2 class="user-branch-population">branchPopulation</h2>
-            <h2 class="user-branch-location">branchLocation</h2>
+    <div class="myAttendance-body">
+      <header class="header-myAttendance">My Attendance</header>
+      <div class="body-myAttendance">
+        <ul class="body-calender">
+          <i class="day-of-week-Sun"> Sunday </i>
+          <i class="day-of-week-Mon"> Monday </i>
+          <i class="day-of-week-Tue"> Tuesday </i>
+          <i class="day-of-week-Wed"> Wednesday </i>
+          <i class="day-of-week-Thu"> Thursday </i>
+          <i class="day-of-week-Fri"> Friday </i>
+          <i class="day-of-week-Sat"> Saturday </i>
+        </ul>
+        <form>
+          <div class="boxes-myAttendance">
+            <div>
+              <input
+                type="checkbox"
+                id="sundayBox"
+                name="sundayBox"
+                unchecked
+              />
+              <label for="sundayBox">Present</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="mondayBox"
+                name="mondayBox"
+                unchecked
+              />
+              <label for="mondayBox">Present</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="tuesdayBox"
+                name="tuesdayBox"
+                unchecked
+              />
+              <label for="tuesdayBox">Present</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="wednesdayBox"
+                name="wednesdayBox"
+                unchecked
+              />
+              <label for="wednesdayBox">Present</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="thursdayBox"
+                name="thursdayBox"
+                unchecked
+              />
+              <label for="thursdayBox">Present</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="fridayBox"
+                name="fridayBox"
+                unchecked
+              />
+              <label for="fridayBox">Present</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="saturdayBox"
+                name="saturdayBox"
+                unchecked
+              />
+              <label for="saturdayBox">Present</label>
+            </div>
           </div>
-        </div>
-        <div class="content-branch-members">
-          <div class="content-branch-members-container"></div>
-        </div>
+          <div class="submitButton-myAttendance">
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
       </div>
     </div>
 
     <script src="../js/portal.js"></script>
+    <script src="../js/rank.js"></script>
   </body>
 </html>
