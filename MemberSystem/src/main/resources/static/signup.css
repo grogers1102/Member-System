@@ -87,6 +87,7 @@ body {
   
   .signin-link{
     text-align: center; 
+    margin-top: 2vh;
   }
 
   .createAccountBox {
@@ -245,6 +246,63 @@ body {
     background-color: rgba(77, 184, 231, 0.798);
     cursor: pointer; 
   }
+
+.forgotPassword-container{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    align-items: center;
+}
+
+.forgotPassword-icon{
+    margin-top: 15vh;
+}
+
+.forgotPassword-icon i{
+    font-size: 10vh;
+}
+
+.forgotPassword-header{
+    margin-top: 6vh;
+    font-size: 20px;
+}
+
+.forgotPassword-subheader{
+    text-align: center;
+    margin-top: 2vh;
+    font-size: 16px;
+}
+
+.forgotPassword-input{
+    margin-top: 4vh;
+    height: 4vh;
+    width: 25vw;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.forgotPassword-input input{
+    height: 3.5vh;
+    width: 24vw;
+}
+
+.forgotPasswordButton{
+    background-color: aliceblue;
+    margin-top: 2vh;
+    text-align: center;
+    height: 6vh;
+    width: 15vw;
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+}
+
+.forgotPasswordButton:hover{
+    background-color: rgba(77, 184, 231, 0.798);
+    cursor: pointer; 
+}
+
+
+
 
 
 
