@@ -46,10 +46,16 @@
             <span>Subordinates</span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="#">
             <i class="fa-solid fa-square-poll-horizontal"></i>
             <span>Polls</span>
+          </a>
+        </li> -->
+        <li>
+          <a href="#">
+            <i class="fa-solid fa-square-poll-horizontal"></i>
+            <span>My Attendance</span>
           </a>
         </li>
         <li>
@@ -76,19 +82,21 @@
       <header class="header-view-subordinate">Subordinates</header>
       <div class="search-subordinate-container">
         <form id="search-subordinate">
-          <input 
-          class="search-subordinate-box"
-          type="search"
-          onkeydown="clickPress(event)" 
-          placeholder="Search Subordinate"
-          id="searchSubordinate"
-          name="searchSubordinate"
-          > 
+          <input
+            class="search-subordinate-box"
+            type="search"
+            onkeydown="clickPress(event)"
+            placeholder="Search Subordinate"
+            id="searchSubordinate"
+            name="searchSubordinate"
+          />
         </form>
       </div>
       <div class="content-subordinate">
-        <div class="content-subordinate-container" id="viewSubordinatesDynam">
-        </div>
+        <div
+          class="content-subordinate-container"
+          id="viewSubordinatesDynam"
+        ></div>
       </div>
     </div>
     <script src="../js/viewSubordinates.js"></script>
