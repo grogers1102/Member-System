@@ -1,3 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "source-sans-pro", sans-serif;
+}
 
 .menu {
     position: relative;
@@ -137,6 +145,116 @@ body {
     width: 70vw;
     position: relative;
   }
+
+.login-container {
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login-box {
+    height: 90vh;
+    display: flex;
+    width: 70vw;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-top{
+    margin-top: 15vh;
+}
+
+.login-header{
+    font-size: 24px;
+    padding: 5vh;
+}
+
+.passwordBox,
+.emailBox {
+  padding: 15px; 
+  width: 25vw;
+  background-color: aliceblue;
+  border-radius: 8px; 
+  margin-bottom: 15px; 
+  border: 1px solid #ccc; 
+  height: 2vh;
+}
+
+.line {
+    border-top: 1px solid #cccccc; 
+    margin-bottom: 15px; 
+    width: 30vw;
+}
+
+.login-button-box{
+    text-align: center;
+}
+
+.loginBox{
+    width: 15vw;
+    height: 4.5vh;
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+}
+
+.loginBox:hover {
+    background-color: rgba(77, 184, 231, 0.798);
+    cursor: pointer; 
+  }
+
+.new-user-box {
+    display: flex;
+    padding: 20px;
+    width: 30vw;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    background-color: gainsboro;
+}
+
+.new-user-box-header {
+ margin-top: 20vh;
+ font-size: 22px;
+}
+
+.new-user-box-p{
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.forgotPassword-link{
+    text-align: center;
+    margin-top:2vh;
+    font-size: 12px;
+}
+
+.signup-from-login{
+    background-color: aliceblue;
+    margin-top: 2vh;
+    text-align: center;
+    height: 6vh;
+    width: 15vw;
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+}
+
+.signup-from-login:hover {
+    background-color: rgba(77, 184, 231, 0.798);
+    cursor: pointer; 
+  }
+
+
+
+
+
+
+
+
+
+
 
 
 
