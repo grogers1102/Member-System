@@ -301,6 +301,54 @@ body {
     cursor: pointer; 
 }
 
+.index-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.index-subcontainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    width: 50vw;
+}
+
+.index-header{
+    margin-top: 20vh;
+    margin-left: 5vw;
+    text-align: center;
+}
+
+.index-subheader{
+    text-align: center;
+    margin-left: 5vw;
+    margin-top: 3vh;
+}
+
+.index-login{
+    text-align: center;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    background-color: aliceblue;
+    text-align: center;
+    height: 6vh;
+    width: 15vw;
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+}
+
+.index-login:hover{
+    background-color: rgba(77, 184, 231, 0.798);
+    cursor: pointer; 
+}
+
+.index-image{
+    height: 90vh;
+    width: 50vw;
+}
+
 
 
 
