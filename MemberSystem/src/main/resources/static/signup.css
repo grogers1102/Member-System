@@ -38,7 +38,7 @@ body {
 
 .menu a {
     color: white;
-    font-size: 15px;
+    font-size: 18px;
     text-decoration: none;
 
     display: flex;
@@ -58,7 +58,7 @@ body {
 .logo-icon {
     display: flex;
     align-items: center; 
-    height: 15vh;
+    height: 13vh;
     margin-right: auto; 
 }
 
@@ -348,6 +348,27 @@ body {
     height: 90vh;
     width: 50vw;
 }
+
+.about-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+}
+
+.about-header{
+    margin-top: 15vh;
+    text-align: center;
+    width: 80vw;
+}
+
+.about-subheader{
+    margin-top: 2vh;
+    text-align: center;
+    width: 60vw;
+}
+
+
 
 
 
