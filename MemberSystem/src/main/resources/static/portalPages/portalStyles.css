@@ -348,17 +348,18 @@
 .user-extra-info{
     display: grid;
     grid-template-rows: auto 1fr;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 80px;
     grid-template-areas:
         "user-standing edit"
         "polls polls";
-    gap: 50px;
+    gap: 20px;
     width: 100%;
 }
 
 .user-standing-container{
     background:white;
     grid-area: user-standing;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     padding: 20px;
