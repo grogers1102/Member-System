@@ -42,7 +42,7 @@ async function displaySubordinateDetails() {
     }
 }
 
-function addSubordinate(subordinate) {
+function addSubordinatessss(subordinate) {
     var element = document.getElementById('viewSubordinatesDynam');
     
     var infoParagraph = document.createElement('p');
@@ -73,6 +73,63 @@ function addSubordinate(subordinate) {
     element.appendChild(infoParagraph);
 }
 
+function addSubordinate(subordinate){
+        
+    const subordinateBox = document.createElement('div');
+    subordinateBox.classList.add('subordinate-box');
+
+    const subordinateName = document.createElement('div');
+    subordinateName.classList.add('subordinate-name');
+
+    const link = document.createElement('a');
+    link.setAttribute('href', 'viewSingleSubordinate.html');
+    link.textContent = subordinate.firstName + ' ' + subordinate.lastName;
+
+    subordinateName.appendChild(link);
+
+    const subordinateInnerBox = document.createElement('div');
+    subordinateInnerBox.classList.add('subordinate-innerbox');
+
+    const subordinateInnerStart = document.createElement('div');
+    subordinateInnerStart.classList.add('subordinate-innerstart');
+
+    branchName = getUserBranchName(subordinate);
+    rankName = getUserRankName(subordinate);
+
+    const startUl = document.createElement('ul');
+    startUl.innerHTML = `
+    <li>Branch</li>
+    <li>Rank</li>
+    <li>Email</li>
+    `;
+
+    subordinateInnerStart.appendChild(startUl);
+
+    const subordinateInnerEnd = document.createElement('div');
+    subordinateInnerEnd.classList.add('subordinate-innerend');
+
+    const endUl = document.createElement('ul');
+    endUl.innerHTML = `
+        <li>${branchName}</li>
+        <li>${rankName}</li>
+        <li>${subordinate.email}</li>
+    `;
+
+    subordinateInnerEnd.appendChild(endUl);
+
+    const bottomTag = document.createElement('div');
+    bottomTag.classList.add('bottom-tag');
+
+    subordinateBox.appendChild(subordinateName);
+    subordinateBox.appendChild(subordinateInnerBox);
+    subordinateInnerBox.appendChild(subordinateInnerStart);
+    subordinateInnerBox.appendChild(subordinateInnerEnd);
+    subordinateBox.appendChild(bottomTag);
+
+    const parentElement = document.querySelector('.content-subordinate-container');
+    parentElement.appendChild(subordinateBox);
+}
+
 function setupSearchEventListener() {
     document.getElementById('searchSubordinate').addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
@@ -95,4 +152,23 @@ function displaySubordinateDetailsBySearch(searchedSubordinate) {
             addSubordinate(subordinate);
         }
     });
+}
+
+function getUserBranchName(user){
+    branch = user.Branch;
+
+    if(branch){
+        return branch.name;
+    }else{
+        return 'Not Avaliable'
+    }
+}
+
+function getUserRankName(user){
+    rank = user.Rank;
+    if(rank){
+        return rank.description;
+    }else{
+        return 'Not Ranked';
+    }
 }
