@@ -48,7 +48,7 @@
 }
 
 .menu li{
-    padding: .8rem;
+    padding: 0.8rem;
     margin: 8px 0;
     border-radius: 8px;
     transition: all 0.3s ease-in-out;
@@ -56,7 +56,6 @@
 
 .menu li:hover{
     background: rgba(77, 184, 231, 0.798);
-    
 }
 
 .menu a{
@@ -172,7 +171,6 @@
 }
 
 .cardHeading{
-    color: rgb(0, 183, 255);
     position: relative;
     display: flex;
     align-items: center;
@@ -180,6 +178,11 @@
     width: 100%;
     padding-left: 25px; 
     font-size: 25px;
+}
+
+.card-heading-link{
+    color: rgb(0, 183, 255);
+    text-decoration: none;
 }
 
 .signInImage{
