@@ -319,12 +319,14 @@ body {
     margin-top: 20vh;
     margin-left: 5vw;
     text-align: center;
+    font-size: 22px;
 }
 
 .index-subheader{
     text-align: center;
     margin-left: 5vw;
     margin-top: 3vh;
+    font-size: 20px;
 }
 
 .index-login{
@@ -360,32 +362,46 @@ body {
     margin-top: 15vh;
     text-align: center;
     width: 80vw;
+    font-size: 25px;
 }
 
 .about-subheader{
     margin-top: 2vh;
     text-align: center;
     width: 60vw;
+    font-size: 20px;
 }
 
+.about-members-container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
 
+.member-intro-container{
+    display: flex;
+    padding-left: 30px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
 
+.member-header{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
 
+.member-name{
+    font-size: 25px;
+}
 
+.member-email{
+    font-size: 20px;
+    font-weight: 500;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
+.member-intro-paragraph{
+    font-size: 20px;
+}
 
