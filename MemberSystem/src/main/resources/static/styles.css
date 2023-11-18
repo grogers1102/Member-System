@@ -73,18 +73,19 @@ body {
 }
 
 .signup-image{
-    height: 30vh;
-    width: 30vw;
+    height: 35vh;
+    width: 35vw;
 }
 
 .signup-list ul{
-    text-align: center;
+    text-align: start;
     margin-top: 4vh;
     list-style: none;
 }
 
 .signup-list li{
     margin-top: 2vh;
+    margin-left: 7.5vw;
 }
 
 .signup-list i{
@@ -93,8 +94,12 @@ body {
 
 .signup-info{
     align-items: center;
-    margin-left: 10vw;
+    margin-left: 8vw;
     margin-bottom: 12vh;
+}
+
+.signup-header{
+    font-size: 1.5vw;
 }
 
 
@@ -126,6 +131,7 @@ body {
 
 .newUserInputs li{
     margin-bottom: 2vh;
+    font-size: 2vh;
 }
 
   .newUserInputs input{
@@ -139,17 +145,18 @@ body {
   .signin-link{
     text-align: center; 
     margin-top: 1vh;
+    font-size: 2.2vh;
   }
 
   .createAccountBox {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: center; 
     margin-top: 2vh;
     margin-left: auto;
     margin-right: auto;
     padding: 15px 20px; 
-    font-size: 16px;
+    font-size: 3vh;
     color: white;
     background-color: rgba(77, 184, 231, 0.798);
     border: none;
@@ -157,6 +164,8 @@ body {
     cursor: pointer;
     transition: background-color 0.15s ease;
     text-align: center; 
+    height: 7vh;
+    width: 17vw;
 }
 
 .createAccountBox i {
