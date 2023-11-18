@@ -466,3 +466,7 @@ body {
     font-size: 20px;
 }
 
+.index-page{
+    display: flex;
+    flex-direction: column;
+}
