@@ -1,453 +1,459 @@
-.webpage {
-    margin: 0; /* Remove default margin */
-    height: 100vh; /* Make sure the body covers the full viewport height */
-    font-family: Arial, sans-serif;
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "source-sans-pro", sans-serif;
 }
 
-.navbar {
+.menu {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    padding: 10px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 1px 0;
-    margin-right: 50px;
+    list-style: none;
+    height: 10vh;
 }
 
-.nav-item {
-    margin: 0 5px;
+.logo-link {
+    display: inline-block; 
+    transition: transform 0.15; 
+  }
+  
+  .logo-link:hover {
+    transform: scale(1.1); 
+  }
+  
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    padding: 15px;
+    margin: 3vh;
+    border-radius: 8px;
+    transition: all 0.15s ease-in-out;
+}
+
+.menu li:hover {
+    background: rgba(77, 184, 231, 0.798);
+}
+
+.menu a {
+    color: white;
+    font-size: 18px;
     text-decoration: none;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px; 
+    align-items: center;
+}
+
+.menu a span {
+    overflow: hidden;
+}
+
+.menu a i {
+    font-size: 1.2rem;
+}
+
+.logo-icon {
+    display: flex;
+    align-items: center; 
+    height: 13vh;
+    margin-right: auto; 
+}
+
+.signup-image{
+    height: 30vh;
+    width: 30vw;
+}
+
+.signup-list ul{
+    text-align: center;
+    margin-top: 4vh;
+    list-style: none;
+}
+
+.signup-list li{
+    margin-top: 2vh;
+}
+
+.signup-list i{
+    margin-right: 4px;
+}
+
+.signup-info{
+    align-items: center;
+    margin-left: 10vw;
+    margin-bottom: 12vh;
+}
+
+
+.signup-container {
+    margin-right: 8vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around; 
+    text-align: center; 
+    height: 90vh;
+}
+
+.newUserInputs {
+    width: 28vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    font-size: 12px;
+    gap: 1vh;
+    padding: 4vh;
+  }
+  
+
+.newUserInputs ul{
+    list-style: none; 
+  }
+
+.newUserInputs li{
+    margin-bottom: 2vh;
+}
+
+  .newUserInputs input{
+    border: 1px solid rgba(77, 184, 231, 0.798); 
+    border-radius: 10px; 
+    width: 25vw;
+    height: 4vh;
+    padding: 1vw;
+  }
+  
+  .signin-link{
+    text-align: center; 
+    margin-top: 1vh;
+  }
+
+  .createAccountBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-top: 2vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 20px; 
+    font-size: 16px;
     color: white;
-    padding: 5px 15px ;
+    background-color: rgba(77, 184, 231, 0.798);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    text-align: center; 
+}
+
+.createAccountBox i {
+    margin-right: 10px; 
+}
+
+.createAccountBox:hover {
+    background-color: rgba(255, 89, 0, 0.798);
+}
+
+.password-container {
     position: relative;
-    font-size: min(max(2vw, 12px), 15px);
-    top: 20px;
-    right: 40px;
-
-    transition: transform 0.3s;
-}
-
-.nav-item:hover {
-    transform: translateY(-2px);
-}
-
-.login {
-        
-    text-decoration:none;
-    color: white;
-    padding: 5px 10px ;
-    font-size: min(max(2vw, 12px), 15px);
+    display: inline-block;
+  }
+  
+.fa-eye-slash {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
 
-    border: 1px solid white;
-    border-radius: 25px;
-
-    transition: transform 0.2s, background-color 0.2s, color 0.2s;
-
-}
-
-.login:hover {
-    transform: scale(1.02);
-    background-color:white;
-    color:black;
-}
-
-.navbar-logo {
-    height: max(90px, 10vh);
+.fa-eye{
     position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 2vh;
-}
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
 
-.navbar-logo img {
-    height: 100%;  /* Will adjust to the height set in .navbar-logo */
-    width: auto;   /* Maintain aspect ratio */
-}
-
-.indexHeading1{
-    color:white;
+.confirmPassword-container{
     position: relative;
-    top: 4vh;
-    left: 80px;
-
-    font-size: min(max(5vw, 40px), 50px);
-
-    font-family: "garamond-premier-pro", serif;
-    font-weight: 400;
-    font-style: normal;
-
-    width: 600px;
-
-    letter-spacing: .02vw;
-}
-
-.indexHeading2{
-    color: white;
-    position: relative;
-    top: 4vh;
-    left: 80px;
-
-    font-size: min(max(2vw, 12px), 15px);
-
-    font-family: "source-sans-pro", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-
-    width: 60vw;
-
-}
-
-.learn-more-btn {
-    position: relative;
-    top: 65px;
-    left: 80px;
-    padding: 10px 20px;
-    background-color: white;
-    color: black;
-    text-decoration: none;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 13px;
-}
-.learn-more-btn:hover {
-    transform: translate3d(-1px,-1px,0);
-    background-color: rgb(0, 0, 0);
-    color: white;
-}
-
-.aboutHeading{
-    color:white;
-    position: relative;
-    top: 4vh;
-    left: 80px;
-
-    font-size: min(max(5vw, 40px), 50px);
-
-    font-family: "garamond-premier-pro", serif;
-    font-weight: 400;
-    font-style: normal;
-
-    width: 500px;
-
-    letter-spacing: .02vw;
-
-}
-.aboutParagraph {
-    color: white;
-    position: relative;
-    top: 4vh;
-    left: 80px;
-
-    font-size: min(max(2vw, 12px), 15px);
-
-    font-family: "source-sans-pro", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-
-    width: 85vw;
-
-}
-
-.loginLogo{
-    height: auto;
-    width: auto;
-}
-
-.emailBox{
-    position: relative;
-    top: -90px;
-    padding-left: 10px;
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 17px), 17px);
-    width: 200px;
-    height: min(max(2vw, 20px), 30px);
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-
-}
-
-.emailBox:focus{
-    outline: none;
-}
-
-.forgotPassordBox{
-    position: relative;
-    top: -70px;
-    padding-left: 10px;
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 17px), 17px);
-    width: 200px;
-    height: min(max(2vw, 20px), 30px);
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-
-}
-
-.forgotPasswordBox:focus{
-    outline: none;
-}
-
-.passwordBox{
-    position: relative;
-    top: -80px;
-    padding-left: 10px;
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 17px), 17px);
-    width: 200px;
-    height: min(max(2vw, 20px), 30px);
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-}
-
-.passwordBox:focus{
-    outline: none;
-}
-
-.loginBox{
-
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 20px), 20px);
-    Position: relative;
-    top: -40px;
-    width: auto;
-    height: auto;
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-
-    transition: transform 0.3s, background-color 0.3s, color 0.3s;
-}
-
-.loginBox:hover{
-    transform: translate3d(-1px,-1px,0);
-    background-color: rgb(11, 167, 234);
-    color: white;
-}
-
-.loginHeader{
-    position: relative;
-    top: -80px;
-    color: white;
-    font-size: 20px;
-}
-
-.signup-link{
-    position: relative;
-    top: -20px;
-    font-size: min(max(2vw, 10px), 15px);
-    color: rgba(255, 255, 255, 0.658);
-}
-.signUp{
-    color: lightblue;
-}
-.signin-link{
-    position: relative;
-    font-size: min(max(2vw, 10px), 15px);
-    color: rgba(255, 255, 255, 0.658);
-}
-.signIn{
-    color: lightblue;
-}
-
-.forgotPasswordHeader{
-    position: relative;
-    top: -70px;
-    color: white;
-    font-size: 20px;
-}
-
-.forgotPassword-link{
-    position: relative;
-    top: -20px;
-    font-size: min(max(2vw, 10px), 15px);
-    color: rgba(255, 255, 255, 0.658);
-}
-.forgotPassword{
-    color: lightblue;
-}
-
-.login-link{
-    position: relative;
-    top: -40px;
-    color: rgba(255, 255, 255, 0.658);
-}
-.backToLogin{
-    color: lightblue;
-}
-
-
-.createAccountBox{
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 20px), 20px);
-    Position: relative;
-    width: auto;
-    height: auto;
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-
-    transition: transform 0.3s, background-color 0.3s, color 0.3s;
-}
-
-.toWebpage{
-    color: lightblue;
-}
-
-.toWebpage-link{
-    position: relative;
-    font-size: min(max(2vw, 10px), 15px);
-    color: rgba(255, 255, 255, 0.658);
-}
-
-.backButton {
-    height: max(60px, 8vh);
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 2vh;
-}
-
-.backButton:hover{
-    transform: translateY(-2px);
-}
-
-
-.memberHeading{
-    color: white;
-    font-size: min(max(3vh, 25px), 35px);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: auto;
-    height: auto;
-    font-family: "garamond-premier-pro", serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.memberIntroduction{
-    color: white;
-    font-size: min(max(2vw, 12px), 15px);
-    position: relative;
-    height: 13px;
-    width: auto;
-    top: -25px;
-    left: 0px;
-    font-family: "source-sans-pro", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.memberHeading,
-.memberEmail{
     display: inline-block;
 }
 
-.introBlock{
-    top: 5vh;
+.namebox {
+    width: 70vw;
     position: relative;
-    left: 80px;
-}
-.newUserInputs{
-    position: relative;
-    top: 25vh;
+  }
+
+.login-container {
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
-.nameBox{
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 17px), 17px);
-    width: 200px;
-    height: min(max(2vw, 20px), 30px);
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-    position: relative;
-}
-.nameBox:focus{
-    outline: none;
+.login-box {
+    height: 90vh;
+    display: flex;
+    width: 70vw;
+    align-items: center;
+    flex-direction: column;
 }
 
-.newEmailBox{
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 17px), 17px);
-    width: 200px;
-    height: min(max(2vw, 20px), 30px);
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-    position: relative;
-}
-.newEmailBox:focus{
-    outline: none;
+.login-top{
+    margin-top: 15vh;
 }
 
-.phoneNumBox{
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 17px), 17px);
-    width: 200px;
-    height: min(max(2vw, 20px), 30px);
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-    position: relative;
-}
-.phoneNumBox:focus{
-    outline: none;
+.login-header{
+    font-size: 24px;
+    padding: 5vh;
 }
 
-.addressBox{
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 17px), 17px);
-    width: 200px;
-    height: min(max(2vw, 20px), 30px);
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-    position: relative;
-}
-.addressBox:focus{
-    outline: none;
+.passwordBox,
+.emailBox {
+  padding: 15px; 
+  width: 25vw;
+  background-color: aliceblue;
+  border-radius: 8px; 
+  margin-bottom: 15px; 
+  border: 1px solid #ccc; 
+  height: 2vh;
 }
 
-.newPasswordBox{
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 17px), 17px);
-    width: 200px;
-    height: min(max(2vw, 20px), 30px);
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-    position: relative;
-}
-.newPasswordBox:focus{
-    outline: none;
+.line {
+    border-top: 1px solid #cccccc; 
+    margin-bottom: 15px; 
+    width: 30vw;
 }
 
-.confirmPasswordBox{
-    color: black;
-    font-family: "source-sans-pro", sans-serif;
-    font-size: min(max(2vw, 17px), 17px);
-    width: 200px;
-    height: min(max(2vw, 20px), 30px);
-    border-color: black;
-    border-width: 1px;
-    border-radius: 3px;
-    position: relative;
+.login-button-box{
+    text-align: center;
 }
-.confirmPasswordBox:focus{
-    outline: none;
+
+.loginBox{
+    width: 15vw;
+    height: 4.5vh;
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
 }
+
+.loginBox:hover {
+    background-color: rgba(77, 184, 231, 0.798);
+    cursor: pointer; 
+  }
+
+.new-user-box {
+    display: flex;
+    padding: 20px;
+    width: 30vw;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    background-color: gainsboro;
+}
+
+.new-user-box-header {
+ margin-top: 20vh;
+ font-size: 22px;
+}
+
+.new-user-box-p{
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.forgotPassword-link{
+    text-align: center;
+    margin-top:2vh;
+    font-size: 12px;
+}
+
+.signup-from-login{
+    background-color: aliceblue;
+    margin-top: 2vh;
+    text-align: center;
+    height: 6vh;
+    width: 15vw;
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+}
+
+.signup-from-login:hover {
+    background-color: rgba(77, 184, 231, 0.798);
+    cursor: pointer; 
+  }
+
+.forgotPassword-container{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    align-items: center;
+}
+
+.forgotPassword-icon{
+    margin-top: 15vh;
+}
+
+.forgotPassword-icon i{
+    font-size: 10vh;
+}
+
+.forgotPassword-header{
+    margin-top: 6vh;
+    font-size: 20px;
+}
+
+.forgotPassword-subheader{
+    text-align: center;
+    margin-top: 2vh;
+    font-size: 16px;
+}
+
+.forgotPassword-input{
+    margin-top: 4vh;
+    height: 4vh;
+    width: 25vw;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.forgotPassword-input input{
+    height: 3.5vh;
+    width: 24vw;
+}
+
+.forgotPasswordButton{
+    background-color: aliceblue;
+    margin-top: 2vh;
+    text-align: center;
+    height: 6vh;
+    width: 15vw;
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+}
+
+.forgotPasswordButton:hover{
+    background-color: rgba(77, 184, 231, 0.798);
+    cursor: pointer; 
+}
+
+.index-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.index-subcontainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    width: 50vw;
+}
+
+.index-header{
+    margin-top: 20vh;
+    margin-left: 5vw;
+    text-align: center;
+    font-size: 22px;
+}
+
+.index-subheader{
+    text-align: center;
+    margin-left: 5vw;
+    margin-top: 3vh;
+    font-size: 20px;
+}
+
+.index-login{
+    text-align: center;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    background-color: aliceblue;
+    text-align: center;
+    height: 6vh;
+    width: 15vw;
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+}
+
+.index-login:hover{
+    background-color: rgba(77, 184, 231, 0.798);
+    cursor: pointer; 
+}
+
+.index-image{
+    height: 90vh;
+    width: 50vw;
+}
+
+.about-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+}
+
+.about-header{
+    margin-top: 15vh;
+    text-align: center;
+    width: 80vw;
+    font-size: 25px;
+}
+
+.about-subheader{
+    margin-top: 2vh;
+    text-align: center;
+    width: 60vw;
+    font-size: 20px;
+}
+
+.about-members-container{
+    margin-top: 30vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.member-intro-container{
+    display: flex;
+    padding-left: 30px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+.member-header{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.member-name{
+    font-size: 25px;
+}
+
+.member-email{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.member-intro-paragraph{
+    font-size: 20px;
+}
+

@@ -6,7 +6,7 @@
   <meta name="keywords" content="HTML, CSS" />
   <meta name="description" content="Iscariot Systems: Empower Your Organization with Comprehensive Member Tracking, Values Alignment, and Enhanced Community Building. Transform the way you manage your community, fostering trust, accountability, and efficient operations." />
   <title>IscariotSystems</title>
-  <link rel="stylesheet" href="signup.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="images/ISLogo.png" type="image/png" />
   <link rel="stylesheet" href="https://use.typekit.net/qvl4pug.css" />
   <link rel="stylesheet" href="https://use.typekit.net/vzh4fkq.css" />
@@ -15,80 +15,83 @@
 <body class="webpage">
   <div class="navbar">
     <ul class="menu">
-      <img src="images/ISLogo.png" class="logo-icon" alt="Logo">
-      <li>
-        <a href="index.html">
-          <i class="fa-solid fa-house"></i>
-          <span>Home</span>
-        </a>
-      </li>
-      <li>
-        <a href="about.html">
-          <i class="fa-solid fa-id-card"></i>
-          <span>About</span>
-        </a>
-      </li>
-      <li>
-        <a href="ourTeam.html">
-          <i class="fa-solid fa-people-group"></i>
-          <span>Our Team</span>
-        </a>
-      </li>
+      <a href="index.html" class="logo-link">
+        <img src="images/ISLogo.png" class="logo-icon" alt="Logo">
+      </a>
+      
     </ul>
   </div>
   <div class="signup-container">
-    <!-- <div class="signup-info">
-      <div class="signup-logo">
-
+    <div class="signup-info">
+      <div class="signup-image-box">
+        <img class="signup-image" src="images/signup.svg">
       </div>
-      <div class="signup-text">
-        
-      </div> -->
-    <form>  
+      <div class="signup-header">
+        <h1>Included in Your Membership</h1>
+      </div>
+      <div class="signup-list">
+        <ul>
+          <li>
+            <i class="fa-solid fa-check"></i>Access to attendance and participation tracking.
+          </li>
+          <li>
+            <i class="fa-solid fa-check"></i> Exclusive insights for community involvement.
+          </li>
+          <li>
+            <i class="fa-solid fa-check"></i> Diverse programs promoting personal growth.
+          </li>
+        </ul>
+      </div>
+    </div> 
+    <form>
       <div class="newUserInputs">
-        <div>
-          <label for="firstName">First Name</label><br>
-          <input class="nameBox" type="text" id="firstName" name="firstName" />
-        </div>
-        <div>
-          <label for="lastName">Last Name</label><br>
-          <input class="nameBox" type="text" id="lastName" name="lastName" />
-        </div>
-        <div>
-          <label for="email">Email</label><br>
-          <input class="newEmailBox" type="text" id="email" name="userEmail" />
-        </div>
-        <div>
-          <label for="phoneNumber">Phone Number</label><br>
-          <input class="phoneNumBox" type="text" id="phoneNumber" name="phoneNumber" />
-        </div>
-        <div>
-          <label for="address">Address</label><br>
-          <input class="addressBox" type="text" id="address" name="address" />
-        </div> 
-        <div>
-          <label for="password">Password </label><br>
-          <div class="password-container">
-            <input class="newPasswordBox" type="password" id="password" name="password" />
-            <i class="fa-solid fa-eye-slash" id="togglePassword"></i>
-          </div>
-        </div>
-        <div>
-          <label for="confirmPassword">Confirm Password</label><br>
-          <div class="confirmPassword-container">
-            <input class="confirmPasswordBox" type="password" id="confirmPassword" name="confirmPassword" />
-            <i class="fa-solid fa-eye-slash" id="toggleConfirmPassword"></i>
-        </div>
+        <ul>
+          <li>
+            <label for="firstName">First Name</label><br>
+            <input class="nameBox" type="text" id="firstName" name="firstName" />
+          </li>
+          <li>
+            <label for="lastName">Last Name</label><br>
+            <input class="nameBox" type="text" id="lastName" name="lastName" />
+          </li>
+          <li>
+            <label for="email">Email</label><br>
+            <input class="newEmailBox" type="text" id="email" name="userEmail" />
+          </li>
+          <li>
+            <label for="phoneNumber">Phone Number</label><br>
+            <input class="phoneNumBox" type="text" id="phoneNumber" name="phoneNumber" />
+          </li>
+          <li>
+            <label for="address">Address</label><br>
+            <input class="addressBox" type="text" id="address" name="address" />
+          </li>
+          <li>
+            <label for="password">Password</label><br>
+            <div class="password-container">
+              <input class="newPasswordBox" type="password" id="password" name="password" />
+              <i class="fa-solid fa-eye-slash" id="togglePassword"></i>
+            </div>
+          </li>
+          <li>
+            <label for="confirmPassword">Confirm Password</label><br>
+            <div class="confirmPassword-container">
+              <input class="confirmPasswordBox" type="password" id="confirmPassword" name="confirmPassword" />
+              <i class="fa-solid fa-eye-slash" id="toggleConfirmPassword"></i>
+            </div>
+          </li>
+        </ul>
         <div class="signin-link">
           <p>
             Already have an account? <a class="signIn" href="login.html">Login</a>
           </p>
         </div>
+      
         <div>
-          <button type="button" class="createAccountBox"><i class="fa-solid fa-lock"></i>  Create Account </button>
+          <button type="button" class="createAccountBox"><i class="fa-solid fa-lock"></i> Create Account</button>
         </div>
       </div>
-    </form>  
+    </form>      
   </div>
   <script src="js/signup.js"></script>
 </body>
