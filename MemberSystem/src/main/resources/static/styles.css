@@ -145,7 +145,7 @@ body {
   .signin-link{
     text-align: center; 
     margin-top: 1vh;
-    font-size: 2.2vh;
+    font-size: 2.1vh;
   }
 
   .createAccountBox {
@@ -272,7 +272,7 @@ body {
     align-items: center;
     flex-direction: column;
     height: 90vh;
-    background-color: gainsboro;
+    background-color: rgba(0,0,0,.05);
 }
 
 .new-user-box-header {
@@ -288,8 +288,8 @@ body {
 
 .forgotPassword-link{
     text-align: center;
-    margin-top:2vh;
-    font-size: 12px;
+    margin-top:2.2vh;
+    font-size: 14px;
 }
 
 .signup-from-login{
@@ -359,6 +359,11 @@ body {
 .forgotPasswordButton:hover{
     background-color: rgba(77, 184, 231, 0.798);
     cursor: pointer; 
+}
+
+.login-return{
+    margin-top: 2vh;
+    color: rgba(0,0,0,.45);
 }
 
 .index-container{
@@ -487,6 +492,7 @@ body {
     margin-top: 30vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 20px;
 }
 
