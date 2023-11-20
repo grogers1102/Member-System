@@ -110,7 +110,7 @@
 .content-portal{
     background: rgba(0, 0, 0, .05);
     grid-area: main-portal;
-
+    overflow: scroll;
     display: grid;
     padding: 20px;
     grid-template-columns: 1fr 1fr 1fr;
@@ -121,6 +121,10 @@
     "i1 i2 i3"
     "i4 i4 i4"
     "i4 i4 i4";
+}
+
+.content-portal::-webkit-scrollbar{
+    display: none;
 }
 
 .dashboardItem{
