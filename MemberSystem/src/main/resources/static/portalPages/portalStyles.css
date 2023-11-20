@@ -21,7 +21,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: 72px;
+    width: 74px;
     height: 100vh;
     padding: 0 .8rem;
     color: white;
@@ -82,7 +82,7 @@
     position: absolute;
     bottom: 0px;
     left: 0px;
-    width: 80%;
+    width: 100%;
 }
 
 /*-------------------------------*/
@@ -127,14 +127,15 @@
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-    align-items: flex-start;
-    padding: 25px;
+    padding: 2vh;
 }
 
 .dashboardItem:nth-child(1){ /*my account card*/
     grid-area: i1;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    padding: 2vh;
 }
 
 .dashboardItem:nth-child(2){ /*my attendance card*/
@@ -181,6 +182,60 @@
 .card-heading-link{
     color: rgb(0, 183, 255);
     text-decoration: none;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 1vw;
+    gap: 1vh;
+    position: relative;
+    top:-1vh;
+}
+
+.user-rank-container{
+    padding-top: 2vh;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    display: flex;
+    gap: 3vh;
+    align-items: baseline;
+    font-size: 15px;
+    position: relative;
+    top: -10px;
+}
+
+.user-rank-header{
+    font-weight: 500;
+}
+
+.user-rank{
+    color: green; /*color depends on rank*/
+    font-size: 30px;
+}
+
+.brief-rank-requirement-container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 10px;
+    border-width: 1px;
+    background-color:rgb(232, 242, 252);
+    border-radius: 10px;
+}
+
+.requirement-description{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.next-rank-header{
+    font-weight: 600;
+}
+
+.list-rank-requirements{
+    padding: 0 2.5vw;
+    font-size: 20px;
 }
 
 .signInImage{
