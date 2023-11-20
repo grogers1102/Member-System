@@ -18,28 +18,28 @@
 
 .sidebar{
     position: sticky;
-    flex-direction: column;
     top: 0;
     left: 0;
     bottom: 0;
     align-self: flex-start;
-    width: 5.5vw;
-    height: 100%;
+    width: 72px;
+    height: 100vh;
     padding: 0 .8rem;
     color: white;
-    transition: all 0.15s;
+    overflow: hidden;
+    transition: all 0.3s;
     background: rgba(0, 0, 0, 0.65);
 }
 
 .sidebar:hover{
-    width: 14vw;
+    width: 220px;
     transition: 0.3s;
 }
 
 .logo{
-    height: 80px;
+    width: 80px;
     position: relative;
-    left: -15px;
+    left: -17px;
 }
 
 .menu{
@@ -83,7 +83,7 @@
     position: absolute;
     bottom: 0px;
     left: 0px;
-    width: 100%;
+    width: 80%;
 }
 
 /*-------------------------------*/
@@ -103,7 +103,6 @@
     color: rgba(0, 0, 0, 0.8);
     grid-area: header-portal;
     text-indent: 30px;
-    /*font-style: "garamond-premier-pro", serif;*/
     font-size: 30px;
     position: relative;
     padding-top: 25px;
@@ -121,8 +120,8 @@
 
     grid-template-areas:
     "i1 i2 i3"
-    "i4 i6 i6"
-    "i5 i6 i6";
+    "i4 i4 i4"
+    "i4 i4 i4";
 }
 
 .dashboardItem{
@@ -160,19 +159,19 @@
     align-items: center;
 }
 
-.dashboardItem:nth-child(5){ /*my branch card*/
+/* .dashboardItem:nth-child(5){ /*my branch card
     grid-area: i5;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.dashboardItem:nth-child(6){ /*my polls card*/
+.dashboardItem:nth-child(6){ /*my polls card
     grid-area: i6;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 .cardHeading{
     position: relative;
@@ -202,10 +201,10 @@
     font-size: 20px;
 }
 
-@media(max-width: 1000px){
+/* @media(max-width: 1000px){
     .content-portal{
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(3, 300px);
+        grid-template-rows: 1fr 1fr;
         gap: 20px;
     
         grid-template-areas:
@@ -213,9 +212,21 @@
         "i3 i4"
         "i5 i6";
     }
-}
+} */
 
 @media(max-width: 850px){
+    .content-portal{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 20px;
+    
+        grid-template-areas:
+        "i1 i2"
+        "i3 i4";
+    }
+}
+
+/* @media(max-width: 850px){
     .content-portal{
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 300px);
@@ -228,6 +239,20 @@
         "i4"
         "i5"
         "i6";
+    }
+} */
+
+@media(max-width: 650px){
+    .content-portal{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        gap: 20px;
+    
+        grid-template-areas:
+        "i1"
+        "i2"
+        "i3"
+        "i4";
     }
 }
 
