@@ -578,8 +578,8 @@ body {
 .about-members-container{
     display: flex;
     align-items: center;
-    padding: 60px;
-    gap: 80px;
+    padding: 2vw;
+    gap: 5vw;
 }
 
 .member-container-header{
