@@ -21,7 +21,6 @@
     top: 0;
     left: 0;
     bottom: 0;
-    align-self: flex-start;
     width: 72px;
     height: 100vh;
     padding: 0 .8rem;
@@ -128,27 +127,26 @@
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+    align-items: flex-start;
+    padding: 25px;
 }
 
 .dashboardItem:nth-child(1){ /*my account card*/
     grid-area: i1;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .dashboardItem:nth-child(2){ /*my attendance card*/
     grid-area: i2;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .dashboardItem:nth-child(3){ /*my Rank card*/
     grid-area: i3;
     display: flex;
     flex-direction: column;
-    align-items: center;
 
 }
 
@@ -156,7 +154,6 @@
     grid-area: i4;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 /* .dashboardItem:nth-child(5){ /*my branch card
@@ -177,9 +174,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin: 15px 15px 0 15px;
     width: 100%;
-    padding-left: 25px; 
     font-size: 25px;
 }
 
@@ -254,6 +249,16 @@
         "i3"
         "i4";
     }
+}
+
+.current-events-container{
+    display: flex;
+    padding: 10px 15px;
+}
+
+.current-events-header{
+    font-weight: 200;
+    font-size: 20px;
 }
 
 /*------------view subordinates page-----------*/
