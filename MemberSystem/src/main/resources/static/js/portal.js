@@ -36,7 +36,7 @@ function displayAccount(){
             .then(userOBJ => {
                 const statementUpdater = userOBJ.firstName;
                 document.getElementsByTagName('header')[0].innerHTML = `Welcome, ${statementUpdater}`;
-
+                displayRank(userOBJ.rank)
                 displayBranchIcon(userOBJ);
             })
             .catch(error => {
@@ -51,6 +51,53 @@ function logoutEventListener(){
     });
 }
 
+function displayRank(rank){
+    document.querySelector('.user-rank').textContent= rank.description
+ 
+ 
+    const openModalButtons = document.querySelectorAll('[data-modal-target]')
+    const closeModalButtons = document.querySelectorAll('[data-close-button]')
+    const overlay = document.getElementById('overlay')
+ 
+ 
+    overlay.addEventListener('click', () => {
+        const modals = document.querySelectorAll('.rank-modal.active')
+        modals.forEach(modal => {
+            closeModal(modal)
+        })
+    })
+ 
+ 
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = document.querySelector(button.dataset.modalTarget)
+            openModal(modal)
+        })
+    })
+ 
+ 
+    closeModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.rank-modal')
+            closeModal(modal)
+        })
+    })
+ }
+ 
+ 
+ function openModal(modal) {
+    if (modal == null) return
+    modal.classList.add('active')
+    overlay.classList.add('active')
+ }
+ 
+ 
+ function closeModal(modal) {
+    if (modal == null) return
+    modal.classList.remove('active')
+    overlay.classList.remove('active')
+ }
+ 
 function logout() {
     const token = localStorage.getItem('token');
     const refreshToken = localStorage.getItem('refreshToken');
