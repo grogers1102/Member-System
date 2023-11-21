@@ -446,7 +446,7 @@ body {
     justify-content: center;
     padding: 60px;
     gap: -20px;
-    height: auto;
+    height: 90vh;
 }
 
 .signin-container{

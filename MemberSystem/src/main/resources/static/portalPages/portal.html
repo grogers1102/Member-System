@@ -85,9 +85,17 @@
           </h1>
         </div>  -->
         <div class="dashboardItem">
-          <h1 class="cardHeading">
-            <a href="rankPage.html" class="card-heading-link">My Rank&nbsp;&nbsp; ></a>
-          </h1>
+          <button class="cardHeading" data-modal-target="#rank-modal">My Rank &nbsp;&nbsp;></button>
+          <div class="rank-modal" id="rank-modal">
+            <div class="rank-modal-header">
+              Rank: Rankhere
+              <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="rank-modal-body">
+              Bridging the significant gap between Rank 0 and Rank 2, Rank 1 mandates that stewards attend three events per week as outlined in their program, designated by the leaders of the local branch. Advancement to Rank 1 is contingent upon successful completion of Rank 0, as determined by a local branch leader. This phase focuses on applying the diligence instilled during Rank 0, bringing stewards into closer association with seasoned members. Rank 1 often involves rigorous assessment by higher-ranking members to refine the stewards' character.
+            </div>
+          </div>
+          <div id="overlay"></div>
           <div class="card-body">
             <div class="user-rank-container">
               <h2 class="user-rank-header">
