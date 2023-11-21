@@ -438,8 +438,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 60px;
-    gap: -20px;
+    padding: 0px 60px;
+    gap: 20px;
     height: auto;
 }
 
@@ -572,7 +572,7 @@ body {
 .about-members-container{
     display: flex;
     align-items: center;
-    padding: 2vw;
+    padding: 60px;
     gap: 5vw;
 }
 
