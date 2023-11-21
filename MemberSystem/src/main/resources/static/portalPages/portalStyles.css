@@ -123,10 +123,6 @@
     "i4 i4 i4";
 }
 
-.content-portal::-webkit-scrollbar{
-    display: none;
-}
-
 .dashboardItem{
     background: white;
     border-radius: 10px;
@@ -222,9 +218,8 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    padding: 10px;
-    border-width: 1px;
-    background-color:rgb(232, 242, 252);
+    padding: 2vh 15px;
+    background-color:rgba(48, 196, 254, 0.162);
     border-radius: 10px;
 }
 
@@ -310,14 +305,50 @@
     }
 }
 
-.current-events-container{
+.card-body-attendance{
     display: flex;
-    padding: 10px 15px;
+    padding: 2.5vh 1vw;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    position: relative;
+    gap: 12vw;
 }
 
+.current-events-container{
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 1vw;
+    border-radius: 10px;
+    /* background-color:rgb(232, 246, 252); */
+    background-color:rgba(48, 196, 254, 0.162);
+    width: min-content;
+}
+.current-event-info-container{
+    display: flex;
+    align-items: center;
+    padding: 0px 2vw;
+    gap: 7vw;
+}
+
+.event-date-time-container{
+    display: flex;
+    gap: 3vw;
+}
 .current-events-header{
     font-weight: 200;
     font-size: 20px;
+}
+
+.sign-in-container{
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+.attend-event-p{
+    font-size: 30px;
+    width: 100px;
+    color:rgb(0, 183, 255);
 }
 
 /*------------view subordinates page-----------*/
