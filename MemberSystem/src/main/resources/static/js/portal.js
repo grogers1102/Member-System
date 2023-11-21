@@ -52,8 +52,14 @@ function logoutEventListener(){
 }
 
 function displayRank(rank){
-    document.querySelector('.user-rank').textContent= rank.description
- 
+    
+    try{
+        document.querySelector('.user-rank').textContent = rank.description
+    }catch (error){
+        return;
+    }
+
+    document.querySelector('.requirement-description').textContent = `Days Required (Weekly): ${rank.daysRequired}`
  
     const openModalButtons = document.querySelectorAll('[data-modal-target]')
     const closeModalButtons = document.querySelectorAll('[data-close-button]')
@@ -72,6 +78,8 @@ function displayRank(rank){
         button.addEventListener('click', () => {
             const modal = document.querySelector(button.dataset.modalTarget)
             openModal(modal)
+            document.querySelector('.rank-modal-header').firstChild.textContent = `Rank: ${rank.description}`
+            document.querySelector('.rank-modal-body').textContent = rank.requirements
         })
     })
  

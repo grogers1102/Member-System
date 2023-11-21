@@ -243,8 +243,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid black;
- 
- 
+    color: rgb(0, 183, 255)
  }
  
  
@@ -278,6 +277,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 9;
     pointer-events: none;
  }
  
@@ -306,6 +306,11 @@
 }
 
 .requirement-description{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.requirement-standing{
     font-weight: 300;
     font-size: 20px;
 }
@@ -514,7 +519,7 @@
 }
 
 .subordinate-box{
-    border-radius: 10px; /* Adjust radius for softer edges */
+    border-radius: 5px; /* Adjust radius for softer edges */
     border: 1px solid gray; /* Sets a 1px solid gray border */
 }
 
@@ -522,6 +527,7 @@
     text-align: center;
     background-color: rgba(0, 183, 255, 0.25);
     color: rgb(0, 183, 255);
+    border-radius: 5px;
 }
 
 .subordinate-innerbox{
