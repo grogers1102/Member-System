@@ -263,6 +263,7 @@ body {
 
 .loginBox{
     width: auto;
+    text-align: center;
     padding: 15px;
     border-radius: 8px; 
     border: 1px solid #ccc; 
@@ -631,5 +632,18 @@ body {
 
 .layer1 {
     background-image: url('./images/layered-waves-haikei.svg');
+}
+
+.wave {
+    aspect-ratio: 960/300;
+    margin-bottom: -25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.layer2 {
+    background-image: url('./images/wave-haikei.svg');
 }
 
