@@ -1028,3 +1028,119 @@
   }
 /*  ---------- myAttendance Page end---------- */
 
+/*  ---------- editProfile Page start---------- */
+
+.edit-container{
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 25vw;
+    margin-top: 10vh;
+}
+
+.edit-header{
+    margin-right: auto;
+    margin-bottom: 5vh;
+}
+
+.edit-name,
+.edit-contact{
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    gap: 5vw;
+}
+
+.edit-name div,
+.edit-contact div{
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1vh;
+}
+
+
+
+.edit-name input,
+.edit-contact input
+{
+    border-radius: 2px;
+    border: .5px solid black;
+    width: 20vw; 
+    height: 4vh;
+    padding: 10px;
+}
+
+.edit-name label,
+.edit-contact label {
+    margin-right: auto;
+}
+ 
+.edit-address input, 
+.edit-password input,
+.edit-new-password input,
+.confirm-new-password input{
+    border-radius: 2px;
+    border: .5px solid black; 
+    width: 45vw;
+    height: 4vh;
+    padding: 10px
+}
+
+.edit-address, 
+.edit-password,
+.edit-new-password,
+.confirm-new-password {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1vh;
+}
+
+.edit-button{
+    margin-top: 2vh;
+    width: 16vw;
+    display: flex;
+    flex-direction: row;
+    gap: 2.5vw;
+}
+
+.edit-cancel{
+    cursor: pointer;
+    width: 14vw;
+    height: 5vh;
+    padding: 10px;
+    background: none;
+    border: 1px solid rgb(0, 183, 255);
+    color: rgb(0, 183, 255);
+}
+
+.edit-cancel:hover{
+    background: rgb(0, 183, 255);
+    border: 1px solid rgba(255, 89, 0, 0.798);
+    color: white;
+}
+
+.edit-save{
+    cursor: pointer;
+    width: 14vw;
+    height: 5vh;
+    padding: 10px;
+    color: white;
+    background:rgb(0, 183, 255);
+}
+
+.edit-save:hover{
+    background:rgba(255, 89, 0, 0.798);
+}
+
+
+
+
+

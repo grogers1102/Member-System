@@ -1,4 +1,3 @@
-<!--Start copy for each HTML page-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -72,53 +71,57 @@
         </li>
       </ul>
     </div>
-    <div class="main-view-account">
-      <header class="header-account">Profile</header>
-      <main class="user-content">
-        <div class="user-info-container">
-          <div class="user-name-container">
-            <h1 class="user-name">
-              UserNameHere
-              <h2 class="user-id">IDHere</h2>
-              <h2 class="user-branch">BranchHere</h2>
+    <div class="edit-container">
+        <div class="edit-header">
+            <h1>
+                Edit Profile
             </h1>
-          </div>
-          <div class="user-contact-container">
-            <h1 class="user-contact">
-              Contact Information:
-              <h2 class="user-phone-number">PhoneNumberHere</h2>
-              <h2 class="user-address">AddressHere</h2>
-              <h2 class="user-email">EmailHere</h2>
-            </h1>
-          </div>
-          <div class="user-supervisor-container">
-            <h1 class="user-supervisor-header">
-              Supervisor:
-              <h2 class="user-supervisor">SuperiorHere</h2>
-            </h1>
-          </div>
-          <div class="user-amnesty-days-container">
-            <h1 class="user-amnesty-days-header">
-              Amnesty Days:
-              <h2 class="user-amnesty-days">AmnestyDaysHere</h2>
-            </h1>
-          </div>
         </div>
-        <div class="user-extra-info">
-          <div class="user-standing-container">
-            <h1 class="user-organization">Organization Details:</h1>
-            <h2 class="user-standing">UserStandingHere</h2>
-            <h2 class="user-social-score">SocialScoreHere</h2>
-            <h2 class="user-date">userDateHere</h2>
-          </div>
-          <div class="user-poll-container">
-            <h1 class="user-polls">Polls</h1></h1>
-          </div>
-          <a href="editProfile.html" class="profile-edit-button">Edit</a>
+        <form class="edit-name">
+            <div>
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name">
+            </div>
+            <div>
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name">
+            </div>
+        </form>
+        <form>
+            <div class="edit-contact">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+            </div>
+        
+            <div class="edit-address">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address">
+            </div>
+            <div class="edit-password">
+                <label for="current-password">Current Password</label>
+                <input type="password" id="current-password" name="current-password">
+            </div>
+        
+            <div class="edit-new-password">
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" name="new-password">
+            </div>
+        
+            <div class="confirm-new-password">
+                <label for="confirm-password">Confirm New Password</label>
+                <input type="password" id="confirm-password" name="confirm-password">
+            </div>
+        </form>        
+        <div class="edit-button">
+            <button class="edit-cancel" onclick="window.location.href='accountPage.html'">Cancel</button>
+            <button class="edit-save">Save</button>
         </div>
-      </main>
     </div>
-    <script src="../js/portal.js"></script>
-    <script src="../js/account.js"></script>
-  </body>
+</body>
 </html>

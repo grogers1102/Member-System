@@ -574,7 +574,9 @@ body {
     align-items: center;
     padding: 60px;
     gap: 5vw;
+
 }
+
 
 .member-container-header{
     text-align: center;
@@ -615,5 +617,19 @@ body {
 
 .member-intro-paragraph{
     font-size: 20px;
+}
+
+.divider {
+    aspect-ratio: 960/300;
+    margin-top: -25%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+
+.layer1 {
+    background-image: url('./images/layered-waves-haikei.svg');
 }
 
