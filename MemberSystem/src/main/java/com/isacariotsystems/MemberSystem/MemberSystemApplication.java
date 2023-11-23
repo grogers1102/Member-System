@@ -72,14 +72,14 @@ public class MemberSystemApplication implements CommandLineRunner {
             "Virtuoso"
         };
         String[] requirements = {
-            "Rank 0 necessitates that stewards attend at least once weekly, demonstrating their eagerness to learn and commitment to becoming an integral part of the community. This initial step is pivotal for all members, marking a significant period in a steward's journey towards self-discovery and greatness. This stage is crucial for unlocking further opportunities within the organization, signaling the steward's intentions to the leadership.",
-            "Bridging the significant gap between Rank 0 and Rank 2, Rank 1 mandates that stewards attend three events per week as outlined in their program, designated by the leaders of the local branch. Advancement to Rank 1 is contingent upon successful completion of Rank 0, as determined by a local branch leader. This phase focuses on applying the diligence instilled during Rank 0, bringing stewards into closer association with seasoned members. Rank 1 often involves rigorous assessment by higher-ranking members to refine the stewards' character.",
-            "Rank 2 represents a decisive commitment point. While members are always free to depart, fulfilling this rank's criteria requires adherence to the program established in Rank 1 and earning a reputation for trustworthiness and reliability as judged by a local branch leader. Requirements include attending five days a week.",
-            "Rank 3's prerequisites may differ based on the demonstrated skill set and diligence in prior ranks. Rank 3 stewards form the lower echelon of their local school's high leadership, with a commitment of five days per week.",
-            "Similar to Rank 3, Rank 4's requirements vary according to the steward's skills and past diligence. Rank 4 stewards take on the role of local branch leaders and are expected to be present seven days a week.",
-            "The criteria for Rank 5 also depend on previously exhibited skills and diligence. Typically, Rank 5 stewards function as regional leaders, overseeing multiple branches, with a seven-day-a-week commitment.",
-            "As with previous ranks, Rank 6's requirements are contingent on the steward's skill set and demonstrated diligence. Rank 6 stewards often assist Rank 7 stewards in organizing major events and play a pivotal role in the organization. Their commitment is seven days a week.",
-            "The prerequisites for Rank 7 vary based on skill and diligence shown in previous ranks. Rank 7 stewards occupy the most influential and critical position in the organization, serving as its head and brain. They are required to be available seven days a week."
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
         };
         int[] daysRequired = {1, 3, 5, 5, 7, 7, 7, 7};
         for (int i = 0; i < descriptions.length; i++) {
