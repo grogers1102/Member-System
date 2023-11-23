@@ -38,12 +38,6 @@ function displayMenu(){
           <span>Attendance</span>
         </a>
       </li>
-      <li>
-        <a href="rankPage.html">
-          <i class="fa-solid fa-ranking-star"></i>
-          <span>Rank</span>
-        </a>
-      </li>
       <li class="log-out">
         <a href="../index.html">
           <i class="fa-solid fa-right-from-bracket"></i>

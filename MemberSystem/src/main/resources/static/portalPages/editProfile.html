@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="HTML, CSS" />
+    <meta
+      name="description"
+      content="Iscariot Systems: Empower Your Organization with Comprehensive Member 
+              Tracking, Values Alignment, and Enhanced Community Building. Transform the 
+              way you manage your community, fostering trust, accountability, and 
+              efficient operations."
+    />
+    <link rel="stylesheet" href="portalStyles.css" />
+    <link rel="icon" href="images/LittleLogoIS.svg" type="image/png" />
+    <title>IscariotSystems</title>
+    <link rel="stylesheet" href="https://use.typekit.net/qvl4pug.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/qvl4pug.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/vzh4fkq.css" />
+    <script
+      src="https://kit.fontawesome.com/fc87db4df0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <!--end copy for each HTML files-->
+  <body class="portal">
+    <div class="sidebar">
+      <img src="../images/BETTERLogo.svg" class="logo" />
+      <ul class="menu">
+        <li>
+          <a href="portal.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="accountPage.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Account</span>
+          </a>
+        </li>
+        <li>
+          <a href="viewSubordinates.html">
+            <i class="fa-solid fa-person"></i>
+            <span>Subordinates</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="#">
+            <i class="fa-solid fa-square-poll-horizontal"></i>
+            <span>Polls</span>
+          </a>
+        </li> -->
+        <li>
+          <a href="myAttendance.html">
+            <i class="fa-solid fa-square-poll-horizontal"></i>
+            <span>Attendance</span>
+          </a>
+        </li>
+        <li>
+          <a href="branchPage.html">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Branch</span>
+          </a>
+        </li>
+        <li class="log-out">
+          <a href="../index.html">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Log Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="edit-container">
+        <div class="edit-header">
+            <h1>
+                Edit Profile
+            </h1>
+        </div>
+        <form class="edit-name">
+            <div>
+                <label for="first-name">First Name</label>
+                <input type="text" id="firstName" name="first-name">
+            </div>
+            <div>
+                <label for="last-name">Last Name</label>
+                <input type="text" id="lastName" name="last-name">
+            </div>
+        </form>
+        <form>
+            <div class="edit-contact">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phone">
+                </div>
+            </div>
+
+            <div class="edit-address">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address">
+            </div>
+            <div class="edit-password">
+                <label for="current-password">Current Password</label>
+                <input type="password" id="current-password" name="current-password">
+            </div>
+
+            <div class="edit-new-password">
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" name="new-password">
+            </div>
+
+            <div class="confirm-new-password">
+                <label for="confirm-password">Confirm New Password</label>
+                <input type="password" id="confirm-password" name="confirm-password">
+            </div>
+        </form>        
+        <div class="edit-button">
+            <button class="edit-cancel" onclick="window.location.href='accountPage.html'">Cancel</button>
+            <button class="edit-save">Save</button>
+        </div>
+    </div>
+    <script src="../js/editProfile.js"></script>
+</body>
+</html>

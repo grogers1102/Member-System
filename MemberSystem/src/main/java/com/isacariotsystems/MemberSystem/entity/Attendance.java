@@ -34,9 +34,6 @@ public class Attendance {
     @JoinColumn(name = "userId", referencedColumnName = "userId", insertable = false, updatable = false)
     private User user;
 
-    private boolean isAbsent;
-
     private boolean isConfirmed;
-
 }
 

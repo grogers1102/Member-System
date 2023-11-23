@@ -1,12 +1,16 @@
 package com.isacariotsystems.MemberSystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.isacariotsystems.MemberSystem.entity.Attendance;
+import com.isacariotsystems.MemberSystem.entity.AttendanceID;
 import com.isacariotsystems.MemberSystem.service.AttendanceService;
 
 /*
@@ -29,5 +33,11 @@ public class AttendanceController {
         attendanceService.saveAttendance(attendance);
 
         return "Successfully Added Attendance";
+    }
+
+    @PatchMapping("/{userId}")
+    public Attendance updateAttendanceById(@PathVariable AttendanceID attendanceId, @RequestBody JsonNode requestBody) {
+        boolean isConfirmed = requestBody.get("isConfirmed").asBoolean();
+        return attendanceService.updateAttendanceIsConfirmed(attendanceId, isConfirmed);
     }
 }
