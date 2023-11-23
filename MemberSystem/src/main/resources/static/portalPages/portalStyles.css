@@ -122,7 +122,7 @@
     gap: 20px;
 
     grid-template-areas:
-    "i1 i2 i3"
+    "i1 i3 i2"
     "i4 i4 i4"
     "i4 i4 i4";
 }
@@ -218,8 +218,6 @@
     position: relative;
     top: -10px;
 }
-
-
 
 .rank-modal {
     position: fixed;
@@ -772,10 +770,16 @@
     font-size: 22px;
     color: rgb(0, 183, 255);
 }
+.social-card-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
 
 .user-social-score{
-    font-size: 22px;
-    color: rgb(0, 183, 255);    
+    text-align: center;
+    font-weight: 600;   
 }
 
 /*------------view ranks page-----------*/

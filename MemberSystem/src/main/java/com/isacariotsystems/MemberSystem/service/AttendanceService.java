@@ -27,4 +27,6 @@ public interface AttendanceService {
 
     public boolean findIsConfirmedById(AttendanceID attendanceId);
 
+    public Attendance updateAttendanceIsConfirmed(AttendanceID attendanceId, boolean isConfirmed);
+
 }

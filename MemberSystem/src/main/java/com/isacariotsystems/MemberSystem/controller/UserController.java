@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.isacariotsystems.MemberSystem.entity.User;
 import com.isacariotsystems.MemberSystem.service.UserService;
 
@@ -94,5 +96,35 @@ public class UserController {
     public Optional<List<User>> findUsersByDate(
             @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return userService.findUsersByDate(date);
+    }
+
+    @PatchMapping("/{userId}/firstName")
+    public User updateUserByFirstName(@PathVariable Long userId, @RequestBody JsonNode requestBody) {
+        String firstName = requestBody.get("firstName").asText();
+        return userService.updateUserFirstName(userId, firstName);
+    }
+
+    @PatchMapping("/{userId}/lastName")
+    public User updateUserByLastName(@PathVariable Long userId, @RequestBody JsonNode requestBody) {
+        String lastName = requestBody.get("lastName").asText();
+        return userService.updateUserFirstName(userId, lastName);
+    }
+
+    @PatchMapping("/{userId}/email")
+    public User updateUserByEmail(@PathVariable Long userId, @RequestBody JsonNode requestBody) {
+        String email = requestBody.get("email").asText();
+        return userService.updateUserFirstName(userId, email);
+    }
+
+    @PatchMapping("/{userId}/address")
+    public User updateUserByAddress(@PathVariable Long userId, @RequestBody JsonNode requestBody) {
+        String address = requestBody.get("address").asText();
+        return userService.updateUserFirstName(userId, address);
+    }
+
+    @PatchMapping("/{userId}/phoneNumber")
+    public User updateUserByPhoneNumber(@PathVariable Long userId, @RequestBody JsonNode requestBody) {
+        String phoneNumber = requestBody.get("phoneNumber").asText();
+        return userService.updateUserPhoneNumber(userId, phoneNumber);
     }
 }

@@ -73,4 +73,17 @@ public class AttendanceServiceImplementation implements AttendanceService{
     public boolean findIsConfirmedById(AttendanceID attendanceId){
         return attendanceRepository.findIsConfirmedByAttendanceID(attendanceId);
     }
+
+    @Override
+    public Attendance updateAttendanceIsConfirmed(AttendanceID attendanceId, boolean isConfirmed){
+        if (attendanceRepository.existsById(attendanceId)) {
+            Attendance attendance = attendanceRepository.findById(attendanceId).orElse(null);
+            attendance.setConfirmed(isConfirmed);
+            return attendanceRepository.save(attendance);
+        }else{
+            throw new NoSuchElementException("User " + attendanceId + " not found");
+        }
+    }
+        
+
 }
