@@ -1,13 +1,80 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     if (isTokenValid()){
-
         displayMenu();
         displayAccount();
         logoutEventListener();
+        
+        checkIfSignedInAlready();
     }
 });
 
+function checkIfSignedInAlready(){
+
+    const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adding 1 to month since it's zero-based
+        const day = String(currentDate.getDate()).padStart(2, '0');
+
+        const formattedDate = `${year}-${month}-${day}`;
+        const userId = localStorage.getItem("userId");
+        const isConfirmed = false;
+
+        params = {userId, date, isConfirmed}
+        
+        const urlNeededForChecking = `api/v1/attendance?${formattedDate}&userId='${userId}`;
+        const response =  fetch(urlNeededForChecking, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+    });
+
+    if (response == null) {
+        signInButtonEventListener();
+    } else {
+        const signInButton = document.getElementById("sign-in-button-portal");
+        signInButton.disabled = true;
+    }
+}
+
+function signInButtonEventListener(){
+    const signInButtonOnPortal = document.getElementById("sign-in-button-portal");
+    signInButtonOnPortal.addEventListener("click", (event) => {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adding 1 to month since it's zero-based
+        const day = String(currentDate.getDate()).padStart(2, '0');
+
+        const formattedDate = `${year}/${month}/${day}`;
+        const userID = localStorage.getItem("userId");
+        makeAttendanceUpdate(formattedDate, userID);
+    });
+}
+ function makeAttendanceUpdate(attendanceDate, userID){
+
+    const urlNeeded = "api/v1/attendance/add";
+
+    try {
+        const response =  fetch(urlNeeded, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userID,attendanceDate),
+        });
+
+        if (response.ok) {
+            alert("Successfully Signed In!");
+
+        } else {
+            throw new Error('There was a problem with the request.');
+        }
+    } catch (error) {
+        alert(error.message);
+    }
+}
 function displayMenu(){
     const menuContainer = document.getElementById("portalID");
     const menuHTML = 
@@ -38,6 +105,7 @@ function displayMenu(){
           <span>Attendance</span>
         </a>
       </li>
+      
       <li class="log-out">
         <a href="../index.html">
           <i class="fa-solid fa-right-from-bracket"></i>

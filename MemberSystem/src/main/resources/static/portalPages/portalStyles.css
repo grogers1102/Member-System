@@ -8,8 +8,10 @@
 }
 
 
-/*-------------------------------*/
-/*Menu section*/
+
+
+
+/*------------Menu section------------*/
 
 .portal{
     display: flex;
@@ -85,8 +87,10 @@
     width: 100%;
 }
 
-/*-------------------------------*/
-/*Content section*/
+/*---------menu-section-end----------------------*/
+
+
+/*------portal page begin-----*/
 .main-portal{
     height: 100vh;
     width: 100vw;
@@ -322,6 +326,15 @@
     font-size: 20px;
 }
 
+.sign-in{
+
+    background: transparent;
+}
+.sign-in:hover{
+    cursor: pointer;
+
+}
+
 .signInImage{
     height: 60px;
     width: 60px;
@@ -436,6 +449,15 @@
     color:rgb(0, 183, 255);
 }
 
+.weekdays-submit-button{
+    display:flex;
+    
+}
+.weekday-button{
+    padding-left: 10px;
+}
+
+/* ----------end portal page ------------*/
 /*------------view subordinates page-----------*/
 
 .main-view-subordinates{
@@ -962,8 +984,8 @@
 /*  ---------- myAttendance Page Start---------- */
 
 .myAttendance-body{
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -985,9 +1007,9 @@
     padding: 20px;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
 
 }
 
@@ -997,15 +1019,31 @@
     justify-content: space-evenly;
     align-items: center;
 }
-.day-of-week{
+.arrow-button-portal{
+    background: transparent;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 40px;
+
+
+}
+.arrow-button-portal:hover{
+    cursor: pointer;
+    
 
 }
 
 .boxes-myAttendance{
     padding-top: 10px;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.boxes-inside-myAttendance{
+    display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
 }
 .submitButton-myAttendance{
