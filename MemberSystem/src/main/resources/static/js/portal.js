@@ -17,16 +17,18 @@ function checkIfSignedInAlready(){
         const day = String(currentDate.getDate()).padStart(2, '0');
 
         const formattedDate = `${year}-${month}-${day}`;
-        const userID = localStorage.getItem("userId");
+        const userId = localStorage.getItem("userId");
+        const isConfirmed = false;
 
-        //attendance?date=2023-11-22&userId=123
-        const urlNeededForChecking = "api/v1/attendance?'${formattedDate}'&userId='${userID}'";
+        params = {userId, date, isConfirmed}
+        
+        const urlNeededForChecking = `api/v1/attendance?${formattedDate}&userId='${userId}`;
         const response =  fetch(urlNeededForChecking, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(userID,attendanceDate),
+        body: JSON.stringify(params),
     });
 
     if (response == null) {
