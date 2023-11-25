@@ -12,6 +12,8 @@ import com.isacariotsystems.MemberSystem.DTO.RefreshTokenRequest;
 import com.isacariotsystems.MemberSystem.DTO.SigninRequest;
 import com.isacariotsystems.MemberSystem.DTO.SignupRequest;
 import com.isacariotsystems.MemberSystem.entity.User;
+import com.isacariotsystems.MemberSystem.entity.Branch;
+import com.isacariotsystems.MemberSystem.entity.Rank;
 import com.isacariotsystems.MemberSystem.entity.Role;
 import com.isacariotsystems.MemberSystem.repository.UserRepository;
 
@@ -26,6 +28,12 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
     private final PasswordEncoder passwordEncoder;
 
     private final AuthenticationManager authenticationManager;
+
+    private final BranchService branchService;
+
+    private final RankService rankService;
+
+    private final UserService userService;
 
     private final JWTService jwtService;
 
@@ -42,6 +50,18 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
         user.setPhoneNumber(signupRequest.getPhoneNumber());
         user.setRole(Role.USER);
         user.setPassword(passwordEncoder.encode(password));
+
+        Branch branch = branchService.findBranchById(1L).orElse(null);
+        user.setLocalBranch(branch);
+
+        Rank rank = rankService.findRankById(1L).orElse(null);
+        user.setRank(rank);
+
+        user.setSocialScore(0.1);
+        
+        User superior = userService.findUserById(1L).orElse(null);
+        user.setSuperior(superior);
+
 
         userRepository.save(user); 
         SigninRequest signin = new SigninRequest();

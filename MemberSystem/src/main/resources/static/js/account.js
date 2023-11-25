@@ -52,8 +52,7 @@ async function displayAccountDetails() {
         //document.querySelector('.user-standing').textContent = `Rank: ${rank.rankId}`;
         document.querySelector('.user-social-score').textContent = `Social Score: ${socialScore}`;
         document.querySelector('.user-standing').textContent = `Current Standing: ${await calculateUserStanding(socialScore)}`;
-        document.querySelector('.user-date').textContent = `Date Joined: ${invitationDate}`;
-
+        document.querySelector('.user-date').textContent = `Date Joined: ${invitationDate}`;;
     } catch (error) {
         throw new Error(error.message);
     }
@@ -74,4 +73,5 @@ async function calculateUserStanding(socialScore){
         return 'Dangerous'
     }
 }
+
 

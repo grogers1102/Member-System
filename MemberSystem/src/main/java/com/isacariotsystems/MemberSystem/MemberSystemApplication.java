@@ -9,10 +9,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.isacariotsystems.MemberSystem.entity.User;
+import com.isacariotsystems.MemberSystem.entity.Branch;
 import com.isacariotsystems.MemberSystem.entity.Rank;
 import com.isacariotsystems.MemberSystem.entity.Role;
+import com.isacariotsystems.MemberSystem.repository.BranchRepository;
 import com.isacariotsystems.MemberSystem.repository.RankRepository;
 import com.isacariotsystems.MemberSystem.repository.UserRepository;
+import com.isacariotsystems.MemberSystem.service.UserService;
 
 @SpringBootApplication
 public class MemberSystemApplication implements CommandLineRunner {
@@ -22,6 +25,12 @@ public class MemberSystemApplication implements CommandLineRunner {
 
     @Autowired
     private RankRepository rankRepository;
+
+    @Autowired
+    private BranchRepository branchRepository;
+
+    @Autowired
+    private UserService userService;
 
     public static void main(String[] args) {
         SpringApplication.run(MemberSystemApplication.class, args);
@@ -89,6 +98,27 @@ public class MemberSystemApplication implements CommandLineRunner {
             rank.setDaysRequired(daysRequired[i]);
             rankRepository.save(rank);
         }
+    }
+
+    public void makeBranch(){
+
+        Optional<Branch> branchCheck = branchRepository.findById(1L);
+
+        if (branchCheck.isPresent()){
+            return;
+        }
+
+        Branch branch = new Branch();
+
+        User admin = userService.findUserById(1L).orElse(null);
+
+        branch.setManager(admin);
+        branch.setName("Los Angeles");
+        branch.setAddress("1234 Hollywood Blvd Los Angeles, CA");
+        
+        branchRepository.save(branch);
+
+        admin.setLocalBranch(branch);
     }
 
 }

@@ -72,7 +72,7 @@ public class User implements UserDetails {
 
     private String address;
 
-    private float socialScore; 
+    private double socialScore; 
 
     private String firstName;
 

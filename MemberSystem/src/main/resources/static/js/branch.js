@@ -1,7 +1,19 @@
+let users;
+
+function clickPress(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); 
+        const searchedUser = document.querySelector('search-branch-members-box');
+        clearUserDetails();
+        displayUserDetailsBySearch(searchedUser);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async function () {
     try {
         // await isTokenValid();
         await displayBranchDetails();
+        setupSearchEventListener(); 
     } catch (error) {
         console.error(error);
     }
@@ -63,8 +75,8 @@ async function getBranchPopulation(branchId){
             throw new Error('There was a problem with the request.');
         }
 
-        const subordinates = await response.json();
-        const population = subordinates.length; 
+        const users = await response.json();
+        const population = users.length; 
 
         return population;
     } catch (error) {
@@ -85,35 +97,35 @@ async function displayBranchMembers(branchId){
         throw new Error('There was a problem with the request.');
     }
 
-    subordinates = await response.json();
+    users = await response.json();
 
-    subordinates.forEach(displayBranchMember);
+    users.forEach(displayBranchMember);
 }
 
 
 
-function displayBranchMember(subordinate){
+function displayBranchMember(user){
 
-    const subordinateBox = document.createElement('div');
-    subordinateBox.classList.add('subordinate-box');
+    const userBox = document.createElement('div');
+    userBox.classList.add('subordinate-box');
 
-    const subordinateName = document.createElement('div');
-    subordinateName.classList.add('subordinate-name');
+    const userName = document.createElement('div');
+    userName.classList.add('subordinate-name');
 
     const link = document.createElement('p');
-    link.textContent = subordinate.firstName + ' ' + subordinate.lastName;
+    link.textContent = user.firstName + ' ' + user.lastName;
 
-    subordinateName.appendChild(link);
+    userName.appendChild(link);
 
-    const subordinateInnerBox = document.createElement('div');
-    subordinateInnerBox.classList.add('subordinate-innerbox');
+    const userInnerBox = document.createElement('div');
+    userInnerBox.classList.add('subordinate-innerbox');
 
-    const subordinateInnerStart = document.createElement('div');
-    subordinateInnerStart.classList.add('subordinate-innerstart');
+    const userInnerStart = document.createElement('div');
+    userInnerStart.classList.add('subordinate-innerstart');
 
-    const superior = `${subordinate.superior.firstName} ${subordinate.superior.lastName}`
-    const socialScore = subordinate.socialScore;
-    const email = subordinate.email
+    const superior = `${user.superior.firstName} ${user.superior.lastName}`
+    const socialScore = user.socialScore;
+    const email = user.email
 
     const startUl = document.createElement('ul');
     startUl.innerHTML = `
@@ -122,10 +134,10 @@ function displayBranchMember(subordinate){
     <li>Email</li>
     `;
 
-    subordinateInnerStart.appendChild(startUl);
+    userInnerStart.appendChild(startUl);
 
-    const subordinateInnerEnd = document.createElement('div');
-    subordinateInnerEnd.classList.add('subordinate-innerend');
+    const userInnerEnd = document.createElement('div');
+    userInnerEnd.classList.add('subordinate-innerend');
 
     const endUl = document.createElement('ul');
     endUl.innerHTML = `
@@ -134,18 +146,43 @@ function displayBranchMember(subordinate){
         <li>${email}</li>
     `;
 
-    subordinateInnerEnd.appendChild(endUl);
+    userInnerEnd.appendChild(endUl);
 
     const bottomTag = document.createElement('div');
     bottomTag.classList.add('bottom-tag');
 
-    subordinateBox.appendChild(subordinateName);
-    subordinateBox.appendChild(subordinateInnerBox);
-    subordinateInnerBox.appendChild(subordinateInnerStart);
-    subordinateInnerBox.appendChild(subordinateInnerEnd);
-    subordinateBox.appendChild(bottomTag);
+    userBox.appendChild(userName);
+    userBox.appendChild(userInnerBox);
+    userInnerBox.appendChild(userInnerStart);
+    userInnerBox.appendChild(userInnerEnd);
+    userBox.appendChild(bottomTag);
 
     const parentElement = document.querySelector('.search-branch-results');
-    parentElement.appendChild(subordinateBox);
+    parentElement.appendChild(userBox);
+}
+
+function clearUserDetails() {
+    var element = document.querySelector('.search-branch-results');
+    element.innerHTML = ''; 
+}
+
+function displayUserDetailsBySearch(searchedUser) {
+    users.forEach(function (user) {
+        if ((user.firstName.toLowerCase().includes(searchedUser.toLowerCase())) || 
+        (user.lastName.toLowerCase().includes(searchedUser.toLowerCase())) ||
+        (`${user.firstName} ${user.lastName}`.toLowerCase().includes(searchedUser.toLowerCase()))) {
+        displayBranchMember(user);
+        } 
+    });
+}
+
+function setupSearchEventListener() {
+    document.querySelector('.search-branch-members-box').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            const searchedUser = this.value;
+            clearUserDetails();
+            displayUserDetailsBySearch(searchedUser);
+        }
+    });
 }
 
