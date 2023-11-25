@@ -262,9 +262,9 @@ body {
 }
 
 .loginBox{
-    width: auto;
+    width: fit-content;
     text-align: center;
-    padding: 15px;
+    padding: 5px 10px;
     border-radius: 8px; 
     border: 1px solid #ccc; 
     font-size: 18px;
@@ -310,7 +310,7 @@ body {
     background-color: aliceblue;
     margin-top: 2vh;
     text-align: center;
-    padding: 15px;
+    padding: 8px 10px;
     border-radius: 8px; 
     border: 1px solid #ccc; 
     font-size: 18px;
@@ -344,33 +344,33 @@ body {
 .forgotPassword-subheader{
     text-align: center;
     margin-top: 2vh;
-    font-size: 1.5bvw;
+    font-size: max(15px, min(1.8vw, 20px));
 }
 
 .forgotPassword-input{
     margin-top: 4vh;
-    height: 4vh;
-    width: 25vw;
+    /* height: max(15px, min(1.8vh, 25px)); */
+    /* width: max(200px, min(25vw, 350px)); */
     text-align: center;
     border: 1px solid #ccc;
 }
 
 .forgotPassword-input input{
-    height: 3.5vh;
-    width: 24vw;
+    height: max(15px, min(1.8vh, 25px));
+    width: max(200px, min(25vw, 350px));
 }
 
 .forgotPasswordBox{
-    font-size: 1.8vw;
-    height: 3vw;
+    font-size: max(15px, min(1.8vw, 20px));
+    padding: 15px;
 }
 
 .forgotPasswordButton{
     background-color: aliceblue;
     margin-top: 2vh;
     text-align: center;
-    padding: 15px;
-    font-size: 18px;
+    padding: 8px 10px;
+    font-size: max(15px, min(1.8vw, 20px));
     border-radius: 8px; 
     border: 1px solid #ccc; 
 }
