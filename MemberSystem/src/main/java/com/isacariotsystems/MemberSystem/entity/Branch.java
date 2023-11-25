@@ -1,5 +1,7 @@
 package com.isacariotsystems.MemberSystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,17 +30,13 @@ public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long branchId;
-    /*
-    @ManyToOne defines relationship between Member to Branch
-    @JoinColumn specifies what attribute is the foreign key
-     */
+
     @ManyToOne
     @JoinColumn(name = "managerId", referencedColumnName = "userId")
+    @JsonIgnoreProperties("localBranch")
     private User manager;
 
     private String name;
     
     private String address;
-    
-    private int population;
 }

@@ -15,6 +15,8 @@ public interface AttendanceService {
 
     public Optional<Attendance> findAttendanceById(AttendanceID attendanceId);
 
+    public Boolean existsById(AttendanceID attendanceId);
+
     public void deleteAttendanceById(AttendanceID attendanceId);
 
     public Attendance updateAttendance(AttendanceID attendanceId, Attendance attendance);
