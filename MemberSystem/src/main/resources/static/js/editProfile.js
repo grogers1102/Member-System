@@ -1,3 +1,5 @@
+let popup = document.querySelector('.save-popup');
+
 document.addEventListener('DOMContentLoaded', function () {
     addEditEventListener();
 });
@@ -82,4 +84,13 @@ function updatePassword(){
     });
 
 
+}
+
+function openPopup(){ 
+    popup.classList.add("open-save-popup");
+    setTimeout(() => { closePopup() }, 5000); 
+}
+
+function closePopup(){ 
+    popup.classList.remove("open-save-popup");
 }

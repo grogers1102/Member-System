@@ -51,6 +51,7 @@ function addSubordinate(subordinate){
     subordinateName.classList.add('subordinate-name');
 
     const link = document.createElement('a');
+    link.classList.add('single-subordinate-link')
     link.setAttribute('href', 'viewSingleSubordinate.html');
     link.textContent = subordinate.firstName + ' ' + subordinate.lastName;
 
