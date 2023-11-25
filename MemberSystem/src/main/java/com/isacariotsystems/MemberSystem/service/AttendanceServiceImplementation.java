@@ -84,6 +84,11 @@ public class AttendanceServiceImplementation implements AttendanceService{
             throw new NoSuchElementException("User " + attendanceId + " not found");
         }
     }
+
+    @Override
+    public Boolean existsById(AttendanceID attendanceId) {
+        return attendanceRepository.existsById(attendanceId);
+    }
         
 
 }

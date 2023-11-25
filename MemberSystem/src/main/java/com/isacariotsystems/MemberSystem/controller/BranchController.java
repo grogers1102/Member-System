@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.isacariotsystems.MemberSystem.entity.Branch;
-import com.isacariotsystems.MemberSystem.entity.User;
 import com.isacariotsystems.MemberSystem.service.BranchService;
 
 /*
@@ -45,7 +44,7 @@ public class BranchController {
     }
 
     @GetMapping("/{branchId}")
-    public Optional<Branch >findBranchById(@PathVariable Long branchId){
+    public Optional<Branch> findBranchById(@PathVariable Long branchId){
         return branchService.findBranchById(branchId);
     }
 
@@ -58,29 +57,4 @@ public class BranchController {
     public Branch updateBranch(@PathVariable Long branchId, @RequestBody Branch branch){
         return branchService.updateBranch(branchId, branch);
     }
-    
-    @GetMapping("/{branchId}/manager")
-    public User findManagerByBranchId(@PathVariable Long branchId){
-        return branchService.findManagerById(branchId);
-    }
-
-    @GetMapping("/{branchId}/address")
-    public String findAddressByBranchId(@PathVariable Long branchId){
-        return branchService.findAddressById(branchId);
-    }
-
-    @GetMapping("/{branchId}/population")
-    public int findPopulationByBranchId(@PathVariable Long branchId){
-        return branchService.findPopulationById(branchId);
-    }
-
-
-    
-
-    
-
-    
-
-
-    
 }

@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 // Database Imports
 import jakarta.persistence.Entity;
@@ -51,6 +51,7 @@ public class User implements UserDetails {
      */
     @ManyToOne
     @JoinColumn(name = "branchId", referencedColumnName = "branchId")
+    @JsonIgnoreProperties("manager")
     private Branch localBranch;
 
     @ManyToOne

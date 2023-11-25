@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         displayAccount();
         logoutEventListener();
         
-        checkIfSignedInAlready();
+        //checkIfSignedInAlready();
     }
 });
 
@@ -22,7 +22,7 @@ function checkIfSignedInAlready(){
 
         params = {userId, date, isConfirmed}
         
-        const urlNeededForChecking = `api/v1/attendance?${formattedDate}&userId='${userId}`;
+        const urlNeededForChecking = `api/v1/attendance/${userId}/${formattedDate}`;
         const response =  fetch(urlNeededForChecking, {
         method: 'POST',
         headers: {
@@ -52,6 +52,7 @@ function signInButtonEventListener(){
         makeAttendanceUpdate(formattedDate, userID);
     });
 }
+
  function makeAttendanceUpdate(attendanceDate, userID){
 
     const urlNeeded = "api/v1/attendance/add";
@@ -75,6 +76,7 @@ function signInButtonEventListener(){
         alert(error.message);
     }
 }
+
 function displayMenu(){
     const menuContainer = document.getElementById("portalID");
     const menuHTML = 

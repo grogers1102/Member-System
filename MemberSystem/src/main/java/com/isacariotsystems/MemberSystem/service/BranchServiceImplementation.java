@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.isacariotsystems.MemberSystem.entity.Branch;
-import com.isacariotsystems.MemberSystem.entity.User;
 import com.isacariotsystems.MemberSystem.repository.BranchRepository;
 
 @Service
@@ -49,22 +48,4 @@ public class BranchServiceImplementation implements BranchService {
             throw new NoSuchElementException("Branch " + branchId + " not found");
         }
     }
-
-    @Override
-    public User findManagerById(Long branchId){
-        return branchRepository.findManagerByBranchId(branchId);
-    }
-
-    @Override
-    public String findAddressById(Long branchId){
-        return branchRepository.findAddressByBranchId(branchId);
-    }
-
-    @Override
-    public int findPopulationById(Long branchId){
-        return branchRepository.findPopulationByBranchId(branchId);
-    }
-
-
-    
 }

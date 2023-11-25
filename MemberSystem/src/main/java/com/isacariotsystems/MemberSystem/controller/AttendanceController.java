@@ -1,6 +1,9 @@
 package com.isacariotsystems.MemberSystem.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,9 +38,16 @@ public class AttendanceController {
         return "Successfully Added Attendance";
     }
 
-    @PatchMapping("/{userId}")
-    public Attendance updateAttendanceById(@PathVariable AttendanceID attendanceId, @RequestBody JsonNode requestBody) {
+    @PatchMapping("/{userId}/{date}") 
+    public Attendance updateAttendanceById(@PathVariable Long userId, @PathVariable LocalDate date, @RequestBody JsonNode requestBody) {
+        AttendanceID attendanceId = new AttendanceID(userId, date);
         boolean isConfirmed = requestBody.get("isConfirmed").asBoolean();
         return attendanceService.updateAttendanceIsConfirmed(attendanceId, isConfirmed);
+    }
+
+    @GetMapping
+    public Boolean exists(@PathVariable Long userId, @PathVariable LocalDate date){
+        AttendanceID attendanceId = new AttendanceID(userId, date);
+        return attendanceService.existsById(attendanceId);
     }
 }
