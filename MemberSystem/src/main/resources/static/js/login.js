@@ -6,7 +6,7 @@ function addLoginEvenListener() {
     const loginButton = document.querySelector(".loginBox");
     loginButton.addEventListener("click", (event) => {
         event.preventDefault(); // Prevent the default behavior
-        login(); 
+        login();
     });
 }
 
