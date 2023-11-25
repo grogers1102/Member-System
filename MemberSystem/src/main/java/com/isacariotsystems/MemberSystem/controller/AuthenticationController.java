@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.isacariotsystems.MemberSystem.DTO.ChangePasswordRequest;
 import com.isacariotsystems.MemberSystem.DTO.JwtAuthenticationResponse;
 import com.isacariotsystems.MemberSystem.DTO.RefreshTokenRequest;
 import com.isacariotsystems.MemberSystem.DTO.SigninRequest;
@@ -35,5 +36,9 @@ public class AuthenticationController {
         return ResponseEntity.ok(authenticastionService.refreshToken(refreshTokenRequest));
     }
 
+    @PostMapping("/changePassword")
+    public ResponseEntity<String> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest){
+        return ResponseEntity.ok(authenticastionService.changePassword(changePasswordRequest));
+    }
 
 }

@@ -4,9 +4,11 @@ import java.util.HashMap;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.isacariotsystems.MemberSystem.DTO.ChangePasswordRequest;
 import com.isacariotsystems.MemberSystem.DTO.JwtAuthenticationResponse;
 import com.isacariotsystems.MemberSystem.DTO.RefreshTokenRequest;
 import com.isacariotsystems.MemberSystem.DTO.SigninRequest;
@@ -36,6 +38,24 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
     private final UserService userService;
 
     private final JWTService jwtService;
+
+    public String changePassword(ChangePasswordRequest changePasswordRequest) {
+        User user = userService.findUserById(changePasswordRequest.getUserId())
+                              .orElseThrow(() -> new IllegalArgumentException("Invalid User"));
+    
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(user.getEmail(), changePasswordRequest.getOldPassword()));
+        } catch (AuthenticationException e) {
+            throw new IllegalArgumentException("Invalid old password");
+        }
+    
+        user.setPassword(passwordEncoder.encode(changePasswordRequest.getNewPassword()));
+        userService.saveUser(user);
+    
+        return "Password Saved Sucessfully";
+    }
+    
 
     public JwtAuthenticationResponse signup(SignupRequest signupRequest){
         User user = new User();
