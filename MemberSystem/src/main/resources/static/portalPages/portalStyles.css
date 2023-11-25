@@ -911,7 +911,7 @@
 
 .search-branch-members-box{
     position: relative;
-    padding-left: 10px;
+    text-align: center;
     grid-area: search-subordinate;
     color: black;
     background:rgb(255, 255, 255);
@@ -965,7 +965,6 @@
 
 .search-branch-results{
     display: flex;
-    flex-direction: column;
     justify-content: space-around; 
     flex-direction: column;
     flex-wrap: wrap;
@@ -977,6 +976,7 @@
     border-color: rgba(0, 0, 0, 0.306);
     border-width: 1px;
     font-size: 16px;
+    overflow-y: scroll;
 }
 
 /*  ---------- myAttendance Page Start---------- */
