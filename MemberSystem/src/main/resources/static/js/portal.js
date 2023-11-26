@@ -216,7 +216,6 @@ async function getBranchDetails(branchId){
 }
 
 async function displaySocialScore(socialScore){
-
     let color;
         
     const socialScoreElement = document.querySelector('.user-social-score');

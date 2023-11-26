@@ -50,6 +50,7 @@ async function displayAccountDetails() {
         document.querySelector('.user-supervisor').textContent = `Supervisor: ${superior.firstName} ${superior.lastName}`;
         document.querySelector('.user-amnesty-days').textContent = `Amnesty Days: ${amnestyDays}`;
         //document.querySelector('.user-standing').textContent = `Rank: ${rank.rankId}`;
+        displaySocialScore(userOBJ.socialScore);
         document.querySelector('.user-social-score').textContent = `Social Score: ${socialScore}`;
         document.querySelector('.user-standing').textContent = `Current Standing: ${await calculateUserStanding(socialScore)}`;
         document.querySelector('.user-date').textContent = `Date Joined: ${invitationDate}`;;
@@ -74,4 +75,28 @@ async function calculateUserStanding(socialScore){
     }
 }
 
+async function displaySocialScore(socialScore){
+
+    let color;
+        
+    const socialScoreElement = document.querySelector('.user-social-score');
+
+    socialScoreElement.textContent = `Social Score: ${socialScore}` ;
+    
+    if (socialScore > 0.9) {
+        color = 'green';
+    } else if (socialScore > 0.7) {
+        color = 'blue';
+    } else if (socialScore > 0.5) {
+        color = 'cyan';
+    } else if (socialScore > 0.3) {
+        color = 'orange';
+    } else if (socialScore > 0.1) {
+        color = 'red';
+    } else {
+        color = 'darkred';
+    }
+
+    socialScoreElement.style.color = color;
+}
 
