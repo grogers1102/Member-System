@@ -213,3 +213,18 @@ async function getBranchDetails(branchId){
 
     return await response.json();
 }
+
+async function getSocialScore(userId){
+    
+    document.querySelector('.user-social-score').textContent = `${/*aden or maayan pls help me fetch score from database*/}` ;
+
+    let socialScore = document.getElementById("socialScore");
+    if(getSocialScore>/*some value so show --GREAT-- standing*/){
+        socialScore.style.color = 'green';
+    }else if(getSocialScore>/*some value so show --AVERAGE-- standing*/){
+        socialScore.style.color = 'LightSalmon';
+    }else{
+        socialScore.style.color = 'red';
+    }
+
+}
