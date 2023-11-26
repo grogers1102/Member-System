@@ -710,6 +710,10 @@
     flex-direction: column;
 }
 
+.user-info-details{
+    padding: 0px 10px;
+}
+
 .profile-edit{
     grid-area: edit;
     display: flex;
@@ -807,8 +811,8 @@
 }
 
 .user-social-score{
-    text-align: center;
-    font-weight: 600;   
+    font-size: 22px;
+    color: rgb(0, 183, 255);  
 } 
 
 /*------------view ranks page-----------*/

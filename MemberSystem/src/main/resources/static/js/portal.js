@@ -91,6 +91,7 @@ async function displayAccount(){
         
         await displayBranchDetails(userOBJ);
         await displayRank(userOBJ.rank);
+        await displaySocialScore(userOBJ.socialScore);
     } catch (error) {
         alert(error.message);
     }
@@ -212,4 +213,29 @@ async function getBranchDetails(branchId){
     }
 
     return await response.json();
+}
+
+async function displaySocialScore(socialScore){
+
+    let color;
+        
+    const socialScoreElement = document.querySelector('.user-social-score');
+
+    socialScoreElement.textContent = `Social Score: ${socialScore}` ;
+    
+    if (socialScore > 0.9) {
+        color = 'green';
+    } else if (socialScore > 0.7) {
+        color = 'blue';
+    } else if (socialScore > 0.5) {
+        color = 'cyan';
+    } else if (socialScore > 0.3) {
+        color = 'orange';
+    } else if (socialScore > 0.1) {
+        color = 'red';
+    } else {
+        color = 'darkred';
+    }
+
+    socialScoreElement.style.color = color;
 }
