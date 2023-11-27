@@ -1,8 +1,6 @@
 let popup  = document.querySelector('.save-popup');
 let popupFailed = document.querySelector('.save-popup-failed');
 
-let failed = false;
-
 document.addEventListener('DOMContentLoaded', function () {
     addEditEventListener();
 });
@@ -26,7 +24,7 @@ function updateUser(){
                 const fieldValue = element.value; 
                 const url = `/api/v1/user/${userId}/${field}`;
                 
-                return fetch(url, {
+                fetch(url, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -38,10 +36,11 @@ function updateUser(){
                         throw new Error(`Error updating ${field}.`);
                     }
                     console.log(`${field} updated successfully.`);
+                    openPopup();
                 })
                 .catch(error => {
                     console.error(`Error updating ${field}:`, error);
-                    failed = true;
+                    openPopupFailed();
                     throw error; 
                 });
             }
@@ -56,17 +55,20 @@ function updatePassword(){
     const userId = localStorage.getItem('userId');
 
     if (!oldPassword || !newPassword || !confirmPassword){
-        failed = true;
+        return;
+    }
+
+    if (oldPassword.value === "" && newPassword.value === "" && confirmPassword.value === ""){
         return;
     }
 
     if (oldPassword.value === "" || newPassword.value === "" || confirmPassword.value === ""){
-        failed = true;
+        openPopupFailed();
         return;
     }
     
     if (newPassword.value !== confirmPassword.value){
-        failed = true;
+        openPopupFailed();
         return; 
     }    
 
@@ -74,7 +76,7 @@ function updatePassword(){
 
     const urlPassword = '/api/v1/auth/changePassword';
 
-    return fetch(urlPassword, {
+    fetch(urlPassword, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -83,36 +85,33 @@ function updatePassword(){
     })
     .then(response => {
         if (!response.ok) {
-            failed = true;
+            openPopupFailed();
             throw new Error(`Error updating password`);            
         }
         console.log(`Password updated successfully.`);
+        openPopup();
     })
     .catch(error => {
         console.error(`Error updating Password:`, error);
-        failed = true;
+        openPopupFailed();
         throw error; 
     });
 }
 
 function openPopup() {
-    Promise.all([updateUser(), updatePassword()]) 
-    .then(() => {
-        if (failed) {
-            popupFailed.classList.add("open-save-popup-failed");
-            setTimeout(() => { closePopup() }, 5000);
-        } else {
-            popup.classList.add("open-save-popup");
-            setTimeout(() => { closePopup() }, 5000);
-        }
-    });
+    popup.classList.add("open-save-popup");
+    setTimeout(() => { closePopup() }, 5000);
 }
 
 function closePopup() {
-    if (failed) {
-        popupFailed.classList.remove("open-save-popup-failed");
-        failed = false;
-        return;
-    }
     popup.classList.remove("open-save-popup");
+}
+
+function openPopupFailed(){
+    popupFailed.classList.add("open-save-popup-failed");
+    setTimeout(() => { closePopupFailed() }, 5000);
+}
+
+function closePopupFailed() {
+    popupFailed.classList.remove("open-save-popup-failed");
 }

@@ -20,7 +20,7 @@ function checkIfSignedInAlready(){
 
         params = {userId, date, isConfirmed}
         
-        const urlNeededForChecking = `api/v1/attendance/${userId}/${formattedDate}`;
+        const urlNeededForChecking = `/api/v1/attendance/${userId}/${formattedDate}`;
         const response =  fetch(urlNeededForChecking, {
         method: 'POST',
         headers: {
@@ -53,7 +53,7 @@ function signInButtonEventListener(){
 
  function makeAttendanceUpdate(attendanceDate, userID){
 
-    const urlNeeded = "api/v1/attendance/add";
+    const urlNeeded = "/api/v1/attendance/add";
 
     try {
         const response =  fetch(urlNeeded, {
@@ -88,7 +88,9 @@ async function displayAccount(){
         }
         
         const userOBJ = await response.json();
-        
+
+        statementUpdater = userOBJ.firstName;
+        document.getElementById('welcomeStatement').textContent = `Welcome, ${statementUpdater}`;
         await displayBranchDetails(userOBJ);
         await displayRank(userOBJ.rank);
         await displaySocialScore(userOBJ.socialScore);
@@ -172,7 +174,6 @@ async function displayBranchDetails(user){
 
     const branchPopulation = await getBranchPopulation(localBranch.branchId);
     const branch = await getBranchDetails(localBranch.branchId);
-    console.log(branchPopulation);
     const { manager } = branch;
     const managerName = `${manager.firstName} ${manager.lastName}`;
 

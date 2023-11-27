@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async function () {
     if (isTokenValid()){
         await displayMenu();
-        await displayAccount();
+        await displayBranchIcon();
         logoutEventListener();
         
     }
@@ -68,33 +68,6 @@ function logoutEventListener(){
     logoutButton.addEventListener("click", (event) => {
         logout();
     });
-}
-
-async function displayAccount(){
-
-    const userId = localStorage.getItem('userId');
-    const urlNeeded = `/api/v1/user/${userId}`;
-
-    try {
-        const response = await fetch(urlNeeded);
-        
-        if (!response.ok) {
-            throw new Error('There was a problem with the request.');
-        }
-        
-        const userOBJ = await response.json();
-        const statementUpdater = userOBJ.firstName;
-        try{
-          document.getElementsByTagName('header')[0].innerHTML = `Welcome, ${statementUpdater}`;
-        }catch(error){
-          
-        }
-       
-        
-        await displayBranchIcon(userOBJ);
-    } catch (error) {
-        alert(error.message);
-    }
 }
 
 async function displayBranchIcon(userOBJ) {
