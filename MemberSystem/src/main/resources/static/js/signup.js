@@ -1,3 +1,5 @@
+let popupFailed = document.querySelector('.save-popup-failed');
+
 document.addEventListener('DOMContentLoaded', function () {
     addSignupEventListener();
     addPasswordIconEventListener();
@@ -48,9 +50,9 @@ function signup() {
     ].map(getInputValue);
 
     if (firstName === '' || lastName === '' || email === '' || phoneNumber === '' || address === '' || password === '' || confirmPassword === '') {
-        alert("Please enter all fields");
+        openPopup();
     } else if (password !== confirmPassword) {
-        alert("Passwords don't match");
+        openPopup();
     } else {
         
         const userParams = {
@@ -90,16 +92,19 @@ async function makeSignupRequest(userParams) {
             window.location.href = '/portalPages/portal.html';
         } else {
             if (response.status === 400) {
+                openPopup();
                 throw new Error('Bad request: Please check your inputs.');
             } else if (response.status === 401) {
-                throw new Error('Unauthorized: Invalid credentials.');
+                openPopup();
                 window.localStorage.href='../error/401.html';
+                throw new Error('Unauthorized: Invalid credentials.');
             } else {
+                openPopup();
                 throw new Error('There was a problem with the request.');
             }
         }
     } catch (error) {
-        alert(error.message);
+        openPopup();
     }
 }
 
@@ -134,9 +139,15 @@ function switchConfirmPasswordIcon(toggleIcon){
         toggleIcon.classList.remove('fa-eye');
         toggleIcon.classList.add('fa-eye-slash');
     }
-
-
 }
 
+function openPopup() {
+    popupFailed.classList.add("open-save-popup-failed");
+    setTimeout(closePopup, 5000);
+}
+
+function closePopup() {
+    popupFailed.classList.remove("open-save-popup-failed");
+}
 
 

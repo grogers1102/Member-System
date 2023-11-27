@@ -1,3 +1,5 @@
+let popupFailed = document.querySelector('.save-popup-failed');
+
 document.addEventListener('DOMContentLoaded', function () {
     addLoginEvenListener();
 });
@@ -15,7 +17,7 @@ function login() {
     const password = document.querySelector('input[name="password"]');
 
     if (email.value === "" || password.value === "") {
-        alert("Please enter both email and password.");
+        openPopup();
         return;
     }
 
@@ -37,6 +39,7 @@ function login() {
         if (response.ok) {
             return response.json();
         } else {
+            openPopup();
             throw new Error('There was a problem with the request.');
         }
     })
@@ -51,6 +54,15 @@ function login() {
         window.location.href = '/portalPages/portal.html';
     })
     .catch(error => {
-        alert(error.message);
+        openPopup();
     });
+}
+
+function openPopup() {
+    popupFailed.classList.add("open-save-popup-failed");
+    setTimeout(closePopup, 5000);
+}
+
+function closePopup() {
+    popupFailed.classList.remove("open-save-popup-failed");
 }
