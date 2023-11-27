@@ -147,7 +147,7 @@ body {
     width: max(200px, min(25vw, 350px));
     height: max(15px, min(1.8vh, 25px));
     padding: 15px;
-    font-size: max(15px, min(1.8vw, 20px));
+    font-size: max(15px, min(1.2vw, 16px));
   }
   
   .signin-link{

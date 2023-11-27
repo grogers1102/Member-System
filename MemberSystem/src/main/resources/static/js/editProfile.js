@@ -1,4 +1,7 @@
-let popup = document.querySelector('.save-popup');
+let popup  = document.querySelector('.save-popup');
+let popupFailed = document.querySelector('.save-popup-failed');
+
+let failed = false;
 
 document.addEventListener('DOMContentLoaded', function () {
     addEditEventListener();
@@ -23,7 +26,7 @@ function updateUser(){
                 const fieldValue = element.value; 
                 const url = `/api/v1/user/${userId}/${field}`;
                 
-                fetch(url, {
+                return fetch(url, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -38,6 +41,8 @@ function updateUser(){
                 })
                 .catch(error => {
                     console.error(`Error updating ${field}:`, error);
+                    failed = true;
+                    throw error; 
                 });
             }
         }
@@ -51,14 +56,17 @@ function updatePassword(){
     const userId = localStorage.getItem('userId');
 
     if (!oldPassword || !newPassword || !confirmPassword){
+        failed = true;
         return;
     }
 
     if (oldPassword.value === "" || newPassword.value === "" || confirmPassword.value === ""){
+        failed = true;
         return;
     }
     
     if (newPassword.value !== confirmPassword.value){
+        failed = true;
         return; 
     }    
 
@@ -66,7 +74,7 @@ function updatePassword(){
 
     const urlPassword = '/api/v1/auth/changePassword';
 
-    fetch(urlPassword, {
+    return fetch(urlPassword, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -75,22 +83,36 @@ function updatePassword(){
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error(`Error updating password`);
+            failed = true;
+            throw new Error(`Error updating password`);            
         }
         console.log(`Password updated successfully.`);
     })
     .catch(error => {
         console.error(`Error updating Password:`, error);
+        failed = true;
+        throw error; 
     });
-
-
 }
 
-function openPopup(){ 
-    popup.classList.add("open-save-popup");
-    setTimeout(() => { closePopup() }, 5000); 
+function openPopup() {
+    Promise.all([updateUser(), updatePassword()]) 
+    .then(() => {
+        if (failed) {
+            popupFailed.classList.add("open-save-popup-failed");
+            setTimeout(() => { closePopup() }, 5000);
+        } else {
+            popup.classList.add("open-save-popup");
+            setTimeout(() => { closePopup() }, 5000);
+        }
+    });
 }
 
-function closePopup(){ 
+function closePopup() {
+    if (failed) {
+        popupFailed.classList.remove("open-save-popup-failed");
+        failed = false;
+        return;
+    }
     popup.classList.remove("open-save-popup");
 }
