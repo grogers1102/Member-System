@@ -1,79 +1,90 @@
+const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
+const day = String(currentDate.getDate()).padStart(2, '0');
+
+const formattedDate = `${year}-${month}-${day}`;
 
 document.addEventListener('DOMContentLoaded', async function () {
     await displayAccount();
     logoutEventListener();
-        
-    //checkIfSignedInAlready();
+    signInButtonEventListener();
     }
 );
 
-function checkIfSignedInAlready(){
+function checkIfSignedInAlready() {
 
-    const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adding 1 to month since it's zero-based
-        const day = String(currentDate.getDate()).padStart(2, '0');
-
-        const formattedDate = `${year}-${month}-${day}`;
+    return new Promise((resolve, reject) => {
         const userId = localStorage.getItem("userId");
-        const isConfirmed = false;
+        const urlNeededForChecking = `/api/v1/attendance/exists/${userId}/${formattedDate}`;
 
-        params = {userId, date, isConfirmed}
-        
-        const urlNeededForChecking = `/api/v1/attendance/${userId}/${formattedDate}`;
-        const response =  fetch(urlNeededForChecking, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(params),
+        fetch(urlNeededForChecking)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('There was a problem with the request.');
+                }
+                return response.text();
+            })
+            .then(data => {
+                const resourceExists = (data === 'true');
+                resolve(resourceExists);
+            })
+            .catch(error => {
+                console.error('Error:', error.message);
+                resolve(false); 
+            });
     });
-
-    if (response == null) {
-        signInButtonEventListener();
-    } else {
-        const signInButton = document.getElementById("sign-in-button-portal");
-        signInButton.disabled = true;
-    }
 }
 
 function signInButtonEventListener(){
-    const signInButtonOnPortal = document.getElementById("sign-in-button-portal");
-    signInButtonOnPortal.addEventListener("click", (event) => {
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adding 1 to month since it's zero-based
-        const day = String(currentDate.getDate()).padStart(2, '0');
-
-        const formattedDate = `${year}/${month}/${day}`;
-        const userID = localStorage.getItem("userId");
-        makeAttendanceUpdate(formattedDate, userID);
-    });
+    checkIfSignedInAlready()
+        .then(isSignedIn => {
+            if (!isSignedIn) {
+                const signInButtonOnPortal = document.getElementById("sign-in-button-portal");
+                signInButtonOnPortal.addEventListener("click", async (event) => {
+                    const userID = localStorage.getItem("userId");
+                    await makeAttendanceUpdate(formattedDate, userID);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error occurred:', error);
+        });
 }
 
- function makeAttendanceUpdate(attendanceDate, userID){
-
+async function makeAttendanceUpdate(attendanceDate, userID) {
     const urlNeeded = "/api/v1/attendance/add";
 
+    const attendanceID = {
+        userId: userID,
+        date: attendanceDate
+    };
+
+    const params = {
+        attendanceID: attendanceID,
+        isConfirmed: false
+    };
+
     try {
-        const response =  fetch(urlNeeded, {
+        const response = await fetch(urlNeeded, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(userID,attendanceDate),
+            body: JSON.stringify(params),
         });
 
         if (response.ok) {
-            alert("Successfully Signed In!");
-
+            alert("Successfully Clocked In!");
         } else {
-            throw new Error('There was a problem with the request.');
+            const errorMessage = await response.text();
+            throw new Error(errorMessage || 'There was a problem with the request.');
         }
     } catch (error) {
         alert(error.message);
     }
 }
+
 
 async function displayAccount(){
 
