@@ -710,6 +710,10 @@
     flex-direction: column;
 }
 
+.user-info-details{
+    padding: 0px 10px;
+}
+
 .profile-edit{
     grid-area: edit;
     display: flex;
@@ -807,8 +811,8 @@
 }
 
 .user-social-score{
-    text-align: center;
-    font-weight: 600;   
+    font-size: 22px;
+    color: rgb(0, 183, 255);  
 } 
 
 /*------------view ranks page-----------*/
@@ -1238,6 +1242,25 @@
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
+.save-popup-failed {
+    align-items: center;
+    height: 7.5vh;
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    background: rgb(238, 2, 2);
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    bottom: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    color: #FFF;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
 .open-save-popup {
     visibility: visible;
     left: 50%;
@@ -1245,24 +1268,34 @@
     transform: translate(-50%,-50%) scale(1);
 }
 
-.save-popup-header {
+.open-save-popup-failed {
+    visibility: visible;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.save-popup-header{
     margin-left: 2vw;
     display: flex;
     flex-direction: column;
 }
 
-.save-popup i {
+.save-popup i,
+.save-popup-failed i {
     font-size: 32px;
     margin-left: 1vw;
 }
 
-.save-popup h2{
+.save-popup h2, 
+.save-popup-failed h2{
     margin-top: 8px;
     font-size: 18px;
     font-weight: 500;
 }
 
-.save-popup p{
+.save-popup p, 
+.save-popup-failed p{
     margin-bottom: 8px;
 }
 

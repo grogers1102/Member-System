@@ -73,13 +73,22 @@
         </form>        
         <div class="edit-button">
             <button class="edit-cancel" onclick="window.location.href='accountPage.html'">Cancel</button>
-            <button class="edit-save" onclick="openPopup()">Save</button>
+            <button class="edit-save" >Save</button>
             <div class="save-popup">
                 <i class="fa-solid fa-check"></i>
                 <div class="save-popup-header">
                     <h2>Success!</h2>
                     <p>
                         Your details have been sucessfully submitted.
+                    </p>
+                </div>
+            </div>
+            <div class="save-popup-failed">
+                <i class="fa-solid fa-xmark"></i>
+                <div class="save-popup-header">
+                    <h2>Failure!</h2>
+                    <p>
+                        There was a problem submitting your details.
                     </p>
                 </div>
             </div>

@@ -45,7 +45,7 @@ public class AttendanceController {
         return attendanceService.updateAttendanceIsConfirmed(attendanceId, isConfirmed);
     }
 
-    @GetMapping
+    @GetMapping("/exists/{userId}/{date}")
     public Boolean exists(@PathVariable Long userId, @PathVariable LocalDate date){
         AttendanceID attendanceId = new AttendanceID(userId, date);
         return attendanceService.existsById(attendanceId);

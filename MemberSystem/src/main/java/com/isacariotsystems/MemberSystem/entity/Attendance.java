@@ -2,10 +2,7 @@ package com.isacariotsystems.MemberSystem.entity;
 
 // Database Imports
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
 // Lombok Imports
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,11 +21,6 @@ public class Attendance {
 
     @EmbeddedId
     private AttendanceID attendanceID;
-
-    @MapsId("userId")
-    @ManyToOne
-    @JoinColumn(name = "userId", referencedColumnName = "userId", insertable = false, updatable = false)
-    private User user;
 
     private boolean isConfirmed;
 }

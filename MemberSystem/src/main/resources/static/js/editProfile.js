@@ -1,4 +1,5 @@
-let popup = document.querySelector('.save-popup');
+let popup  = document.querySelector('.save-popup');
+let popupFailed = document.querySelector('.save-popup-failed');
 
 document.addEventListener('DOMContentLoaded', function () {
     addEditEventListener();
@@ -35,9 +36,12 @@ function updateUser(){
                         throw new Error(`Error updating ${field}.`);
                     }
                     console.log(`${field} updated successfully.`);
+                    openPopup();
                 })
                 .catch(error => {
                     console.error(`Error updating ${field}:`, error);
+                    openPopupFailed();
+                    throw error; 
                 });
             }
         }
@@ -54,11 +58,17 @@ function updatePassword(){
         return;
     }
 
+    if (oldPassword.value === "" && newPassword.value === "" && confirmPassword.value === ""){
+        return;
+    }
+
     if (oldPassword.value === "" || newPassword.value === "" || confirmPassword.value === ""){
+        openPopupFailed();
         return;
     }
     
     if (newPassword.value !== confirmPassword.value){
+        openPopupFailed();
         return; 
     }    
 
@@ -75,22 +85,33 @@ function updatePassword(){
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error(`Error updating password`);
+            openPopupFailed();
+            throw new Error(`Error updating password`);            
         }
         console.log(`Password updated successfully.`);
+        openPopup();
     })
     .catch(error => {
         console.error(`Error updating Password:`, error);
+        openPopupFailed();
+        throw error; 
     });
-
-
 }
 
-function openPopup(){ 
+function openPopup() {
     popup.classList.add("open-save-popup");
-    setTimeout(() => { closePopup() }, 5000); 
+    setTimeout(() => { closePopup() }, 5000);
 }
 
-function closePopup(){ 
+function closePopup() {
     popup.classList.remove("open-save-popup");
+}
+
+function openPopupFailed(){
+    popupFailed.classList.add("open-save-popup-failed");
+    setTimeout(() => { closePopupFailed() }, 5000);
+}
+
+function closePopupFailed() {
+    popupFailed.classList.remove("open-save-popup-failed");
 }
