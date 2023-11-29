@@ -11,7 +11,7 @@ function addAssignSubEventListener(){
 
 
     function updateMemberFields(){
-        const memberId = document.getElementById("memberID");
+        const memberId = document.getElementById("memberID").textContent;
         const userFields = ['superiorID', 'branchID'];
 
         userFields.forEach(field => {
