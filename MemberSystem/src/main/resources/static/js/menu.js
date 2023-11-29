@@ -73,7 +73,7 @@ async function displayRankAssignPageOrNot(){
     const menuContainerToAddAssignPage = document.getElementById("menuContID");
     const assignSubHTML = 
     `<li class="assignRanksPage">
-        <a href="../rankFiveAssignSubordinatePage.html">
+        <a href="../portalPages/rankFiveAssignSubordinatePage.html">
           <i class="fa-solid fa-list"></i>
           <span>Assign </span>
         </a>
