@@ -1,6 +1,7 @@
 package com.isacariotsystems.MemberSystem.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,7 @@ public class AttendanceController {
         return "Successfully Added Attendance";
     }
 
+
     @PatchMapping("/{userId}/{date}") 
     public Attendance updateAttendanceById(@PathVariable Long userId, @PathVariable LocalDate date, @RequestBody JsonNode requestBody) {
         AttendanceID attendanceId = new AttendanceID(userId, date);
@@ -50,4 +52,10 @@ public class AttendanceController {
         AttendanceID attendanceId = new AttendanceID(userId, date);
         return attendanceService.existsById(attendanceId);
     }
+
+    @GetMapping("/{userId}/all")
+    public List<Attendance> findAllAttendanceByUser(@PathVariable Long userId){
+        return attendanceService.findAttendanceByUserId(userId).orElse(null);
+    }
+
 }
