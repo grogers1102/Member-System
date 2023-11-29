@@ -42,7 +42,7 @@ async function displayAccountDetails() {
         }
         
         document.querySelector('.user-name').textContent = `${firstName} ${lastName}`;
-        document.querySelector('.user-id').textContent = `User ID: ${userId}`;
+        //document.querySelector('.user-id').textContent = `User ID: ${userId}`;
         //document.querySelector('.user-branch').textContent = `Branch ID: ${localBranch.branchId}`;
         document.querySelector('.user-phone-number').textContent = `Phone Number: ${phoneNumber}`;
         document.querySelector('.user-address').textContent = `Address: ${address}`;
