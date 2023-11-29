@@ -76,6 +76,7 @@ async function makeAttendanceUpdate(attendanceDate, userID) {
 
         if (response.ok) {
             alert("Successfully Clocked In!");
+            location.reload();
         } else {
             const errorMessage = await response.text();
             throw new Error(errorMessage || 'There was a problem with the request.');
