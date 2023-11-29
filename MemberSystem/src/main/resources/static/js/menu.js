@@ -74,8 +74,8 @@ async function displayRankAssignPageOrNot(){
     const assignSubHTML = 
     `<li class="assignRanksPage">
         <a href="../rankFiveAssignSubordinatePage.html">
-          <i class="fa-solid fa-right-from-bracket"></i>
-          <span>Assign Ranks</span>
+          <i class="fa-solid fa-list"></i>
+          <span>Assign </span>
         </a>
       </li>`;
       menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
