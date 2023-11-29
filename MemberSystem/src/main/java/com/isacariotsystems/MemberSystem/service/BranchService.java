@@ -16,4 +16,10 @@ public interface BranchService {
     public void deleteBranchById(Long branchId);
 
     public Branch updateBranch(Long branchId, Branch branch);
+
+    public Branch updateBranchAddress(Long branchId, String address);
+
+    public Branch updateBranchName(Long branchId, String name);
+
+    public Branch updateBranchManager(Long branchId, Long managerId);
 }

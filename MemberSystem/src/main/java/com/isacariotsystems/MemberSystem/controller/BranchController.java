@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.isacariotsystems.MemberSystem.entity.Branch;
 import com.isacariotsystems.MemberSystem.service.BranchService;
 
@@ -57,4 +59,25 @@ public class BranchController {
     public Branch updateBranch(@PathVariable Long branchId, @RequestBody Branch branch){
         return branchService.updateBranch(branchId, branch);
     }
+
+
+    @PatchMapping("/{branchId}/manager")
+    public Branch updateBranchManager(@PathVariable Long branchId, @RequestBody JsonNode requestBody) {
+        Long managerId = requestBody.get("managerId").asLong();
+        return branchService.updateBranchManager(branchId, managerId);
+    }
+
+    @PatchMapping("/{branchId}/name")
+    public Branch updateBranchName(@PathVariable Long branchId, @RequestBody JsonNode requestBody) {
+        String name = requestBody.get("name").asText();
+        return branchService.updateBranchName(branchId, name);
+    }
+
+    @PatchMapping("/{branchId}/address")
+    public Branch updateBranchAddress(@PathVariable Long branchId, @RequestBody JsonNode requestBody) {
+        String address = requestBody.get("address").asText();
+        return branchService.updateBranchAddress(branchId, address);
+    }
+
+
 }
