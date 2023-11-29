@@ -139,4 +139,10 @@ public class UserController {
         Long rankId = requestBody.get("rankId").asLong();
         return userService.updateUserRank(userId, rankId);
     }
+
+    @PatchMapping("/{userId}/superior")
+    public User updateUserBySuperior(@PathVariable Long userId, @RequestBody JsonNode requestBody){
+        Long superiorId = requestBody.get("superiorId").asLong();
+        return userService.updateUserRank(userId, superiorId);
+    }
 }

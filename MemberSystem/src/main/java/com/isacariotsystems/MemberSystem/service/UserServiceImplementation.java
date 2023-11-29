@@ -125,32 +125,58 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User updateUserBranch(Long userId, Long branchId) {
-        if (userRepository.existsById(userId)) {
-            User user = userRepository.findById(userId)
-                    .orElseThrow(() -> new NoSuchElementException("User " + userId + " not found"));
-            if (branchRepository.existsById(branchId)) {
-                Branch branch = branchRepository.findById(branchId).orElse(null);
-                user.setLocalBranch(branch);
-            }
-            return userRepository.save(user);
-        } else {
+        if (!userRepository.existsById(userId)) {
             throw new NoSuchElementException("User " + userId + " not found");
         }
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("User " + userId + " not found"));
+
+        if (!branchRepository.existsById(branchId)) {
+            throw new NoSuchElementException("Branch " + branchId + " not found");
+        }
+
+        Branch branch = branchRepository.findById(branchId)
+                .orElseThrow(() -> new NoSuchElementException("Branch " + branchId + " not found"));
+
+        user.setLocalBranch(branch);
+        return userRepository.save(user);
     }
 
     @Override
     public User updateUserRank(Long userId, Long rankId) {
-        if (userRepository.existsById(userId)) {
-            User user = userRepository.findById(userId)
-                    .orElseThrow(() -> new NoSuchElementException("User " + userId + " not found"));
-            if (rankRepository.existsById(rankId)) {
-                Rank rank = rankRepository.findById(rankId).orElse(null);
-                user.setRank(rank);
-            }
-            return userRepository.save(user);
-        } else {
+        if (!userRepository.existsById(userId)) {
             throw new NoSuchElementException("User " + userId + " not found");
         }
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("User " + userId + " not found"));
+
+        if (!rankRepository.existsById(rankId)) {
+            throw new NoSuchElementException("Rank " + rankId + " not found");
+        }
+
+        Rank rank = rankRepository.findById(rankId)
+                .orElseThrow(() -> new NoSuchElementException("Rank " + rankId + " not found"));
+
+        user.setRank(rank);
+        return userRepository.save(user);
+    }
+
+    public User updateUserSuperior(Long userId, Long superiorId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("User " + userId + " not found"));
+
+        if (superiorId != null) {
+            User superior = userRepository.findById(superiorId)
+                    .orElseThrow(() -> new NoSuchElementException("Superior User " + superiorId + " not found"));
+            user.setSuperior(superior);
+        } else {
+            User admin = findUserById(1L).orElse(null);
+            user.setSuperior(admin); 
+        }
+
+        return userRepository.save(user);
     }
     
     @Override
