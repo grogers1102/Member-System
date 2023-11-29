@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.isacariotsystems.MemberSystem.entity.Rank;
 import com.isacariotsystems.MemberSystem.service.RankService;
 
@@ -72,4 +74,29 @@ public class RankController {
     public String findRankDaysRequiredById(@PathVariable Long rankId){
         return rankService.findDaysRequiredById(rankId);
     }
+
+    @PatchMapping("/{rankId}/name")
+    public Rank updateUserByEmail(@PathVariable Long rankId, @RequestBody JsonNode requestBody) {
+        String name = requestBody.get("name").asText();
+        return rankService.updateRankName(rankId, name);
+    }
+
+    @PatchMapping("/{rankId}/description")
+    public Rank updateRankDescription(@PathVariable Long rankId, @RequestBody JsonNode requestBody) {
+        String description = requestBody.get("description").asText();
+        return rankService.updateRankDescription(rankId, description);
+    }
+
+    @PatchMapping("/{rankId}/requirements")
+    public Rank updateRankRequirements(@PathVariable Long rankId, @RequestBody JsonNode requestBody) {
+        String requirements = requestBody.get("requirements").asText();
+        return rankService.updateRankRequirements(rankId, requirements);
+    }
+
+    @PatchMapping("/{rankId}/daysRequired")
+    public Rank updateRankDaysRequired(@PathVariable Long rankId, @RequestBody JsonNode requestBody) {
+        int daysRequired = requestBody.get("daysRequired").asInt();
+        return rankService.updateRankDaysRequired(rankId, daysRequired);
+    }
+
 }

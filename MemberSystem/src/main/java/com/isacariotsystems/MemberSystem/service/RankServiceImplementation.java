@@ -57,6 +57,64 @@ public class RankServiceImplementation implements RankService {
     }
 
     @Override
+    public Rank updateRankName(Long rankId, String name) {
+        if (rankRepository.existsById(rankId)) {
+            Rank rank = rankRepository.findById(rankId)
+                    .orElseThrow(() -> new NoSuchElementException("Rank " + rankId + " not found"));
+    
+            rank.setName(name);
+            return rankRepository.save(rank);
+        } else {
+            throw new NoSuchElementException("Rank " + rankId + " not found");
+        }
+    }
+
+    @Override
+    public Rank updateRankDescription(Long rankId, String description) {
+        if (rankRepository.existsById(rankId)) {
+            Rank rank = rankRepository.findById(rankId)
+                    .orElseThrow(() -> new NoSuchElementException("Rank " + rankId + " not found"));
+
+            rank.setDescription(description);
+
+            return rankRepository.save(rank);
+        } else {
+            throw new NoSuchElementException("Rank " + rankId + " not found");
+        }
+    }
+
+    @Override
+    public Rank updateRankRequirements(Long rankId, String requirements) {
+        if (rankRepository.existsById(rankId)) {
+            Rank rank = rankRepository.findById(rankId)
+                    .orElseThrow(() -> new NoSuchElementException("Rank " + rankId + " not found"));
+
+            rank.setRequirements(requirements);
+
+            return rankRepository.save(rank);
+        } else {
+            throw new NoSuchElementException("Rank " + rankId + " not found");
+        }
+    }
+
+    @Override
+    public Rank updateRankDaysRequired(Long rankId, int daysRequired) {
+        if (rankRepository.existsById(rankId)) {
+            Rank rank = rankRepository.findById(rankId)
+                    .orElseThrow(() -> new NoSuchElementException("Rank " + rankId + " not found"));
+
+            rank.setDaysRequired(daysRequired);
+
+            return rankRepository.save(rank);
+        } else {
+            throw new NoSuchElementException("Rank " + rankId + " not found");
+        }
+    }
+
+
+
+
+    @Override
     public String findDescriptionById(Long rankId){
         return rankRepository.findDescriptionByRankId(rankId);
     }

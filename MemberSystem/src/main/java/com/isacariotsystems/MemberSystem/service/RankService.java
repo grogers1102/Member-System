@@ -22,4 +22,12 @@ public interface RankService {
     public String findRequirementsById(Long rankId);
 
     public String findDaysRequiredById(Long rankId);
+
+    public Rank updateRankDaysRequired(Long rankId, int daysRequired);
+
+    public Rank updateRankRequirements(Long rankId, String requirements);
+
+    public Rank updateRankDescription(Long rankId, String description);
+
+    public Rank updateRankName(Long rankId, String name);
 }
