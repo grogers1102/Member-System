@@ -44,13 +44,6 @@ async function displayMenu(){
           <span>Subordinates</span>
         </a>
       </li>
-      <li>
-        <a href="myAttendance.html">
-          <i class="fa-solid fa-square-poll-horizontal"></i>
-          <span>Attendance</span>
-        </a>
-      </li>
-      
       <li class="log-out">
         <a href="../index.html">
           <i class="fa-solid fa-right-from-bracket"></i>
