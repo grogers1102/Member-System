@@ -231,7 +231,7 @@ async function getBranchDetails(branchId){
 async function displaySocialScore(socialScore){
     let color;
         
-    const socialScoreElement = document.querySelector('social-score');
+    const socialScoreElement = document.querySelector('.social-score');
 
     socialScoreElement.textContent = `Social Score: ${socialScore}` ;
     
