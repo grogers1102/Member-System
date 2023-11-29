@@ -30,6 +30,7 @@
     overflow: hidden;
     transition: all 0.3s;
     background: rgba(0, 0, 0, 0.65);
+    white-space: nowrap;
 }
 
 .sidebar:hover{
@@ -1301,7 +1302,40 @@
     margin-bottom: 8px;
 }
 
+/* ------------- RankFiveAssignSubordinatePage Start-------*/
 
+.assignSubordinateBoxes{
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: center;
+    gap: 5vw;
+}
+
+.assignSubordinateBoxes div{
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1vh;
+}
+
+.assignSubordinateBoxes input
+{
+    
+    border-radius: 2px;
+    border: .5px solid black;
+    width: 10vw; 
+    height: 4vh;
+    padding: 10px;
+}
+
+.assignSubordinateBoxes label {
+    margin-right: auto;
+}
+/* ------------- RankFiveAssignSubordinatePage end-------*/
 
 
 

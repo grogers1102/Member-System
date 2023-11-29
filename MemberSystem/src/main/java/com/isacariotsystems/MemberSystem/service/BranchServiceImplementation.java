@@ -8,13 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.isacariotsystems.MemberSystem.entity.Branch;
+import com.isacariotsystems.MemberSystem.entity.User;
 import com.isacariotsystems.MemberSystem.repository.BranchRepository;
+import com.isacariotsystems.MemberSystem.repository.UserRepository;
 
 @Service
 public class BranchServiceImplementation implements BranchService {
 
     @Autowired
     private BranchRepository branchRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public Branch saveBranch(Branch branch){
@@ -48,4 +53,49 @@ public class BranchServiceImplementation implements BranchService {
             throw new NoSuchElementException("Branch " + branchId + " not found");
         }
     }
+
+    @Override
+    public Branch updateBranchName(Long branchId, String name) {
+        if (branchRepository.existsById(branchId)) {
+            Branch branch = branchRepository.findById(branchId)
+                    .orElseThrow(() -> new NoSuchElementException("Branch " + branchId + " not found"));
+
+            branch.setName(name);
+
+            return branchRepository.save(branch);
+        } else {
+            throw new NoSuchElementException("Branch " + branchId + " not found");
+        }
+    }
+
+    @Override
+    public Branch updateBranchAddress(Long branchId, String address) {
+        if (branchRepository.existsById(branchId)) {
+            Branch branch = branchRepository.findById(branchId)
+                    .orElseThrow(() -> new NoSuchElementException("Branch " + branchId + " not found"));
+
+            branch.setAddress(address);
+
+            return branchRepository.save(branch);
+        } else {
+            throw new NoSuchElementException("Branch " + branchId + " not found");
+        }
+    }
+
+    @Override
+    public Branch updateBranchManager(Long branchId, Long managerId) {
+        if (branchRepository.existsById(branchId)) {
+            Branch branch = branchRepository.findById(branchId)
+                    .orElseThrow(() -> new NoSuchElementException("Branch " + branchId + " not found"));
+            User manager = userRepository.findById(managerId)
+                    .orElseThrow(() -> new NoSuchElementException("Branch " + branchId + " not found"));
+                
+            branch.setManager(manager);
+
+            return branchRepository.save(branch);
+        } else {
+            throw new NoSuchElementException("Branch " + branchId + " not found");
+        }
+    }
+
 }
