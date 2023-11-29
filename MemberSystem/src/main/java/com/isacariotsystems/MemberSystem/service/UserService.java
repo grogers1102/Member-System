@@ -27,6 +27,10 @@ public interface UserService {
 
     public User updateUserPhoneNumber(Long userId, String phoneNumber);
 
+    public User updateUserRank(Long userId, Long rankId);
+
+    public User updateUserBranch(Long userId, Long branchId);
+
     public Optional<List<User>> findUsersBySuperiorId(Long superiorId);
 
     public Optional<List<User>> findUsersByBranch(Long branchId);

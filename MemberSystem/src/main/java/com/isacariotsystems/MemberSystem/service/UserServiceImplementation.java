@@ -11,8 +11,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.isacariotsystems.MemberSystem.entity.Branch;
+import com.isacariotsystems.MemberSystem.entity.Rank;
 import com.isacariotsystems.MemberSystem.entity.User;
 import com.isacariotsystems.MemberSystem.repository.AttendanceRepository;
+import com.isacariotsystems.MemberSystem.repository.BranchRepository;
+import com.isacariotsystems.MemberSystem.repository.RankRepository;
 import com.isacariotsystems.MemberSystem.repository.UserRepository;
 
 
@@ -24,6 +28,12 @@ public class UserServiceImplementation implements UserService {
 
     @Autowired
     private AttendanceRepository attendanceRepository;
+
+    @Autowired
+    private BranchRepository branchRepository;
+
+    @Autowired
+    private RankRepository rankRepository;
 
     @Override
     public User saveUser(User user){
@@ -112,8 +122,37 @@ public class UserServiceImplementation implements UserService {
             throw new NoSuchElementException("User " + userId + " not found");
         }
     }
-    
 
+    @Override
+    public User updateUserBranch(Long userId, Long branchId) {
+        if (userRepository.existsById(userId)) {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new NoSuchElementException("User " + userId + " not found"));
+            if (branchRepository.existsById(branchId)) {
+                Branch branch = branchRepository.findById(branchId).orElse(null);
+                user.setLocalBranch(branch);
+            }
+            return userRepository.save(user);
+        } else {
+            throw new NoSuchElementException("User " + userId + " not found");
+        }
+    }
+
+    @Override
+    public User updateUserRank(Long userId, Long rankId) {
+        if (userRepository.existsById(userId)) {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new NoSuchElementException("User " + userId + " not found"));
+            if (rankRepository.existsById(rankId)) {
+                Rank rank = rankRepository.findById(rankId).orElse(null);
+                user.setRank(rank);
+            }
+            return userRepository.save(user);
+        } else {
+            throw new NoSuchElementException("User " + userId + " not found");
+        }
+    }
+    
     @Override
     public Optional<List<User>> findUsersBySuperiorId(Long superiorId){
         User superiorUser = userRepository.findById(superiorId).orElseThrow(() -> new NoSuchElementException("Superior user not found"));
