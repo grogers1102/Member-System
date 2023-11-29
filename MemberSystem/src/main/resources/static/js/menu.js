@@ -25,7 +25,7 @@ async function displayMenu(){
     const menuHTML = 
     `<div class="sidebar">
     <img src="../images/BETTERLogo.svg" class="logo" />
-    <ul class="menu">
+    <ul class="menu" id="menuContID">
       <li>
         <a href="portal.html">
           <i class="fa-solid fa-house"></i>
@@ -61,6 +61,31 @@ async function displayMenu(){
   </div>`;
 
   menuContainer.insertAdjacentHTML('afterbegin', menuHTML);
+  displayRankAssignPageOrNot();
+}
+
+async function displayRankAssignPageOrNot(){
+
+  const userID = localStorage.getItem("userID");
+  const urlNeeded = '/api/v1/user/' + userId;
+  const response = await fetch(urlNeeded);
+
+  if (!response.ok) {
+      throw new Error('There was a problem with the request.');
+  }
+  const userOBJ = await response.json();
+
+  if(userOBJ.rank >= 5){
+    const menuContainerToAddAssignPage = document.getElementById("menuContID");
+    const assignSubHTML = 
+    `<li class="assignRanksPage">
+        <a href="../rankFiveAssignSubordinatePage.html">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Assign Ranks</span>
+        </a>
+      </li>`;
+    menuContainerToAddAssignPage.appendChild(assignSubHTML);
+  }
 }
 
 function logoutEventListener(){
