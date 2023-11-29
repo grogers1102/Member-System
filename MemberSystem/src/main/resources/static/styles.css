@@ -507,6 +507,7 @@ body {
 .index-main{
     display: flex;
     align-items: center;
+    height: fit-content;
 }
 
 .index-subcontainer{
@@ -514,7 +515,7 @@ body {
     gap: 30px;
     align-items: center;
     flex-direction: column;
-    width: 50vw;
+    width: 50%;
 }
 
 .index-button-container{
@@ -526,12 +527,12 @@ body {
 }
 .index-header{
     text-align: center;
-    font-size: 22px;
+    font-size: max(15px, min(2vw, 22px));
 }
 
 .index-subheader{
     text-align: center;
-    font-size: 20px;
+    font-size: max(15px, min(1.9vw, 20px));
 }
 .topic-description{
     font-size: 20px
@@ -555,11 +556,11 @@ body {
 .index-image-container{
     display: flex;
     justify-content: center;
+    width: 50%;
 }
 
 .index-image{
-    height: 800px;
-    width: 450px;
+    width: 100%;
 }
 /*-----------end index container-----------------*/
 
@@ -622,6 +623,7 @@ body {
     align-items: center;
     padding: 60px;
     gap: 5vw;
+    width: fit-content;
 
 }
 

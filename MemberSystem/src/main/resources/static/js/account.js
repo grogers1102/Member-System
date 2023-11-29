@@ -43,7 +43,8 @@ async function displayAccountDetails() {
         
         document.querySelector('.user-name').textContent = `${firstName} ${lastName}`;
         document.querySelector('.user-id').textContent = `User ID: ${userId}`;
-        //document.querySelector('.user-branch').textContent = `Branch ID: ${localBranch.branchId}`;
+        document.querySelector('.user-branch').textContent = `Branch ID: ${localBranch.branchId}`;
+        //document.querySelector('.profile-user-rank').textContent = `Rank: ${localBranch.branchId}`;
         document.querySelector('.user-phone-number').textContent = `Phone Number: ${phoneNumber}`;
         document.querySelector('.user-address').textContent = `Address: ${address}`;
         document.querySelector('.user-email').textContent = `Email: ${email}`;
@@ -100,3 +101,27 @@ async function displaySocialScore(socialScore){
     socialScoreElement.style.color = color;
 }
 
+async function displayRank(rank){
+
+    let color;
+        
+    const rankElement = document.querySelector('.profile-user-rank');
+
+    rankElement.textContent = `Rank: ${rank}` ;
+    
+    if (socialScore > 0.9) {
+        color = 'green';
+    } else if (socialScore > 0.7) {
+        color = 'blue';
+    } else if (socialScore > 0.5) {
+        color = 'cyan';
+    } else if (socialScore > 0.3) {
+        color = 'orange';
+    } else if (socialScore > 0.1) {
+        color = 'red';
+    } else {
+        color = 'darkred';
+    }
+
+    rankElement.style.color = color;
+}

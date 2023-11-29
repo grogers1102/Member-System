@@ -758,6 +758,9 @@
     font-size: 22px;
     color: rgb(0, 183, 255);
 }
+.profile-user-rank{
+    font-size: 22px;
+}
 
 .user-contact{
     font-size: 35px;
@@ -812,7 +815,6 @@
 
 .user-social-score{
     font-size: 22px;
-    color: rgb(0, 183, 255);  
 } 
 
 /*------------view ranks page-----------*/

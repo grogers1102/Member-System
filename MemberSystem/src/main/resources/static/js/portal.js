@@ -231,7 +231,7 @@ async function getBranchDetails(branchId){
 async function displaySocialScore(socialScore){
     let color;
         
-    const socialScoreElement = document.querySelector('.user-social-score');
+    const socialScoreElement = document.querySelector('social-score');
 
     socialScoreElement.textContent = `Social Score: ${socialScore}` ;
     
@@ -250,4 +250,28 @@ async function displaySocialScore(socialScore){
     }
 
     socialScoreElement.style.color = color;
+}
+
+async function displayStanding(standing){
+    let color;
+        
+    const standingElement = document.querySelector('dashboard-user-standing');
+
+    standingElement.textContent = `Standing: ${standing}` ;
+    
+    if (socialScore > 0.9) {
+        color = 'green';
+    } else if (socialScore > 0.7) {
+        color = 'blue';
+    } else if (socialScore > 0.5) {
+        color = 'cyan';
+    } else if (socialScore > 0.3) {
+        color = 'orange';
+    } else if (socialScore > 0.1) {
+        color = 'red';
+    } else {
+        color = 'darkred';
+    }
+
+    standingElement.style.color = color;
 }
