@@ -66,7 +66,7 @@ async function displayMenu(){
 
 async function displayRankAssignPageOrNot(){
 
-  const userID = localStorage.getItem("userID");
+  const userId = localStorage.getItem("userId");
   const urlNeeded = '/api/v1/user/' + userId;
   const response = await fetch(urlNeeded);
 
@@ -74,8 +74,9 @@ async function displayRankAssignPageOrNot(){
       throw new Error('There was a problem with the request.');
   }
   const userOBJ = await response.json();
+  userRank = userOBJ.rank
 
-  if(userOBJ.rank >= 5){
+  if(userRank.rankId >= 5){
     const menuContainerToAddAssignPage = document.getElementById("menuContID");
     const assignSubHTML = 
     `<li class="assignRanksPage">
@@ -84,7 +85,7 @@ async function displayRankAssignPageOrNot(){
           <span>Assign Ranks</span>
         </a>
       </li>`;
-    menuContainerToAddAssignPage.appendChild(assignSubHTML);
+      menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
   }
 }
 
