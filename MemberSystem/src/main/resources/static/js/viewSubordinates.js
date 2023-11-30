@@ -43,8 +43,6 @@ async function displaySubordinateDetails() {
 }
 
 function addSubordinate(subordinate){
-
-    const userId = localStorage.getItem('userId');
         
     const subordinateBox = document.createElement('div');
     subordinateBox.classList.add('subordinate-box');
@@ -54,7 +52,7 @@ function addSubordinate(subordinate){
 
     const link = document.createElement('a');
     link.classList.add('single-subordinate-link')
-    link.setAttribute('href', `viewSingleSubordinate.html?userId=${userId}`);
+    link.setAttribute('href', `viewSingleSubordinate.html?userId=${subordinate.userId}`);
     link.textContent = subordinate.firstName + ' ' + subordinate.lastName;
 
     subordinateName.appendChild(link);
