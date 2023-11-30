@@ -78,7 +78,6 @@ public class MemberSystemApplication implements CommandLineRunner {
             "Expert",
             "Master",
             "Grandmaster",
-            "Virtuoso"
         };
         String[] requirements = {
             "",
@@ -88,9 +87,8 @@ public class MemberSystemApplication implements CommandLineRunner {
             "",
             "",
             "",
-            ""
         };
-        int[] daysRequired = {1, 3, 5, 5, 7, 7, 7, 7};
+        int[] daysRequired = {1, 3, 5, 5, 7, 7, 7};
         for (int i = 0; i < descriptions.length; i++) {
             Rank rank = new Rank();
             rank.setDescription(descriptions[i]);

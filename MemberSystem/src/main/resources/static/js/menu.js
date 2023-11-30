@@ -68,7 +68,7 @@ async function insertOtherPagesOrNot(){
     const menuContainerToAddAssignPage = document.getElementById("menuContID");
     const assignSubHTML = 
     `<li class="assignRanksPage">
-        <a href="../branchPage.html">
+        <a href="../portalPages/higherBranchPage.html">
           <i class="fa-solid fa-school"></i>
           <span>Branch </span>
         </a>
@@ -90,7 +90,7 @@ async function insertOtherPagesOrNot(){
     const menuContainerToAddAssignPage = document.getElementById("menuContID");
     const assignSubHTML = 
     `<li class="assignRanksPage">
-        <a href="../portalPages/rankFiveAssignSubordinatePage.html">
+        <a href="../portalPages/assign.html">
           <i class="fa-solid fa-list"></i>
           <span>Assign </span>
         </a>
