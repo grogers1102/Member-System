@@ -90,7 +90,7 @@ async function insertOtherPagesOrNot(){
     const menuContainerToAddAssignPage = document.getElementById("menuContID");
     const assignSubHTML = 
     `<li class="assignRanksPage">
-        <a href="../rankFiveAndUpEditMemberDetailsPage.html">
+        <a href="../portalPages/rankFiveAssignSubordinatePage.html">
           <i class="fa-solid fa-list"></i>
           <span>Edit Member Details </span>
         </a>
