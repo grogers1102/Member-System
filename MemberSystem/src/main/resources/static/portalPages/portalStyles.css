@@ -580,12 +580,12 @@
     border: 1.5px solid rgba(0,0,0,.10); /* Sets a 1px solid gray border */
 }
 
-/* .subordinate-name{
+.subordinate-name{
     text-align: center;
     background-color: rgba(0, 183, 255, 0.25);
     color: rgb(0, 183, 255);
     border: 1px solid rgba(0,0,0,.10);
-} */
+} 
 
 .single-subordinate{
     display: flex;
