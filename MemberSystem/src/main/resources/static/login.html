@@ -1,88 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="keywords" content="HTML, CSS" />
-  <meta name="description" content="Iscariot Systems: Empower Your Organization with Comprehensive Member Tracking, Values Alignment, and Enhanced Community Building. Transform the way you manage your community, fostering trust, accountability, and efficient operations." />
-  <title>IscariotSystems</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="images/ISLogo.png" type="image/png" />
-  <link rel="stylesheet" href="https://use.typekit.net/qvl4pug.css" />
-  <link rel="stylesheet" href="https://use.typekit.net/vzh4fkq.css" />
-  <script src="https://kit.fontawesome.com/fc87db4df0.js" crossorigin="anonymous"></script>
-</head>
-<body class="webpage">
-  <div class="navbar">
-    <ul class="menu">
-      <a href="index.html" class="logo-link">
-        <img src="images/BETTERLogo.svg" class="logo-icon" alt="Logo">
-      </a>
-    </ul>
-  </div>
-  <div class="login-container">
-    <div class="login-box">
-      <div class="login-top">
-        <div class="login-header">
-          <h1>Login to Your Account</h1>
-        </div>
-        <div class="login-subheader">
-        </div>
-      </div>
-      <div class="line"></div>
-      <div class="login-input">
-        <form action="">
-          <div>
-            <input
-              class="emailBox"
-              type="text"
-              placeholder="Email"
-              id="email"
-              name="email"
-            />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="HTML, CSS" />
+    <meta
+      name="description"
+      content="Iscariot Systems: Empower Your Organization with Comprehensive Member Tracking, Values Alignment, and Enhanced Community Building. Transform the way you manage your community, fostering trust, accountability, and efficient operations."
+    />
+    <title>IscariotSystems</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="images/LittleLogoIS.svg" type="image/png" />
+    <link rel="stylesheet" href="https://use.typekit.net/qvl4pug.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/vzh4fkq.css" />
+    <script
+      src="https://kit.fontawesome.com/fc87db4df0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="webpage">
+    <div class="navbar">
+      <ul class="menu">
+        <a href="index.html" class="logo-link">
+          <img src="images/BETTERLogo.svg" class="logo-icon" alt="Logo" />
+        </a>
+      </ul>
+    </div>
+    <div class="login-container">
+      <div class="login-box">
+        <div class="login-top">
+          <div class="login-header">
+            <h1>Login to Your Account</h1>
           </div>
-          <div>
-            <input
-              class="passwordBox"
-              type="password"
-              placeholder="Password"
-              id="password"
-              name="password"
-            />
-          </div>
-          <div class="login-button-box">
-            <button type="submit" class="loginBox">Login</button>
-            <div class="save-popup-failed" id="login-failed" >
-              <i class="fa-solid fa-xmark"></i>
-              <div class="save-popup-header">
+          <div class="login-subheader"></div>
+        </div>
+        <div class="line"></div>
+        <div class="login-input">
+          <form action="">
+            <div>
+              <input
+                class="emailBox"
+                type="text"
+                placeholder="Email"
+                id="email"
+                name="email"
+              />
+            </div>
+            <div>
+              <input
+                class="passwordBox"
+                type="password"
+                placeholder="Password"
+                id="password"
+                name="password"
+              />
+            </div>
+            <div class="login-button-box">
+              <button type="submit" class="loginBox">Login</button>
+              <div class="save-popup-failed" id="login-failed">
+                <i class="fa-solid fa-xmark"></i>
+                <div class="save-popup-header">
                   <h2>Failure!</h2>
-                  <p>
-                      There was a problem submitting your details.
-                  </p>
+                  <p>There was a problem submitting your details.</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="forgotpassword-box">
-            <p class="forgotPassword-link">
-              Forgot Password?
-              <a class="forgotPassword" href="forgotPassword.html">Click Here</a>
-            </p>
-          </div>
-        </form>
+            <div class="forgotpassword-box">
+              <p class="forgotPassword-link">
+                Forgot Password?
+                <a class="forgotPassword" href="forgotPassword.html"
+                  >Click Here</a
+                >
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="new-user-box">
+        <div class="new-user-box-header">
+          <h1>New Here?</h1>
+        </div>
+        <div class="new-user-box-p">
+          <p>Signup and discover how you can streamline member management</p>
+        </div>
+        <div>
+          <button
+            class="signup-from-login"
+            type="submit"
+            onclick="location.href='signup.html'"
+          >
+            Signup
+          </button>
+        </div>
       </div>
     </div>
-    <div class="new-user-box">
-      <div class="new-user-box-header">
-        <h1>New Here?</h1>
-      </div>
-      <div class="new-user-box-p">
-        <p>Signup and discover how you can streamline member management</p>
-      </div>
-      <div>
-        <button class="signup-from-login" type="submit" onclick="location.href='signup.html'">Signup</button>
-      </div>      
-    </div>
-  </div>
-  <script src="js/login.js"> </script>
-</body>
+    <script src="js/login.js"></script>
+  </body>
 </html>

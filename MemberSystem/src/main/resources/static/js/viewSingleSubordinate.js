@@ -23,17 +23,24 @@ async function displaySingleSubordinateDetails(){
     subordinate = await response.json();
 
     const {
-        branchId,
-        superiorId,
-        rankId,
+        branch,
+        superior,
+        rank,
         invitationDate,
         email,
         phoneNumber,
         address,
         socialScore,
         firstName,
-        lastName
+        lastName,
+        amnestyDays,
     } = subordinate;
 
-    // SET VALUES ACCORDINGLY
+    document.querySelector('.user-name').textContent = `${firstName} ${lastName}`;
+    document.querySelector('.user-phone-number').textContent = `Phone Number: ${phoneNumber}`;
+    document.querySelector('.user-address').textContent = `Address: ${address}`;
+    document.querySelector('.user-email').textContent = `Email: ${email}`;
+    document.querySelector('.user-supervisor').textContent = `Supervisor: ${superior.firstName} ${superior.lastName}`;
+    document.querySelector('.user-amnesty-days').textContent = `Amnesty Days: ${amnestyDays}`;
 }
+

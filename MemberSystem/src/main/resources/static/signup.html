@@ -1,107 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="keywords" content="HTML, CSS" />
-  <meta name="description" content="Iscariot Systems: Empower Your Organization with Comprehensive Member Tracking, Values Alignment, and Enhanced Community Building. Transform the way you manage your community, fostering trust, accountability, and efficient operations." />
-  <title>IscariotSystems</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="images/ISLogo.png" type="image/png" />
-  <link rel="stylesheet" href="https://use.typekit.net/qvl4pug.css" />
-  <link rel="stylesheet" href="https://use.typekit.net/vzh4fkq.css" />
-  <script src="https://kit.fontawesome.com/fc87db4df0.js" crossorigin="anonymous"></script>
-</head>
-<body class="webpage">
-  <div class="navbar">
-    <ul class="menu">
-      <a href="index.html" class="logo-link">
-        <img src="images/BETTERLogo.svg" class="logo-icon" alt="Logo">
-      </a>
-      
-    </ul>
-  </div>
-  <div class="signup-container">
-    <div class="signup-info">
-      <div class="signup-image-box">
-        <img class="signup-image" src="images/signup.svg">
-      </div>
-      <div class="signup-header">
-        <h1>Included in Your Membership</h1>
-      </div>
-      <div class="signup-list">
-        <ul>
-          <li>
-            <i class="fa-solid fa-check"></i>Access to attendance and participation tracking.
-          </li>
-          <li>
-            <i class="fa-solid fa-check"></i> Exclusive insights for community involvement.
-          </li>
-          <li>
-            <i class="fa-solid fa-check"></i> Diverse programs promoting personal growth.
-          </li>
-        </ul>
-      </div>
-    </div> 
-    <form>
-      <div class="newUserInputs">
-        <ul>
-          <li>
-            <label for="firstName">First Name</label><br>
-            <input class="nameBox" type="text" id="firstName" name="firstName" />
-          </li>
-          <li>
-            <label for="lastName">Last Name</label><br>
-            <input class="nameBox" type="text" id="lastName" name="lastName" />
-          </li>
-          <li>
-            <label for="email">Email</label><br>
-            <input class="newEmailBox" type="email" id="email" name="userEmail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2})?"/>
-          </li>
-          <li>
-            <label for="phoneNumber">Phone Number</label><br>
-            <input class="phoneNumBox" type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
-          </li>
-          <li>
-            <label for="address">Address</label><br>
-            <input class="addressBox" type="text" id="address" name="address" />
-          </li>
-          <li>
-            <label for="password">Password</label><br>
-            <div class="password-container">
-              <input class="newPasswordBox" type="password" id="password" name="password" />
-              <i class="fa-solid fa-eye-slash" id="togglePassword"></i>
-            </div>
-          </li>
-          <li>
-            <label for="confirmPassword">Confirm Password</label><br>
-            <div class="confirmPassword-container">
-              <input class="confirmPasswordBox" type="password" id="confirmPassword" name="confirmPassword" />
-              <i class="fa-solid fa-eye-slash" id="toggleConfirmPassword"></i>
-            </div>
-          </li>
-        </ul>
-        <div class="signin-link">
-          <p>
-            Already have an account? <a class="signIn" href="login.html">Login</a>
-          </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="HTML, CSS" />
+    <meta
+      name="description"
+      content="Iscariot Systems: Empower Your Organization with Comprehensive Member Tracking, Values Alignment, and Enhanced Community Building. Transform the way you manage your community, fostering trust, accountability, and efficient operations."
+    />
+    <title>IscariotSystems</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="images/LittleLogoIS.svg" type="image/png" />
+    <link rel="stylesheet" href="https://use.typekit.net/qvl4pug.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/vzh4fkq.css" />
+    <script
+      src="https://kit.fontawesome.com/fc87db4df0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="webpage">
+    <div class="navbar">
+      <ul class="menu">
+        <a href="index.html" class="logo-link">
+          <img src="images/BETTERLogo.svg" class="logo-icon" alt="Logo" />
+        </a>
+      </ul>
+    </div>
+    <div class="signup-container">
+      <div class="signup-info">
+        <div class="signup-image-box">
+          <img class="signup-image" src="images/signup.svg" />
         </div>
-      
-        <div>
-          <button type="button" class="createAccountBox"><i class="fa-solid fa-lock"></i> Create Account</button>
-          <div class="save-popup-failed">
-            <i class="fa-solid fa-xmark"></i>
-            <div class="save-popup-header">
+        <div class="signup-header">
+          <h1>Included in Your Membership</h1>
+        </div>
+        <div class="signup-list">
+          <ul>
+            <li>
+              <i class="fa-solid fa-check"></i>Access to attendance and
+              participation tracking.
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Exclusive insights for community
+              involvement.
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Diverse programs promoting
+              personal growth.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <form>
+        <div class="newUserInputs">
+          <ul>
+            <li>
+              <label for="firstName">First Name</label><br />
+              <input
+                class="nameBox"
+                type="text"
+                id="firstName"
+                name="firstName"
+              />
+            </li>
+            <li>
+              <label for="lastName">Last Name</label><br />
+              <input
+                class="nameBox"
+                type="text"
+                id="lastName"
+                name="lastName"
+              />
+            </li>
+            <li>
+              <label for="email">Email</label><br />
+              <input
+                class="newEmailBox"
+                type="email"
+                id="email"
+                name="userEmail"
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2})?"
+              />
+            </li>
+            <li>
+              <label for="phoneNumber">Phone Number</label><br />
+              <input
+                class="phoneNumBox"
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </li>
+            <li>
+              <label for="address">Address</label><br />
+              <input
+                class="addressBox"
+                type="text"
+                id="address"
+                name="address"
+              />
+            </li>
+            <li>
+              <label for="password">Password</label><br />
+              <div class="password-container">
+                <input
+                  class="newPasswordBox"
+                  type="password"
+                  id="password"
+                  name="password"
+                />
+                <i class="fa-solid fa-eye-slash" id="togglePassword"></i>
+              </div>
+            </li>
+            <li>
+              <label for="confirmPassword">Confirm Password</label><br />
+              <div class="confirmPassword-container">
+                <input
+                  class="confirmPasswordBox"
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                />
+                <i class="fa-solid fa-eye-slash" id="toggleConfirmPassword"></i>
+              </div>
+            </li>
+          </ul>
+          <div class="signin-link">
+            <p>
+              Already have an account?
+              <a class="signIn" href="login.html">Login</a>
+            </p>
+          </div>
+
+          <div>
+            <button type="button" class="createAccountBox">
+              <i class="fa-solid fa-lock"></i> Create Account
+            </button>
+            <div class="save-popup-failed">
+              <i class="fa-solid fa-xmark"></i>
+              <div class="save-popup-header">
                 <h2>Failure!</h2>
-                <p>
-                    There was a problem submitting your details.
-                </p>
+                <p>There was a problem submitting your details.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </form>      
-  </div>
-  <script src="js/signup.js"></script>
-</body>
+      </form>
+    </div>
+    <script src="js/signup.js"></script>
+  </body>
 </html>

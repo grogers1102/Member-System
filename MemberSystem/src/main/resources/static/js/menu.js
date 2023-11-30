@@ -38,12 +38,7 @@ async function displayMenu(){
           <span>Profile</span>
         </a>
       </li>
-      <li>
-        <a href="viewSubordinates.html">
-          <i class="fa-solid fa-person"></i>
-          <span>Subordinates</span>
-        </a>
-      </li>
+      
       <li class="log-out">
         <a href="../index.html">
           <i class="fa-solid fa-right-from-bracket"></i>
@@ -54,10 +49,10 @@ async function displayMenu(){
   </div>`;
 
   menuContainer.insertAdjacentHTML('afterbegin', menuHTML);
-  displayRankAssignPageOrNot();
+  insertOtherPagesOrNot();
 }
 
-async function displayRankAssignPageOrNot(){
+async function insertOtherPagesOrNot(){
 
   const userId = localStorage.getItem("userId");
   const urlNeeded = '/api/v1/user/' + userId;
@@ -69,6 +64,28 @@ async function displayRankAssignPageOrNot(){
   const userOBJ = await response.json();
   userRank = userOBJ.rank
 
+  if(userRank.rankId >= 3){
+    const menuContainerToAddAssignPage = document.getElementById("menuContID");
+    const assignSubHTML = 
+    `<li class="assignRanksPage">
+        <a href="../branchPage.html">
+          <i class="fa-solid fa-school"></i>
+          <span>Branch </span>
+        </a>
+      </li>`;
+      menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
+  }
+  if(userRank.rankId >= 2){
+    const menuContainerToAddAssignPage = document.getElementById("menuContID");
+    const assignSubHTML = 
+      `<li>
+        <a href="viewSubordinates.html">
+          <i class="fa-solid fa-person"></i>
+          <span>Subordinates</span>
+        </a>
+      </li>`;
+      menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
+  }
   if(userRank.rankId >= 5){
     const menuContainerToAddAssignPage = document.getElementById("menuContID");
     const assignSubHTML = 
@@ -89,38 +106,4 @@ function logoutEventListener(){
     });
 }
 
-async function displayBranchIcon(userOBJ) {
 
-    branchExists = document.querySelector('.sidebar .branch-element')
-
-    if (!userOBJ || !userOBJ.rank || branchExists) {
-        return;
-    }
-
-    const rank = userOBJ.rank;
-
-    const element = document.querySelector('.sidebar .menu');
-
-    const listElement = document.createElement('li');
-    const anchorElement = document.createElement('a');
-    const iconElement = document.createElement('i');
-    const spanElement = document.createElement('span');
-
-    listElement.className='branch-element';
-
-    anchorElement.href = 'branchPage.html';
-
-    iconElement.className = 'fa-solid fa-location-dot'; 
-
-    spanElement.textContent = 'Branch';
-
-    if (rank.rankId > 2) {
-        anchorElement.href = 'higherBranchPage.html';
-    }
-
-    anchorElement.appendChild(iconElement);
-    anchorElement.appendChild(spanElement);
-
-    listElement.appendChild(anchorElement);
-    element.appendChild(listElement);
-}
