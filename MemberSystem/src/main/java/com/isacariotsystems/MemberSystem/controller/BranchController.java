@@ -60,7 +60,6 @@ public class BranchController {
         return branchService.updateBranch(branchId, branch);
     }
 
-
     @PatchMapping("/{branchId}/manager")
     public Branch updateBranchManager(@PathVariable Long branchId, @RequestBody JsonNode requestBody) {
         Long managerId = requestBody.get("managerId").asLong();
