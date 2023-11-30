@@ -38,12 +38,7 @@ async function displayMenu(){
           <span>Profile</span>
         </a>
       </li>
-      <li>
-        <a href="viewSubordinates.html">
-          <i class="fa-solid fa-person"></i>
-          <span>Subordinates</span>
-        </a>
-      </li>
+      
       <li class="log-out">
         <a href="../index.html">
           <i class="fa-solid fa-right-from-bracket"></i>
@@ -54,10 +49,10 @@ async function displayMenu(){
   </div>`;
 
   menuContainer.insertAdjacentHTML('afterbegin', menuHTML);
-  displayRankAssignPageOrNot();
+  insertOtherPagesOrNot();
 }
 
-async function displayRankAssignPageOrNot(){
+async function insertOtherPagesOrNot(){
 
   const userId = localStorage.getItem("userId");
   const urlNeeded = '/api/v1/user/' + userId;
@@ -69,13 +64,35 @@ async function displayRankAssignPageOrNot(){
   const userOBJ = await response.json();
   userRank = userOBJ.rank
 
+  if(userRank.rankId >= 3){
+    const menuContainerToAddAssignPage = document.getElementById("menuContID");
+    const assignSubHTML = 
+    `<li class="assignRanksPage">
+        <a href="../branchPage.html">
+          <i class="fa-solid fa-school"></i>
+          <span>My Branch </span>
+        </a>
+      </li>`;
+      menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
+  }
+  if(userRank.rankId >= 2){
+    const menuContainerToAddAssignPage = document.getElementById("menuContID");
+    const assignSubHTML = 
+      `<li>
+        <a href="viewSubordinates.html">
+          <i class="fa-solid fa-person"></i>
+          <span>My Subordinates</span>
+        </a>
+      </li>`;
+      menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
+  }
   if(userRank.rankId >= 5){
     const menuContainerToAddAssignPage = document.getElementById("menuContID");
     const assignSubHTML = 
     `<li class="assignRanksPage">
-        <a href="../rankFiveAssignSubordinatePage.html">
+        <a href="../portalPages/rankFiveAssignSubordinatePage.html">
           <i class="fa-solid fa-list"></i>
-          <span>Assign </span>
+          <span>Edit Member Details </span>
         </a>
       </li>`;
       menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
