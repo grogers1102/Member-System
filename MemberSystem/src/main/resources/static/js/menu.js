@@ -70,7 +70,7 @@ async function insertOtherPagesOrNot(){
     `<li class="assignRanksPage">
         <a href="../branchPage.html">
           <i class="fa-solid fa-school"></i>
-          <span>My Branch </span>
+          <span>Branch </span>
         </a>
       </li>`;
       menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
@@ -81,7 +81,7 @@ async function insertOtherPagesOrNot(){
       `<li>
         <a href="viewSubordinates.html">
           <i class="fa-solid fa-person"></i>
-          <span>My Subordinates</span>
+          <span>Subordinates</span>
         </a>
       </li>`;
       menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
@@ -92,7 +92,7 @@ async function insertOtherPagesOrNot(){
     `<li class="assignRanksPage">
         <a href="../portalPages/rankFiveAssignSubordinatePage.html">
           <i class="fa-solid fa-list"></i>
-          <span>Edit Member Details </span>
+          <span>Assign </span>
         </a>
       </li>`;
       menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
@@ -106,38 +106,4 @@ function logoutEventListener(){
     });
 }
 
-async function displayBranchIcon(userOBJ) {
 
-    branchExists = document.querySelector('.sidebar .branch-element')
-
-    if (!userOBJ || !userOBJ.rank || branchExists) {
-        return;
-    }
-
-    const rank = userOBJ.rank;
-
-    const element = document.querySelector('.sidebar .menu');
-
-    const listElement = document.createElement('li');
-    const anchorElement = document.createElement('a');
-    const iconElement = document.createElement('i');
-    const spanElement = document.createElement('span');
-
-    listElement.className='branch-element';
-
-    anchorElement.href = 'branchPage.html';
-
-    iconElement.className = 'fa-solid fa-location-dot'; 
-
-    spanElement.textContent = 'Branch';
-
-    if (rank.rankId > 2) {
-        anchorElement.href = 'higherBranchPage.html';
-    }
-
-    anchorElement.appendChild(iconElement);
-    anchorElement.appendChild(spanElement);
-
-    listElement.appendChild(anchorElement);
-    element.appendChild(listElement);
-}
