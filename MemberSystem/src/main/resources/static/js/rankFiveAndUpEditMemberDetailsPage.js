@@ -1,3 +1,6 @@
+let popup  = document.querySelector('.save-popup');
+let popupFailed = document.querySelector('.save-popup-failed');
+
 document.addEventListener('DOMContentLoaded', function () {
     addAssignSubEventListener();
 });
@@ -11,19 +14,21 @@ function addAssignSubEventListener(){
 
 
     function updateMemberFields(){
-        const memberId = document.getElementById("memberID").textContent;
+        const memberId = document.getElementById("memberID").value;
         const userFields = [
-            document.getElementById("superiorID").textContent, 
-            document.getElementById("branchID").textContent, 
-            document.getElementById("rankLevel").textContent];
+            document.getElementById("superiorID").value, 
+            document.getElementById("branchID").value, 
+            document.getElementById("rankLevel").value];
 
-        if(!validateUserID(memberId)){
+        console.log(userFields[0]);
+
+        if(false){
             throw new Error("Invalid Member ID!");
         }else{
 
             if(userFields[0] !== ""){
-
-                const urlNeeded = `/api/v1/user/${memberID}/superior`;
+                console.log(userFields[0]);
+                const urlNeeded = `/api/v1/user/${memberId}/superior`;
                 fetch(urlNeeded, {
                     method: 'PATCH',
                     headers: {
@@ -35,7 +40,7 @@ function addAssignSubEventListener(){
                     if (!response.ok) {
                         throw new Error(`Error updating SuperiorID.`);
                     }
-                    console.log(`${field} updated successfully.`);
+                    console.log(`updated successfully.`);
                     
                 })
                 .catch(error => {
@@ -45,9 +50,8 @@ function addAssignSubEventListener(){
                 });
 
             }
-
             if(userFields[1] !== ""){
-                const urlNeeded = `/api/v1/user/${memberID}/branch`;
+                const urlNeeded = `/api/v1/user/${memberId}/branch`;
                 fetch(urlNeeded, {
                     method: 'PATCH',
                     headers: {
@@ -59,7 +63,7 @@ function addAssignSubEventListener(){
                     if (!response.ok) {
                         throw new Error(`Error updating BranchID.`);
                     }
-                    console.log(`${field} updated successfully.`);
+                    console.log(` updated successfully.`);
                     
                 })
                 .catch(error => {
@@ -70,8 +74,8 @@ function addAssignSubEventListener(){
             }
 
             if(userFields[2] !== ""){
-                const urlNeeded = `/api/v1/user/${memberID}/rank`;
-                fetch(urlNeeded, {
+                const urlNeededRank = `/api/v1/user/${memberId}/rank`;
+                fetch(urlNeededRank, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -82,7 +86,7 @@ function addAssignSubEventListener(){
                     if (!response.ok) {
                         throw new Error(`Error updating rankID.`);
                     }
-                    console.log(`${field} updated successfully.`);
+                    console.log(` updated successfully.`);
                     
                 })
                 .catch(error => {
@@ -97,7 +101,7 @@ function addAssignSubEventListener(){
 
     
 
-
+/*
     function validateUserID(idNumber){
         
         const urlForMemberID = '/api/v1/user/' + idNumber;
@@ -116,6 +120,7 @@ function addAssignSubEventListener(){
         }
         return true;
     }
+    */
 
      
 
