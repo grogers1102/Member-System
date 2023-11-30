@@ -1211,7 +1211,6 @@
 }
 
 
-
 .edit-name input,
 .edit-contact input
 {
@@ -1223,14 +1222,15 @@
 }
 
 .edit-name label,
-.edit-contact label {
+.edit-contact label{
     margin-right: auto;
 }
  
 .edit-address input, 
 .edit-password input,
 .edit-new-password input,
-.confirm-new-password input{
+.confirm-new-password input,
+.edit-manager input{
     border-radius: 2px;
     border: .5px solid black; 
     width: 45vw;
@@ -1241,7 +1241,8 @@
 .edit-address, 
 .edit-password,
 .edit-new-password,
-.confirm-new-password {
+.confirm-new-password,
+.edit-manager {
     width: 50vw;
     display: flex;
     flex-direction: column;
@@ -1454,5 +1455,13 @@
     overflow-y: scroll;
     height: 100%;
 }
+
+
+/* ------------- Edit Branch Page Start-------*/
+
+
+
+/* ------------- Edit Branch Page End-------*/
+
 
 
