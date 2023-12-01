@@ -31,10 +31,9 @@ async function displaySingleSubordinateDetails(subordinateId) {
         const {
             firstName,
             lastName,
-            //userId,
-            //localBranch,
+            localBranch,
             phoneNumber,
-            //rank,
+            rank,
             email,
             superiorId,
             amnestyDays,
@@ -42,9 +41,9 @@ async function displaySingleSubordinateDetails(subordinateId) {
         } = userOBJ;
 
         document.getElementById("name-id").textContent = `${firstName} ${lastName}`;
-        //document.getElementById("user-id").textContent = `User ID: ${userId}`;
-        //document.getElementById("branch-id").textContent = `Branch ID: ${localBranch}`;
-        //document.getElementById("rank-id").textContent = `Rank Level: ${rank}`;
+        document.querySelector(".user-id").textContent = `User ID: ${subordinateId}`;
+        document.getElementById("branch-id").textContent = `Branch ID: ${localBranch.branchId}`;
+        document.getElementById("rank-id").textContent = `Rank Level: ${rank.rankId}`;
         document.getElementById("phone-id").textContent = `Phone Number: ${phoneNumber}`;
         document.getElementById("address-id").textContent = `Address: ${address}`;
         document.getElementById("email-id").textContent = `Email: ${email}`;
