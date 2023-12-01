@@ -37,6 +37,12 @@ async function displayMenu(){
           <span>Profile</span>
         </a>
       </li>
+      <li>
+        <a href="attendance.html">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>Attendance</span>
+        </a>
+      </li>
       
       <li class="log-out">
         <a href="../index.html">
