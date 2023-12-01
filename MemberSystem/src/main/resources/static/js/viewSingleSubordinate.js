@@ -31,10 +31,10 @@ async function displaySingleSubordinateDetails(subordinateId) {
         const {
             firstName,
             lastName,
-            userId,
-            localBranch,
+            //userId,
+            //localBranch,
             phoneNumber,
-            rank,
+            //rank,
             email,
             superiorId,
             amnestyDays,
@@ -57,54 +57,48 @@ async function displaySingleSubordinateDetails(subordinateId) {
     }
 }
 
+async function displayAttendanceEntries(subordinateId) {
+    try {
+        const urlNeeded = `/api/v1/attendance/${subordinateId}/all`;
+        const response = await fetch(urlNeeded, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-async function displayAttendanceEntries(subordinateId){
-
-    const urlNeeded = `api/v1/attendance/${subordinateId}/all`;
-    await fetch(urlNeeded, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(async response => {
         if (!response.ok) {
             throw new Error(`Error getting Attendance.`);
         }
-        console.log(`updated successfully.`);
 
-        const userAttendanceList = await reposnse.json();
+        console.log(`Updated successfully.`);
 
-        const counter = 0;
-        userAttendanceList.forEach(attendanceEntry => {
-            counter++;
+        const userAttendanceList = await response.json();
 
-            const param1 = `attendanceEntry${counter}`
-            const param2 = `${attendanceEntry.date}`
-            const htmlElementToBeAppended = 
-            `<div class="attendance-check-item">
-              <input type="checkbox" id="attendanceEntry${counter}"
-              onchange="confirmOrUnconfirmAttendance(${param1},${param2})" name="attendance" />
-              <label for="attendance"> ${attendanceEntry.date}</label>
-            </div>
+        const parentElement = document.getElementById('attendances-container');
+        userAttendanceList.forEach((attendanceEntry, index) => {
+            const attendanceDate = attendanceEntry.attendanceID.date;
+            const checkboxId = `attendanceEntry${index + 1}`;
+            const htmlElementToBeAppended = document.createElement('div');
+            htmlElementToBeAppended.classList.add('attendance-check-item');
+            htmlElementToBeAppended.innerHTML = `
+                <input type="checkbox" id="${checkboxId}" 
+                onchange="confirmOrUnconfirmAttendance('${checkboxId}', '${attendanceDate}')" name="attendance" />
+                <label for="${checkboxId}"> ${attendanceDate}</label>
             `;
-            const parentElement = document.getElementById('attendances-container');
             parentElement.appendChild(htmlElementToBeAppended);
-            
         });
-
-    })
-    .catch(error => {
+    } catch (error) {
         console.error(`Error updating SuperiorID:`, error);
-        //openPopupFailed();
-        throw error; 
-    });
-
+        // openPopupFailed();
+        throw error;
+    }
 }
 
-async function confirmOrUnconfirmAttendance(idOfHtmlElement, dateOfAttendance){
+
+function confirmOrUnconfirmAttendance(idOfHtmlElement, dateOfAttendance){
     const checkbox = document.getElementById(`${idOfHtmlElement}`);
-    const urlNeeded = `api/v1/attendance/${subordinateId}/${dateOfAttendance}`;
+    const urlNeeded = `/api/v1/attendance/${subordinateId}/${dateOfAttendance}`;
 
     if (checkbox.checked) {
         fetch(urlNeeded, {
