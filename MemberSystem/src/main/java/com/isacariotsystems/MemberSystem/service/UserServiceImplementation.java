@@ -186,6 +186,11 @@ public class UserServiceImplementation implements UserService {
         return Optional.ofNullable(users);
     }
 
+    public Optional<User> findUserByEmail(String email){
+        Optional<User> user = userRepository.findByEmail(email);
+        return user;
+    }
+
     @Override
     public Optional<List<User>> findUsersByFirstName(String firstName){
         List<User> users = userRepository.findByFirstName(firstName);

@@ -1,11 +1,13 @@
 package com.isacariotsystems.MemberSystem;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.isacariotsystems.MemberSystem.entity.User;
@@ -18,6 +20,7 @@ import com.isacariotsystems.MemberSystem.repository.UserRepository;
 import com.isacariotsystems.MemberSystem.service.UserService;
 
 @SpringBootApplication
+@EnableScheduling
 public class MemberSystemApplication implements CommandLineRunner {
 
     @Autowired
@@ -43,6 +46,8 @@ public class MemberSystemApplication implements CommandLineRunner {
 
         makeAdmin();
 
+        makeBranch();
+
     }
 
     public void makeAdmin(){
@@ -54,6 +59,7 @@ public class MemberSystemApplication implements CommandLineRunner {
             user.setLastName("admin");
             user.setAddress("admin");
             user.setPhoneNumber("admin");
+            user.setInvitationDate(LocalDate.now());
             user.setRole(Role.ADMIN);
             user.setPassword(new BCryptPasswordEncoder().encode("admin"));
 
@@ -96,28 +102,45 @@ public class MemberSystemApplication implements CommandLineRunner {
             rank.setDaysRequired(daysRequired[i]);
             rankRepository.save(rank);
         }
+
+        User adminAccount = userRepository.findByRole(Role.ADMIN);
+        adminAccount.setRank(rankRepository.findById(6L).orElse(null));
+        userRepository.save(adminAccount);
     }
 
-    public void makeBranch(){
-
+    public void makeBranch() {
         Optional<Branch> branchCheck = branchRepository.findById(1L);
-
-        if (branchCheck.isPresent()){
+    
+        if (branchCheck.isPresent()) {
             return;
         }
+    
+        User branchManager = new User();
+        branchManager.setFirstName("Unassigned");
+        branchManager.setLastName("Manager");
+        branchManager.setEmail("unassigned@gmail.com");
+        branchManager.setRole(Role.USER);
+        branchManager.setInvitationDate(LocalDate.now());
+        branchManager.setRank(rankRepository.findById(3L).orElse(null));
 
+        userRepository.save(branchManager);
+    
         Branch branch = new Branch();
-
-        User admin = userService.findUserById(1L).orElse(null);
-
-        branch.setManager(admin);
-        branch.setName("Los Angeles");
-        branch.setAddress("1234 Hollywood Blvd Los Angeles, CA");
+        branch.setManager(branchManager);
+        branch.setName("Unassigned");
+        branch.setAddress("Unassigned Address");
         
         branchRepository.save(branch);
-
-        admin.setLocalBranch(branch);
+    
+        branchManager.setLocalBranch(branch);
+    
+        User admin = userService.findUserByEmail("admin@gmail.com").orElse(null);
+        if (admin != null) {
+            admin.setLocalBranch(branch);
+            userRepository.save(admin); 
+        }
     }
+    
 
 }
 

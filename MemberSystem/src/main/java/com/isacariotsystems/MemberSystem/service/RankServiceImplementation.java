@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.isacariotsystems.MemberSystem.DTO.RankRequest;
 import com.isacariotsystems.MemberSystem.entity.Rank;
 import com.isacariotsystems.MemberSystem.repository.RankRepository;
 
@@ -24,7 +25,14 @@ public class RankServiceImplementation implements RankService {
 
 
     @Override
-    public Rank saveRank(Rank rank){
+    public Rank saveRank(RankRequest rankRequest){
+        Rank rank = new Rank();
+
+        rank.setDaysRequired(rankRequest.getDaysRequired());
+        rank.setDescription(rankRequest.getDescription());
+        rank.setName(rankRequest.getName());
+        rank.setRequirements(rankRequest.getRequirements());
+
         return rankRepository.save(rank);
     }
 
