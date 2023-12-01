@@ -89,9 +89,7 @@ async function displayBranches(allBranches){
 function updateMemberFields(){
     const memberId = document.getElementById("memberID").value;
     const userFields = [
-        document.getElementById("superiorID").value, 
-        document.getElementById("branchID").value, 
-        document.getElementById("rankLevel").value];
+        document.getElementById("superiorID").value];
 
     console.log(userFields[0]);
 
@@ -123,52 +121,7 @@ function updateMemberFields(){
             });
 
         }
-        if(userFields[1] !== ""){
-            const urlNeeded = `/api/v1/user/${memberId}/branch`;
-            fetch(urlNeeded, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ 'branchId': userFields[1] })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Error updating BranchID.`);
-                }
-                console.log(` updated successfully.`);
-                
-            })
-            .catch(error => {
-                console.error(`Error updating BranchID:`, error);
-                openPopupFailed();
-                throw error; 
-            });
-        }
-
-        if(userFields[2] !== ""){
-            const urlNeededRank = `/api/v1/user/${memberId}/rank`;
-            fetch(urlNeededRank, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ 'rankId': userFields[2] })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Error updating rankID.`);
-                }
-                console.log(` updated successfully.`);
-                
-            })
-            .catch(error => {
-                console.error(`Error updating rankId:`, error);
-                openPopupFailed();
-                throw error; 
-            });
-        }
-        openPopup();
+          openPopup();
     }
 }
 
