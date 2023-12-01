@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     if (isTokenValid()){
         await displayMenu();
-        await displayBranchIcon();
         logoutEventListener();
         
     }

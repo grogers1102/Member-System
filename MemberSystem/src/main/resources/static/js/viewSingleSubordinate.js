@@ -10,78 +10,70 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-async function displaySingleSubordinateDetails(subordinateIdFromUrl){
+async function displaySingleSubordinateDetails(subordinateId) {
+    const urlNeeded = `/api/v1/user/${subordinateId}`;
 
-    const singleSubordinateParams = 
-    [firstNameOfSub, lastNameOfSub, subID, 
-     branch, phoneNumber, rank,
-     email, superiorID, amnestyDays,
-     address]
-
-    const urlNeeded = `/api/v1/user/${subordinateIdFromUrl}`;
-
-        fetch(urlNeeded, {
+    try {
+        const response = await fetch(urlNeeded, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error getting subordinate user Object.`);
-            }
-            console.log(`communicated successfully.`);
-
-            const userOBJ = reposnse.json();
-
-            singleSubordinateParams[0] = userOBJ.firstName;
-            singleSubordinateParams[1] = userOBJ.lastName;
-            singleSubordinateParams[2] = userOBJ.userId;
-            singleSubordinateParams[3] = userOBJ.localBranch.branchId;
-            singleSubordinateParams[4] = userOBJ.phoneNumber;
-            singleSubordinateParams[5] = userOBJ.rankId.rank;
-            singleSubordinateParams[6] = userOBJ.email;
-            singleSubordinateParams[7] = userOBJ.superiorId.superior;
-            singleSubordinateParams[8] = userOBJ.amnestyDays;
-            singleSubordinateParams[9] = userOBJ.address;
-
-        })
-        .catch(error => {
-            console.error(`Error updating SuperiorID:`, error);
-            openPopupFailed();
-            throw error; 
         });
 
-    document.getElementById("name-id").textContent = `${singleSubordinateParams[0]} ${singleSubordinateParams[1]}`;
+        if (!response.ok) {
+            throw new Error(`Error getting subordinate user Object.`);
+        }
+        console.log(`Communicated successfully.`);
 
-    document.getElementById("user-id").textContent = `User ID: ${singleSubordinateParams[2]}`;
-    document.getElementById("branch-id").textContent = `Branch ID: ${singleSubordinateParams[3]}`;    
-    document.getElementById("rank-id").textContent = `Rank Level: ${singleSubordinateParams[5]}`; 
+        const userOBJ = await response.json();
 
-    document.getElementById("phone-id").textContent = `Phone Number: ${singleSubordinateParams[4]}`;    
-    document.getElementById("address-id").textContent = `Address: ${singleSubordinateParams[9]}`;       
-    document.getElementById("email-id").textContent = `Email: ${singleSubordinateParams[6]}`;  
+        const {
+            firstName,
+            lastName,
+            userId,
+            localBranch,
+            phoneNumber,
+            rank,
+            email,
+            superiorId,
+            amnestyDays,
+            address
+        } = userOBJ;
 
-    document.getElementById("superior-id").textContent = `Superior ID: ${singleSubordinateParams[7]}`;       
-    document.getElementById("amnesty-id").textContent = `Numbers of Amnesty Days: ${singleSubordinateParams[8]}`;       
+        document.getElementById("name-id").textContent = `${firstName} ${lastName}`;
+        //document.getElementById("user-id").textContent = `User ID: ${userId}`;
+        //document.getElementById("branch-id").textContent = `Branch ID: ${localBranch}`;
+        //document.getElementById("rank-id").textContent = `Rank Level: ${rank}`;
+        document.getElementById("phone-id").textContent = `Phone Number: ${phoneNumber}`;
+        document.getElementById("address-id").textContent = `Address: ${address}`;
+        document.getElementById("email-id").textContent = `Email: ${email}`;
+        document.getElementById("superior-id").textContent = `Superior ID: ${superiorId}`;
+        document.getElementById("amnesty-id").textContent = `Numbers of Amnesty Days: ${amnestyDays}`;
+    } catch (error) {
+        console.error(`Error updating`, error);
+        //openPopupFailed();
+        throw error;
+    }
 }
 
-async function displayAttendanceEntries(subordinateIdFromUrl){
 
-    const urlNeeded = `api/v1/attendance/${subordinateIdFromUrl}/all`;
-    fetch(urlNeeded, {
+async function displayAttendanceEntries(subordinateId){
+
+    const urlNeeded = `api/v1/attendance/${subordinateId}/all`;
+    await fetch(urlNeeded, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => {
+    .then(async response => {
         if (!response.ok) {
             throw new Error(`Error getting Attendance.`);
         }
         console.log(`updated successfully.`);
 
-        const userAttendanceList = reposnse.json();
+        const userAttendanceList = await reposnse.json();
 
         const counter = 0;
         userAttendanceList.forEach(attendanceEntry => {
@@ -104,7 +96,7 @@ async function displayAttendanceEntries(subordinateIdFromUrl){
     })
     .catch(error => {
         console.error(`Error updating SuperiorID:`, error);
-        openPopupFailed();
+        //openPopupFailed();
         throw error; 
     });
 
@@ -130,7 +122,7 @@ async function confirmOrUnconfirmAttendance(idOfHtmlElement, dateOfAttendance){
         })
         .catch(error => {
             console.error(`Error updating Attendance:`, error);
-            openPopupFailed();
+            //openPopupFailed();
             throw error; 
         });
       } else {
@@ -149,7 +141,7 @@ async function confirmOrUnconfirmAttendance(idOfHtmlElement, dateOfAttendance){
         })
         .catch(error => {
             console.error(`Error updating Attendance:`, error);
-            openPopupFailed();
+            //openPopupFailed();
             throw error; 
         });
       }
