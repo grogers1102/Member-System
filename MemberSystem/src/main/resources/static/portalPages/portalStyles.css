@@ -232,37 +232,57 @@
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     transition: 200ms ease-in-out;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.144);
     border-radius: 10px;
     z-index: 10;
     background-color: white;
-    width: 500px;
+    width: 25vw;
+    height: 40vh;
+    max-width: 80%;
+ }
+
+ .branch-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid rgba(0, 0, 0, 0.144);
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 25vw;
+    height: 35vh;
     max-width: 80%;
  }
  
  
- .rank-modal.active {
+ .rank-modal.active,
+ .branch-modal.active {
     transform: translate(-50%, -50%) scale(1);
  }
  
  
- .rank-modal-header{
+ .rank-modal-header,
+ .branch-modal-header{
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     color: rgb(0, 183, 255)
  }
  
  
- .rank-modal-header .title{
+ .rank-modal-header .title,
+ .branch-modal-header .title{
     font-size: 1.25rem;
     font-weight: bold;
  }
  
  
- .rank-modal-header .close-button {
+ .rank-modal-header .close-button
+ .branch-modal-header .close-button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -272,8 +292,39 @@
  }
  
  
- .rank-modal-body{
+ .rank-modal-body, 
+ .branch-modal-body{
     padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+ }
+
+ .rank-modal-body input,
+ .branch-modal-body input{
+    height: 4vh;
+    border: 1px solid rgb(0, 183, 255);
+    border-radius: 5px; 
+    outline: none; 
+ }
+
+ .rank-modal-container,
+ .branch-modal-container{
+    display: flex;
+    flex-direction: column;
+
+ }
+
+ .rank-button-container,
+ .branch-button-container{
+    margin-top: 1.5vh;
+ }
+
+ .rank-button-container button,
+ .branch-button-container button{
+    font-size: 1rem;
+    background: rgb(0, 183, 255);
+    padding: 5px;
+    color:#FFF;
  }
  
  

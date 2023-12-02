@@ -15,6 +15,9 @@ import com.isacariotsystems.MemberSystem.entity.User;
 
 @Repository
 public interface AttendanceRepository extends JpaRepository<Attendance,AttendanceID> {
+
+     boolean findIsConfirmedByAttendanceID(AttendanceID attendanceId);
+
      List<User> findUsersByAttendanceID_Date(LocalDate date);
 
      List<Attendance> findAttendanceByAttendanceID_UserId(Long userId);
@@ -23,7 +26,6 @@ public interface AttendanceRepository extends JpaRepository<Attendance,Attendanc
 
      boolean findIsAbsentByAttendanceID(AttendanceID attendanceId);
 
-     boolean findIsConfirmedByAttendanceID(AttendanceID attendanceId);
 
      @Query("SELECT a FROM Attendance a WHERE a.isConfirmed = true AND a.attendanceID.userId = :userId")
      List<Attendance> findAllConfirmedAttendancesForUser(@Param("userId") Long userId);
