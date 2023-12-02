@@ -58,4 +58,9 @@ public class AttendanceController {
         return attendanceService.findAttendanceByUserId(userId).orElse(null);
     }
 
+    @GetMapping("{userId}/all/confirmed")
+    public List<Attendance> findAllConfirmedAttendanceByUser(@PathVariable Long userId){
+        return attendanceService.getConfirmedAttendanceByUser(userId);
+    }
+
 }

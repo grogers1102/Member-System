@@ -1,5 +1,6 @@
 package com.isacariotsystems.MemberSystem.service;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -28,7 +29,7 @@ public class SocialScoreService {
     @Autowired
     private AttendanceService attendanceService;
 
-    @Scheduled(fixedRate = 60000) 
+    @Scheduled(fixedDelay = 24 * 60 * 60 * 1000)
     public void updateSocialScores() {
         List<User> userList = userService.allUsers();
         for (User user : userList) {
@@ -43,12 +44,21 @@ public class SocialScoreService {
                 int daysRequiredByRank = user.getRank().getDaysRequired();
             
                 Long daysRequired = weeksDifference*daysRequiredByRank;
-                logger.info(""+(double)daysAttended/daysRequired);
-                user.setSocialScore((double)daysAttended/daysRequired);
+                double socialScore = truncateToTwoDecimalPlaces((double)daysAttended/daysRequired);
+                user.setSocialScore(socialScore);
                 userRepository.save(user);
             }else{
                 break;
             }
         }
+    }
+
+    // Helper Function
+    private static double truncateToTwoDecimalPlaces(double number) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
+        String formattedNumber = decimalFormat.format(number);
+
+        return Double.parseDouble(formattedNumber);
     }
 }
