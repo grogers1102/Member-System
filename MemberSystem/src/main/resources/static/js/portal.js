@@ -2,6 +2,8 @@ const currentDate = new Date();
 const year = currentDate.getFullYear();
 const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
 const day = String(currentDate.getDate()).padStart(2, '0');
+let userId = null;
+let rankId = 1;
 
 const formattedDate = `${year}-${month}-${day}`;
 
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 function checkIfSignedInAlready() {
 
     return new Promise((resolve, reject) => {
-        const userId = localStorage.getItem("userId");
+        userId = localStorage.getItem("userId");
         const urlNeededForChecking = `/api/v1/attendance/exists/${userId}/${formattedDate}`;
 
         fetch(urlNeededForChecking)
@@ -101,10 +103,12 @@ async function displayAccount(){
         
         const userOBJ = await response.json();
 
+        rankId = userOBJ.rank.rankId;
+
         statementUpdater = userOBJ.firstName;
         document.getElementById('welcomeStatement').textContent = `Welcome, ${statementUpdater}`;
-        await displayBranchDetails(userOBJ);
         await displayRank(userOBJ.rank);
+        await displayBranchDetails(userOBJ);
         await displaySocialScore(userOBJ.socialScore);
     } catch (error) {
         alert(error.message);
@@ -120,34 +124,37 @@ async function displayRank(rank){
     }
 
     document.querySelector('.requirement-description').textContent = `Days Required (Weekly): ${rank.daysRequired}`
- 
-    const openModalButtons = document.querySelectorAll('[data-modal-target]')
-    const closeModalButtons = document.querySelectorAll('[data-close-button]')
-    const overlay = document.getElementById('overlay')
- 
- 
-    overlay.addEventListener('click', () => {
-        const modals = document.querySelectorAll('.rank-modal.active')
-        modals.forEach(modal => {
-            closeModal(modal)
+    
+    if (rankId >= 5)
+    {
+        const openModalButtons = document.querySelectorAll('[data-modal-target]')
+        const closeModalButtons = document.querySelectorAll('[data-close-button]')
+        const overlay = document.getElementById('overlay')
+     
+     
+        overlay.addEventListener('click', () => {
+            const modals = document.querySelectorAll('.rank-modal.active')
+            modals.forEach(modal => {
+                closeModal(modal)
+            })
         })
-    })
- 
- 
-    openModalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = document.querySelector(button.dataset.modalTarget)
-            openModal(modal)
+     
+     
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = document.querySelector(button.dataset.modalTarget)
+                openModal(modal)
+            })
         })
-    })
- 
- 
-    closeModalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = button.closest('.rank-modal')
-            closeModal(modal)
+     
+     
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.rank-modal')
+                closeModal(modal)
+            })
         })
-    })
+    }
  }
  
  
@@ -191,33 +198,35 @@ async function displayBranchDetails(user){
     document.querySelector('.branch-population').textContent = `Population: ${branchPopulation}`;
     document.querySelector('.branch-manager').textContent = `Manager: ${managerName}`;
 
-    const openModalButtons = document.querySelectorAll('[data-modal-target]')
-    const closeModalButtons = document.querySelectorAll('[data-close-button]')
-    const overlay = document.getElementById('overlay')
- 
- 
-    overlay.addEventListener('click', () => {
-        const modals = document.querySelectorAll('.branch-modal.active')
-        modals.forEach(modal => {
-            closeModal(modal)
+    if (rankId >= 5){
+        const openModalButtons = document.querySelectorAll('[data-modal-target]')
+        const closeModalButtons = document.querySelectorAll('[data-close-button]')
+        const overlay = document.getElementById('overlay')
+    
+    
+        overlay.addEventListener('click', () => {
+            const modals = document.querySelectorAll('.branch-modal.active')
+            modals.forEach(modal => {
+                closeModal(modal)
+            })
         })
-    })
- 
- 
-    openModalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = document.querySelector(button.dataset.modalTarget)
-            openModal(modal)
+    
+    
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = document.querySelector(button.dataset.modalTarget)
+                openModal(modal)
+            })
         })
-    })
- 
- 
-    closeModalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = button.closest('.branch-modal')
-            closeModal(modal)
+    
+    
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.branch-modal')
+                closeModal(modal)
+            })
         })
-    })
+    }
 }
 
 async function getBranchPopulation(branchId){
