@@ -1,5 +1,6 @@
  package com.isacariotsystems.MemberSystem.service;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -70,6 +71,7 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
         user.setPhoneNumber(signupRequest.getPhoneNumber());
         user.setRole(Role.USER);
         user.setPassword(passwordEncoder.encode(password));
+        user.setInvitationDate(LocalDate.now());
 
         Branch branch = branchService.findBranchById(1L).orElse(null);
         user.setLocalBranch(branch);
@@ -77,7 +79,7 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
         Rank rank = rankService.findRankById(1L).orElse(null);
         user.setRank(rank);
 
-        user.setSocialScore(0.1);
+        user.setSocialScore(0);
         
         User superior = userService.findUserById(1L).orElse(null);
         user.setSuperior(superior);

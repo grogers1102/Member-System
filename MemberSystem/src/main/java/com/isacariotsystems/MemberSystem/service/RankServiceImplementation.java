@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.isacariotsystems.MemberSystem.DTO.RankRequest;
 import com.isacariotsystems.MemberSystem.entity.Rank;
 import com.isacariotsystems.MemberSystem.repository.RankRepository;
 
@@ -24,7 +25,13 @@ public class RankServiceImplementation implements RankService {
 
 
     @Override
-    public Rank saveRank(Rank rank){
+    public Rank saveRank(RankRequest rankRequest){
+        Rank rank = new Rank();
+
+        rank.setDaysRequired(rankRequest.getDaysRequired());
+        rank.setName(rankRequest.getName());
+        rank.setRequirements(rankRequest.getRequirements());
+
         return rankRepository.save(rank);
     }
 
@@ -70,20 +77,6 @@ public class RankServiceImplementation implements RankService {
     }
 
     @Override
-    public Rank updateRankDescription(Long rankId, String description) {
-        if (rankRepository.existsById(rankId)) {
-            Rank rank = rankRepository.findById(rankId)
-                    .orElseThrow(() -> new NoSuchElementException("Rank " + rankId + " not found"));
-
-            rank.setDescription(description);
-
-            return rankRepository.save(rank);
-        } else {
-            throw new NoSuchElementException("Rank " + rankId + " not found");
-        }
-    }
-
-    @Override
     public Rank updateRankRequirements(Long rankId, String requirements) {
         if (rankRepository.existsById(rankId)) {
             Rank rank = rankRepository.findById(rankId)
@@ -109,14 +102,6 @@ public class RankServiceImplementation implements RankService {
         } else {
             throw new NoSuchElementException("Rank " + rankId + " not found");
         }
-    }
-
-
-
-
-    @Override
-    public String findDescriptionById(Long rankId){
-        return rankRepository.findDescriptionByRankId(rankId);
     }
 
     @Override

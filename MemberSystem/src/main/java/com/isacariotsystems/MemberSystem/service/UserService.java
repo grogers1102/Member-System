@@ -43,5 +43,7 @@ public interface UserService {
 
     UserDetailsService userDetailsService();
 
+    public Optional<User> findUserByEmail(String email);
+
     public Optional<List<User>> findUsersByFirstName(String firstName);
 }

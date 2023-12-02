@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.isacariotsystems.MemberSystem.DTO.BranchRequest;
 import com.isacariotsystems.MemberSystem.entity.Branch;
 import com.isacariotsystems.MemberSystem.service.BranchService;
 
@@ -34,10 +36,8 @@ public class BranchController {
     private BranchService branchService;
 
     @PostMapping("/add")
-    public String add(@RequestBody Branch branch){
-        branchService.saveBranch(branch);
-
-        return "Successfully Added Branch";
+    public ResponseEntity<Branch> add(@RequestBody BranchRequest branchRequest){
+    return ResponseEntity.ok(branchService.saveBranch(branchRequest));
     }
 
     @GetMapping("/all")

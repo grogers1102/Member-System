@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.isacariotsystems.MemberSystem.DTO.BranchRequest;
 import com.isacariotsystems.MemberSystem.entity.Branch;
 import com.isacariotsystems.MemberSystem.entity.User;
 import com.isacariotsystems.MemberSystem.repository.BranchRepository;
@@ -21,8 +22,18 @@ public class BranchServiceImplementation implements BranchService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired 
+    private UserService userService;
+
     @Override
-    public Branch saveBranch(Branch branch){
+    public Branch saveBranch(BranchRequest branchRequest){
+        Branch branch = new Branch();
+        branch.setAddress(branchRequest.getAddress());
+        branch.setName(branchRequest.getName());
+
+        User branchManager = userService.findUserByEmail("unassigned@gmail.com").orElse(null);
+        branch.setManager(branchManager);
+
         return branchRepository.save(branch);
     }
 

@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.isacariotsystems.MemberSystem.entity.Attendance;
@@ -22,4 +24,10 @@ public interface AttendanceRepository extends JpaRepository<Attendance,Attendanc
      boolean findIsAbsentByAttendanceID(AttendanceID attendanceId);
 
      boolean findIsConfirmedByAttendanceID(AttendanceID attendanceId);
+
+     @Query("SELECT a FROM Attendance a WHERE a.isConfirmed = true AND a.attendanceID.userId = :userId")
+     List<Attendance> findAllConfirmedAttendancesForUser(@Param("userId") Long userId);
+
+     @Query("SELECT a FROM Attendance a WHERE a.isConfirmed = false AND a.attendanceID.userId = :userId")
+     List<Attendance> findAllUnconfirmedAttendancesForUser(@Param("userId") Long userId);
 }

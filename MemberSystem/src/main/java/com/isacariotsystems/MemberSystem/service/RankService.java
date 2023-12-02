@@ -3,11 +3,12 @@ package com.isacariotsystems.MemberSystem.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.isacariotsystems.MemberSystem.DTO.RankRequest;
 import com.isacariotsystems.MemberSystem.entity.Rank;
 
 public interface RankService {
 
-    public Rank saveRank(Rank rank);
+    public Rank saveRank(RankRequest rankRequest);
 
     public List<Rank> allRanks();
 
@@ -17,8 +18,6 @@ public interface RankService {
 
     public Rank updateRank(Long rankId, Rank rank);
 
-    public String findDescriptionById(Long rankId);
-
     public String findRequirementsById(Long rankId);
 
     public String findDaysRequiredById(Long rankId);
@@ -26,8 +25,6 @@ public interface RankService {
     public Rank updateRankDaysRequired(Long rankId, int daysRequired);
 
     public Rank updateRankRequirements(Long rankId, String requirements);
-
-    public Rank updateRankDescription(Long rankId, String description);
 
     public Rank updateRankName(Long rankId, String name);
 }

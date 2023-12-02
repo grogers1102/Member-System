@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.isacariotsystems.MemberSystem.DTO.RankRequest;
 import com.isacariotsystems.MemberSystem.entity.Rank;
 import com.isacariotsystems.MemberSystem.service.RankService;
 
@@ -34,10 +36,8 @@ public class RankController {
 
 
     @PostMapping("/add")
-    public String add(@RequestBody Rank rank){
-        rankService.saveRank(rank);
-
-        return "Successfully Added Rank";
+    public ResponseEntity<Rank> add(@RequestBody RankRequest rankRequest){
+    return ResponseEntity.ok(rankService.saveRank(rankRequest));
     }
 
     @GetMapping("/all")
@@ -60,11 +60,6 @@ public class RankController {
         return rankService.updateRank(rankId,rank);
     }
 
-    @GetMapping("/{rankId}/description")
-    public String findRankDescriptionById(@PathVariable Long rankId){
-        return rankService.findDescriptionById(rankId);
-    }
-
     @GetMapping("/{rankId}/requirements")
     public String findRankRequirementsById(@PathVariable Long rankId){
         return rankService.findRequirementsById(rankId);
@@ -79,12 +74,6 @@ public class RankController {
     public Rank updateUserByEmail(@PathVariable Long rankId, @RequestBody JsonNode requestBody) {
         String name = requestBody.get("name").asText();
         return rankService.updateRankName(rankId, name);
-    }
-
-    @PatchMapping("/{rankId}/description")
-    public Rank updateRankDescription(@PathVariable Long rankId, @RequestBody JsonNode requestBody) {
-        String description = requestBody.get("description").asText();
-        return rankService.updateRankDescription(rankId, description);
     }
 
     @PatchMapping("/{rankId}/requirements")
