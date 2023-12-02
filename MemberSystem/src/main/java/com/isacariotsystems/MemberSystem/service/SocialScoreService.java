@@ -3,7 +3,6 @@ package com.isacariotsystems.MemberSystem.service;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.isacariotsystems.MemberSystem.entity.Attendance;
 import com.isacariotsystems.MemberSystem.entity.User;
+import com.isacariotsystems.MemberSystem.repository.UserRepository;
 
 @Service
 public class SocialScoreService {
@@ -23,35 +23,32 @@ public class SocialScoreService {
     private UserService userService;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private AttendanceService attendanceService;
 
     @Scheduled(fixedRate = 60000) 
     public void updateSocialScores() {
         List<User> userList = userService.allUsers();
-        logger.info("Updating social scores...");
         for (User user : userList) {
             LocalDate dateJoined = user.getInvitationDate();
-            Optional<List<Attendance>> userAttendances = attendanceService.findAttendanceByUserId(user.getUserId());
+            List<Attendance> userAttendances = attendanceService.getConfirmedAttendanceByUser(user.getUserId());
 
-            int daysAttended = 0;
-
-            if (userAttendances.isPresent()) {
-                List<Attendance> attendanceList = userAttendances.get();
-
-                for (Attendance attendance : attendanceList) {
-                    if (attendance.isConfirmed()) {
-                        daysAttended++;
-                    }
-                }
-            }
+            int daysAttended = userAttendances.size();
+            logger.info("daysAttendned"+daysAttended);
             
             long weeksDifference = ChronoUnit.WEEKS.between(dateJoined, LocalDate.now());
-
-            int daysRequiredByRank = user.getRank().getDaysRequired();
-
-            Long daysRequired = weeksDifference*daysRequiredByRank;
-
-            user.setSocialScore(daysAttended/daysRequired);
+            if (weeksDifference > 0 && daysAttended > 0){
+                int daysRequiredByRank = user.getRank().getDaysRequired();
+            
+                Long daysRequired = weeksDifference*daysRequiredByRank;
+                logger.info(""+(double)daysAttended/daysRequired);
+                user.setSocialScore((double)daysAttended/daysRequired);
+                userRepository.save(user);
+            }else{
+                break;
+            }
         }
     }
 }

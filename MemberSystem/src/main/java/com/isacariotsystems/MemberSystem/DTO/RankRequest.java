@@ -6,6 +6,5 @@ import lombok.Data;
 public class RankRequest {
     String name;
     String requirements;
-    String description;
     int daysRequired;
 }

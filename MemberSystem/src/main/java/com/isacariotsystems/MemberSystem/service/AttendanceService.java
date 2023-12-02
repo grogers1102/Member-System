@@ -31,4 +31,6 @@ public interface AttendanceService {
 
     public Attendance updateAttendanceIsConfirmed(AttendanceID attendanceId, boolean isConfirmed);
 
+    public List<Attendance> getConfirmedAttendanceByUser(Long userId);
+
 }

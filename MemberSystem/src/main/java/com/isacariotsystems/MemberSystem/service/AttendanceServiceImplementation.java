@@ -74,6 +74,10 @@ public class AttendanceServiceImplementation implements AttendanceService{
         return attendanceRepository.findIsConfirmedByAttendanceID(attendanceId);
     }
 
+    public List<Attendance> getConfirmedAttendanceByUser(Long userId){
+        return attendanceRepository.findAllConfirmedAttendancesForUser(userId);
+    }
+
     @Override
     public Attendance updateAttendanceIsConfirmed(AttendanceID attendanceId, boolean isConfirmed){
         if (attendanceRepository.existsById(attendanceId)) {

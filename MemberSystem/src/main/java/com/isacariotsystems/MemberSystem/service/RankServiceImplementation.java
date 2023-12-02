@@ -29,7 +29,6 @@ public class RankServiceImplementation implements RankService {
         Rank rank = new Rank();
 
         rank.setDaysRequired(rankRequest.getDaysRequired());
-        rank.setDescription(rankRequest.getDescription());
         rank.setName(rankRequest.getName());
         rank.setRequirements(rankRequest.getRequirements());
 
@@ -78,20 +77,6 @@ public class RankServiceImplementation implements RankService {
     }
 
     @Override
-    public Rank updateRankDescription(Long rankId, String description) {
-        if (rankRepository.existsById(rankId)) {
-            Rank rank = rankRepository.findById(rankId)
-                    .orElseThrow(() -> new NoSuchElementException("Rank " + rankId + " not found"));
-
-            rank.setDescription(description);
-
-            return rankRepository.save(rank);
-        } else {
-            throw new NoSuchElementException("Rank " + rankId + " not found");
-        }
-    }
-
-    @Override
     public Rank updateRankRequirements(Long rankId, String requirements) {
         if (rankRepository.existsById(rankId)) {
             Rank rank = rankRepository.findById(rankId)
@@ -117,14 +102,6 @@ public class RankServiceImplementation implements RankService {
         } else {
             throw new NoSuchElementException("Rank " + rankId + " not found");
         }
-    }
-
-
-
-
-    @Override
-    public String findDescriptionById(Long rankId){
-        return rankRepository.findDescriptionByRankId(rankId);
     }
 
     @Override

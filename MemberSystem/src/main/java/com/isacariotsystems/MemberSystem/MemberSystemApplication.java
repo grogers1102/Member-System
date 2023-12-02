@@ -63,7 +63,7 @@ public class MemberSystemApplication implements CommandLineRunner {
             user.setRole(Role.ADMIN);
             user.setPassword(new BCryptPasswordEncoder().encode("admin"));
 
-            Optional<Rank> optionalRank = rankRepository.findById(1L);
+            Optional<Rank> optionalRank = rankRepository.findById(6L);
             Rank rank = optionalRank.orElseThrow(() -> new RuntimeException("Rank not found for the provided ID"));
             user.setRank(rank);
             
@@ -76,7 +76,7 @@ public class MemberSystemApplication implements CommandLineRunner {
         if (rankCheck.isPresent()) {
             return;
         }
-        String[] descriptions = {
+        String[] names = {
             "Novice",
             "Apprentice",
             "Adept",
@@ -86,26 +86,21 @@ public class MemberSystemApplication implements CommandLineRunner {
             "Grandmaster",
         };
         String[] requirements = {
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
+         "Start attending meetings, engage, and learn organizational basics as member.",
+        "Actively participate, gain skills, and assist in small tasks.",
+         "Demonstrate competence, take on more tasks, show growing proficiency.",
+         "Exhibit expertise, manage projects, contribute significantly to the organization.",
+         "Offer specialized knowledge, mentor others, lead major initiatives successfully.",
+         "Excel in multiple areas, drive innovation, and contribute profoundly.",
+        "Pinnacle of expertise, lead strategic direction, influence organization significantly. these good for replacement"
         };
-        int[] daysRequired = {1, 3, 5, 5, 7, 7, 7};
-        for (int i = 0; i < descriptions.length; i++) {
+        for (int i = 0; i < names.length; i++) {
             Rank rank = new Rank();
-            rank.setDescription(descriptions[i]);
+            rank.setName(names[i]);
             rank.setRequirements(requirements[i]);
-            rank.setDaysRequired(daysRequired[i]);
+            rank.setDaysRequired(i+1);
             rankRepository.save(rank);
         }
-
-        User adminAccount = userRepository.findByRole(Role.ADMIN);
-        adminAccount.setRank(rankRepository.findById(6L).orElse(null));
-        userRepository.save(adminAccount);
     }
 
     public void makeBranch() {

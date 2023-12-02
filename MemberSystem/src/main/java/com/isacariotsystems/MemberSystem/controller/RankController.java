@@ -60,11 +60,6 @@ public class RankController {
         return rankService.updateRank(rankId,rank);
     }
 
-    @GetMapping("/{rankId}/description")
-    public String findRankDescriptionById(@PathVariable Long rankId){
-        return rankService.findDescriptionById(rankId);
-    }
-
     @GetMapping("/{rankId}/requirements")
     public String findRankRequirementsById(@PathVariable Long rankId){
         return rankService.findRequirementsById(rankId);
@@ -79,12 +74,6 @@ public class RankController {
     public Rank updateUserByEmail(@PathVariable Long rankId, @RequestBody JsonNode requestBody) {
         String name = requestBody.get("name").asText();
         return rankService.updateRankName(rankId, name);
-    }
-
-    @PatchMapping("/{rankId}/description")
-    public Rank updateRankDescription(@PathVariable Long rankId, @RequestBody JsonNode requestBody) {
-        String description = requestBody.get("description").asText();
-        return rankService.updateRankDescription(rankId, description);
     }
 
     @PatchMapping("/{rankId}/requirements")

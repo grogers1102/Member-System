@@ -79,7 +79,7 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
         Rank rank = rankService.findRankById(1L).orElse(null);
         user.setRank(rank);
 
-        user.setSocialScore(0.1);
+        user.setSocialScore(0);
         
         User superior = userService.findUserById(1L).orElse(null);
         user.setSuperior(superior);
