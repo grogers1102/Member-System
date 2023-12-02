@@ -138,8 +138,6 @@ async function displayRank(rank){
         button.addEventListener('click', () => {
             const modal = document.querySelector(button.dataset.modalTarget)
             openModal(modal)
-            document.querySelector('.rank-modal-header').firstChild.textContent = `Rank: ${rank.description}`
-            document.querySelector('.rank-modal-body').textContent = rank.requirements
         })
     })
  
@@ -193,7 +191,33 @@ async function displayBranchDetails(user){
     document.querySelector('.branch-population').textContent = `Population: ${branchPopulation}`;
     document.querySelector('.branch-manager').textContent = `Manager: ${managerName}`;
 
-
+    const openModalButtons = document.querySelectorAll('[data-modal-target]')
+    const closeModalButtons = document.querySelectorAll('[data-close-button]')
+    const overlay = document.getElementById('overlay')
+ 
+ 
+    overlay.addEventListener('click', () => {
+        const modals = document.querySelectorAll('.branch-modal.active')
+        modals.forEach(modal => {
+            closeModal(modal)
+        })
+    })
+ 
+ 
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = document.querySelector(button.dataset.modalTarget)
+            openModal(modal)
+        })
+    })
+ 
+ 
+    closeModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.branch-modal')
+            closeModal(modal)
+        })
+    })
 }
 
 async function getBranchPopulation(branchId){

@@ -42,11 +42,25 @@
           <button class="cardHeading" data-modal-target="#rank-modal">My Rank &nbsp;&nbsp;></button>
           <div class="rank-modal" id="rank-modal">
             <div class="rank-modal-header">
-              RankHere
+              New Rank
               <button data-close-button class="close-button">&times;</button>
             </div>
             <div class="rank-modal-body">
-              RankDescriptionHere
+              <form>
+                <div class="rank-modal-container">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name">
+                  
+                  <label for="location">Description:</label>
+                  <input type="text" id="location" name="location">
+
+                  <label for="location">Days Required:</label>
+                  <input type="text" id="location" name="location">
+                </div>
+              </form> 
+              <div class="rank-button-container">
+                <button type="submit" value="Submit">Create</button>
+              </div>          
             </div>
           </div>
           <div id="overlay"></div>
@@ -85,9 +99,28 @@
 
         
         <div class="dashboardItem">
-          <h1 class="cardHeading">
-            <a href="branchPage.html" class="card-heading-link">My Branch&nbsp;&nbsp; ></a>
-          </h1>
+          <button class="cardHeading" data-modal-target="#branch-modal">My Branch</button>
+          <div class="branch-modal" id="branch-modal">
+            <div class="branch-modal-header">
+              New Branch
+              <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="branch-modal-body">
+              <form>
+                <div class="branch-modal-container">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name">
+                  
+                  <label for="location">Location:</label>
+                  <input type="text" id="location" name="location">
+                </div>
+              </form> 
+              <div class="branch-button-container">
+                <button type="submit" value="Submit">Create</button>
+              </div>          
+            </div>
+          </div>
+          <div id="overlay"></div>
           <div class="card-body">
             <div class="branch-card-body">
               <h2 class="user-branch-location">LocationHere</h2>
