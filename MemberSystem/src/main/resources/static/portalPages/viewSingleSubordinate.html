@@ -24,36 +24,37 @@
     ></script>
   </head>
   <!--end copy for each HTML files-->
- 
+
   <body class="portal" id="portalID">
     <div class="main-view-single-subordinate">
       <header class="header-account">Subordinate</header>
       <main class="view-single-subordinate-content">
         <div class="single-user-info-container">
           <div class="user-info-subcontainer">
-            <h1 class="user-name">
+            <h1 class="user-name" id="name-id">
               UserNameHere
-              <div class="user-info-details">
-                <h2 class="user-id">IDHere</h2>
-                <h2 class="user-branch">BranchHere</h2>
-              </div>
             </h1>
+            <div class="user-info-details">
+              <h2 class="user-id" id="user-id">IDHere</h2>
+              <h2 class="user-branch" id="branch-id">BranchHere</h2>
+              <h2 class="user-rank" id="rank-id">RankHere</h2>
+            </div>
           </div>
           <div class="user-info-subcontainer">
             <h1 class="user-contact">
               Contact Information
               <div class="user-info-details">
-                <h2 class="user-phone-number">PhoneNumberHere</h2>
-                <h2 class="user-address">AddressHere</h2>
-                <h2 class="user-email">EmailHere</h2>
+                <h2 class="user-phone-number" id="phone-id">PhoneNumberHere</h2>
+                <h2 class="user-address" id="address-id">AddressHere</h2>
+                <h2 class="user-email" id="email-id">EmailHere</h2>
               </div>
-           </h1>
+            </h1>
           </div>
           <div class="user-info-subcontainer">
             <h1 class="user-supervisor-header">
               Supervisor
               <div class="user-info-details">
-                <h2 class="user-supervisor">SuperiorHere</h2>
+                <h2 class="user-supervisor" id="superior-id">SuperiorHere</h2>
               </div>
             </h1>
           </div>
@@ -61,25 +62,19 @@
             <h1 class="user-amnesty-days-header">
               Amnesty Days
               <div class="user-info-details">
-                <h2 class="user-amnesty-days">AmnestyDaysHere</h2>
+                <h2 class="user-amnesty-days" id="amnesty-id">
+                  AmnestyDaysHere
+                </h2>
               </div>
             </h1>
           </div>
         </div>
         <div class="subordinate-attendance-container">
           <h1 class="subordinate-attendance-header">Attendance</h1>
-          <div class="subordinate-attendance-list">
-            <div class="attendance-check-item">
-              <input type="checkbox" id="test" name="attendance1">
-              <label for="attendance1">test attendance checkbox</label>
-            </div>
-            <div class="attendance-check-item">
-              <input type="checkbox" id="test" name="attendance2">
-              <label for="attendance2">test attendance checkbox</label>
-            </div>
-            
-            
-          </div>
+          <div
+            class="subordinate-attendance-list"
+            id="attendances-container"
+          ></div>
         </div>
         <!-- <div class="user-extra-info">
           <div class="user-standing-container">
@@ -100,6 +95,5 @@
     </div>
     <script src="../js/menu.js"></script>
     <script src="../js/viewSingleSubordinate.js"></script>
-   
   </body>
 </html>

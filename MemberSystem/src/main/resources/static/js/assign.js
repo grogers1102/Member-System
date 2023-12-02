@@ -89,40 +89,33 @@ async function displayBranches(allBranches){
 function updateMemberFields(){
     const memberId = document.getElementById("memberID").value;
     const userFields = [
-        document.getElementById("superiorID").value];
+    document.getElementById("superiorID").value];
 
-    console.log(userFields[0]);
 
-    if(false){
-        throw new Error("Invalid Member ID!");
-    }else{
 
-        if(userFields[0] !== ""){
-            console.log(userFields[0]);
-            const urlNeeded = `/api/v1/user/${memberId}/superior`;
-            fetch(urlNeeded, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ 'superiorId': userFields[0] })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Error updating SuperiorID.`);
-                }
-                console.log(`updated successfully.`);
-                
-            })
-            .catch(error => {
-                console.error(`Error updating SuperiorID:`, error);
-                openPopupFailed();
-                throw error; 
-            });
 
-        }
-          openPopup();
+    if(userFields[0] !== ""){
+        const urlNeeded = `/api/v1/user/${memberId}/superior`;
+        fetch(urlNeeded, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'superiorId': userFields[0] })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error updating SuperiorID.`);
+            }
+        })
+        .catch(error => {
+            console.error(`Error updating SuperiorID:`, error);
+            openPopupFailed();
+            throw error; 
+        });
+
     }
+    openPopup();
 }
 
     

@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     if (isTokenValid()){
         await displayMenu();
-        await displayBranchIcon();
         logoutEventListener();
         
     }
@@ -36,6 +35,12 @@ async function displayMenu(){
         <a href="accountPage.html">
           <i class="fa-solid fa-user"></i>
           <span>Profile</span>
+        </a>
+      </li>
+      <li>
+        <a href="attendance.html">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>Attendance</span>
         </a>
       </li>
       
