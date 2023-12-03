@@ -836,7 +836,7 @@
 .profile-edit-button{
     display: flex;
     justify-content: center;
-    position: relative;
+    margin-left: auto;
     background-color: white;
     color: rgb(0, 183, 255);
     text-decoration: none;
@@ -1527,8 +1527,14 @@
     gap: 5vh;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-    width: max(400px, min(30%,50%));
+    width: max(500px, min(50vw, 1200px));
     height: fit-content;
+}
+
+.subordinate-user-header{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .subordinate-attendance-container{
