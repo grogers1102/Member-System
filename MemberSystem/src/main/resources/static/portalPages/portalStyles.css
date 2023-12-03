@@ -1138,12 +1138,10 @@
 /*  ---------- myAttendance Page Start---------- */
 
 .myAttendance-body{
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
 }
 
 .header-myAttendance{
@@ -1152,10 +1150,12 @@
     text-indent: 30px;
     height: 80px;
     padding-top: 30px;
-
-
 }
-
+.signin-button-container{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3vh;
+}
 .body-myAttendance{
     background: rgba(0, 0, 0, .05);
     padding: 20px;
