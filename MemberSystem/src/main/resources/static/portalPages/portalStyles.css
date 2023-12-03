@@ -1096,6 +1096,12 @@
     color: rgb(0, 183, 255);
 }
 
+.user-branch-header{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .user-branch-subheader {
     display: flex;
     flex-direction: row;
@@ -1118,11 +1124,17 @@
     overflow-y: scroll;
 }
 
+.placeholder{
+    font-size:25px; 
+    width: 80px;
+    margin-right: auto;
+    visibility: hidden;
+}
+
 .branch-edit-button {
-    margin-left: auto;
     display: flex;
     justify-content: center;
-    position: relative;
+    margin-left: auto;
     background-color: white;
     color: rgb(0, 183, 255);
     text-decoration: none;
