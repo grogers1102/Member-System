@@ -380,7 +380,7 @@
     font-size: 20px;
 }
 
-.next-rank-header{
+.subcard-header{
     font-weight: 600;
 }
 
@@ -406,10 +406,11 @@
 }
 .branch-population{
     font-weight: 300;
+    font-size: 20px;
 }
 .branch-manager{
     font-weight: 300;
-    font-size: 25px;
+    font-size: 20px;
     color:rgb(3, 127, 16);
 }
 
@@ -926,8 +927,26 @@
 .social-card-body{
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 5vh 1vw;
+    flex-direction: column;
+    padding: 2vh 1vw;
+    gap: 10px;
+    width: 100%;
+}
+
+.social-score{
+    text-align: center;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.dashboard-user-standing{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.user-total-attendance{
+    font-weight: 300;
+    font-size: 20px;
 }
 
 .user-social-score{

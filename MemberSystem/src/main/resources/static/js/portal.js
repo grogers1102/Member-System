@@ -380,3 +380,27 @@ async function displayStanding(standing){
 
     standingElement.style.color = color;
 }
+
+async function displayTotalAttendance(attendance){
+    let color;
+        
+    const totalAttendanceElement = document.querySelector('dashboard-user-attendance');
+
+    totalAttendanceElement.textContent = `Days Attended: ${attendance}` ;
+    
+    if (attendance > 0.9) {
+        color = 'green';
+    } else if (attendance > 0.7) {
+        color = 'blue';
+    } else if (attendance > 0.5) {
+        color = 'cyan';
+    } else if (attendance > 0.3) {
+        color = 'orange';
+    } else if (attendance > 0.1) {
+        color = 'red';
+    } else {
+        color = 'darkred';
+    }
+
+    totalAttendanceElement.style.color = color;
+}
