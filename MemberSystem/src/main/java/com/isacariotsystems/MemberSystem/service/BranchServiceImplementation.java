@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ import com.isacariotsystems.MemberSystem.repository.UserRepository;
 @Service
 public class BranchServiceImplementation implements BranchService {
 
+    private static final Logger logger = LoggerFactory.getLogger(SocialScoreService.class);
+
     @Autowired
     private BranchRepository branchRepository;
 
@@ -26,16 +30,26 @@ public class BranchServiceImplementation implements BranchService {
     private UserService userService;
 
     @Override
-    public Branch saveBranch(BranchRequest branchRequest){
+    public Branch saveBranch(BranchRequest branchRequest) {
         Branch branch = new Branch();
         branch.setAddress(branchRequest.getAddress());
         branch.setName(branchRequest.getName());
 
         User branchManager = userService.findUserByEmail("unassigned@gmail.com").orElse(null);
-        branch.setManager(branchManager);
+        logger.info("daysAttendned"+branchManager);
+        try {
+            if (branchManager != null) {
+                branch.setManager(branchManager);
+            } else {
+
+            }
+        } catch (Error e) {
+            e.printStackTrace(); 
+        }
 
         return branchRepository.save(branch);
     }
+
 
     @Override
     public List<Branch> allBranches(){

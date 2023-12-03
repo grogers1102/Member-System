@@ -29,7 +29,7 @@ import com.isacariotsystems.MemberSystem.service.RankService;
  */
 
 @RestController
-@RequestMapping("api/v1/ranks")
+@RequestMapping("/api/v1/ranks")
 public class RankController {
     @Autowired
     private RankService rankService;

@@ -115,6 +115,70 @@ async function displayAccount(){
     }
 }
 
+async function saveBranch() {
+    branchName = document.getElementById('branch-name').value
+    branchLocation = document.getElementById('branch-address').value
+
+    const branchParams = {'name':branchName, 'address':branchLocation}
+
+    try {
+        const urlNeededBranch = `/api/v1/branch/add`;
+        const response = await fetch(urlNeededBranch, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(branchParams) 
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error saving branch`);
+        }
+
+        console.log(`Created successfully.`);
+    } catch (error) {
+        console.error(`Error creating Branch`, error);
+        // openPopupFailed();
+        throw error;
+    }
+}
+
+async function saveRank() {
+    let rankList = ['name', 'requirements', 'daysRequired'];
+    let rankParams = {};
+
+    rankList.forEach(rankField => {
+        let rankInput = document.getElementById(rankField);
+        if (rankInput.value.trim() !== "") {
+            rankParams[rankField] = rankInput.value;
+        } else {
+            alert("Enter all fields");
+            throw new Error("Fields are missing");
+        }
+    });
+
+    try {
+        const urlNeeded = `/api/v1/ranks/add`;
+        const response = await fetch(urlNeeded, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(rankParams) 
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error saving rank`);
+        }
+
+        console.log(`Created successfully.`);
+    } catch (error) {
+        console.error(`Error creating Rank`, error);
+        // openPopupFailed();
+        throw error;
+    }
+}
+
 async function displayRank(rank){
     
     try{
@@ -130,7 +194,11 @@ async function displayRank(rank){
         const openModalButtons = document.querySelectorAll('[data-modal-target]')
         const closeModalButtons = document.querySelectorAll('[data-close-button]')
         const overlay = document.getElementById('overlay')
-     
+        const saveButton = document.querySelector('.rank-button');
+
+        saveButton.addEventListener('click', () => {
+            saveRank();
+        })
      
         overlay.addEventListener('click', () => {
             const modals = document.querySelectorAll('.rank-modal.active')
@@ -202,7 +270,11 @@ async function displayBranchDetails(user){
         const openModalButtons = document.querySelectorAll('[data-modal-target]')
         const closeModalButtons = document.querySelectorAll('[data-close-button]')
         const overlay = document.getElementById('overlay')
-    
+        const saveButtonBranch = document.querySelector('.branch-button');
+
+        saveButtonBranch.addEventListener('click', () => {
+            saveBranch();
+        })
     
         overlay.addEventListener('click', () => {
             const modals = document.querySelectorAll('.branch-modal.active')
