@@ -200,6 +200,7 @@
     gap: 1vh;
     position: relative;
     top:-1vh;
+    width: 100%;
 }
 
 .card-heading-link{
@@ -211,17 +212,19 @@
 }
 
 .rank-card-body{
+    display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 2vh 1vw;
 }
 .user-rank-container{
-    padding-top: 2vh;
+    padding-top: 1vh;
     padding-right: 1vw;
     padding-left: 1vw;
     display: flex;
     gap: 3vh;
     align-items: baseline;
-    font-size: 15px;
     position: relative;
     top: -10px;
 }
@@ -349,6 +352,7 @@
  
 .user-rank-header{
     font-weight: 500;
+    font-size: 25px;
 }
 
 .user-rank{
@@ -356,14 +360,14 @@
     font-size: 30px;
 }
 
-.brief-rank-requirement-container{
+.brief-card-detail-container{
     display: flex;
     flex-direction: column;
     align-items: start;
     padding: 2vh 15px;
     background-color:rgba(48, 196, 254, 0.162);
     border-radius: 10px;
-    width: fit-content;
+    width: 90%;
 }
 
 .requirement-description{
@@ -380,7 +384,7 @@
     font-weight: 600;
 }
 
-.list-rank-requirements{
+.list-card-details{
     padding: 0 2.5vw;
     font-size: 20px;
 }
@@ -390,24 +394,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4vh 1vw;
+    padding: 2vh 1vw;
     gap: 10px;
+    width: 100%;
 }
 
 .user-branch-location{
     text-align: center;
-    font-weight: 600;
-    font-size: 30px;
+    font-weight: 500;
+    font-size: 25px;
 }
 .branch-population{
-    text-align: center;    
     font-weight: 300;
 }
 .branch-manager{
-    text-align: center;
     font-weight: 300;
     font-size: 25px;
-    color:rgb(0, 183, 255);
+    color:rgb(3, 127, 16);
 }
 
 .sign-in{
