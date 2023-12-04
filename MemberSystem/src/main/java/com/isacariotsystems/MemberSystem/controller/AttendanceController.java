@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,37 +30,44 @@ import com.isacariotsystems.MemberSystem.service.AttendanceService;
 @RequestMapping("api/v1/attendance")
 public class AttendanceController {
 
-    @Autowired 
+    @Autowired
     private AttendanceService attendanceService;
 
     @PostMapping("/add")
-    public String add(@RequestBody Attendance attendance){
+    public String add(@RequestBody Attendance attendance) {
         attendanceService.saveAttendance(attendance);
 
         return "Successfully Added Attendance";
     }
 
+    @DeleteMapping("/delete")
+    public String delete(@RequestBody AttendanceID attendance) {
+        attendanceService.deleteAttendanceById(attendance);
 
-    @PatchMapping("/{userId}/{date}") 
-    public Attendance updateAttendanceById(@PathVariable Long userId, @PathVariable LocalDate date, @RequestBody JsonNode requestBody) {
+        return "Successfully Deleted Attendance";
+    }
+
+    @PatchMapping("/{userId}/{date}")
+    public Attendance updateAttendanceById(@PathVariable Long userId, @PathVariable LocalDate date,
+            @RequestBody JsonNode requestBody) {
         AttendanceID attendanceId = new AttendanceID(userId, date);
         boolean isConfirmed = requestBody.get("isConfirmed").asBoolean();
         return attendanceService.updateAttendanceIsConfirmed(attendanceId, isConfirmed);
     }
 
     @GetMapping("/exists/{userId}/{date}")
-    public Boolean exists(@PathVariable Long userId, @PathVariable LocalDate date){
+    public Boolean exists(@PathVariable Long userId, @PathVariable LocalDate date) {
         AttendanceID attendanceId = new AttendanceID(userId, date);
         return attendanceService.existsById(attendanceId);
     }
 
     @GetMapping("/{userId}/all")
-    public List<Attendance> findAllAttendanceByUser(@PathVariable Long userId){
+    public List<Attendance> findAllAttendanceByUser(@PathVariable Long userId) {
         return attendanceService.findAttendanceByUserId(userId).orElse(null);
     }
 
     @GetMapping("{userId}/all/confirmed")
-    public List<Attendance> findAllConfirmedAttendanceByUser(@PathVariable Long userId){
+    public List<Attendance> findAllConfirmedAttendanceByUser(@PathVariable Long userId) {
         return attendanceService.getConfirmedAttendanceByUser(userId);
     }
 
