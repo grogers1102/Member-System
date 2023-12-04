@@ -32,10 +32,10 @@
         <div class="single-user-info-container">
           <div class="user-info-subcontainer">
             <div class="subordinate-user-header">
-              <h1 class="user-name" id="name-id">
-                UserNameHere
-              </h1>
-              <a href="editSubordinate.html" class="profile-edit-button">Edit</a>
+              <h1 class="user-name" id="name-id">UserNameHere</h1>
+              <a href="editSubordinate.html" class="profile-edit-button"
+                >Edit</a
+              >
             </div>
             <div class="user-info-details">
               <h2 class="user-id" id="user-id">IDHere</h2>
@@ -73,7 +73,23 @@
           </div>
         </div>
         <div class="subordinate-attendance-container">
-          <h1 class="subordinate-attendance-header">Attendance</h1>
+          <div class="subordinate-attendance-container1">
+            <h1 class="subordinate-attendance-header">Attendance</h1>
+            <div class="viewSingleButtons">
+              <a
+                onclick="addAttendance()"
+                class="profile-edit-button"
+                id="showPopupBtn"
+                >Add</a
+              >
+              <a
+                onclick="deleteAttendance()"
+                class="profile-edit-button"
+                id="showPopupBtn"
+                >Delete</a
+              >
+            </div>
+          </div>
           <div
             class="subordinate-attendance-list"
             id="attendances-container"
@@ -95,6 +111,47 @@
           <a href="editProfile.html" class="profile-edit-button">Edit</a>
         </div> -->
       </main>
+    </div>
+    <div id="popupContainer" class="popup">
+      <div class="popup-content">
+        <span class="close" id="closePopupBtn">&times;</span>
+        <h2>Add an Attendance</h2>
+        <div id="date" class="date">
+          <label for="date">Date(YYYY-MM-DD)</label>
+          <input type="text" name="date" />
+        </div>
+
+        <div>
+          <button
+            class="edit-cancel"
+            onclick="redirect()"
+          >
+            Cancel
+          </button>
+          <button class="edit-save" id="submitButton">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="deletepopupContainer" class="popup">
+      <div class="popup-content">
+        <span class="close" id="deleteclosePopupBtn">&times;</span>
+        <h2>Delete an Attendance</h2>
+        <div id="deletedate" class="date">
+          <label for="date">Date(YYYY-MM-DD)</label>
+          <input type="text" name="date" />
+        </div>
+
+        <div>
+          <button
+            class="edit-cancel"
+            onclick="window.location.href='viewSingleSubordinate.html'"
+          >
+            Cancel
+          </button>
+          <button class="edit-save" id="deletesubmitButton">Submit</button>
+        </div>
+      </div>
     </div>
     <script src="../js/menu.js"></script>
     <script src="../js/viewSingleSubordinate.js"></script>
