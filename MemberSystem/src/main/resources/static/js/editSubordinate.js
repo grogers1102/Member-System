@@ -1,10 +1,20 @@
 let subrdordinateURL = new URLSearchParams(window.location.search);
-let subordinateId = subrdordinateURL.get('subordinateId');
+const subordinateId = subrdordinateURL.get('userId');
+
+let userId = localStorage.getItem('userId');
+let rankId = 0;
 
 let popup  = document.querySelector('.save-popup');
 let popupFailed = document.querySelector('.save-popup-failed');
 
-document.addEventListener('DOMContentLoaded', function () {
+let branchMap = {}; 
+let rankMap = {}; 
+
+document.addEventListener('DOMContentLoaded', async function () {
+    await getUserDetails();
+    await displayRankDropDown();
+    await getRanks();
+    await getBranches();
     addEditEventListener();
 });
 
@@ -13,11 +23,46 @@ function addEditEventListener(){
     saveButton.addEventListener("click", (event) => {
         updateSubordinate();
         updatePassword();
+        updateRank();
+        updateBranch();
+        updateSuperior();
     });
 }
 
+async function getUserDetails(){
+    const urlNeededUser = `/api/v1/user/${userId}`;
+    try {
+        const response = await fetch(urlNeededUser);
+        
+        if (!response.ok) {
+            throw new Error('There was a problem with the request.');
+        }
+        
+        const userOBJ = await response.json();
+
+        rankId = userOBJ.rank.rankId;
+    }catch(error){
+        console.log(error);
+    }
+}
+
+async function displayRankDropDown(){
+    if (rankId >= 5){
+        rankContainer = document.querySelector('.rank-dropdown-container');
+        const label = document.createElement('label');
+        label.setAttribute('for', 'rankLevel');
+        label.textContent = 'Rank:';
+
+        const select = document.createElement('select');
+        select.setAttribute('id', 'rank');
+
+        rankContainer.appendChild(label);
+        rankContainer.appendChild(select);
+    }
+}
+
 function updateSubordinate(){
-    const subordinateFields = ['firstName', 'lastName', 'email', 'phone', 'address','amnestyDays', 'localBranch','rank'];
+    const subordinateFields = ['firstName', 'lastName', 'email', 'phone', 'address','amnestyDays'];
 
     subordinateFields.forEach(field => {
         const element = document.getElementById(field);
@@ -54,7 +99,6 @@ function updatePassword(){
     const oldPassword = document.getElementById('current-password');
     const newPassword = document.getElementById('new-password');
     const confirmPassword = document.getElementById('confirm-password');
-    const subordinateId = localStorage.getItem('subordinateId');
 
     if (!oldPassword || !newPassword || !confirmPassword){
         return;
@@ -100,6 +144,105 @@ function updatePassword(){
     });
 }
 
+async function updateSuperior() {
+    const selectedSuperior = document.getElementById('superior');
+    if (selectedSuperior.value) {
+        let superiorId = 0; 
+
+        const urlNeededSuperior = `/api/v1/user/email/${selectedSuperior.value}`;
+        try {
+            const response = await fetch(urlNeededSuperior);
+
+            if (!response.ok) {
+                throw new Error('No Superior found with that ID');
+            }
+
+            const superiorOBJ = await response.json();
+
+            superiorId = superiorOBJ.userId;
+
+        } catch (error) {
+            console.log(error);
+        }
+
+        const urlNeededForSuperior = `/api/v1/user/${subordinateId}/superior`;
+
+        fetch(urlNeededForSuperior, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'superiorId': superiorId })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error updating Superior.`);
+            }
+        })
+        .catch(error => {
+            console.error(`Error updating Superior:`, error);
+            openPopupFailed();
+            throw error;
+        });
+    }
+}
+
+function updateRank() {
+    const selectedRank = document.getElementById('rank');
+    if (selectedRank.value) {
+        const selectedRankName = selectedRank.value; 
+        const selectedRankId = rankMap[selectedRankName.toLowerCase()];
+
+        const urlNeededForRank = `/api/v1/user/${subordinateId}/rank`;
+        fetch(urlNeededForRank, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'rankId': selectedRankId })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error updating Rank.`);
+            }
+        })
+        .catch(error => {
+            console.error(`Error updating Rank:`, error);
+            openPopupFailed();
+            throw error; 
+        });
+    }
+}
+
+function updateBranch() {
+    const selectedBranch = document.getElementById('localBranch');
+    if (selectedBranch.value) {
+        const selectedBranchName = selectedBranch.value;
+        const selectedBranchId = branchMap[selectedBranchName.toLowerCase()];
+
+        const urlNeededForBranch = `/api/v1/user/${subordinateId}/branch`;
+
+        fetch(urlNeededForBranch, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'branchId': selectedBranchId })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error updating Branch.`);
+            }
+        })
+        .catch(error => {
+            console.error(`Error updating Branch:`, error);
+            openPopupFailed();
+            throw error;
+        });
+    }
+}
+
+
 function openPopup() {
     popup.classList.add("open-save-popup");
     setTimeout(() => { closePopup() }, 5000);
@@ -116,4 +259,86 @@ function openPopupFailed(){
 
 function closePopupFailed() {
     popupFailed.classList.remove("open-save-popup-failed");
+}
+
+async function getRanks(){
+    const allRankUrl = `/api/v1/ranks/all`
+
+    try {
+        const rankResponse = await fetch(allRankUrl);
+        
+        if (!rankResponse.ok) {
+            throw new Error('There was a problem with the request.');
+        }
+
+        allRanks = await rankResponse.json();
+        await displayRanks(allRanks);
+
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+async function displayRanks(allRanks) {
+    const rankSelect = document.getElementById('rank');
+
+    const firstOption = document.createElement("option");
+    rankSelect.appendChild(firstOption);
+
+    allRanks.forEach((rank) => {
+        const rankName = rank.name;
+        const rankId = rank.rankId; 
+
+        const option = document.createElement("option");
+        option.value = rankName.toLowerCase();
+        option.text = rankName;
+
+        rankSelect.appendChild(option);
+
+        rankMap[rankName.toLowerCase()] = rankId;
+    });
+}
+
+
+async function getBranches(){
+    const allBranchUrl = `/api/v1/branch/all`
+
+    try {
+        const branchResponse = await fetch(allBranchUrl, {
+            method: 'GET', 
+            headers: {
+                'Content-Type': 'application/json', 
+            },
+        });
+        
+        
+        if (!branchResponse.ok) {
+            throw new Error('There was a problem with the request.');
+        }
+        allBranches = await branchResponse.json();
+        await displayBranches(allBranches);
+
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+async function displayBranches(allBranches) {
+    const branchSelect = document.getElementById('localBranch');
+
+    const firstOption = document.createElement("option");
+    branchSelect.appendChild(firstOption);
+
+    allBranches.forEach((branch) => {
+        const branchName = branch.name;
+        const branchId = branch.branchId; 
+
+        const option = document.createElement("option");
+        option.value = branchName.toLowerCase();
+        option.text = branchName;
+
+        branchSelect.appendChild(option);
+
+        branchMap[branchName.toLowerCase()] = branchId;
+    });
 }

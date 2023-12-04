@@ -1278,6 +1278,16 @@
     margin-top: 10vh;
 }
 
+.edit-container-subordinate{
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 25vw;
+    margin-top: 5vh;
+}
+
 .edit-header{
     margin-right: auto;
     margin-bottom: 5vh;
@@ -1310,7 +1320,8 @@
 .edit-amnestyAddress input,
 .edit-name input,
 .edit-contact input,
-.edit-branchRank select
+.edit-branchRank select,
+.edit-branchRank input
 {
     border-radius: 2px;
     border: .5px solid black;
@@ -1327,6 +1338,7 @@
 }
  
 .edit-address input,
+.rank-dropdown-container select,
 .edit-password input,
 .edit-new-password input,
 .confirm-new-password input,
@@ -1338,6 +1350,7 @@
     padding: 10px
 }
  
+.rank-dropdown-container,
 .edit-address,
 .edit-password,
 .edit-new-password,

@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/fc87db4df0.js" crossorigin="anonymous"></script>
 </head>
 <body class="portal" id="portalID">
-    <div class="edit-container">
+    <div class="edit-container-subordinate">
         <div class="edit-header">
             <h1>Edit Subordinate</h1>
         </div>
@@ -44,9 +44,9 @@
                     <label for="branchID">Branch:</label>
                     <select id="localBranch"></select>
                 </div>
-                <div class="rank-dropdown-container">
-                    <label for="rankLevel">Rank:</label>
-                    <select id="rank"></select>
+                <div class="superior-dropdown-container">
+                    <label for="rankLevel">Superior:</label>
+                    <input type="text" id="superior">
                 </div>
             </div>
             <div class="edit-amnestyAddress">
@@ -59,6 +59,7 @@
                     <input type="text" id="amnestyDays" name="amnesty">
                 </div>
             </div>
+            <div class="rank-dropdown-container"></div>
             <div class="edit-password">
                 <label for="current-password">Current Password</label>
                 <input type="password" id="current-password" name="current-password">
@@ -91,7 +92,7 @@
             </div>
         </div>
     </div>
-    <script src="../js/editProfile.js"></script>
+    <script src="../js/editSubordinate.js"></script>
     <script src="../js/menu.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@ async function displayAccountDetails() {
         const response = await fetch(urlNeeded);
 
         if (!response.ok) {
-            throw new Error('There was a problem with the request.');
+            throw new Error('There was a problem fetching user data.');
         }
 
         const userOBJ = await response.json();
@@ -26,7 +26,6 @@ async function displayAccountDetails() {
         const {
             localBranch,
             superior,
-            //rank,
             invitationDate,
             email,
             phoneNumber,
@@ -37,28 +36,31 @@ async function displayAccountDetails() {
             lastName
         } = userOBJ;
 
-        if (!superior){
-            throw new Error('There was a problem with the request');
-        }
-        
         document.querySelector('.user-name').textContent = `${firstName} ${lastName}`;
-        //document.querySelector('.user-id').textContent = `User ID: ${userId}`;
-        //document.querySelector('.user-branch').textContent = `Branch ID: ${localBranch.branchId}`;
-        //document.querySelector('.profile-user-rank').textContent = `Rank: ${localBranch.branchId}`;
         document.querySelector('.user-phone-number').textContent = `Phone Number: ${phoneNumber}`;
         document.querySelector('.user-address').textContent = `Address: ${address}`;
         document.querySelector('.user-email').textContent = `Email: ${email}`;
-        document.querySelector('.user-supervisor').textContent = `Supervisor: ${superior.firstName} ${superior.lastName}`;
+
+        if (superior) {
+            document.querySelector('.user-supervisor').textContent = `Supervisor: ${superior.firstName} ${superior.lastName}`;
+        } else {
+            document.querySelector('.user-supervisor').textContent = 'Supervisor information not available.';
+        }
+
         document.querySelector('.user-amnesty-days').textContent = `Amnesty Days: ${amnestyDays}`;
-        //document.querySelector('.user-standing').textContent = `Rank: ${rank.rankId}`;
         displaySocialScore(userOBJ.socialScore);
         document.querySelector('.user-social-score').textContent = `Social Score: ${socialScore}`;
-        document.querySelector('.user-standing').textContent = `Current Standing: ${await calculateUserStanding(socialScore)}`;
-        document.querySelector('.user-date').textContent = `Date Joined: ${invitationDate}`;;
+
+        const userStanding = await calculateUserStanding(socialScore);
+        document.querySelector('.user-standing').textContent = `Current Standing: ${userStanding}`;
+
+        document.querySelector('.user-date').textContent = `Date Joined: ${invitationDate}`;
     } catch (error) {
-        throw new Error(error.message);
+        console.error('Error displaying account details:', error.message);
     }
 }
+
+
 
 async function calculateUserStanding(socialScore){
     if (socialScore > .9){
