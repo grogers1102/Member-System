@@ -33,5 +33,5 @@ public interface AttendanceRepository extends JpaRepository<Attendance,Attendanc
      @Query("SELECT a FROM Attendance a WHERE a.isConfirmed = false AND a.attendanceID.userId = :userId")
      List<Attendance> findAllUnconfirmedAttendancesForUser(@Param("userId") Long userId);
 
-     void deleteById(AttendanceID attendanceId);
+     void deleteById(AttendanceID attendanceID);
 }
