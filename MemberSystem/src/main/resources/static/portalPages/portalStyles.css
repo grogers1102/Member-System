@@ -1039,6 +1039,9 @@
     grid-area: main-higher-branch;
     padding: 20px;
     flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 .search-branch-members-container{
@@ -1051,7 +1054,7 @@
 
 .search-branch-members-box{
     position: relative;
-    text-align: center;
+    padding-left: 10px; 
     grid-area: search-subordinate;
     color: black;
     background:rgb(255, 255, 255);
@@ -1078,6 +1081,7 @@
     border-width: 1px;
     box-shadow: 0 1px 5px 0 rgba(0,0,0,.2);
     height: 100%;
+    width: 70vw;
 }
 
 .content-location-branch-subcontainer{
@@ -1086,6 +1090,7 @@
     align-items: center;
     padding-bottom: 15px;
     flex-direction: column;
+    width: 100%;
 }
 
 .user-branch-population{
