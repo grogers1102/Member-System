@@ -9,7 +9,13 @@
 
 
 
+.usering{
 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 /*------------Menu section------------*/
 
@@ -820,7 +826,7 @@
 .user-info-subcontainer{
     display: flex;
     align-items: start;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .user-info-details{
