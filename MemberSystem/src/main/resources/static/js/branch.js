@@ -104,8 +104,7 @@ async function displayBranchMembers(branchId){
 
 
 
-function displayBranchMember(user){
-
+function displayBranchMember(user) {
     const userBox = document.createElement('div');
     userBox.classList.add('subordinate-box');
 
@@ -123,15 +122,14 @@ function displayBranchMember(user){
     const userInnerStart = document.createElement('div');
     userInnerStart.classList.add('subordinate-innerstart');
 
-    const superior = `${user.superior.firstName} ${user.superior.lastName}`
     const socialScore = user.socialScore;
     const email = user.email
 
     const startUl = document.createElement('ul');
     startUl.innerHTML = `
-    <li>Superior</li>
-    <li>Socail Score</li>
-    <li>Email</li>
+        <li>Superior</li>
+        <li>Social Score</li>
+        <li>Email</li>
     `;
 
     userInnerStart.appendChild(startUl);
@@ -140,8 +138,11 @@ function displayBranchMember(user){
     userInnerEnd.classList.add('subordinate-innerend');
 
     const endUl = document.createElement('ul');
+
+    let superiorText = user.superior ? `${user.superior.firstName} ${user.superior.lastName}` : 'Not Available';
+
     endUl.innerHTML = `
-        <li>${superior}</li>
+        <li>${superiorText}</li>
         <li>${socialScore}</li>
         <li>${email}</li>
     `;
@@ -160,6 +161,7 @@ function displayBranchMember(user){
     const parentElement = document.querySelector('.search-branch-results');
     parentElement.appendChild(userBox);
 }
+
 
 function clearUserDetails() {
     var element = document.querySelector('.search-branch-results');

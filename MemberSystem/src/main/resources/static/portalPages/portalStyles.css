@@ -1278,7 +1278,7 @@
 .edit-name,
 .edit-contact,
 .edit-branchRank{
-    width: max(500px, min(50vw, 1200px));
+    width: max(400px, min(50vw, 1200px));
     display: flex;
     flex-direction: row;
     align-items: center;

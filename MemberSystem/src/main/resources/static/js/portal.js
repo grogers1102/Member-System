@@ -1,3 +1,4 @@
+let popup  = document.querySelector('.save-popup');
 const currentDate = new Date();
 const year = currentDate.getFullYear();
 const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
@@ -77,8 +78,7 @@ async function makeAttendanceUpdate(attendanceDate, userID) {
         });
 
         if (response.ok) {
-            alert("Successfully Clocked In!");
-            location.reload();
+            openPopup();
         } else {
             const errorMessage = await response.text();
             throw new Error(errorMessage || 'There was a problem with the request.');
@@ -451,4 +451,14 @@ async function calculateUserStanding(socialScore){
     }else{
         return 'Dangerous'
     }
+}
+
+function openPopup() {
+    popup.classList.add("open-save-popup");
+    setTimeout(() => { closePopup() }, 5000);
+}
+
+function closePopup() {
+    popup.classList.remove("open-save-popup");
+    location.reload();
 }

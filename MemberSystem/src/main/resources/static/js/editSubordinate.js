@@ -285,22 +285,24 @@ async function getRanks(){
 async function displayRanks(allRanks) {
     const rankSelect = document.getElementById('rank');
 
-    const firstOption = document.createElement("option");
-    firstOption.text = '--- Select a Rank ---'
-    rankSelect.appendChild(firstOption);
+    if(rankSelect){
+        const firstOption = document.createElement("option");
+        firstOption.text = '--- Select a Rank ---'
+        rankSelect.appendChild(firstOption);
 
-    allRanks.forEach((rank) => {
-        const rankName = rank.name;
-        const rankId = rank.rankId; 
+        allRanks.forEach((rank) => {
+            const rankName = rank.name;
+            const rankId = rank.rankId; 
 
-        const option = document.createElement("option");
-        option.value = rankName.toLowerCase();
-        option.text = rankName;
+            const option = document.createElement("option");
+            option.value = rankName.toLowerCase();
+            option.text = rankName;
 
-        rankSelect.appendChild(option);
+            rankSelect.appendChild(option);
 
-        rankMap[rankName.toLowerCase()] = rankId;
-    });
+            rankMap[rankName.toLowerCase()] = rankId;
+        });
+    }
 }
 
 
@@ -347,6 +349,7 @@ async function displayBranches(allBranches) {
         branchMap[branchName.toLowerCase()] = branchId;
     });
 }
+
 
 
 
