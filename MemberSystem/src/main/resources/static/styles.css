@@ -507,7 +507,6 @@ body {
 .index-main{
     display: flex;
     align-items: center;
-    height: fit-content;
 }
 
 .index-subcontainer{
@@ -515,7 +514,7 @@ body {
     gap: 30px;
     align-items: center;
     flex-direction: column;
-    width: 50%;
+    width: 50vw;
 }
 
 .index-button-container{
@@ -527,12 +526,12 @@ body {
 }
 .index-header{
     text-align: center;
-    font-size: max(15px, min(2vw, 22px));
+    font-size: 22px;
 }
 
 .index-subheader{
     text-align: center;
-    font-size: max(15px, min(1.9vw, 20px));
+    font-size: 20px;
 }
 .topic-description{
     font-size: 20px
@@ -556,12 +555,13 @@ body {
 .index-image-container{
     display: flex;
     justify-content: center;
-    width: 50%;
 }
 
 .index-image{
-    width: 100%;
+    height: 800px;
+    width: 450px;
 }
+
 /*-----------end index container-----------------*/
 
 
@@ -623,7 +623,6 @@ body {
     align-items: center;
     padding: 60px;
     gap: 5vw;
-    width: fit-content;
 
 }
 
@@ -696,3 +695,71 @@ body {
     background-image: url('./images/wave-haikei.svg');
 }
 
+/*-----------start footer container-----------------*/
+
+.layer2flipped {
+    background-image: url('./images/wave-haikei-flipped.svg');
+}
+  .vertical-container {
+    display: flex;
+    flex-direction: column; /* This ensures the children stack vertically */
+  }
+
+  .vertical-item {
+    margin: 10px;
+    padding: 10px;
+    background-color: transparent;
+  }
+
+  .footer-container {
+    display: flex;
+    padding-top: 40px;
+  }
+  
+  .left-section {
+    width: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(199, 255, 248);
+  }
+  
+  .right-section {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(199, 255, 248);
+  }
+  
+  .footer-container button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 50px;
+    font-weight: bold;
+    background: transparent;
+    color: black;
+    border-radius: 8px; 
+    border: 1px solid transparent; 
+    
+  }
+
+  .footer-container button:hover {
+    background-color: rgb(55, 181, 167);
+    cursor: pointer;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .column {
+    width: 50%;
+    padding: 20px;
+    background-color: rgb(199, 255, 248);
+}
+/*-----------end footer container-----------------*/
