@@ -4,7 +4,9 @@ let subordinateId = subrdordinateURL.get('subordinateId');
 let popup  = document.querySelector('.save-popup');
 let popupFailed = document.querySelector('.save-popup-failed');
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    await getBranches();
+    await getRanks()
     addEditEventListener();
 });
 
@@ -116,4 +118,74 @@ function openPopupFailed(){
 
 function closePopupFailed() {
     popupFailed.classList.remove("open-save-popup-failed");
+}
+
+async function getRanks(){
+    const allRankUrl = `/api/v1/ranks/all`
+
+    try {
+        const rankResponse = await fetch(allRankUrl);
+        
+        if (!rankResponse.ok) {
+            throw new Error('There was a problem with the request.');
+        }
+
+        allRanks = await rankResponse.json();
+        await displayRanks(allRanks);
+
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+async function displayRanks(allRanks){
+    rankSelect = document.getElementById('rank');
+    const firstOption = document.createElement("option");
+    rankSelect.appendChild(firstOption);
+
+    allRanks.forEach((rank) => {
+        const rankName = rank.description;
+        const option = document.createElement("option");
+        option.value = rankName.toLowerCase();
+        option.text = rankName;
+        rankSelect.appendChild(option);
+    });
+}
+
+async function getBranches(){
+    const allBranchUrl = `/api/v1/branch/all`
+
+    try {
+        const branchResponse = await fetch(allBranchUrl, {
+            method: 'GET', 
+            headers: {
+                'Content-Type': 'application/json', 
+            },
+        });
+        
+        
+        if (!branchResponse.ok) {
+            throw new Error('There was a problem with the request.');
+        }
+        allBranches = await branchResponse.json();
+        await displayBranches(allBranches);
+
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+async function displayBranches(allBranches){
+    branchSelect = document.getElementById('branch-dropdown');
+
+    const firstOption = document.createElement("option");
+    branchSelect.appendChild(firstOption);
+
+    allBranches.forEach((branch) => {
+        const branchName = branch.name;
+        const option = document.createElement("option");
+        option.value = branchName.toLowerCase();
+        option.text = branchName;
+        branchSelect.appendChild(option);
+      });
 }
