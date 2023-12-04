@@ -153,30 +153,29 @@ function addAttendance(){
         const inputValue = inputElement.value;
 
         const attendanceID = {
-            userId: subordinateId,
+            userId: parseInt(subordinateId),
             date: inputValue
         };
-    
+
         const params = {
             attendanceID: attendanceID,
             isConfirmed: true
         };
 
         try {
-            const urlNeeded = `/api/v1/attendance/add`;
-            const response = fetch(urlNeeded, {
+            const urlNeededAttendance = `/api/v1/attendance/add`;
+            const response = fetch(urlNeededAttendance, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(params),
             });
-    
             if (!response.ok) {
                 throw new Error(`Error adding Attendance.`);
             }else{
                 alert("Successfully added subordinates attendance");
-                window.location = "viewSingleSubordinate.html";
+                window.location = `viewSingleSubordinate.html?userId=${subordinateId}`;
             }
     
             
@@ -204,10 +203,10 @@ function addAttendance(){
 function deleteAttendance(){
     const popupContainer = document.getElementById("deletepopupContainer");
     const closePopupBtn = document.getElementById("deleteclosePopupBtn");
-    const submitButton = document.getElementById("deletesubmitButton");
+    const submitButtonDelete = document.getElementById("deletesubmitButton");
     popupContainer.style.display = "block";
 
-    submitButton.addEventListener("click", () => {
+    submitButtonDelete.addEventListener("click", () => {
 
         const inputElement = document.querySelector('#deletedate input[name="date"]');
         const inputValue = inputElement.value;
@@ -236,7 +235,7 @@ function deleteAttendance(){
                 throw new Error(`Error deleting Attendance.`);
             }else{
                 alert("Successfully deleted subordinates attendance");
-                window.location = "viewSingleSubordinate.html";
+                window.location = `viewSingleSubordinate.html?userId=${subordinateId}`;
             }
     
             
@@ -258,5 +257,9 @@ function deleteAttendance(){
             popupContainer.style.display = "none";
         }
     });
+}
+
+function redirect() {
+    window.location=`viewSingleSubordinate.html?userId=${subordinateId}`;
 }
 

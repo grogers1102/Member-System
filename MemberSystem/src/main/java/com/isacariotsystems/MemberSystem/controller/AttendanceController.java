@@ -27,7 +27,7 @@ import com.isacariotsystems.MemberSystem.service.AttendanceService;
  */
 
 @RestController
-@RequestMapping("api/v1/attendance")
+@RequestMapping("/api/v1/attendance")
 public class AttendanceController {
 
     @Autowired
