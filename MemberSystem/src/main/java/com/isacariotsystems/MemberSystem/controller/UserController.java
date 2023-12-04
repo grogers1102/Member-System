@@ -145,4 +145,9 @@ public class UserController {
         Long superiorId = requestBody.get("superiorId").asLong();
         return userService.updateUserSuperior(userId, superiorId);
     }
+
+    @GetMapping("/email/{email}")
+    public User getUserByEmail(@PathVariable String email){
+        return userService.findUserByEmail(email).orElse(null);
+    }
 }
