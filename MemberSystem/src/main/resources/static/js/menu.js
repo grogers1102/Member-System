@@ -91,17 +91,6 @@ async function insertOtherPagesOrNot(){
       </li>`;
       menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
   }
-  if(userRank.rankId >= 5){
-    const menuContainerToAddAssignPage = document.getElementById("menuContID");
-    const assignSubHTML = 
-    `<li class="assignRanksPage">
-        <a href="../portalPages/assign.html">
-          <i class="fa-solid fa-list"></i>
-          <span>Assign </span>
-        </a>
-      </li>`;
-      menuContainerToAddAssignPage.insertAdjacentHTML('beforeend', assignSubHTML);
-  }
 }
 
 function logoutEventListener(){

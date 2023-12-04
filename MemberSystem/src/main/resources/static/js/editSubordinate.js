@@ -55,6 +55,9 @@ async function displayRankDropDown(){
 
         const select = document.createElement('select');
         select.setAttribute('id', 'rank');
+        select.style.padding='0px';
+        select.style.paddingLeft='4px';
+
 
         rankContainer.appendChild(label);
         rankContainer.appendChild(select);
@@ -283,6 +286,7 @@ async function displayRanks(allRanks) {
     const rankSelect = document.getElementById('rank');
 
     const firstOption = document.createElement("option");
+    firstOption.text = '--- Select a Rank ---'
     rankSelect.appendChild(firstOption);
 
     allRanks.forEach((rank) => {
@@ -327,6 +331,7 @@ async function displayBranches(allBranches) {
     const branchSelect = document.getElementById('localBranch');
 
     const firstOption = document.createElement("option");
+    firstOption.text = '--- Select a Branch ---'
     branchSelect.appendChild(firstOption);
 
     allBranches.forEach((branch) => {
@@ -342,3 +347,7 @@ async function displayBranches(allBranches) {
         branchMap[branchName.toLowerCase()] = branchId;
     });
 }
+
+
+
+
