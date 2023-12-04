@@ -1,5 +1,8 @@
-//TEMPORARY IMPLEMENTATION
-const branchId = 1;
+
+let branchId = 1;
+
+let popup  = document.querySelector('.save-popup');
+let popupFailed = document.querySelector('.save-popup-failed');
 
 document.addEventListener('DOMContentLoaded', async function () {
     await displayEditManager();
@@ -28,6 +31,7 @@ async function displayEditManager() {
 
         const userOBJ = await response.json();
         const rank = userOBJ.rank
+        branchId = userOBJ.localBranch.branchId;
 
         if (rank.rankId < 5){
             return;
@@ -46,13 +50,13 @@ async function displayManager(){
     divElement.classList.add('edit-manager'); 
 
     const labelElement = document.createElement('label');
-    labelElement.setAttribute('for', 'address');
+    labelElement.setAttribute('for', 'manager');
     labelElement.textContent = 'Manager'; 
 
     const inputElement = document.createElement('input');
     inputElement.setAttribute('type', 'text');
-    inputElement.setAttribute('id', 'address');
-    inputElement.setAttribute('name', 'address');
+    inputElement.setAttribute('id', 'manager');
+    inputElement.setAttribute('name', 'manager');
 
     divElement.appendChild(labelElement);
     divElement.appendChild(inputElement);
@@ -62,11 +66,11 @@ async function displayManager(){
 
 function updateBranch(){
 
-    const address = document.getElementById('branchLocation');
-    const name = document.getElementById('branchName');
+    const address = document.getElementById('branchLocation').value;
+    const name = document.getElementById('branchName').value;
 
-    const urlAddress = `/api/v1/${branchId}/address`
-    const urlName = `/api/v1/${branchId}/name`
+    const urlAddress = `/api/v1/branch/${branchId}/address`
+    const urlName = `/api/v1/branch/${branchId}/name`
 
     if (address !== ""){
         fetch(urlAddress, {
@@ -111,30 +115,31 @@ function updateBranch(){
 
 function updateManager(){
 
-    const name = document.getElementById('manager');
+    const managerId = document.getElementById('manager').value;
+    if(managerId !== null && managerId !== ""){
+        const urlManager = `/api/v1/branch/${branchId}/manager`;
 
-    const urlManager = '`/api/v1/${branchId}/manager`';
-
-    fetch(urlPassword, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(params)
-    })
-    .then(response => {
-        if (!response.ok) {
+        fetch(urlManager, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'managerId': managerId})
+        })
+        .then(response => {
+            if (!response.ok) {
+                openPopupFailed();
+                throw new Error(`Error updating manager`);            
+            }
+            console.log(`Password updated successfully.`);
+            openPopup();
+        })
+        .catch(error => {
+            console.error(`Error updating Password:`, error);
             openPopupFailed();
-            throw new Error(`Error updating password`);            
-        }
-        console.log(`Password updated successfully.`);
-        openPopup();
-    })
-    .catch(error => {
-        console.error(`Error updating Password:`, error);
-        openPopupFailed();
-        throw error; 
-    });
+            throw error; 
+        });
+    }
 }
 
 function openPopup() {

@@ -110,6 +110,8 @@ async function displayAccount(){
         await displayRank(userOBJ.rank);
         await displayBranchDetails(userOBJ);
         await displaySocialScore(userOBJ.socialScore);
+        await displayStanding(userOBJ.socialScore);
+        await displayTotalAttendance(userOBJ.userId);
     } catch (error) {
         alert(error.message);
     }
@@ -182,11 +184,12 @@ async function saveRank() {
 async function displayRank(rank){
     
     try{
-        document.querySelector('.user-rank').textContent = rank.description
+        document.querySelector('.user-rank').textContent = rank.name
     }catch (error){
         return;
     }
 
+    document.querySelector('.requirement-standing').textContent = rank.requirements
     document.querySelector('.requirement-description').textContent = `Days Required (Weekly): ${rank.daysRequired}`
     
     if (rankId >= 5)
@@ -249,7 +252,7 @@ function logout() {
         localStorage.removeItem('userId');
     }
 
-    window.location.href = 'index.html';
+    window.location.href = 'index.html'; 
 }
 
 async function displayBranchDetails(user){
@@ -357,12 +360,10 @@ async function displaySocialScore(socialScore){
     socialScoreElement.style.color = color;
 }
 
-async function displayStanding(standing){
+async function displayStanding(socialScore){
     let color;
         
-    const standingElement = document.querySelector('dashboard-user-standing');
-
-    standingElement.textContent = `Standing: ${standing}` ;
+    let standing = await calculateUserStanding(socialScore)
     
     if (socialScore > 0.9) {
         color = 'green';
@@ -378,17 +379,42 @@ async function displayStanding(standing){
         color = 'darkred';
     }
 
+    const standingElement = document.querySelector('.dashboard-user-standing');
+
+    standingElement.textContent = `Standing: ${standing}` ;
+
     standingElement.style.color = color;
 }
 
-async function displayTotalAttendance(attendance){
-    let color;
-        
-    const totalAttendanceElement = document.querySelector('dashboard-user-attendance');
+async function displayTotalAttendance(userId){
+    try {
+        const urlNeeded = `/api/v1/attendance/${userId}/all`;
+        const response = await fetch(urlNeeded, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-    totalAttendanceElement.textContent = `Days Attended: ${attendance}` ;
+        if (!response.ok) {
+            throw new Error(`Error getting Attendance.`);
+        }
+
+        console.log(`Updated successfully.`);
+
+        const userAttendanceList = await response.json();
+
+        const totalAttendanceElement = document.querySelector('.user-total-attendance');
+
+        totalAttendanceElement.textContent = `Days Attended: ${userAttendanceList.length}` ;
+
+    }catch (error) {
+        console.error(`Error getting Attendance:`, error);
+        // openPopupFailed();
+        throw error;
+    }
     
-    if (attendance > 0.9) {
+    /* if (attendance > 0.9) {
         color = 'green';
     } else if (attendance > 0.7) {
         color = 'blue';
@@ -402,5 +428,21 @@ async function displayTotalAttendance(attendance){
         color = 'darkred';
     }
 
-    totalAttendanceElement.style.color = color;
+    totalAttendanceElement.style.color = color; */
+}
+
+async function calculateUserStanding(socialScore){
+    if (socialScore > .9){
+        return 'Outstanding'
+    } else if (socialScore > .7){
+        return 'Great'
+    } else if (socialScore > .5){
+        return 'Good'
+    } else if (socialScore > .3){
+        return 'Poor'
+    } else if (socialScore > .1){
+        return 'Bad'
+    }else{
+        return 'Dangerous'
+    }
 }
