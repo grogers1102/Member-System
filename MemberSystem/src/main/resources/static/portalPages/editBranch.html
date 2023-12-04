@@ -24,44 +24,46 @@
   </head>
   <!--end copy for each HTML files-->
   <body class="portal" id="portalID">
-    <div class="edit-container">
-        <div class="edit-header">
-            <h1>
-                Edit Branch
-            </h1>
-        </div>
-        <form>
-            <div class="edit-contact">
-                <div>
-                    <label for="email">Name</label>
-                    <input type="text" id="branchName" name="branchName">
-                </div>
-                <div>
-                    <label for="phone">Location</label>
-                    <input type="text" id="branchLocation" name="branchLocation">
-                </div>
+    <div class="edit-branch-page">
+        <div class="edit-container">
+            <div class="edit-header">
+                <h1>
+                    Edit Branch
+                </h1>
             </div>
-            <div class="edit-manager"></div>
-        </form>        
-        <div class="edit-button">
-            <button class="edit-cancel" onclick="window.location.href='BranchPage.html'">Cancel</button>
-            <button class="edit-save" >Save</button>
-            <div class="save-popup">
-                <i class="fa-solid fa-check"></i>
-                <div class="save-popup-header">
-                    <h2>Success!</h2>
-                    <p>
-                        Your details have been sucessfully submitted.
-                    </p>
+            <form>
+                <div class="edit-contact">
+                    <div>
+                        <label for="email">Name</label>
+                        <input  class="branch-name-input" type="text" id="branchName" name="branchName">
+                    </div>
+                    <div>
+                        <label for="phone">Location</label>
+                        <input type="text" id="branchLocation" name="branchLocation">
+                    </div>
                 </div>
-            </div>
-            <div class="save-popup-failed">
-                <i class="fa-solid fa-xmark"></i>
-                <div class="save-popup-header">
-                    <h2>Failure!</h2>
-                    <p>
-                        There was a problem submitting your details.
-                    </p>
+                <div class="edit-manager"></div>
+            </form>        
+            <div class="edit-button">
+                <button class="edit-cancel" onclick="window.location.href='BranchPage.html'">Cancel</button>
+                <button class="edit-save" >Save</button>
+                <div class="save-popup">
+                    <i class="fa-solid fa-check"></i>
+                    <div class="save-popup-header">
+                        <h2>Success!</h2>
+                        <p>
+                            Your details have been sucessfully submitted.
+                        </p>
+                    </div>
+                </div>
+                <div class="save-popup-failed">
+                    <i class="fa-solid fa-xmark"></i>
+                    <div class="save-popup-header">
+                        <h2>Failure!</h2>
+                        <p>
+                            There was a problem submitting your details.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

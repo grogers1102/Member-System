@@ -1274,13 +1274,14 @@
 .edit-name,
 .edit-contact,
 .edit-branchRank{
-    width: 50vw;
+    width: max(500px, min(50vw, 1200px));
     display: flex;
     flex-direction: row;
     align-items: center;
     text-align: center;
     gap: 5vw;
 }
+
 
 .edit-amnestyAddress div,
 .edit-name div,
@@ -1302,7 +1303,7 @@
 {   
     border-radius: 2px;
     border: .5px solid black;
-    width: 20vw; 
+    width: max(200px, min(25vw, 350px));
     height: 4vh;
     padding: 10px;
 }
@@ -1461,6 +1462,14 @@
 .save-popup p, 
 .save-popup-failed p{
     margin-bottom: 8px;
+}
+
+.edit-branch-page{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 /* ------------- RankFiveAssignSubordinatePage Start-------*/
