@@ -41,8 +41,8 @@ public class AttendanceController {
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestBody AttendanceID attendance) {
-        attendanceService.deleteAttendanceById(attendance);
+    public String delete(@RequestBody AttendanceID attendanceId) {
+        attendanceService.deleteAttendanceById(attendanceId);
 
         return "Successfully Deleted Attendance";
     }

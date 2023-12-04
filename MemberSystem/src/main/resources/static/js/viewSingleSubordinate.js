@@ -141,14 +141,13 @@ function confirmOrUnconfirmAttendance(idOfHtmlElement, dateOfAttendance){
  
 }
 
-function addAttendance(){
-    const popupContainer = document.getElementById("popupContainer");
-    const closePopupBtn = document.getElementById("closePopupBtn");
-    const submitButton = document.getElementById("submitButton");
-    popupContainer.style.display = "block";
+async function addAttendance() {
+    const popupContainerAdd = document.getElementById("popupContainer");
+    const closePopupBtnAdd = document.getElementById("closePopupBtn");
+    const submitButtonAdd = document.getElementById("submitButton");
+    popupContainerAdd.style.display = "block";
 
-    submitButton.addEventListener("click", () => {
-
+    submitButtonAdd.addEventListener("click", async () => {
         const inputElement = document.querySelector('#date input[name="date"]');
         const inputValue = inputElement.value;
 
@@ -164,50 +163,46 @@ function addAttendance(){
 
         try {
             const urlNeededAttendance = `/api/v1/attendance/add`;
-            const response = fetch(urlNeededAttendance, {
+            const response = await fetch(urlNeededAttendance, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(params),
             });
+
             if (!response.ok) {
                 throw new Error(`Error adding Attendance.`);
-            }else{
-                alert("Successfully added subordinates attendance");
+            } else {
+                alert("Successfully added subordinate's attendance");
                 window.location = `viewSingleSubordinate.html?userId=${subordinateId}`;
             }
-    
-            
         } catch (error) {
             console.error(`Error adding Attendance:`, error);
             // openPopupFailed();
             throw error;
         }
-
     });
 
-    closePopupBtn.addEventListener("click", () => {
-        popupContainer.style.display = "none";
+    closePopupBtnAdd.addEventListener("click", () => {
+        popupContainerAdd.style.display = "none";
     });
 
     // Close the popup when clicking outside of it
     window.addEventListener("click", (event) => {
-        if (event.target === popupContainer) {
-            popupContainer.style.display = "none";
+        if (event.target === popupContainerAdd) {
+            popupContainerAdd.style.display = "none";
         }
     });
 }
 
-
-function deleteAttendance(){
+async function deleteAttendance() {
     const popupContainer = document.getElementById("deletepopupContainer");
     const closePopupBtn = document.getElementById("deleteclosePopupBtn");
     const submitButtonDelete = document.getElementById("deletesubmitButton");
     popupContainer.style.display = "block";
 
-    submitButtonDelete.addEventListener("click", () => {
-
+    submitButtonDelete.addEventListener("click", async () => {
         const inputElement = document.querySelector('#deletedate input[name="date"]');
         const inputValue = inputElement.value;
 
@@ -215,7 +210,7 @@ function deleteAttendance(){
             userId: subordinateId,
             date: inputValue
         };
-    
+
         const params = {
             attendanceID: attendanceID,
             isConfirmed: true
@@ -223,28 +218,25 @@ function deleteAttendance(){
 
         try {
             const urlNeeded = `/api/v1/attendance/delete`;
-            const response = fetch(urlNeeded, {
+            const response = await fetch(urlNeeded, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(params),
             });
-    
+
             if (!response.ok) {
                 throw new Error(`Error deleting Attendance.`);
-            }else{
-                alert("Successfully deleted subordinates attendance");
-                window.location = `viewSingleSubordinate.html?userId=${subordinateId}`;
+            } else {
+                alert("Successfully deleted subordinate's attendance");
+                redirect(); // You need to define the redirect function
             }
-    
-            
         } catch (error) {
-            console.error(`Error adding Attendance:`, error);
+            console.error(`Error deleting Attendance:`, error);
             // openPopupFailed();
             throw error;
         }
-
     });
 
     closePopupBtn.addEventListener("click", () => {
