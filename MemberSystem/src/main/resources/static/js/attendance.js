@@ -71,8 +71,10 @@ function displayAttendance(attendance){
     const attendanceInnerStart = document.createElement('div');
     attendanceInnerStart.classList.add('subordinate-innerstart');
 
+    console.log(attendance);
+
     const date = attendance.attendanceID.date;
-    const confirmed = attendance.isConfirmed
+    const confirmed = attendance.confirmed;
 
     const startUl = document.createElement('ul');
     startUl.innerHTML = `
