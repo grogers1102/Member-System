@@ -223,7 +223,7 @@
     padding-right: 1vw;
     padding-left: 1vw;
     display: flex;
-    gap: 3vh;
+    gap: 1vh;
     align-items: baseline;
     position: relative;
     top: -10px;
@@ -356,7 +356,6 @@
 }
 
 .user-rank{
-    color: green; /*color depends on rank*/
     font-size: 30px;
 }
 

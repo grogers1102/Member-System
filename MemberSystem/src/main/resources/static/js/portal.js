@@ -184,7 +184,13 @@ async function saveRank() {
 async function displayRank(rank){
     
     try{
-        document.querySelector('.user-rank').textContent = rank.name
+        userRankElement = document.querySelector('.user-rank')
+        userRankElement.textContent = rank.name;
+        userRankElement.style.color = 'black';
+        userRankElement.style.fontWeight = 'normal';
+        userRankElement.style.fontSize = '25px';
+        userRankElement.style.padding = '0px'
+
     }catch (error){
         return;
     }
