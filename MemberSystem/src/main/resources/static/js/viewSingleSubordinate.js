@@ -223,17 +223,17 @@ function deleteAttendance(){
         };
 
         try {
-            // const urlNeeded = `/api/v1/attendance/add`;
-            // const response = fetch(urlNeeded, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: JSON.stringify(params),
-            // });
+            const urlNeeded = `/api/v1/attendance/delete`;
+            const response = fetch(urlNeeded, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(params),
+            });
     
             if (!response.ok) {
-                throw new Error(`Error adding Attendance.`);
+                throw new Error(`Error deleting Attendance.`);
             }else{
                 alert("Successfully deleted subordinates attendance");
                 window.location = "viewSingleSubordinate.html";
