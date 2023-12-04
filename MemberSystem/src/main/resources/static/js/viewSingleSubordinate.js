@@ -141,3 +141,122 @@ function confirmOrUnconfirmAttendance(idOfHtmlElement, dateOfAttendance){
  
 }
 
+function addAttendance(){
+    const popupContainer = document.getElementById("popupContainer");
+    const closePopupBtn = document.getElementById("closePopupBtn");
+    const submitButton = document.getElementById("submitButton");
+    popupContainer.style.display = "block";
+
+    submitButton.addEventListener("click", () => {
+
+        const inputElement = document.querySelector('#date input[name="date"]');
+        const inputValue = inputElement.value;
+
+        const attendanceID = {
+            userId: subordinateId,
+            date: inputValue
+        };
+    
+        const params = {
+            attendanceID: attendanceID,
+            isConfirmed: true
+        };
+
+        try {
+            const urlNeeded = `/api/v1/attendance/add`;
+            const response = fetch(urlNeeded, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(params),
+            });
+    
+            if (!response.ok) {
+                throw new Error(`Error adding Attendance.`);
+            }else{
+                alert("Successfully added subordinates attendance");
+                window.location = "viewSingleSubordinate.html";
+            }
+    
+            
+        } catch (error) {
+            console.error(`Error adding Attendance:`, error);
+            // openPopupFailed();
+            throw error;
+        }
+
+    });
+
+    closePopupBtn.addEventListener("click", () => {
+        popupContainer.style.display = "none";
+    });
+
+    // Close the popup when clicking outside of it
+    window.addEventListener("click", (event) => {
+        if (event.target === popupContainer) {
+            popupContainer.style.display = "none";
+        }
+    });
+}
+
+
+function deleteAttendance(){
+    const popupContainer = document.getElementById("deletepopupContainer");
+    const closePopupBtn = document.getElementById("deleteclosePopupBtn");
+    const submitButton = document.getElementById("deletesubmitButton");
+    popupContainer.style.display = "block";
+
+    submitButton.addEventListener("click", () => {
+
+        const inputElement = document.querySelector('#deletedate input[name="date"]');
+        const inputValue = inputElement.value;
+
+        const attendanceID = {
+            userId: subordinateId,
+            date: inputValue
+        };
+    
+        const params = {
+            attendanceID: attendanceID,
+            isConfirmed: true
+        };
+
+        try {
+            // const urlNeeded = `/api/v1/attendance/add`;
+            // const response = fetch(urlNeeded, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify(params),
+            // });
+    
+            if (!response.ok) {
+                throw new Error(`Error adding Attendance.`);
+            }else{
+                alert("Successfully deleted subordinates attendance");
+                window.location = "viewSingleSubordinate.html";
+            }
+    
+            
+        } catch (error) {
+            console.error(`Error adding Attendance:`, error);
+            // openPopupFailed();
+            throw error;
+        }
+
+    });
+
+    closePopupBtn.addEventListener("click", () => {
+        popupContainer.style.display = "none";
+    });
+
+    // Close the popup when clicking outside of it
+    window.addEventListener("click", (event) => {
+        if (event.target === popupContainer) {
+            popupContainer.style.display = "none";
+        }
+    });
+}
+
