@@ -60,8 +60,6 @@ async function displayAccountDetails() {
     }
 }
 
-
-
 async function calculateUserStanding(socialScore){
     if (socialScore > .9){
         return 'Outstanding'
