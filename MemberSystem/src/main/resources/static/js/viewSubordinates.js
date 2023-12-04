@@ -63,8 +63,8 @@ function addSubordinate(subordinate){
     const subordinateInnerStart = document.createElement('div');
     subordinateInnerStart.classList.add('subordinate-innerstart');
 
-    branchName = getUserBranchName(subordinate);
-    rankName = getUserRankName(subordinate);
+    const branchName = subordinate.localBranch.name;
+    const rankName = subordinate.rank.name
 
     const startUl = document.createElement('ul');
     startUl.innerHTML = `
@@ -123,23 +123,4 @@ function displaySubordinateDetailsBySearch(searchedSubordinate) {
         addSubordinate(subordinate);
         } 
     });
-}
-
-function getUserBranchName(user){
-    branch = user.Branch;
-
-    if(branch){
-        return branch.name;
-    }else{
-        return 'Not Avaliable'
-    }
-}
-
-function getUserRankName(user){
-    rank = user.Rank;
-    if(rank){
-        return rank.description;
-    }else{
-        return 'Not Ranked';
-    }
 }
