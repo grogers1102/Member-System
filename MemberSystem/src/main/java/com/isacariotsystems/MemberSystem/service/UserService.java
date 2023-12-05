@@ -23,6 +23,8 @@ public interface UserService {
 
     public User updateUserLastName(Long userId, String lastName);
 
+    public User updateUserAmnestyDays(Long userId, int amnestyDays);
+
     public User updateUserAddress(Long userId, String address);
 
     public User updateUserPhoneNumber(Long userId, String phoneNumber);
