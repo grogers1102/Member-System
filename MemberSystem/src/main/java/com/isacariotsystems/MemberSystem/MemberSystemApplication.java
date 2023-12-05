@@ -105,12 +105,18 @@ public class MemberSystemApplication implements CommandLineRunner {
     }
 
     public void makeBranch() {
-        Optional<Branch> branchCheck = branchRepository.findById(1L);
+
+        Optional<Branch> branchCheck = branchRepository.findById(2L);
     
         if (branchCheck.isPresent()) {
             return;
         }
-    
+        
+        Optional<User> branchManagerCheck = userRepository.findByEmail("unassigned@gmail.com");
+        if (branchManagerCheck.isPresent()){
+            return;
+        }
+        
         User branchManager = new User();
         branchManager.setFirstName("Unassigned");
         branchManager.setLastName("Manager");

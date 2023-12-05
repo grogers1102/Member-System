@@ -151,7 +151,7 @@ async function saveRank() {
 
     rankList.forEach(rankField => {
         let rankInput = document.getElementById(rankField);
-        if (rankInput.value.trim() !== "") {
+        if (rankInput.value.trim() !== "" && rankInput.value) {
             rankParams[rankField] = rankInput.value;
         } else {
             alert("Enter all fields");
@@ -262,33 +262,6 @@ function logout() {
 }
 
 async function displayBranchDetails(user){
-    const {
-        localBranch,
-    } = user;
-
-    if (!localBranch || !localBranch.branchId) {
-        document.querySelector('.user-branch-location').textContent = 'Branch: Not Available';
-        document.querySelector('.branch-population').textContent = 'Population: Not Available';
-        document.querySelector('.branch-manager').textContent = 'Manager: Not Available';
-        return; 
-    }
-
-    const branchPopulation = await getBranchPopulation(localBranch.branchId);
-    const branch = await getBranchDetails(localBranch.branchId);
-
-    if (!branch || !branch.manager) {
-        document.querySelector('.user-branch-location').textContent = `Branch: ${localBranch.name}`;
-        document.querySelector('.branch-population').textContent = `Population: Not Available`;
-        document.querySelector('.branch-manager').textContent = `Manager: Not Available`;
-        return; 
-    }
-
-    const { manager } = branch;
-    const managerName = `${manager.firstName} ${manager.lastName}`;
-
-    document.querySelector('.user-branch-location').textContent = `Branch: ${localBranch.name}`;
-    document.querySelector('.branch-population').textContent = `Population: ${branchPopulation}`;
-    document.querySelector('.branch-manager').textContent = `Manager: ${managerName}`;
 
     if (rankId && rankId >= 5){
         const openModalButtons = document.querySelectorAll('[data-modal-target]')
@@ -323,6 +296,34 @@ async function displayBranchDetails(user){
             })
         })
     }
+
+    const {
+        localBranch,
+    } = user;
+
+    if (!localBranch || !localBranch.branchId) {
+        document.querySelector('.user-branch-location').textContent = 'Branch: Not Available';
+        document.querySelector('.branch-population').textContent = 'Population: Not Available';
+        document.querySelector('.branch-manager').textContent = 'Manager: Not Available';
+        return; 
+    }
+
+    const branchPopulation = await getBranchPopulation(localBranch.branchId);
+    const branch = await getBranchDetails(localBranch.branchId);
+
+    if (!branch || !branch.manager) {
+        document.querySelector('.user-branch-location').textContent = `Branch: ${localBranch.name}`;
+        document.querySelector('.branch-population').textContent = `Population: Not Available`;
+        document.querySelector('.branch-manager').textContent = `Manager: Not Available`;
+        return; 
+    }
+
+    const { manager } = branch;
+    const managerName = `${manager.firstName} ${manager.lastName}`;
+
+    document.querySelector('.user-branch-location').textContent = `Branch: ${localBranch.name}`;
+    document.querySelector('.branch-population').textContent = `Population: ${branchPopulation}`;
+    document.querySelector('.branch-manager').textContent = `Manager: ${managerName}`;
 }
 
 
