@@ -266,8 +266,23 @@ async function displayBranchDetails(user){
         localBranch,
     } = user;
 
+    if (!localBranch || !localBranch.branchId) {
+        document.querySelector('.user-branch-location').textContent = 'Branch: Not Available';
+        document.querySelector('.branch-population').textContent = 'Population: Not Available';
+        document.querySelector('.branch-manager').textContent = 'Manager: Not Available';
+        return; 
+    }
+
     const branchPopulation = await getBranchPopulation(localBranch.branchId);
     const branch = await getBranchDetails(localBranch.branchId);
+
+    if (!branch || !branch.manager) {
+        document.querySelector('.user-branch-location').textContent = `Branch: ${localBranch.name}`;
+        document.querySelector('.branch-population').textContent = `Population: Not Available`;
+        document.querySelector('.branch-manager').textContent = `Manager: Not Available`;
+        return; 
+    }
+
     const { manager } = branch;
     const managerName = `${manager.firstName} ${manager.lastName}`;
 
@@ -275,7 +290,7 @@ async function displayBranchDetails(user){
     document.querySelector('.branch-population').textContent = `Population: ${branchPopulation}`;
     document.querySelector('.branch-manager').textContent = `Manager: ${managerName}`;
 
-    if (rankId >= 5){
+    if (rankId && rankId >= 5){
         const openModalButtons = document.querySelectorAll('[data-modal-target]')
         const closeModalButtons = document.querySelectorAll('[data-close-button]')
         const overlay = document.getElementById('overlay')
@@ -309,6 +324,7 @@ async function displayBranchDetails(user){
         })
     }
 }
+
 
 async function getBranchPopulation(branchId){
     const branchUrl = `/api/v1/user/branch/${branchId}`;
