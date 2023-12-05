@@ -116,6 +116,12 @@ public class UserController {
         return userService.updateUserFirstName(userId, email);
     }
 
+        @PatchMapping("/{userId}/amnestyDays")
+    public User updateUserByAmnestyDays(@PathVariable Long userId, @RequestBody JsonNode requestBody) {
+        int amnestyDays = requestBody.get("amnestyDays").asInt();
+        return userService.updateUserAmnestyDays(userId, amnestyDays);
+    }
+
     @PatchMapping("/{userId}/address")
     public User updateUserByAddress(@PathVariable Long userId, @RequestBody JsonNode requestBody) {
         String address = requestBody.get("address").asText();
