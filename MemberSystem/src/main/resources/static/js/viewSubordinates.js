@@ -42,8 +42,7 @@ async function displaySubordinateDetails() {
     }
 }
 
-function addSubordinate(subordinate){
-        
+function addSubordinate(subordinate) {
     const subordinateBox = document.createElement('div');
     subordinateBox.classList.add('subordinate-box');
 
@@ -51,9 +50,9 @@ function addSubordinate(subordinate){
     subordinateName.classList.add('subordinate-name');
 
     const link = document.createElement('a');
-    link.classList.add('single-subordinate-link')
+    link.classList.add('single-subordinate-link');
     link.setAttribute('href', `viewSingleSubordinate.html?userId=${subordinate.userId}`);
-    link.textContent = `${subordinate.firstName} ${subordinate.lastName} ${subordinate.userId}`
+    link.textContent = `${subordinate.firstName} ${subordinate.lastName} ${subordinate.userId}`;
 
     subordinateName.appendChild(link);
 
@@ -63,14 +62,22 @@ function addSubordinate(subordinate){
     const subordinateInnerStart = document.createElement('div');
     subordinateInnerStart.classList.add('subordinate-innerstart');
 
-    const branchName = subordinate.localBranch.name;
-    const rankName = subordinate.rank.name
+    let branchName = 'Not Available';
+    let rankName = 'Not Available';
+
+    if (subordinate.localBranch && subordinate.localBranch.name) {
+        branchName = subordinate.localBranch.name;
+    }
+
+    if (subordinate.rank && subordinate.rank.name) {
+        rankName = subordinate.rank.name;
+    }
 
     const startUl = document.createElement('ul');
     startUl.innerHTML = `
-    <li>Branch</li>
-    <li>Rank</li>
-    <li>Email</li>
+        <li>Branch</li>
+        <li>Rank</li>
+        <li>Email</li>
     `;
 
     subordinateInnerStart.appendChild(startUl);
@@ -99,6 +106,7 @@ function addSubordinate(subordinate){
     const parentElement = document.querySelector('.content-subordinate-container');
     parentElement.appendChild(subordinateBox);
 }
+
 
 function setupSearchEventListener() {
     document.getElementById('searchSubordinate').addEventListener('keydown', function (event) {

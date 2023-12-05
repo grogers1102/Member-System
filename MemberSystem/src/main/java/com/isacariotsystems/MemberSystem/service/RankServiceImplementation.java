@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.isacariotsystems.MemberSystem.DTO.RankRequest;
 import com.isacariotsystems.MemberSystem.entity.Rank;
+import com.isacariotsystems.MemberSystem.entity.User;
 import com.isacariotsystems.MemberSystem.repository.RankRepository;
+import com.isacariotsystems.MemberSystem.repository.UserRepository;
 
 /*
  * @Service indicates this is a service class
@@ -22,6 +24,12 @@ public class RankServiceImplementation implements RankService {
 
     @Autowired
     private RankRepository rankRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
 
 
     @Override
@@ -47,6 +55,13 @@ public class RankServiceImplementation implements RankService {
 
     @Override
     public void deleteRankById(Long rankId){
+        Optional<List<User>> userListOptional = userService.findUsersByRank(rankId);
+        userListOptional.ifPresent(users -> {
+            for (User user: users){
+                user.setRank(null);
+                userRepository.save(user);
+            }
+        });
         rankRepository.deleteById(rankId);
     }
 

@@ -39,18 +39,44 @@ async function displayBranchDetails() {
 
         const branch = await getBranchDetails(branchId);
 
-        const { name, manager } = branch;
-        
-        const managerName = `${manager.firstName} ${manager.lastName}`
+        if (!branch) {
+            throw new Error('Branch details not available.');
+        }
+
+        const { name } = branch;
         const population = await getBranchPopulation(branchId);
 
         document.querySelector('.user-branch-location').textContent = `${name}`;
         document.querySelector('.user-branch-population').textContent = `Population: ${population}`;
-        document.querySelector('.user-branch-manager').textContent = `Manager: ${managerName}`
-        await displayBranchMembers(branchId);
 
-    } catch (error) {
-        console.error(error);
+    } catch (branchError) {
+        console.error(branchError);
+        document.querySelector('.user-branch-location').textContent = 'Branch: Not Available';
+    }
+
+    try {
+        const branch = await getBranchDetails(branchId);
+
+        if (!branch || !branch.manager || !branch.manager.firstName || !branch.manager.lastName) {
+            throw new Error('Manager details not available.');
+        }
+
+        const { manager } = branch;
+        const managerName = `${manager.firstName} ${manager.lastName}`;
+        document.querySelector('.user-branch-manager').textContent = `Manager: ${managerName}`;
+
+    } catch (managerError) {
+        console.error(managerError);
+        document.querySelector('.user-branch-manager').textContent = 'Manager: Not Available';
+    }
+
+    try {
+        const population = await getBranchPopulation(branchId);
+        document.querySelector('.user-branch-population').textContent = `Population: ${population}`;
+
+    } catch (populationError) {
+        console.error(populationError);
+        document.querySelector('.user-branch-population').textContent = 'Population: Not Available';
     }
 }
 

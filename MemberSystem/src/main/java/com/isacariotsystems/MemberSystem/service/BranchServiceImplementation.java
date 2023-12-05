@@ -62,9 +62,26 @@ public class BranchServiceImplementation implements BranchService {
     }
 
     @Override
-    public void deleteBranchById(Long branchId){
-        branchRepository.deleteById(branchId);
+    public void deleteBranchById(Long branchId) {
+        Optional<Branch> optionalBranch = branchRepository.findById(branchId);
+        
+        optionalBranch.ifPresent(branch -> {
+            branch.setManager(null);
+            
+            branchRepository.save(branch);
+
+            Optional<List<User>> optionalUser = userService.findUsersByBranch(branchId);
+
+            optionalUser.ifPresent(users -> {
+                for (User user : users) {
+                    user.setLocalBranch(null);
+                    userRepository.save(user);
+                }
+            });
+            branchRepository.deleteById(branchId);
+        });
     }
+
 
     @Override
     public Branch updateBranch(Long branchId, Branch branch){
