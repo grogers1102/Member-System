@@ -2,7 +2,6 @@ package com.isacariotsystems.MemberSystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,7 +31,7 @@ public class Branch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long branchId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "managerId", referencedColumnName = "userId")
     @JsonIgnoreProperties("localBranch")
     private User manager;

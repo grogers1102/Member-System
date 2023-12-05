@@ -52,7 +52,8 @@ public class MemberSystemApplication implements CommandLineRunner {
 
     public void makeAdmin(){
         User adminAccount = userRepository.findByRole(Role.ADMIN);
-        if (adminAccount == null) {
+        Optional<User> admin = userRepository.findById(1L);
+        if (adminAccount == null && !admin.isPresent()) {
             User user = new User();
             user.setEmail("admin@gmail.com");
             user.setFirstName("admin");
@@ -128,6 +129,8 @@ public class MemberSystemApplication implements CommandLineRunner {
         branchRepository.save(branch);
     
         branchManager.setLocalBranch(branch);
+
+        userService.saveUser(branchManager);
     
         User admin = userService.findUserByEmail("admin@gmail.com").orElse(null);
         if (admin != null) {
