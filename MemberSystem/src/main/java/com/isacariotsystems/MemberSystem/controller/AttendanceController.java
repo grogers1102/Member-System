@@ -41,11 +41,21 @@ public class AttendanceController {
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestBody AttendanceID attendanceId) {
-        attendanceService.deleteAttendanceById(attendanceId);
+    public String delete(@RequestBody JsonNode jsonNode) {
+        try {
+            String dateString = jsonNode.get("attendanceID").get("date").asText();
+            Long userId = jsonNode.get("attendanceID").get("userId").asLong();
 
-        return "Successfully Deleted Attendance";
-    }
+            LocalDate date = LocalDate.parse(dateString);
+
+            attendanceService.deleteAttendanceById(new AttendanceID(userId, date)); 
+
+            return "Successfully Deleted Attendance";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed to process request";
+        }
+}
 
     @PatchMapping("/{userId}/{date}")
     public Attendance updateAttendanceById(@PathVariable Long userId, @PathVariable LocalDate date,

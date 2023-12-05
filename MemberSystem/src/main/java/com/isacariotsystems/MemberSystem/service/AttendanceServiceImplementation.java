@@ -29,13 +29,18 @@ public class AttendanceServiceImplementation implements AttendanceService{
     }
 
     @Override
-    public Optional<Attendance> findAttendanceById(AttendanceID attendanceId){
-        return attendanceRepository.findById(attendanceId);
+    public Optional<Attendance> findAttendanceById(AttendanceID attendanceID){
+        return attendanceRepository.findById(attendanceID);
     }
 
     @Override
-    public void deleteAttendanceById(AttendanceID attendanceId){
-        attendanceRepository.deleteById(attendanceId);
+    public void deleteAttendanceById(AttendanceID attendanceID){
+        System.out.println(attendanceID);
+        Optional<Attendance> attendance = attendanceRepository.findById(attendanceID);
+
+        attendance.ifPresent(attendanceConfirmed -> {
+            attendanceRepository.delete(attendanceConfirmed);
+        });
     }
 
     @Override

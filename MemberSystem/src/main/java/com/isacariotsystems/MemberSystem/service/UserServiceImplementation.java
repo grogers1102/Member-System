@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.isacariotsystems.MemberSystem.entity.Attendance;
 import com.isacariotsystems.MemberSystem.entity.Branch;
 import com.isacariotsystems.MemberSystem.entity.Rank;
 import com.isacariotsystems.MemberSystem.entity.User;
@@ -52,6 +53,17 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public void deleteUserById(Long userId){
+        Optional<List<User>> userList = findUsersBySuperiorId(userId);
+        userList.ifPresent(users -> {
+            for (User user: users){
+                user.setSuperior(null);
+                userRepository.save(user);
+            }
+        });
+        List<Attendance> userListAttendance = attendanceRepository.findAttendanceByAttendanceID_UserId(userId);
+        for (Attendance attendance: userListAttendance){
+            attendanceRepository.delete(attendance);
+        }
         userRepository.deleteById(userId);
     }
 
