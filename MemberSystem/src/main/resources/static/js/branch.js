@@ -1,4 +1,5 @@
 let users;
+let branchId = 0;
 
 function clickPress(event) {
     if (event.key === 'Enter') {
@@ -34,7 +35,7 @@ async function displayBranchDetails() {
         }
 
         const userOBJ = await response.json();
-        const branchId = userOBJ.localBranch.branchId;
+        branchId = userOBJ.localBranch.branchId;
 
         const branch = await getBranchDetails(branchId);
 
@@ -186,5 +187,9 @@ function setupSearchEventListener() {
             displayUserDetailsBySearch(searchedUser);
         }
     });
+}
+
+function redirect(){
+    window.location=`editBranch.html?branchId=${branchId}`
 }
 

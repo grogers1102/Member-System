@@ -7,6 +7,7 @@ let popupFailed = document.querySelector('.save-popup-failed');
 document.addEventListener('DOMContentLoaded', async function () {
     await displayEditManager();
     addEditEventListener();
+    deleteEventListener();
 });
 
 function addEditEventListener(){
@@ -15,6 +16,35 @@ function addEditEventListener(){
         updateBranch();
         updateManager();
     });
+}
+
+function deleteEventListener(){
+    const deleteButton = document.querySelector('.edit-delete');
+    if (deleteButton) {
+        deleteButton.addEventListener('click', deleteBranch);
+    }
+}
+
+async function deleteBranch() {
+    try {
+        const urlNeededDeleteBranch = `/api/v1/branch/${branchId}`;
+        const response = await fetch(urlNeededDeleteBranch, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error deleting subordinate.`);
+        } else {
+            window.location.href = 'branchPage.html';
+        }
+    } catch (error) {
+        console.error(`Error deleting Branch:`, error);
+        // openPopupFailed();
+        throw error;
+    }
 }
 
 async function displayEditManager() {

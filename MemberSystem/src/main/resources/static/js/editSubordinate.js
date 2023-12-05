@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     await getRanks();
     await getBranches();
     addEditEventListener();
+    deleteEventListener();
 });
 
 function addEditEventListener(){
@@ -29,6 +30,37 @@ function addEditEventListener(){
     });
 }
 
+function deleteEventListener(){
+    const deleteButton = document.querySelector('.edit-delete');
+    if (deleteButton) {
+        deleteButton.addEventListener('click', deleteSubordinate);
+    }
+}
+
+async function deleteSubordinate() {
+    try {
+        const urlNeededDelete = `/api/v1/user/${subordinateId}`;
+        const response = await fetch(urlNeededDelete, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error deleting subordinate.`);
+        } else {
+            window.location.href = 'viewSubordinates.html';
+        }
+    } catch (error) {
+        console.error(`Error deleting Subordinate:`, error);
+        // openPopupFailed();
+        throw error;
+    }
+}
+
+
+
 async function getUserDetails(){
     const urlNeededUser = `/api/v1/user/${userId}`;
     try {
@@ -39,7 +71,7 @@ async function getUserDetails(){
         }
         
         const userOBJ = await response.json();
-
+        branchId = userOBJ.localBranch.branchId;
         rankId = userOBJ.rank.rankId;
     }catch(error){
         console.log(error);
@@ -345,7 +377,7 @@ async function displayBranches(allBranches) {
 
     allBranches.forEach((branch) => {
         const branchName = branch.name;
-        const branchId = branch.branchId; 
+        const branchIds = branch.branchId; 
 
         const option = document.createElement("option");
         option.value = branchName.toLowerCase();
@@ -353,7 +385,7 @@ async function displayBranches(allBranches) {
 
         branchSelect.appendChild(option);
 
-        branchMap[branchName.toLowerCase()] = branchId;
+        branchMap[branchName.toLowerCase()] = branchIds;
     });
 }
 
