@@ -192,11 +192,12 @@ async function updateSuperior() {
 
 function updateRank() {
     const selectedRank = document.getElementById('rank');
-    if (selectedRank.value) {
-        const selectedRankName = selectedRank.value; 
-        const selectedRankId = rankMap[selectedRankName.toLowerCase()];
+    const selectedRankName = selectedRank.value;
 
+    if (selectedRankName && selectedRankName !== '--- Select a Rank ---') {
+        const selectedRankId = rankMap[selectedRankName.toLowerCase()];
         const urlNeededForRank = `/api/v1/user/${subordinateId}/rank`;
+
         fetch(urlNeededForRank, {
             method: 'PATCH',
             headers: {
@@ -214,15 +215,18 @@ function updateRank() {
             openPopupFailed();
             throw error; 
         });
+    } else {
+        console.log('Please select a valid rank.');
     }
 }
 
+
 function updateBranch() {
     const selectedBranch = document.getElementById('localBranch');
-    if (selectedBranch.value) {
-        const selectedBranchName = selectedBranch.value;
-        const selectedBranchId = branchMap[selectedBranchName.toLowerCase()];
+    const selectedBranchName = selectedBranch.value;
 
+    if (selectedBranchName && selectedBranchName !== '--- Select a Branch ---') {
+        const selectedBranchId = branchMap[selectedBranchName.toLowerCase()];
         const urlNeededForBranch = `/api/v1/user/${subordinateId}/branch`;
 
         fetch(urlNeededForBranch, {
@@ -242,8 +246,11 @@ function updateBranch() {
             openPopupFailed();
             throw error;
         });
+    } else {
+        console.log('Please select a valid branch.');
     }
 }
+
 
 
 function openPopup() {

@@ -109,6 +109,19 @@ public class UserServiceImplementation implements UserService {
             throw new NoSuchElementException("User " + userId + " not found");
         }
     }
+
+    @Override
+    public User updateUserAmnestyDays(Long userId, int amnestyDays){
+                if (userRepository.existsById(userId)) {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new NoSuchElementException("User " + userId + " not found"));
+    
+            user.setAmnestyDays(amnestyDays);
+            return userRepository.save(user);
+        } else {
+            throw new NoSuchElementException("User " + userId + " not found");
+        }
+    }
     
     @Override
     public User updateUserPhoneNumber(Long userId, String phoneNumber) {
