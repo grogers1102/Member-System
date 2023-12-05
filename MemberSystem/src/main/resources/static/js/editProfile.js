@@ -1,8 +1,11 @@
 let popup  = document.querySelector('.save-popup');
 let popupFailed = document.querySelector('.save-popup-failed');
 
+const userId = localStorage.getItem('userId');
+
 document.addEventListener('DOMContentLoaded', function () {
     addEditEventListener();
+    deleteEventListener();
 });
 
 function addEditEventListener(){
@@ -13,8 +16,40 @@ function addEditEventListener(){
     });
 }
 
+function deleteEventListener(){
+    const deleteButton = document.querySelector('.edit-delete');
+    if (deleteButton) {
+        deleteButton.addEventListener('click', deleteUser);
+    }
+}
+
+async function deleteUser() {
+    try {
+        const urlNeededDelete = `/api/v1/user/${userId}`;
+        const response = await fetch(urlNeededDelete, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error deleting subordinate.`);
+        } else {
+            localStorage.removeItem('token');
+            localStorage.removeItem('refreshToken');
+            localStorage.removeItem('userId');
+            window.location.href = '../index.html';
+        }
+    } catch (error) {
+        console.error(`Error deleting Subordinate:`, error);
+        // openPopupFailed();
+        throw error;
+    }
+}
+
+
 function updateUser(){
-    const userId = localStorage.getItem('userId');
     const userFields = ['firstName', 'lastName', 'email', 'phone', 'address'];
 
     userFields.forEach(field => {
@@ -52,7 +87,6 @@ function updatePassword(){
     const oldPassword = document.getElementById('current-password');
     const newPassword = document.getElementById('new-password');
     const confirmPassword = document.getElementById('confirm-password');
-    const userId = localStorage.getItem('userId');
 
     if (!oldPassword || !newPassword || !confirmPassword){
         return;
