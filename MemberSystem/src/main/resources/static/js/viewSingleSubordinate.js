@@ -35,7 +35,7 @@ async function displaySingleSubordinateDetails(subordinateId) {
             phoneNumber,
             rank,
             email,
-            superiorId,
+            superior,
             amnestyDays,
             address
         } = userOBJ;
@@ -47,7 +47,7 @@ async function displaySingleSubordinateDetails(subordinateId) {
         document.getElementById("phone-id").textContent = `Phone Number: ${phoneNumber}`;
         document.getElementById("address-id").textContent = `Address: ${address}`;
         document.getElementById("email-id").textContent = `Email: ${email}`;
-        document.getElementById("superior-id").textContent = `Superior ID: ${superiorId}`;
+        document.getElementById("superior-id").textContent = `Superior ID: ${superior.userId}`;
         document.getElementById("amnesty-id").textContent = `Numbers of Amnesty Days: ${amnestyDays}`;
     } catch (error) {
         console.error(`Error updating`, error);

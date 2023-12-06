@@ -37,6 +37,8 @@ async function displayBranchDetails() {
         const userOBJ = await response.json();
         branchId = userOBJ.localBranch.branchId;
 
+        displayBranchMembers(branchId);
+
         const branch = await getBranchDetails(branchId);
 
         if (!branch) {

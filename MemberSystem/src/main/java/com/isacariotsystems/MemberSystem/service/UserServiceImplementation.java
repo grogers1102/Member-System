@@ -64,6 +64,15 @@ public class UserServiceImplementation implements UserService {
         for (Attendance attendance: userListAttendance){
             attendanceRepository.delete(attendance);
         }
+
+        User manager = findUserById(userId).orElse(null);
+        List<Branch> branchList = branchRepository.findBranchesByManager(manager);
+
+        for (Branch branch: branchList){
+            branch.setManager(null);
+            branchRepository.save(branch);
+        }
+
         userRepository.deleteById(userId);
     }
 

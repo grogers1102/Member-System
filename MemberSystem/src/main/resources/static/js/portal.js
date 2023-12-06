@@ -118,28 +118,33 @@ async function displayAccount(){
 }
 
 async function saveBranch() {
-    branchName = document.getElementById('branch-name').value
-    branchLocation = document.getElementById('branch-address').value
+    const branchName = document.getElementById('branch-name').value;
+    const branchLocation = document.getElementById('branch-address').value;
 
-    const branchParams = {'name':branchName, 'address':branchLocation}
+    const branchParams = {
+        'name': branchName,
+        'address': branchLocation
+    };
 
     try {
-        const urlNeededBranch = `/api/v1/branch/add`;
+        const urlNeededBranch = '/api/v1/branch/add';
         const response = await fetch(urlNeededBranch, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(branchParams) 
+            body: JSON.stringify(branchParams)
         });
 
+        const responseData = await response.json(); // Assuming response data is JSON
+
         if (!response.ok) {
-            throw new Error(`Error saving branch`);
+            throw new Error(`Error saving branch: ${responseData.error || 'Unknown error'}`);
         }
 
         console.log(`Created successfully.`);
     } catch (error) {
-        console.error(`Error creating Branch`, error);
+        console.error(`Error creating Branch:`, error.message);
         // openPopupFailed();
         throw error;
     }

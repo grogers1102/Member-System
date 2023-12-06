@@ -59,8 +59,6 @@ async function deleteSubordinate() {
     }
 }
 
-
-
 async function getUserDetails(){
     const urlNeededUser = `/api/v1/user/${userId}`;
     try {
@@ -71,12 +69,35 @@ async function getUserDetails(){
         }
         
         const userOBJ = await response.json();
-        branchId = userOBJ.localBranch.branchId;
-        rankId = userOBJ.rank.rankId;
-    }catch(error){
+        const { localBranch, rank } = userOBJ;
+
+        let branchError = false;
+        let rankError = false;
+        if (!localBranch || !localBranch.branchId) {
+            branchError = true;
+        }
+
+        if (!rank || !rank.rankId) {
+            rankError = true;
+        }
+
+        if (!rankError){
+            rankId = rank.rankId;
+        }
+
+        if (!branchError){
+            branchId = localBranch.branchId;
+        }
+        
+        if (rankError || branchError){
+            throw new Error('There was an error getting your Rank or Branch');
+        }
+
+    } catch(error) {
         console.log(error);
     }
 }
+
 
 async function displayRankDropDown(){
     if (rankId >= 5){
@@ -224,6 +245,10 @@ async function updateSuperior() {
 
 function updateRank() {
     const selectedRank = document.getElementById('rank');
+    
+    if(!selectedRank){
+        return;
+    }
     const selectedRankName = selectedRank.value;
 
     if (selectedRankName && selectedRankName !== '--- Select a Rank ---') {

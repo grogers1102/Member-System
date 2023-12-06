@@ -831,7 +831,7 @@
 .user-info-subcontainer{
     display: flex;
     align-items: start;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .user-info-details{
@@ -868,7 +868,10 @@
 
 .user-name{
     font-size: 35px;
+    gap: 10vw;
     font-family: "source-sans-pro", sans-serif;    
+    display: flex;
+    flex-direction: row;
 }
 .user-id{
     font-size: 22px;
@@ -1289,7 +1292,7 @@
 .edit-name,
 .edit-contact,
 .edit-branchRank{
-    width: max(400px, min(50vw, 1200px));
+    width: 50vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1318,7 +1321,7 @@
 {   
     border-radius: 2px;
     border: .5px solid black;
-    width: max(200px, min(25vw, 350px));
+    width: 25vw;
     height: 4vh;
     padding: 10px;
 }
@@ -1351,7 +1354,7 @@
 .edit-manager input{
     border-radius: 2px;
     border: .5px solid black; 
-    width: 45vw;
+    width: 55vw;
     height: 4vh;
     padding: 10px
 }
